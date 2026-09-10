@@ -1,0 +1,1 @@
+signal_id,date,ticker,signal_type,headline,source_url,fundamental_strength,novelty,already_priced,valuation,execution_risk,signal_score,price_at_signal,benchmark_price_at_signal,notes

@@ -1,0 +1,21 @@
+{
+  "benchmark": "^NDX",
+  "currency": "USD",
+  "scoring": {
+    "fundamental_strength": 30,
+    "novelty": 20,
+    "not_already_priced": 20,
+    "valuation": 15,
+    "execution_risk_inverse": 15
+  },
+  "themes": [
+    "AI accelerators",
+    "custom ASIC",
+    "HBM and memory",
+    "networking and photonics",
+    "datacenter power",
+    "edge AI",
+    "robotics",
+    "precision diagnostics"
+  ]
+}

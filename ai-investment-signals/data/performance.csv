@@ -1,0 +1,1 @@
+signal_id,ticker,date,price_at_signal,price_m1,price_m3,price_m6,price_m12,return_m1,return_m3,return_m6,return_m12,relative_m1,relative_m3,relative_m6,relative_m12

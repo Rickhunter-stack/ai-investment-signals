@@ -1,0 +1,11 @@
+ticker,company,sector,theme
+NVDA,Nvidia,Semiconductors,GPU / AI platform
+AVGO,Broadcom,Semiconductors,Custom AI ASIC / networking
+QCOM,Qualcomm,Semiconductors,Datacenter / edge AI
+MU,Micron,Semiconductors,HBM / memory
+GOOGL,Alphabet,Cloud / AI,Models / cloud / datacenters / energy
+AMZN,Amazon,Cloud / AI,AWS / custom silicon / datacenters
+ADI,Analog Devices,Semiconductors,Edge AI / industrial
+MDT,Medtronic,Medtech,Surgical robotics
+ISRG,Intuitive Surgical,Medtech,Surgical robotics
+GH,Guardant Health,Diagnostics,Liquid biopsy / precision oncology
