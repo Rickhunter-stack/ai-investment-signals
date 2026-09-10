@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "python3 scripts/build_static_dashboard.py",
-  "outputDirectory": "public",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {"source": "/", "destination": "/index.html"}
+  ]
 }
