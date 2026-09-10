@@ -1,1 +1,252 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Investment Signals</title><style>:root{--bg:#0f1416;--panel:#161e20;--ink:#e8eeed;--muted:#95a4a3;--rule:#2b3739;--accent:#5fc4cb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,Arial,sans-serif}.wrap{max-width:1100px;margin:auto;padding:42px 24px}h1{font-size:clamp(2.2rem,6vw,4.4rem);line-height:1;margin:.2em 0}.eyebrow{color:var(--accent);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.75rem}.card{margin-top:28px;background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:22px}.muted{color:var(--muted)}</style></head><body><main class="wrap"><div class="eyebrow">Radar prospectif · IA · Robotique · Biotech</div><h1>AI Investment Signals</h1><p class="muted">Le dashboard est déployé. Les données dynamiques sont régénérées automatiquement par GitHub Actions.</p><div class="card"><strong>Initialisation du dashboard</strong><p class="muted">Cette page de secours est remplacée par la synthèse générée lors du prochain rafraîchissement du radar.</p></div></main></body></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Investment Signals</title>
+<style>
+:root{--bg:#0f1416;--panel:#161e20;--panel2:#1e282a;--ink:#e8eeed;--muted:#95a4a3;--rule:#2b3739;--accent:#5fc4cb;--green:#6fc08d;--amber:#dbb05a;--blue:#93aee0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,Arial,sans-serif}.wrap{max-width:1280px;margin:auto;padding:36px 22px 80px}
+header{border-bottom:1px solid var(--rule);padding-bottom:24px;margin-bottom:26px}h1{font-size:clamp(2rem,5vw,4rem);line-height:1;margin:8px 0 10px}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:var(--accent);font-weight:800}.sub{color:var(--muted);max-width:820px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:24px 0}.kpi{background:var(--panel);border:1px solid var(--rule);padding:16px;border-radius:10px}.kpi b{font-size:1.7rem;display:block}.kpi span{color:var(--muted);font-size:.8rem}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}button{background:var(--panel2);color:var(--ink);border:1px solid var(--rule);padding:8px 12px;border-radius:999px;cursor:pointer}button.active{border-color:var(--accent);color:var(--accent)}
+.tablewrap{overflow:auto;background:var(--panel);border:1px solid var(--rule);border-radius:12px}table{border-collapse:collapse;width:100%;min-width:860px}th,td{padding:11px 14px;border-bottom:1px solid var(--rule);text-align:left}th{position:sticky;top:0;background:var(--panel2);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}tr:hover{background:var(--panel2)}.ticker{color:var(--accent);font-weight:800}.num{text-align:right;font-variant-numeric:tabular-nums}.pill{font-size:.7rem;padding:4px 8px;border-radius:999px;border:1px solid var(--rule)}.anchor{color:var(--blue)}.enabler{color:var(--green)}.emerging{color:var(--amber)}
+.note{margin-top:22px;color:var(--muted);font-size:.86rem}footer{margin-top:38px;border-top:1px solid var(--rule);padding-top:18px;color:var(--muted);font-size:.8rem}
+</style></head><body><div class="wrap">
+<header><div class="eyebrow">Radar prospectif · IA · Robotique · Biotech</div><h1>AI Investment Signals</h1><p class="sub">Suivi des blockbusters, anchors et sous-traitants critiques. Le système cherche ce qui vient de changer dans les chaînes de valeur, sans transformer un score en recommandation d'achat.</p></header>
+<div class="kpis"><div class="kpi"><b>33</b><span>Sociétés suivies</span></div><div class="kpi"><b>14</b><span>Anchors / blockbusters</span></div><div class="kpi"><b>19</b><span>Enablers / emerging</span></div><div class="kpi"><b>2026-09-10 23:08 UTC</b><span>Génération du dashboard</span></div></div>
+<div class="controls" id="filters"><button class="active" data-filter="all">Tout</button><button data-filter="ai_semi">IA / Semi</button><button data-filter="robotics">Robotique</button><button data-filter="biotech_medtech">Biotech / Medtech</button><button data-role="enabler">Critical enablers</button><button data-role="anchor">Anchors</button></div>
+<div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Société</th><th>Thème</th><th>Rôle</th><th>Maillon</th><th class="num">Cours</th><th>Date</th></tr></thead><tbody><tr data-theme="ai_semi" data-role="anchor">
+        <td class="ticker">NVDA</td>
+        <td>Nvidia</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>gpu platform</td>
+        <td class="num">218.36</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="anchor">
+        <td class="ticker">MSFT</td>
+        <td>Microsoft</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>hyperscaler ai</td>
+        <td class="num">492.44</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="anchor">
+        <td class="ticker">GOOGL</td>
+        <td>Alphabet</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>hyperscaler ai</td>
+        <td class="num">332.60</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="anchor">
+        <td class="ticker">AMZN</td>
+        <td>Amazon</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>hyperscaler ai</td>
+        <td class="num">251.89</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="anchor">
+        <td class="ticker">META</td>
+        <td>Meta Platforms</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>hyperscaler ai</td>
+        <td class="num">644.38</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="anchor">
+        <td class="ticker">AVGO</td>
+        <td>Broadcom</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>custom asic networking</td>
+        <td class="num">360.83</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="enabler">
+        <td class="ticker">MU</td>
+        <td>Micron Technology</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>hbm memory</td>
+        <td class="num">977.41</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="enabler">
+        <td class="ticker">QCOM</td>
+        <td>Qualcomm</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>datacenter edge ai</td>
+        <td class="num">176.88</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="enabler">
+        <td class="ticker">ADI</td>
+        <td>Analog Devices</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>edge ai analog</td>
+        <td class="num">361.25</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="enabler">
+        <td class="ticker">MRVL</td>
+        <td>Marvell Technology</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>custom silicon networking</td>
+        <td class="num">226.96</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="enabler">
+        <td class="ticker">ANET</td>
+        <td>Arista Networks</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>datacenter networking</td>
+        <td class="num">188.99</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="enabler">
+        <td class="ticker">VRT</td>
+        <td>Vertiv</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>power cooling</td>
+        <td class="num">248.13</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="enabler">
+        <td class="ticker">COHR</td>
+        <td>Coherent</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>photonics optics</td>
+        <td class="num">293.17</td>
+        <td>2026-09-10</td></tr><tr data-theme="ai_semi" data-role="enabler">
+        <td class="ticker">LITE</td>
+        <td>Lumentum</td>
+        <td>IA / semi-conducteurs</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>photonics optics</td>
+        <td class="num">935.70</td>
+        <td>2026-09-10</td></tr><tr data-theme="robotics" data-role="anchor">
+        <td class="ticker">TSLA</td>
+        <td>Tesla</td>
+        <td>Robotique</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>humanoid autonomy</td>
+        <td class="num">363.56</td>
+        <td>2026-09-10</td></tr><tr data-theme="robotics" data-role="anchor">
+        <td class="ticker">ISRG</td>
+        <td>Intuitive Surgical</td>
+        <td>Robotique</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>surgical robotics</td>
+        <td class="num">360.46</td>
+        <td>2026-09-10</td></tr><tr data-theme="robotics" data-role="enabler">
+        <td class="ticker">TER</td>
+        <td>Teradyne</td>
+        <td>Robotique</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>industrial robotics test</td>
+        <td class="num">370.19</td>
+        <td>2026-09-10</td></tr><tr data-theme="robotics" data-role="enabler">
+        <td class="ticker">ROK</td>
+        <td>Rockwell Automation</td>
+        <td>Robotique</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>industrial automation</td>
+        <td class="num">421.37</td>
+        <td>2026-09-10</td></tr><tr data-theme="robotics" data-role="enabler">
+        <td class="ticker">CGNX</td>
+        <td>Cognex</td>
+        <td>Robotique</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>machine vision</td>
+        <td class="num">61.69</td>
+        <td>2026-09-10</td></tr><tr data-theme="robotics" data-role="emerging">
+        <td class="ticker">SYM</td>
+        <td>Symbotic</td>
+        <td>Robotique</td>
+        <td><span class="pill emerging">emerging</span></td>
+        <td>warehouse robotics</td>
+        <td class="num">41.10</td>
+        <td>2026-09-10</td></tr><tr data-theme="robotics" data-role="enabler">
+        <td class="ticker">MDT</td>
+        <td>Medtronic</td>
+        <td>Robotique</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>surgical robotics</td>
+        <td class="num">91.62</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="anchor">
+        <td class="ticker">LLY</td>
+        <td>Eli Lilly</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>metabolic blockbusters</td>
+        <td class="num">1123.00</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="anchor">
+        <td class="ticker">NVO</td>
+        <td>Novo Nordisk</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>metabolic blockbusters</td>
+        <td class="num">44.01</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="anchor">
+        <td class="ticker">REGN</td>
+        <td>Regeneron</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>biologics</td>
+        <td class="num">793.26</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="anchor">
+        <td class="ticker">VRTX</td>
+        <td>Vertex Pharmaceuticals</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>genetic disease</td>
+        <td class="num">514.56</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="anchor">
+        <td class="ticker">AMGN</td>
+        <td>Amgen</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>biologics</td>
+        <td class="num">382.47</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="anchor">
+        <td class="ticker">AZN</td>
+        <td>AstraZeneca</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill anchor">anchor</span></td>
+        <td>oncology</td>
+        <td class="num">159.64</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="enabler">
+        <td class="ticker">TMO</td>
+        <td>Thermo Fisher Scientific</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>life science tools cdmo</td>
+        <td class="num">603.18</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="enabler">
+        <td class="ticker">DHR</td>
+        <td>Danaher</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>life science tools</td>
+        <td class="num">200.53</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="enabler">
+        <td class="ticker">CRL</td>
+        <td>Charles River Laboratories</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>cro preclinical</td>
+        <td class="num">273.00</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="enabler">
+        <td class="ticker">IQV</td>
+        <td>IQVIA</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>cro data</td>
+        <td class="num">257.30</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="enabler">
+        <td class="ticker">WST</td>
+        <td>West Pharmaceutical Services</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill enabler">enabler</span></td>
+        <td>drug delivery components</td>
+        <td class="num">344.25</td>
+        <td>2026-09-10</td></tr><tr data-theme="biotech_medtech" data-role="emerging">
+        <td class="ticker">GH</td>
+        <td>Guardant Health</td>
+        <td>Biotech / medtech</td>
+        <td><span class="pill emerging">emerging</span></td>
+        <td>liquid biopsy</td>
+        <td class="num">159.03</td>
+        <td>2026-09-10</td></tr></tbody></table></div>
+<p class="note">Cette première vue Vercel est statique et auditable. Les prochains blocs ajouteront preuves primaires, événements, relations industrielles, catalyseurs, falsification et performance prospective.</p>
+<footer>Outil de veille personnelle. Aucune recommandation d'achat ou de vente.</footer>
+</div><script>
+const buttons=[...document.querySelectorAll('button')], rows=[...document.querySelectorAll('tbody tr')];
+buttons.forEach(b=>b.onclick=()=>{buttons.forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter,r=b.dataset.role;rows.forEach(tr=>{tr.style.display=(f==='all'||tr.dataset.theme===f||r&&tr.dataset.role===r)?'':'none'})});
+</script></body></html>
