@@ -1,0 +1,47 @@
+version: 1
+families:
+  emergence:
+    min_score: -10
+    max_score: 10
+  smart_money:
+    min_score: -10
+    max_score: 10
+  momentum:
+    min_score: -10
+    max_score: 10
+  quality:
+    min_score: -10
+    max_score: 10
+  risk:
+    min_score: -10
+    max_score: 10
+signals:
+  E1: {family: emergence, weight: 3, half_life_days: 180, max_age_days: 365}
+  E2: {family: emergence, weight: 3, half_life_days: 180, max_age_days: 365}
+  E3: {family: emergence, weight: 2, half_life_days: 90, max_age_days: 180}
+  E5: {family: emergence, weight: 2, half_life_days: 180, max_age_days: 365}
+  E6: {family: emergence, weight: 2, half_life_days: 180, max_age_days: 365}
+  E9: {family: emergence, weight: 2, half_life_days: 180, max_age_days: 365}
+  M1: {family: smart_money, weight: 3, half_life_days: 60, max_age_days: 180}
+  M2: {family: smart_money, weight: 2, half_life_days: 60, max_age_days: 180}
+  F1: {family: momentum, weight: 1, half_life_days: 120, max_age_days: 150}
+  F2: {family: momentum, weight: 2, half_life_days: 120, max_age_days: 150}
+  F3: {family: momentum, weight: 2, half_life_days: 120, max_age_days: 150}
+  F4: {family: momentum, weight: 1, half_life_days: 120, max_age_days: 150}
+  Q1: {family: quality, weight: 1, half_life_days: 120, max_age_days: 150}
+  Q2: {family: quality, weight: 1, half_life_days: 120, max_age_days: 150}
+  R1: {family: risk, weight: -2, half_life_days: 120, max_age_days: 150}
+  R2: {family: risk, weight: -2, half_life_days: 120, max_age_days: 150}
+  R3: {family: risk, weight: -2, half_life_days: 90, max_age_days: 180}
+  R4: {family: risk, weight: -3, half_life_days: null, max_age_days: null}
+  R5: {family: risk, weight: -2, half_life_days: 180, max_age_days: 365}
+  R6: {family: risk, weight: -1, half_life_days: 365, max_age_days: 400}
+  R7: {family: risk, weight: -2, half_life_days: null, max_age_days: null}
+  R8: {family: risk, weight: -3, half_life_days: 30, max_age_days: 60}
+  R9: {family: risk, weight: -2, half_life_days: 180, max_age_days: 365}
+ranking:
+  primary: [velocity, intensity, recency, market_cap_ascending]
+valuation_temperature:
+  enabled: true
+  score_it: false
+  metrics: [ev_sales, ev_gross_profit, own_history_percentile, peer_percentile]

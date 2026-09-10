@@ -1,0 +1,34 @@
+ticker,company,theme,role,subtheme,priority
+NVDA,Nvidia,ai_semi,anchor,gpu_platform,1
+MSFT,Microsoft,ai_semi,anchor,hyperscaler_ai,1
+GOOGL,Alphabet,ai_semi,anchor,hyperscaler_ai,1
+AMZN,Amazon,ai_semi,anchor,hyperscaler_ai,1
+META,Meta Platforms,ai_semi,anchor,hyperscaler_ai,1
+AVGO,Broadcom,ai_semi,anchor,custom_asic_networking,1
+MU,Micron Technology,ai_semi,enabler,hbm_memory,1
+QCOM,Qualcomm,ai_semi,enabler,datacenter_edge_ai,1
+ADI,Analog Devices,ai_semi,enabler,edge_ai_analog,1
+MRVL,Marvell Technology,ai_semi,enabler,custom_silicon_networking,1
+ANET,Arista Networks,ai_semi,enabler,datacenter_networking,1
+VRT,Vertiv,ai_semi,enabler,power_cooling,1
+COHR,Coherent,ai_semi,enabler,photonics_optics,2
+LITE,Lumentum,ai_semi,enabler,photonics_optics,2
+TSLA,Tesla,robotics,anchor,humanoid_autonomy,1
+ISRG,Intuitive Surgical,robotics,anchor,surgical_robotics,1
+TER,Teradyne,robotics,enabler,industrial_robotics_test,2
+ROK,Rockwell Automation,robotics,enabler,industrial_automation,2
+CGNX,Cognex,robotics,enabler,machine_vision,2
+SYM,Symbotic,robotics,emerging,warehouse_robotics,1
+MDT,Medtronic,robotics,enabler,surgical_robotics,1
+LLY,Eli Lilly,biotech_medtech,anchor,metabolic_blockbusters,1
+NVO,Novo Nordisk,biotech_medtech,anchor,metabolic_blockbusters,1
+REGN,Regeneron,biotech_medtech,anchor,biologics,2
+VRTX,Vertex Pharmaceuticals,biotech_medtech,anchor,genetic_disease,2
+AMGN,Amgen,biotech_medtech,anchor,biologics,2
+AZN,AstraZeneca,biotech_medtech,anchor,oncology,1
+TMO,Thermo Fisher Scientific,biotech_medtech,enabler,life_science_tools_cdmo,1
+DHR,Danaher,biotech_medtech,enabler,life_science_tools,1
+CRL,Charles River Laboratories,biotech_medtech,enabler,cro_preclinical,2
+IQV,IQVIA,biotech_medtech,enabler,cro_data,2
+WST,West Pharmaceutical Services,biotech_medtech,enabler,drug_delivery_components,2
+GH,Guardant Health,biotech_medtech,emerging,liquid_biopsy,1
