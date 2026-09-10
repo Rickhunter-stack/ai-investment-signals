@@ -1,0 +1,108 @@
+version: 1
+updated_at: 2026-09-10
+
+principles:
+  target_roles: [anchor, enabler, emerging]
+  rank_targets_by: [velocity, intensity, origin_diversity, recency]
+  aggregate_score_is_primary: false
+
+themes:
+  ai_semiconductors:
+    label: IA & semi-conducteurs
+    anchors: [NVDA, MSFT, GOOGL, AMZN, META, AVGO]
+    chain:
+      - foundation_models_and_hyperscalers
+      - gpu_asic
+      - hbm_memory
+      - advanced_packaging
+      - networking_photonics
+      - power_management
+      - cooling
+      - datacenter_infrastructure
+      - software_agents
+      - edge_ai
+    critical_enabler_categories:
+      - memory
+      - semiconductor_equipment
+      - packaging
+      - optics
+      - networking
+      - power
+      - cooling
+      - instrumentation
+
+  robotics:
+    label: Robotique & automatisation
+    anchors: [TSLA, ISRG, ABB, TER]
+    chain:
+      - robot_oem
+      - embedded_compute
+      - machine_vision
+      - sensors
+      - motors_servos
+      - reducers_actuators
+      - controllers
+      - batteries_power
+      - safety
+      - integration
+      - perception_navigation_software
+      - maintenance
+    critical_enabler_categories:
+      - motion_control
+      - machine_vision
+      - precision_components
+      - sensors
+      - edge_compute
+      - actuators
+      - safety_systems
+
+  biotech_medtech:
+    label: Biotech, medtech & diagnostics
+    anchors: [LLY, NVO, REGN, VRTX, AMGN, AZN, TMO, DHR]
+    chain:
+      - therapeutic_or_diagnostic_blockbuster
+      - target_modality
+      - biomarker
+      - clinical_trials
+      - cro
+      - cdmo
+      - bioprocessing
+      - single_use_consumables
+      - instrumentation
+      - companion_diagnostics
+      - lab_automation
+      - reimbursement_distribution
+    critical_enabler_categories:
+      - cro
+      - cdmo
+      - bioprocessing
+      - filtration
+      - single_use
+      - sequencing
+      - companion_diagnostics
+      - lab_automation
+      - reagents_consumables
+
+signal_priority:
+  high:
+    - new_anchor_customer
+    - new_critical_supplier
+    - relationship_expanded
+    - revenue_acceleration
+    - rpo_acceleration
+    - backlog_breakout
+    - capacity_constraint
+    - capacity_expansion
+    - margin_inflection
+    - anchor_capex_shift
+    - regulatory_validation
+    - clinical_validation
+    - biomarker_adoption
+    - disproportionate_contract
+  negative:
+    - dilution
+    - customer_concentration
+    - relationship_ended
+    - regulatory_failure
+    - clinical_failure
+    - financing_stress
