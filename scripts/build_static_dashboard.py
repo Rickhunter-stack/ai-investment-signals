@@ -1,12 +1,11 @@
 from pathlib import Path
-import csv, json, sqlite3, html
+import csv, sqlite3, html
 from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / 'data' / 'veille.db'
 UNIVERSE = ROOT / 'data' / 'universe_seed.csv'
-OUT = ROOT / 'public' / 'index.html'
-OUT.parent.mkdir(parents=True, exist_ok=True)
+OUT = ROOT / 'index.html'
 
 
 def load_universe():
@@ -81,7 +80,7 @@ header{{border-bottom:1px solid var(--rule);padding-bottom:24px;margin-bottom:26
 <div class="kpis"><div class="kpi"><b>{counts['all']}</b><span>Sociétés suivies</span></div><div class="kpi"><b>{counts['anchor']}</b><span>Anchors / blockbusters</span></div><div class="kpi"><b>{counts['enabler']}</b><span>Enablers / emerging</span></div><div class="kpi"><b>{now}</b><span>Génération du dashboard</span></div></div>
 <div class="controls" id="filters"><button class="active" data-filter="all">Tout</button><button data-filter="ai_semi">IA / Semi</button><button data-filter="robotics">Robotique</button><button data-filter="biotech_medtech">Biotech / Medtech</button><button data-role="enabler">Critical enablers</button><button data-role="anchor">Anchors</button></div>
 <div class="tablewrap"><table><thead><tr><th>Ticker</th><th>Société</th><th>Thème</th><th>Rôle</th><th>Maillon</th><th class="num">Cours</th><th>Date</th></tr></thead><tbody>{cards}</tbody></table></div>
-<p class="note">Cette première vue Vercel est volontairement statique et auditable. Les prochains blocs ajouteront preuves primaires, événements, relations industrielles, catalyseurs, falsification et performance prospective.</p>
+<p class="note">Cette première vue Vercel est statique et auditable. Les prochains blocs ajouteront preuves primaires, événements, relations industrielles, catalyseurs, falsification et performance prospective.</p>
 <footer>Outil de veille personnelle. Aucune recommandation d'achat ou de vente.</footer>
 </div><script>
 const buttons=[...document.querySelectorAll('button')], rows=[...document.querySelectorAll('tbody tr')];
