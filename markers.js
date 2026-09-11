@@ -1,5 +1,23 @@
 let AIS_MARKERS=[];
-fetch('/data/markers.json').then(r=>r.ok?r.json():[]).then(data=>{AIS_MARKERS=Array.isArray(data)?data:[]; if(window.priceChart) window.priceChart.update();}).catch(()=>{});
+
+Promise.all([
+  fetch('/data/brief_memory.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
+  fetch('/data/events.json').then(r=>r.ok?r.json():[]).catch(()=>[])
+]).then(([briefs,events])=>{
+  const briefMarkers=[];
+  (Array.isArray(briefs)?briefs:[]).forEach(item=>{
+    (item.tickers||[]).forEach(ticker=>briefMarkers.push({
+      ticker,
+      date:item.date,
+      kind:'brief',
+      label:'Brief',
+      text:item.summary||'',
+      stance:item.stance||''
+    }));
+  });
+  AIS_MARKERS=[...briefMarkers,...(Array.isArray(events)?events:[])];
+  if(window.priceChart) window.priceChart.update();
+});
 
 const aisMarkerPlugin={
   id:'aisMarkers',
