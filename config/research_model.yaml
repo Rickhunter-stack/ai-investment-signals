@@ -1,0 +1,56 @@
+version: 2
+principle: "Follow demand to bottlenecks, then test whether economics confirm the industrial signal."
+
+themes:
+  ai_semiconductors:
+    chain: [anchors, compute, hbm, advanced_packaging, networking_photonics, power, cooling, semiconductor_equipment]
+  robotics:
+    chain: [oem, embedded_compute, vision_sensing, force_torque, motors_servos, reducers, roller_screws, power, integration_software]
+  biotech_medtech:
+    chain: [blockbuster_pipeline, target_modality, biomarker, cro, cdmo, bioproduction, consumables, instrumentation, companion_diagnostics, delivery_packaging]
+
+roles: [anchor, critical_enabler, emerging]
+evidence_status: [verified, management, estimate, hypothesis, unverified]
+
+scores:
+  industrial_signal:
+    max: 5
+    inputs: [new_anchor_customer, expanded_relationship, backlog_acceleration, capacity_constraint, pricing_power, capex_pullthrough]
+  financial_confirmation:
+    max: 5
+    inputs: [revenue_acceleration, margin_expansion, rpo_or_orders, free_cash_flow, guidance_revision]
+  criticality:
+    max: 5
+    inputs: [qualification_time, scarce_capacity, switching_cost, technical_uniqueness, multi_anchor_dependency]
+  valuation_temperature:
+    max: 5
+    direction: "5 = expensive / expectations high"
+    inputs: [historical_multiple_percentile, growth_adjusted_multiple, price_momentum]
+  evidence_diversity:
+    max: 5
+    inputs: [primary_filings, customer_confirmation, supplier_confirmation, independent_sources]
+
+promotion_rules:
+  watch_to_candidate:
+    min_industrial_signal: 3
+    min_evidence_diversity: 2
+    requires_primary_source: true
+  candidate_to_high_conviction_research:
+    min_industrial_signal: 4
+    min_financial_confirmation: 3
+    min_criticality: 3
+    requires_falsification: true
+
+red_flags:
+  - customer_concentration
+  - dilution_or_refinancing
+  - substitution_risk
+  - margin_deterioration
+  - capex_without_demand_confirmation
+  - regulatory_or_clinical_failure
+  - valuation_extreme
+
+prospective_horizons: [M1, M3, M6, M12]
+benchmark:
+  default: QQQ
+  biotech_secondary: XBI
