@@ -1,7 +1,7 @@
 """Research-layer schema for the prospective investment radar.
 
-Keeps facts, relationships, theses and market outcomes separate so that
-historical signals are never rewritten after the fact.
+Keeps facts, relationships, theses, narrative brief snapshots and market
+outcomes separate so that historical signals are never rewritten after the fact.
 """
 
 RESEARCH_SCHEMA = r'''
@@ -77,6 +77,21 @@ CREATE TABLE IF NOT EXISTS theses (
     evidence_diversity_score REAL DEFAULT 0,
     status TEXT NOT NULL DEFAULT 'watch',
     frozen INTEGER NOT NULL DEFAULT 1
+);
+
+CREATE TABLE IF NOT EXISTS brief_snapshots (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    brief_date TEXT NOT NULL,
+    captured_at TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    stance TEXT,
+    themes TEXT,
+    tickers TEXT,
+    watch_next TEXT,
+    invalidation TEXT,
+    source_ref TEXT,
+    frozen INTEGER NOT NULL DEFAULT 1,
+    UNIQUE(brief_date, summary)
 );
 
 CREATE TABLE IF NOT EXISTS signal_outcomes (
