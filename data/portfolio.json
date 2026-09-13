@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "name": "AIS Virtual Portfolio",
+  "currency": "USD",
+  "inception_date": "2026-09-13",
+  "initial_capital": 100000,
+  "benchmark": {
+    "ticker": "URTH",
+    "label": "MSCI World (proxy URTH, total-return adjusted)",
+    "method": "Adjusted daily prices from yfinance; URTH tracks MSCI World Index (Net)."
+  },
+  "rules": {
+    "normal_position_pct": 8,
+    "max_position_pct_at_entry": 10,
+    "max_positions": 12,
+    "max_theme_pct_at_entry": 30,
+    "cash_allowed": true,
+    "automatic_stop_loss": false,
+    "sell_reasons": [
+      "thesis_break",
+      "valuation_extreme",
+      "better_opportunity",
+      "risk_limit"
+    ]
+  },
+  "universe_snapshot": [
+    "NVDA", "MSFT", "GOOGL", "AMZN", "META", "AVGO", "MU", "QCOM", "ADI", "MRVL", "ANET", "VRT", "COHR", "LITE",
+    "TSLA", "ISRG", "TER", "ROK", "CGNX", "SYM", "MDT",
+    "LLY", "NVO", "REGN", "VRTX", "AMGN", "AZN", "TMO", "DHR", "CRL", "IQV", "WST", "GH"
+  ],
+  "transactions": [],
+  "notes": [
+    "Le portefeuille démarre sans position afin d'éviter tout biais rétrospectif.",
+    "Chaque transaction future doit figer date, prix, taille, motif et snapshot des indicateurs disponibles au moment de la décision.",
+    "Le benchmark reçoit virtuellement le même capital initial; le cash AIS reste autorisé et fait partie de la stratégie testée."
+  ]
+}

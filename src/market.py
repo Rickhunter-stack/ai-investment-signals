@@ -5,6 +5,8 @@ import yfinance as yf
 from .db import connect
 
 UNIVERSE = Path('data/universe_seed.csv')
+BENCHMARK_TICKER = 'URTH'
+
 
 def seed_companies(conn):
     df = pd.read_csv(UNIVERSE)
@@ -21,6 +23,7 @@ def seed_companies(conn):
     )
     conn.commit()
     return df
+
 
 def update_market(period='5d'):
     conn = connect()
@@ -41,6 +44,21 @@ def update_market(period='5d'):
                 close = r.get('Close')
                 volume = r.get('Volume')
                 rows.append((ticker, idx.date().isoformat(), float(close) if pd.notna(close) else None, float(volume) if pd.notna(volume) else None, None))
+
+    # Benchmark kept outside the investable universe. auto_adjust=True makes the
+    # series suitable as a total-return proxy by incorporating distributions.
+    bench = yf.download(BENCHMARK_TICKER, period=period, interval='1d', auto_adjust=True, repair=True, progress=False)
+    if not bench.empty:
+        close = bench['Close']
+        volume = bench['Volume'] if 'Volume' in bench else None
+        if isinstance(close, pd.DataFrame):
+            close = close.iloc[:, 0]
+        if isinstance(volume, pd.DataFrame):
+            volume = volume.iloc[:, 0]
+        for idx, value in close.dropna().items():
+            vol = None if volume is None else volume.get(idx)
+            rows.append((BENCHMARK_TICKER, idx.date().isoformat(), float(value), float(vol) if vol is not None and pd.notna(vol) else None, None))
+
     conn.executemany(
         '''INSERT INTO market(ticker,date,close,volume,market_cap)
            VALUES(?,?,?,?,?)
