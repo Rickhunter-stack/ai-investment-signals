@@ -6,12 +6,19 @@ function addFundUI(){
  const sc=document.querySelector('.scorecard');
  if(sc&&!document.getElementById('fundCards')){
    sc.classList.add('with-fundamentals');
+   const h=sc.querySelector('h3');
+   if(h) h.innerHTML='Indicateurs de thèse <span class="ratio-help"><button class="ratio-help-btn" type="button" aria-label="Comment lire les indicateurs" aria-expanded="false">?</button><span class="ratio-tooltip" role="tooltip"><strong>Comment lire cette card</strong><span class="ratio-tip-section">THÈSE</span><b>Signal industriel</b> - traction réelle : demande, backlog, capacité, commandes.<b>Confirmation financière</b> - la traction se retrouve dans les revenus, marges et cash-flows.<b>Criticité</b> - importance du maillon dans la chaîne de valeur et difficulté à le remplacer.<b>Valorisation</b> - remet le potentiel en regard du prix payé. À lire avec la croissance et la qualité.<b>Diversité des preuves</b> - plus les sources indépendantes convergent, plus le signal est robuste.<span class="ratio-tip-section">FONDAMENTAUX</span><b>FCF yield</b> - FCF / capitalisation. Plus élevé = davantage de cash généré pour le prix payé. Très faible = valorisation exigeante.<b>Marge FCF</b> - FCF / chiffre d’affaires. Plus elle est élevée et stable, meilleure est la conversion des ventes en cash.<b>ROIC</b> - rendement du capital investi. À comparer au coût du capital : durablement supérieur = forte création de valeur.<b>CAPEX / OCF</b> - part du cash opérationnel réinvestie. Faible = modèle peu capitalistique ; élevée peut être positive si elle finance une croissance rentable.<b>FCF / action</b> - cash libre ramené à une action. Une progression durable est préférable à la seule hausse du FCF total.<b>Croissance FCF</b> - tendance pluriannuelle du cash libre. À confronter à la valorisation : croissance forte + FCF yield raisonnable = combinaison intéressante.<em>Lecture d’ensemble : qualité + croissance + valorisation. Aucun ratio ne doit être interprété isolément.</em></span></span>';
    sc.insertAdjacentHTML('beforeend','<div class="fund-section-title">Fondamentaux</div><div id="fundCards" class="scoregrid fund-grid"></div>');
+   const helpBtn=sc.querySelector('.ratio-help-btn');
+   if(helpBtn){
+     helpBtn.addEventListener('click',e=>{e.stopPropagation();const wrap=helpBtn.closest('.ratio-help');const open=wrap.classList.toggle('open');helpBtn.setAttribute('aria-expanded',String(open));});
+     document.addEventListener('click',()=>{const wrap=helpBtn.closest('.ratio-help');wrap.classList.remove('open');helpBtn.setAttribute('aria-expanded','false');});
+   }
  }
  if(!document.getElementById('fundCompactStyle')){
    const style=document.createElement('style'); style.id='fundCompactStyle'; style.textContent=`
-   .scorecard.with-fundamentals{display:flex;flex-direction:column;gap:5px;overflow:hidden}
-   .scorecard.with-fundamentals>h3{margin-bottom:2px}
+   .scorecard.with-fundamentals{display:flex;flex-direction:column;gap:5px;overflow:visible;position:relative}
+   .scorecard.with-fundamentals>h3{margin-bottom:2px;display:flex;align-items:center;justify-content:space-between;gap:8px}
    .scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
    .scorecard.with-fundamentals .score{padding:6px 7px;min-height:47px;display:flex;flex-direction:column;justify-content:center;min-width:0}
    .scorecard.with-fundamentals .score b{font-size:.98rem;line-height:1.08;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -19,8 +26,17 @@ function addFundUI(){
    .scorecard.with-fundamentals .thesis{margin-top:1px;padding-top:5px;flex:0 0 auto}
    .fund-section-title{margin-top:1px;padding-top:5px;border-top:1px solid var(--rule);font-size:.63rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}
    .scorecard.with-fundamentals .fund-grid{margin-top:0!important}
-   @media(max-width:1100px){.scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(2,minmax(0,1fr))}.scorecard.with-fundamentals .score{min-height:43px;padding:5px 6px}.scorecard.with-fundamentals .score b{font-size:.9rem}}
-   @media(max-width:850px){.scorecard.with-fundamentals{overflow:visible}.scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+   .ratio-help{position:relative;display:inline-flex;flex:0 0 auto}
+   .ratio-help-btn{width:20px;height:20px;padding:0;border-radius:50%;display:grid;place-items:center;background:var(--panel2);border:1px solid var(--accent);color:var(--accent);font-size:.72rem;font-weight:900;line-height:1}
+   .ratio-help-btn:hover,.ratio-help.open .ratio-help-btn{background:var(--accent);color:var(--bg)}
+   .ratio-tooltip{display:none;position:absolute;z-index:80;right:0;top:27px;width:min(430px,calc(100vw - 300px));max-height:min(560px,72vh);overflow:auto;padding:12px 13px;background:#101719;border:1px solid var(--accent);border-radius:9px;box-shadow:0 12px 32px rgba(0,0,0,.45);color:#d4dddc;font-size:.69rem;line-height:1.35;font-weight:400;text-align:left}
+   .ratio-help:hover .ratio-tooltip,.ratio-help:focus-within .ratio-tooltip,.ratio-help.open .ratio-tooltip{display:grid;grid-template-columns:1fr;gap:2px}
+   .ratio-tooltip strong{font-size:.82rem;color:var(--ink);margin-bottom:3px}
+   .ratio-tooltip b{color:var(--accent);font-size:.68rem;margin-top:4px}
+   .ratio-tooltip .ratio-tip-section{margin-top:7px;padding-top:6px;border-top:1px solid var(--rule);color:var(--amber);font-size:.6rem;letter-spacing:.1em;font-weight:900}
+   .ratio-tooltip em{margin-top:8px;padding:7px 8px;border-radius:6px;background:var(--panel2);color:var(--ink);font-style:normal;font-weight:700}
+   @media(max-width:1100px){.scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(2,minmax(0,1fr))}.scorecard.with-fundamentals .score{min-height:43px;padding:5px 6px}.scorecard.with-fundamentals .score b{font-size:.9rem}.ratio-tooltip{width:min(390px,70vw)}}
+   @media(max-width:850px){.scorecard.with-fundamentals{overflow:visible}.scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(2,minmax(0,1fr))}.ratio-tooltip{position:fixed;left:16px;right:16px;top:16px;width:auto;max-height:80vh}}
    `; document.head.appendChild(style);
  }
  document.getElementById('fundMetric')?.addEventListener('change',renderFundamentals);
