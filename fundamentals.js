@@ -74,4 +74,4 @@ function renderFundamentals(){
  priceChart.update();
 }
 fetch('/data/fundamentals.json').then(r=>r.ok?r.json():{companies:{}}).then(d=>{AIS_FUND=d;addFundUI();renderFundamentals()}).catch(()=>{});
-const _aisRender=render; render=function(){_aisRender();setTimeout(renderFundamentals,0)};
+document.addEventListener('ais:tickerchange',renderFundamentals);
