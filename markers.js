@@ -25,7 +25,8 @@ const aisMarkerPlugin={
     if(chart.canvas.id!=='priceChart' || typeof selected==='undefined') return;
     const labels=(chart.data.labels||[]).map(String);
     if(!labels.length) return;
-    const x=chart.scales.x, y=chart.scales.y, ctx=chart.ctx;
+    const x=chart.scales.x, y=chart.scales.yPrice||chart.scales.y, ctx=chart.ctx;
+    if(!x||!y) return;
     const marks=AIS_MARKERS.filter(m=>m.ticker===selected && m.date);
     marks.forEach((m,j)=>{
       let best=-1,dist=Infinity;

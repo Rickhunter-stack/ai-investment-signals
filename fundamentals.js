@@ -33,7 +33,7 @@ function addFundUI(){
  }
  if(!document.getElementById('fundCompactStyle')){
    const style=document.createElement('style'); style.id='fundCompactStyle'; style.textContent=`
-   .scorecard.with-fundamentals{display:flex;flex-direction:column;gap:5px;overflow:visible;position:relative}
+   .scorecard.with-fundamentals{display:flex;flex-direction:column;gap:5px;overflow:auto;position:relative}
    .scorecard.with-fundamentals>h3{margin-bottom:2px;display:flex;align-items:center;justify-content:space-between;gap:8px}
    .scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
    .scorecard.with-fundamentals .score{padding:6px 7px;min-height:47px;display:flex;flex-direction:column;justify-content:center;min-width:0}
@@ -59,9 +59,11 @@ function addFundUI(){
  document.getElementById('fundMetric')?.addEventListener('change',renderFundamentals);
 }
 function renderFundamentals(){
- const c=AIS_FUND.companies?.[selected]; if(!c)return;
+ const c=AIS_FUND.companies?.[selected];
+ const box=document.getElementById('fundCards');
+ if(!c){if(box)box.innerHTML='<div class="muted">Fondamentaux indisponibles pour cette valeur.</div>';return;}
  const l=c.latest||{}, cards=[['FCF yield',l.fcf_yield_pct,'%'],['Marge FCF',l.fcf_margin_pct,'%'],['ROIC',l.roic_pct,'%'],['CAPEX / OCF',l.capex_ocf_pct,'%'],['FCF/action',l.fcf_per_share,''],['Croissance FCF',l.fcf_cagr_available_pct,'%']];
- const box=document.getElementById('fundCards'); if(box) box.innerHTML=cards.map(x=>`<div class="score"><b title="${ffmt(x[1],x[2])}">${ffmt(x[1],x[2])}</b><span>${x[0]}</span></div>`).join('');
+ if(box) box.innerHTML=cards.map(x=>`<div class="score"><b title="${ffmt(x[1],x[2])}">${ffmt(x[1],x[2])}</b><span>${x[0]}</span></div>`).join('');
  if(!priceChart)return; priceChart.data.datasets=priceChart.data.datasets.filter(d=>d.aisFund!==true); delete priceChart.options.scales.y1;
  const key=document.getElementById('fundMetric')?.value; if(key&&c.annual?.length){
    const map=new Map(c.annual.filter(x=>x[key]!=null).map(x=>[String(x.year),x[key]]));
