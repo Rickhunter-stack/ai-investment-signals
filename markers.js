@@ -46,3 +46,13 @@ const aisMarkerPlugin={
   }
 };
 Chart.register(aisMarkerPlugin);
+
+// Keep the portfolio UI independent from the generated index.html. The radar
+// workflow already injects markers.js on every rebuild, so this loader makes
+// the portfolio tab survive future autonomous refreshes without extra markup.
+if(!document.querySelector('script[data-ais-portfolio]')){
+  const s=document.createElement('script');
+  s.src='/portfolio.js';
+  s.dataset.aisPortfolio='1';
+  document.body.appendChild(s);
+}
