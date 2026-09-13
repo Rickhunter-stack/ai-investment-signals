@@ -47,6 +47,15 @@ const aisMarkerPlugin={
 };
 Chart.register(aisMarkerPlugin);
 
+// The portfolio node stays mounted after its first opening. Hide it explicitly
+// outside portfolio mode so returning to the radar cannot overlay both views.
+if(!document.getElementById('aisPortfolioIsolationStyle')){
+  const style=document.createElement('style');
+  style.id='aisPortfolioIsolationStyle';
+  style.textContent='.portfolio-view{display:none!important}.main.portfolio-active>.portfolio-view{display:block!important}';
+  document.head.appendChild(style);
+}
+
 // Keep the portfolio UI independent from the generated index.html. The radar
 // workflow already injects markers.js on every rebuild, so this loader makes
 // the portfolio tab survive future autonomous refreshes without extra markup.
