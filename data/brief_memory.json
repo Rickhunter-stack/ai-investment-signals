@@ -1,0 +1,12 @@
+[
+  {
+    "date": "2026-09-11",
+    "summary": "Le signal fondamental IA reste fort, mais le marché devient plus exigeant sur la valorisation. La priorité est de rechercher les fournisseurs critiques dont la croissance, le backlog ou les marges accélèrent encore sans que le cours n'intègre déjà plusieurs années de perfection.",
+    "stance": "constructif mais sélectif",
+    "themes": ["ai_semi", "robotics"],
+    "tickers": ["NVDA", "AVGO", "MU", "GOOGL", "VRT", "COHR", "LITE"],
+    "watch_next": "Capex hyperscalers, HBM, power/cooling, photonique, nouveaux clients anchors et évolution des multiples de valorisation.",
+    "invalidation": "Décélération durable des commandes/capex IA, contraction des marges chez les enablers ou valorisations devenant incompatibles avec la croissance réalisée.",
+    "frozen": true
+  }
+]

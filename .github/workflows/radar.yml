@@ -12,6 +12,9 @@ on:
       - 'src/**'
       - 'config/**'
       - 'data/universe_seed.csv'
+      - 'data/brief_memory.json'
+      - 'markers.js'
+      - 'fundamentals.js'
       - 'requirements.txt'
       - 'run.py'
       - 'favicon.svg'
@@ -31,11 +34,16 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
       - run: python run.py --step all
+      - name: Refresh cash-flow and ROIC fundamentals
+        run: python scripts/collect_fundamentals.py
       - run: python scripts/build_static_dashboard.py
+      - run: python scripts/inject_brief_memory.py
+      - name: Enable chart markers and fundamentals
+        run: sed -i 's#</body>#<script src="/markers.js"></script><script src="/fundamentals.js"></script></body>#' index.html
       - name: Commit refreshed data and dashboard
         run: |
           git config user.name "ai-investment-signals-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/veille.db index.html favicon.svg
-          git diff --cached --quiet || git commit -m "chore: refresh market snapshot and dashboard"
+          git add data/veille.db data/brief_memory.json data/fundamentals.json index.html favicon.svg markers.js fundamentals.js
+          git diff --cached --quiet || git commit -m "chore: refresh market, fundamentals and dashboard"
           git push
