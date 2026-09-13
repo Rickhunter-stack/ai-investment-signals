@@ -40,7 +40,7 @@ jobs:
       - run: python scripts/build_static_dashboard.py
       - run: python scripts/inject_brief_memory.py
       - name: Enable chart markers and fundamentals
-        run: sed -i 's#</body>#<script src="/markers.js"></script><script src="/fundamentals.js"></script></body>#' index.html
+        run: sed -i "s#</body>#<script src=\"/markers.js?v=${GITHUB_SHA}\"></script><script src=\"/fundamentals.js?v=${GITHUB_SHA}\"></script></body>#" index.html
       - name: Commit refreshed data and dashboard
         run: |
           git config user.name "ai-investment-signals-bot"
