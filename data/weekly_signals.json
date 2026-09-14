@@ -1,1 +1,1007 @@
-[]
+[
+{
+  "date": "2026-09-14",
+  "frozen": true,
+  "method_version": "weekly-v1.0",
+  "captured_at": "2026-09-14T06:48:53.537351+00:00",
+  "scores": {
+    "NVDA": {
+      "fundamental_strength": 100.0,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 36.6,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 215938000000.0,
+          "ocf": 102718000000.0,
+          "capex": 6042000000.0,
+          "fcf": 96676000000.0,
+          "capex_ocf_pct": 5.88,
+          "fcf_margin_pct": 44.77,
+          "fcf_per_share": 3.9437,
+          "roic_pct": 104.63,
+          "fcf_yield_pct": 1.83,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "MSFT": {
+      "fundamental_strength": 83.65,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 36.4,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 331839000000.0,
+          "ocf": 182935000000.0,
+          "capex": 115948000000.0,
+          "fcf": 66987000000.0,
+          "capex_ocf_pct": 63.38,
+          "fcf_margin_pct": 20.19,
+          "fcf_per_share": 8.9879,
+          "roic_pct": 29.61,
+          "fcf_yield_pct": 1.82,
+          "fcf_cagr_available_pct": 4.04,
+          "fcf_per_share_cagr_available_pct": 4.13
+        },
+        "research": {}
+      }
+    },
+    "GOOGL": {
+      "fundamental_strength": 80.31,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 35.4,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 402836000000.0,
+          "ocf": 164713000000.0,
+          "capex": 91447000000.0,
+          "fcf": 73266000000.0,
+          "capex_ocf_pct": 55.52,
+          "fcf_margin_pct": 18.19,
+          "fcf_per_share": 5.9907,
+          "roic_pct": 30.88,
+          "fcf_yield_pct": 1.77,
+          "fcf_cagr_available_pct": 6.88,
+          "fcf_per_share_cagr_available_pct": 9.52
+        },
+        "research": {}
+      }
+    },
+    "AMZN": {
+      "fundamental_strength": 37.61,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 5.6,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 716924000000.0,
+          "ocf": 139514000000.0,
+          "capex": 131819000000.0,
+          "fcf": 7695000000.0,
+          "capex_ocf_pct": 94.48,
+          "fcf_margin_pct": 1.07,
+          "fcf_per_share": 0.7107,
+          "roic_pct": 14.33,
+          "fcf_yield_pct": 0.28,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "META": {
+      "fundamental_strength": 88.23,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 55.8,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 200966000000.0,
+          "ocf": 115800000000.0,
+          "capex": 69691000000.0,
+          "fcf": 46109000000.0,
+          "capex_ocf_pct": 60.18,
+          "fcf_margin_pct": 22.94,
+          "fcf_per_share": 17.9134,
+          "roic_pct": 26.69,
+          "fcf_yield_pct": 2.79,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "AVGO": {
+      "fundamental_strength": 100.0,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 31.2,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 63887000000.0,
+          "ocf": 27537000000.0,
+          "capex": 623000000.0,
+          "fcf": 26914000000.0,
+          "capex_ocf_pct": 2.26,
+          "fcf_margin_pct": 42.13,
+          "fcf_per_share": 5.5458,
+          "roic_pct": 20.02,
+          "fcf_yield_pct": 1.56,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "MU": {
+      "fundamental_strength": 44.09,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 3.0,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 37378000000.0,
+          "ocf": 17525000000.0,
+          "capex": 15857000000.0,
+          "fcf": 1668000000.0,
+          "capex_ocf_pct": 90.48,
+          "fcf_margin_pct": 4.46,
+          "fcf_per_share": 1.4827,
+          "roic_pct": 14.66,
+          "fcf_yield_pct": 0.15,
+          "fcf_cagr_available_pct": -18.79,
+          "fcf_per_share_cagr_available_pct": -18.86
+        },
+        "research": {}
+      }
+    },
+    "QCOM": {
+      "fundamental_strength": 98.25,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 100,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 44284000000.0,
+          "ocf": 14012000000.0,
+          "capex": 1192000000.0,
+          "fcf": 12820000000.0,
+          "capex_ocf_pct": 8.51,
+          "fcf_margin_pct": 28.95,
+          "fcf_per_share": 11.6018,
+          "roic_pct": 31.15,
+          "fcf_yield_pct": 6.6,
+          "fcf_cagr_available_pct": 23.33,
+          "fcf_per_share_cagr_available_pct": 24.51
+        },
+        "research": {}
+      }
+    },
+    "ADI": {
+      "fundamental_strength": 66.15,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 46.6,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 11019707000.0,
+          "ocf": 4812202000.0,
+          "capex": 533552000.0,
+          "fcf": 4278650000.0,
+          "capex_ocf_pct": 11.09,
+          "fcf_margin_pct": 38.83,
+          "fcf_per_share": 8.614,
+          "roic_pct": 6.46,
+          "fcf_yield_pct": 2.33,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "MRVL": {
+      "fundamental_strength": 46.14,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 13.2,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 8194600000.0,
+          "ocf": 1750500000.0,
+          "capex": 358600000.0,
+          "fcf": 1391900000.0,
+          "capex_ocf_pct": 20.49,
+          "fcf_margin_pct": 16.99,
+          "fcf_per_share": 1.6004,
+          "roic_pct": 7.13,
+          "fcf_yield_pct": 0.66,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "ANET": {
+      "fundamental_strength": 100.0,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 33.8,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 9005700000.0,
+          "ocf": 4371900000.0,
+          "capex": 119500000.0,
+          "fcf": 4252400000.0,
+          "capex_ocf_pct": 2.73,
+          "fcf_margin_pct": 47.22,
+          "fcf_per_share": 3.3334,
+          "roic_pct": 195.77,
+          "fcf_yield_pct": 1.69,
+          "fcf_cagr_available_pct": 111.7,
+          "fcf_per_share_cagr_available_pct": 111.17
+        },
+        "research": {}
+      }
+    },
+    "VRT": {
+      "fundamental_strength": 80.75,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 38.2,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 10229900000.0,
+          "ocf": 2113800000.0,
+          "capex": 226400000.0,
+          "fcf": 1887400000.0,
+          "capex_ocf_pct": 10.71,
+          "fcf_margin_pct": 18.45,
+          "fcf_per_share": 4.8314,
+          "roic_pct": 27.16,
+          "fcf_yield_pct": 1.91,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "COHR": {
+      "fundamental_strength": 16.8,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 0,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 7118181000.0,
+          "ocf": 79514000.0,
+          "capex": 1110083000.0,
+          "fcf": -1030569000.0,
+          "capex_ocf_pct": 1396.08,
+          "fcf_margin_pct": -14.48,
+          "fcf_per_share": -5.2745,
+          "roic_pct": 6.72,
+          "fcf_yield_pct": -1.72,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "LITE": {
+      "fundamental_strength": 46.2,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 7.2,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 3014000000.0,
+          "ocf": 751400000.0,
+          "capex": 451300000.0,
+          "fcf": 300100000.0,
+          "capex_ocf_pct": 60.06,
+          "fcf_margin_pct": 9.96,
+          "fcf_per_share": 4.0228,
+          "roic_pct": 11.84,
+          "fcf_yield_pct": 0.36,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "TSLA": {
+      "fundamental_strength": 27.71,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 8.6,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 94827000000.0,
+          "ocf": 14747000000.0,
+          "capex": 8527000000.0,
+          "fcf": 6220000000.0,
+          "capex_ocf_pct": 57.82,
+          "fcf_margin_pct": 6.56,
+          "fcf_per_share": 1.7639,
+          "roic_pct": 6.71,
+          "fcf_yield_pct": 0.43,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "ISRG": {
+      "fundamental_strength": 91.25,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 37.6,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 10064700000.0,
+          "ocf": 3030500000.0,
+          "capex": 539800000.0,
+          "fcf": 2490700000.0,
+          "capex_ocf_pct": 17.81,
+          "fcf_margin_pct": 24.75,
+          "fcf_per_share": 6.8671,
+          "roic_pct": 21.52,
+          "fcf_yield_pct": 1.88,
+          "fcf_cagr_available_pct": 37.49,
+          "fcf_per_share_cagr_available_pct": 37.4
+        },
+        "research": {}
+      }
+    },
+    "TER": {
+      "fundamental_strength": 73.53,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 15.2,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 3190024000.0,
+          "ocf": 674415000.0,
+          "capex": 224009000.0,
+          "fcf": 450406000.0,
+          "capex_ocf_pct": 33.22,
+          "fcf_margin_pct": 14.12,
+          "fcf_per_share": 2.82,
+          "roic_pct": 21.94,
+          "fcf_yield_pct": 0.76,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "ROK": {
+      "fundamental_strength": 69.66,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 57.0,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 8342000000.0,
+          "ocf": 1544000000.0,
+          "capex": 186000000.0,
+          "fcf": 1358000000.0,
+          "capex_ocf_pct": 12.05,
+          "fcf_margin_pct": 16.28,
+          "fcf_per_share": 12.0071,
+          "roic_pct": 17.01,
+          "fcf_yield_pct": 2.85,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "CGNX": {
+      "fundamental_strength": 61.14,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 43.8,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 994359000.0,
+          "ocf": 245514000.0,
+          "capex": 8743000.0,
+          "fcf": 236771000.0,
+          "capex_ocf_pct": 3.56,
+          "fcf_margin_pct": 23.81,
+          "fcf_per_share": 1.398,
+          "roic_pct": 8.58,
+          "fcf_yield_pct": 2.19,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "SYM": {
+      "fundamental_strength": null,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 61.8,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "fundamental_strength",
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 2246922000.0,
+          "ocf": 866939000.0,
+          "capex": 79030000.0,
+          "fcf": 787909000.0,
+          "capex_ocf_pct": 9.12,
+          "fcf_margin_pct": 35.07,
+          "fcf_per_share": 7.2505,
+          "roic_pct": null,
+          "fcf_yield_pct": 3.09,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "MDT": {
+      "fundamental_strength": 44.59,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 93.2,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 36364000000.0,
+          "ocf": 7330000000.0,
+          "capex": 1904000000.0,
+          "fcf": 5426000000.0,
+          "capex_ocf_pct": 25.98,
+          "fcf_margin_pct": 14.92,
+          "fcf_per_share": 4.2124,
+          "roic_pct": 7.89,
+          "fcf_yield_pct": 4.66,
+          "fcf_cagr_available_pct": 5.81,
+          "fcf_per_share_cagr_available_pct": 7.02
+        },
+        "research": {}
+      }
+    },
+    "LLY": {
+      "fundamental_strength": 65.25,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 12.0,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 65179000000.0,
+          "ocf": 16813000000.0,
+          "capex": 10849000000.0,
+          "fcf": 5964000000.0,
+          "capex_ocf_pct": 64.53,
+          "fcf_margin_pct": 9.15,
+          "fcf_per_share": 6.6318,
+          "roic_pct": 38.56,
+          "fcf_yield_pct": 0.6,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "NVO": {
+      "fundamental_strength": 65.64,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 100,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 309064000000.0,
+          "ocf": 119102000000.0,
+          "capex": 90113000000.0,
+          "fcf": 28989000000.0,
+          "capex_ocf_pct": 75.66,
+          "fcf_margin_pct": 9.38,
+          "fcf_per_share": 6.5175,
+          "roic_pct": 33.61,
+          "fcf_yield_pct": 15.23,
+          "fcf_cagr_available_pct": -23.26,
+          "fcf_per_share_cagr_available_pct": -22.7
+        },
+        "research": {}
+      }
+    },
+    "REGN": {
+      "fundamental_strength": 75.17,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 93.6,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 14342900000.0,
+          "ocf": 4978900000.0,
+          "capex": 1213700000.0,
+          "fcf": 3765200000.0,
+          "capex_ocf_pct": 24.38,
+          "fcf_margin_pct": 26.25,
+          "fcf_per_share": 34.6703,
+          "roic_pct": 12.57,
+          "fcf_yield_pct": 4.68,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "VRTX": {
+      "fundamental_strength": 94.35,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 48.8,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 12001300000.0,
+          "ocf": 3631400000.0,
+          "capex": 437600000.0,
+          "fcf": 3193800000.0,
+          "capex_ocf_pct": 12.05,
+          "fcf_margin_pct": 26.61,
+          "fcf_per_share": 12.3791,
+          "roic_pct": 27.52,
+          "fcf_yield_pct": 2.44,
+          "fcf_cagr_available_pct": -6.64,
+          "fcf_per_share_cagr_available_pct": -6.51
+        },
+        "research": {}
+      }
+    },
+    "AMGN": {
+      "fundamental_strength": 72.76,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 79.4,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 36751000000.0,
+          "ocf": 9958000000.0,
+          "capex": 1858000000.0,
+          "fcf": 8100000000.0,
+          "capex_ocf_pct": 18.66,
+          "fcf_margin_pct": 22.04,
+          "fcf_per_share": 14.9446,
+          "roic_pct": 14.41,
+          "fcf_yield_pct": 3.97,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "AZN": {
+      "fundamental_strength": 62.73,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 69.8,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 58739000000.0,
+          "ocf": 14575000000.0,
+          "capex": 5905000000.0,
+          "fcf": 8670000000.0,
+          "capex_ocf_pct": 40.51,
+          "fcf_margin_pct": 14.76,
+          "fcf_per_share": 5.5506,
+          "roic_pct": 15.25,
+          "fcf_yield_pct": 3.49,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "TMO": {
+      "fundamental_strength": 46.21,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 55.8,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 44557000000.0,
+          "ocf": 7818000000.0,
+          "capex": 1525000000.0,
+          "fcf": 6293000000.0,
+          "capex_ocf_pct": 19.51,
+          "fcf_margin_pct": 14.12,
+          "fcf_per_share": 16.6481,
+          "roic_pct": 9.07,
+          "fcf_yield_pct": 2.79,
+          "fcf_cagr_available_pct": -3.07,
+          "fcf_per_share_cagr_available_pct": -1.73
+        },
+        "research": {}
+      }
+    },
+    "DHR": {
+      "fundamental_strength": 50.44,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 74.8,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 24568000000.0,
+          "ocf": 6416000000.0,
+          "capex": 1156000000.0,
+          "fcf": 5260000000.0,
+          "capex_ocf_pct": 18.02,
+          "fcf_margin_pct": 21.41,
+          "fcf_per_share": 7.3453,
+          "roic_pct": 5.9,
+          "fcf_yield_pct": 3.74,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "CRL": {
+      "fundamental_strength": 35.87,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 77.4,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 4015382000.0,
+          "ocf": 737646000.0,
+          "capex": 219152000.0,
+          "fcf": 518494000.0,
+          "capex_ocf_pct": 29.71,
+          "fcf_margin_pct": 12.91,
+          "fcf_per_share": 10.4611,
+          "roic_pct": 5.74,
+          "fcf_yield_pct": 3.87,
+          "fcf_cagr_available_pct": 20.69,
+          "fcf_per_share_cagr_available_pct": 22.09
+        },
+        "research": {}
+      }
+    },
+    "IQV": {
+      "fundamental_strength": 44.66,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 95.2,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 16310000000.0,
+          "ocf": 2654000000.0,
+          "capex": 603000000.0,
+          "fcf": 2051000000.0,
+          "capex_ocf_pct": 22.72,
+          "fcf_margin_pct": 12.58,
+          "fcf_per_share": 11.8213,
+          "roic_pct": 9.48,
+          "fcf_yield_pct": 4.76,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "WST": {
+      "fundamental_strength": 72.29,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 38.4,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 3074100000.0,
+          "ocf": 754800000.0,
+          "capex": 285900000.0,
+          "fcf": 468900000.0,
+          "capex_ocf_pct": 37.88,
+          "fcf_margin_pct": 15.25,
+          "fcf_per_share": 6.4498,
+          "roic_pct": 18.75,
+          "fcf_yield_pct": 1.92,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "GH": {
+      "fundamental_strength": 0.0,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 0,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 982021000.0,
+          "ocf": -184760000.0,
+          "capex": 48306000.0,
+          "fcf": -233066000.0,
+          "capex_ocf_pct": null,
+          "fcf_margin_pct": -23.73,
+          "fcf_per_share": -1.859,
+          "roic_pct": -84.41,
+          "fcf_yield_pct": -1.1,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    }
+  },
+  "top3": [],
+  "fundamentals_generated_at": "2026-09-14T06:48:27Z",
+  "input_sha256": {
+    "fundamentals": "fe0b6d2d66776111ba675ab18c8a288c72f28a1c6dfb6f5e7b616e42139fcb3d",
+    "research": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+  }
+}
+]
