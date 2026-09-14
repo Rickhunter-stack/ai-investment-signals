@@ -14,6 +14,7 @@ on:
       - 'data/universe_seed.csv'
       - 'data/brief_memory.json'
       - 'data/weekly_signals.json'
+      - 'data/signal_research.json'
       - 'markers.js'
       - 'fundamentals.js'
       - 'requirements.txt'
@@ -23,6 +24,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: radar-refresh
+  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -37,6 +42,10 @@ jobs:
       - run: python run.py --step all
       - name: Refresh cash-flow and ROIC fundamentals
         run: python scripts/collect_fundamentals.py
+      - name: Test weekly snapshot integrity
+        run: python -m unittest discover -s scripts -p 'test_weekly_signals.py'
+      - name: Freeze this week's Signal Scores
+        run: python scripts/generate_weekly_signals.py
       - run: python scripts/build_static_dashboard.py
       - run: python scripts/inject_brief_memory.py
       - name: Enable chart markers and fundamentals
