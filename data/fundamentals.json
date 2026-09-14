@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T06:48:27Z",
+  "generated_at": "2026-09-14T23:51:28Z",
   "methodology": {
     "fcf": "OCF - capex",
     "fcf_yield": "latest annual FCF / current market cap",
@@ -20,7 +20,7 @@
         "fcf_margin_pct": 44.77,
         "fcf_per_share": 3.9437,
         "roic_pct": 104.63,
-        "fcf_yield_pct": 1.83,
+        "fcf_yield_pct": 1.9,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -95,7 +95,7 @@
         "fcf_margin_pct": 20.19,
         "fcf_per_share": 8.9879,
         "roic_pct": 29.61,
-        "fcf_yield_pct": 1.82,
+        "fcf_yield_pct": 1.78,
         "fcf_cagr_available_pct": 4.04,
         "fcf_per_share_cagr_available_pct": 4.13
       },
@@ -159,7 +159,7 @@
         "fcf_margin_pct": 18.19,
         "fcf_per_share": 5.9907,
         "roic_pct": 30.88,
-        "fcf_yield_pct": 1.77,
+        "fcf_yield_pct": 1.71,
         "fcf_cagr_available_pct": 6.88,
         "fcf_per_share_cagr_available_pct": 9.52
       },
@@ -287,7 +287,7 @@
         "fcf_margin_pct": 22.94,
         "fcf_per_share": 17.9134,
         "roic_pct": 26.69,
-        "fcf_yield_pct": 2.79,
+        "fcf_yield_pct": 2.72,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -362,7 +362,7 @@
         "fcf_margin_pct": 42.13,
         "fcf_per_share": 5.5458,
         "roic_pct": 20.02,
-        "fcf_yield_pct": 1.56,
+        "fcf_yield_pct": 1.64,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -437,7 +437,7 @@
         "fcf_margin_pct": 4.46,
         "fcf_per_share": 1.4827,
         "roic_pct": 14.66,
-        "fcf_yield_pct": 0.15,
+        "fcf_yield_pct": 0.16,
         "fcf_cagr_available_pct": -18.79,
         "fcf_per_share_cagr_available_pct": -18.86
       },
@@ -501,7 +501,7 @@
         "fcf_margin_pct": 28.95,
         "fcf_per_share": 11.6018,
         "roic_pct": 31.15,
-        "fcf_yield_pct": 6.6,
+        "fcf_yield_pct": 6.66,
         "fcf_cagr_available_pct": 23.33,
         "fcf_per_share_cagr_available_pct": 24.51
       },
@@ -565,7 +565,7 @@
         "fcf_margin_pct": 38.83,
         "fcf_per_share": 8.614,
         "roic_pct": 6.46,
-        "fcf_yield_pct": 2.33,
+        "fcf_yield_pct": 2.45,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -640,7 +640,7 @@
         "fcf_margin_pct": 16.99,
         "fcf_per_share": 1.6004,
         "roic_pct": 7.13,
-        "fcf_yield_pct": 0.66,
+        "fcf_yield_pct": 0.71,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -715,7 +715,7 @@
         "fcf_margin_pct": 47.22,
         "fcf_per_share": 3.3334,
         "roic_pct": 195.77,
-        "fcf_yield_pct": 1.69,
+        "fcf_yield_pct": 1.8,
         "fcf_cagr_available_pct": 111.7,
         "fcf_per_share_cagr_available_pct": 111.17
       },
@@ -779,7 +779,7 @@
         "fcf_margin_pct": 18.45,
         "fcf_per_share": 4.8314,
         "roic_pct": 27.16,
-        "fcf_yield_pct": 1.91,
+        "fcf_yield_pct": 2.07,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -854,7 +854,7 @@
         "fcf_margin_pct": -14.48,
         "fcf_per_share": -5.2745,
         "roic_pct": 6.72,
-        "fcf_yield_pct": -1.72,
+        "fcf_yield_pct": -1.97,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -918,7 +918,7 @@
         "fcf_margin_pct": 9.96,
         "fcf_per_share": 4.0228,
         "roic_pct": 11.84,
-        "fcf_yield_pct": 0.36,
+        "fcf_yield_pct": 0.4,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -993,7 +993,7 @@
         "fcf_margin_pct": 6.56,
         "fcf_per_share": 1.7639,
         "roic_pct": 6.71,
-        "fcf_yield_pct": 0.43,
+        "fcf_yield_pct": 0.44,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1068,7 +1068,7 @@
         "fcf_margin_pct": 24.75,
         "fcf_per_share": 6.8671,
         "roic_pct": 21.52,
-        "fcf_yield_pct": 1.88,
+        "fcf_yield_pct": 1.84,
         "fcf_cagr_available_pct": 37.49,
         "fcf_per_share_cagr_available_pct": 37.4
       },
@@ -1132,7 +1132,7 @@
         "fcf_margin_pct": 14.12,
         "fcf_per_share": 2.82,
         "roic_pct": 21.94,
-        "fcf_yield_pct": 0.76,
+        "fcf_yield_pct": 0.88,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1207,7 +1207,7 @@
         "fcf_margin_pct": 16.28,
         "fcf_per_share": 12.0071,
         "roic_pct": 17.01,
-        "fcf_yield_pct": 2.85,
+        "fcf_yield_pct": 2.92,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1282,7 +1282,7 @@
         "fcf_margin_pct": 23.81,
         "fcf_per_share": 1.398,
         "roic_pct": 8.58,
-        "fcf_yield_pct": 2.19,
+        "fcf_yield_pct": 2.35,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1357,7 +1357,7 @@
         "fcf_margin_pct": 35.07,
         "fcf_per_share": 7.2505,
         "roic_pct": null,
-        "fcf_yield_pct": 3.09,
+        "fcf_yield_pct": 3.13,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1432,7 +1432,7 @@
         "fcf_margin_pct": 14.92,
         "fcf_per_share": 4.2124,
         "roic_pct": 7.89,
-        "fcf_yield_pct": 4.66,
+        "fcf_yield_pct": 4.52,
         "fcf_cagr_available_pct": 5.81,
         "fcf_per_share_cagr_available_pct": 7.02
       },
@@ -1496,7 +1496,7 @@
         "fcf_margin_pct": 9.15,
         "fcf_per_share": 6.6318,
         "roic_pct": 38.56,
-        "fcf_yield_pct": 0.6,
+        "fcf_yield_pct": 0.59,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1571,7 +1571,7 @@
         "fcf_margin_pct": 9.38,
         "fcf_per_share": 6.5175,
         "roic_pct": 33.61,
-        "fcf_yield_pct": 15.23,
+        "fcf_yield_pct": 15.1,
         "fcf_cagr_available_pct": -23.26,
         "fcf_per_share_cagr_available_pct": -22.7
       },
@@ -1635,7 +1635,7 @@
         "fcf_margin_pct": 26.25,
         "fcf_per_share": 34.6703,
         "roic_pct": 12.57,
-        "fcf_yield_pct": 4.68,
+        "fcf_yield_pct": 4.61,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1710,7 +1710,7 @@
         "fcf_margin_pct": 26.61,
         "fcf_per_share": 12.3791,
         "roic_pct": 27.52,
-        "fcf_yield_pct": 2.44,
+        "fcf_yield_pct": 2.43,
         "fcf_cagr_available_pct": -6.64,
         "fcf_per_share_cagr_available_pct": -6.51
       },
@@ -1774,7 +1774,7 @@
         "fcf_margin_pct": 22.04,
         "fcf_per_share": 14.9446,
         "roic_pct": 14.41,
-        "fcf_yield_pct": 3.97,
+        "fcf_yield_pct": 3.93,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1849,7 +1849,7 @@
         "fcf_margin_pct": 14.76,
         "fcf_per_share": 5.5506,
         "roic_pct": 15.25,
-        "fcf_yield_pct": 3.49,
+        "fcf_yield_pct": 3.41,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1924,7 +1924,7 @@
         "fcf_margin_pct": 14.12,
         "fcf_per_share": 16.6481,
         "roic_pct": 9.07,
-        "fcf_yield_pct": 2.79,
+        "fcf_yield_pct": 2.77,
         "fcf_cagr_available_pct": -3.07,
         "fcf_per_share_cagr_available_pct": -1.73
       },
@@ -1988,7 +1988,7 @@
         "fcf_margin_pct": 21.41,
         "fcf_per_share": 7.3453,
         "roic_pct": 5.9,
-        "fcf_yield_pct": 3.74,
+        "fcf_yield_pct": 3.68,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -2063,7 +2063,7 @@
         "fcf_margin_pct": 12.91,
         "fcf_per_share": 10.4611,
         "roic_pct": 5.74,
-        "fcf_yield_pct": 3.87,
+        "fcf_yield_pct": 3.98,
         "fcf_cagr_available_pct": 20.69,
         "fcf_per_share_cagr_available_pct": 22.09
       },
@@ -2127,7 +2127,7 @@
         "fcf_margin_pct": 12.58,
         "fcf_per_share": 11.8213,
         "roic_pct": 9.48,
-        "fcf_yield_pct": 4.76,
+        "fcf_yield_pct": 4.69,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -2202,7 +2202,7 @@
         "fcf_margin_pct": 15.25,
         "fcf_per_share": 6.4498,
         "roic_pct": 18.75,
-        "fcf_yield_pct": 1.92,
+        "fcf_yield_pct": 1.88,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -2277,7 +2277,7 @@
         "fcf_margin_pct": -23.73,
         "fcf_per_share": -1.859,
         "roic_pct": -84.41,
-        "fcf_yield_pct": -1.1,
+        "fcf_yield_pct": -1.03,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
