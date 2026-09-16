@@ -1,0 +1,1 @@
+Activation rule: merge and validate this ingestion layer before changing the daily ChatGPT automation. No backfill of pre-activation briefs.
