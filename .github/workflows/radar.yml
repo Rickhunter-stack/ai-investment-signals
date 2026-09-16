@@ -17,6 +17,7 @@ on:
       - 'data/signal_research.json'
       - 'markers.js'
       - 'fundamentals.js'
+      - 'auto-refresh.js'
       - 'requirements.txt'
       - 'run.py'
       - 'favicon.svg'
@@ -48,14 +49,14 @@ jobs:
         run: python scripts/generate_weekly_signals.py
       - run: python scripts/build_static_dashboard.py
       - run: python scripts/inject_brief_memory.py
-      - name: Enable chart markers and fundamentals
-        run: sed -i "s#</body>#<script src=\"/markers.js?v=${GITHUB_SHA}\"></script><script src=\"/fundamentals.js?v=${GITHUB_SHA}\"></script></body>#" index.html
+      - name: Enable chart markers, fundamentals and live deployment refresh
+        run: sed -i "s#</body>#<script src=\"/markers.js?v=${GITHUB_SHA}\"></script><script src=\"/fundamentals.js?v=${GITHUB_SHA}\"></script><script src=\"/auto-refresh.js?v=${GITHUB_SHA}\"></script></body>#" index.html
       - name: Commit refreshed data and dashboard
         run: |
           # Keep automated commits attributable to the repository owner so
           # connected deployment providers accept and deploy them.
           git config user.name "Rickhunter-stack"
           git config user.email "184195632+Rickhunter-stack@users.noreply.github.com"
-          git add data/veille.db data/brief_memory.json data/fundamentals.json data/weekly_signals.json index.html favicon.svg markers.js fundamentals.js
+          git add data/veille.db data/brief_memory.json data/fundamentals.json data/weekly_signals.json index.html favicon.svg markers.js fundamentals.js auto-refresh.js
           git diff --cached --quiet || git commit -m "chore: refresh market, fundamentals and dashboard"
           git push
