@@ -13,6 +13,7 @@ on:
       - 'config/**'
       - 'data/universe_seed.csv'
       - 'data/brief_memory.json'
+      - 'data/brief_events/**'
       - 'data/weekly_signals.json'
       - 'data/signal_research.json'
       - 'markers.js'
@@ -35,17 +36,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
       - run: pip install -r requirements.txt
+      - name: Run research integrity tests
+        run: python -m unittest discover -s scripts -p 'test_*.py'
+      - name: Verify append-only history on pushes
+        if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
+        run: python scripts/check_append_only_git.py "${{ github.event.before }}"
       - run: python run.py --step all
       - name: Refresh cash-flow and ROIC fundamentals
         run: python scripts/collect_fundamentals.py
-      - name: Test weekly snapshot integrity
-        run: python -m unittest discover -s scripts -p 'test_weekly_signals.py'
-      - name: Freeze this week's Signal Scores
+      - name: Freeze this week's Signal Scores only on the official schedule
+        if: github.event_name == 'schedule'
         run: python scripts/generate_weekly_signals.py
       - run: python scripts/build_static_dashboard.py
       - run: python scripts/inject_brief_memory.py
