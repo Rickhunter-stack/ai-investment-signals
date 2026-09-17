@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T23:39:16Z",
+  "generated_at": "2026-09-17T07:36:05Z",
   "methodology": {
     "fcf": "OCF - capex",
     "fcf_yield": "latest annual FCF / current market cap",
@@ -1207,7 +1207,7 @@
         "fcf_margin_pct": 16.28,
         "fcf_per_share": 12.0071,
         "roic_pct": 17.01,
-        "fcf_yield_pct": 2.94,
+        "fcf_yield_pct": 2.95,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -2063,7 +2063,7 @@
         "fcf_margin_pct": 12.91,
         "fcf_per_share": 10.4611,
         "roic_pct": 5.74,
-        "fcf_yield_pct": 3.94,
+        "fcf_yield_pct": 3.97,
         "fcf_cagr_available_pct": 20.69,
         "fcf_per_share_cagr_available_pct": 22.09
       },
