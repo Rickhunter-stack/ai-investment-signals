@@ -22,6 +22,19 @@ CREATE TABLE IF NOT EXISTS market (
     market_cap REAL,
     PRIMARY KEY (ticker, date)
 );
+-- Prospective point-in-time market ledger. Rows are immutable after first insert.
+-- adjusted_close is used consistently for securities and benchmarks so future
+-- performance includes split/dividend adjustments on the same basis.
+CREATE TABLE IF NOT EXISTS market_pit (
+    ticker TEXT NOT NULL,
+    date TEXT NOT NULL,
+    adjusted_close REAL NOT NULL,
+    volume REAL,
+    observed_at TEXT NOT NULL,
+    source TEXT NOT NULL,
+    series_type TEXT NOT NULL CHECK(series_type IN ('security','benchmark')),
+    PRIMARY KEY (ticker, date)
+);
 CREATE TABLE IF NOT EXISTS signals (
     signal_id TEXT PRIMARY KEY,
     ticker TEXT NOT NULL,
