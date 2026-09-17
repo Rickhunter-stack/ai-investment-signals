@@ -5,7 +5,8 @@ import yfinance as yf
 from .db import connect
 
 UNIVERSE = Path('data/universe_seed.csv')
-BENCHMARK_TICKER = 'URTH'
+BENCHMARK_TICKERS = ('SPY', 'QQQ')
+SOURCE = 'yfinance'
 
 
 def seed_companies(conn):
@@ -25,45 +26,61 @@ def seed_companies(conn):
     return df
 
 
+def _rows(raw, tickers, observed_at, series_type):
+    rows = []
+    if len(tickers) == 1:
+        frames = {tickers[0]: raw}
+    else:
+        available = set(raw.columns.get_level_values(0)) if isinstance(raw.columns, pd.MultiIndex) else set()
+        frames = {ticker: raw[ticker] for ticker in tickers if ticker in available}
+    for ticker, frame in frames.items():
+        frame = frame.dropna(how='all')
+        for idx, r in frame.iterrows():
+            close, volume = r.get('Close'), r.get('Volume')
+            if pd.isna(close):
+                continue
+            rows.append((ticker, idx.date().isoformat(), float(close),
+                         float(volume) if pd.notna(volume) else None,
+                         observed_at, SOURCE, series_type))
+    return rows
+
+
 def update_market(period='5d'):
     conn = connect()
     df = seed_companies(conn)
     tickers = df['ticker'].tolist()
-    raw = yf.download(tickers=tickers, period=period, interval='1d', group_by='ticker', auto_adjust=False, progress=False, threads=True)
-    rows = []
-    if len(tickers) == 1:
-        ticker = tickers[0]
-        for idx, r in raw.iterrows():
-            rows.append((ticker, idx.date().isoformat(), float(r.get('Close')) if pd.notna(r.get('Close')) else None, float(r.get('Volume')) if pd.notna(r.get('Volume')) else None, None))
-    else:
-        for ticker in tickers:
-            if ticker not in raw.columns.get_level_values(0):
-                continue
-            frame = raw[ticker].dropna(how='all')
-            for idx, r in frame.iterrows():
-                close = r.get('Close')
-                volume = r.get('Volume')
-                rows.append((ticker, idx.date().isoformat(), float(close) if pd.notna(close) else None, float(volume) if pd.notna(volume) else None, None))
+    observed_at = datetime.now(timezone.utc).isoformat()
 
-    # Benchmark kept outside the investable universe. auto_adjust=True makes the
-    # series suitable as a total-return proxy by incorporating distributions.
-    bench = yf.download(BENCHMARK_TICKER, period=period, interval='1d', auto_adjust=True, repair=True, progress=False)
-    if not bench.empty:
-        close = bench['Close']
-        volume = bench['Volume'] if 'Volume' in bench else None
-        if isinstance(close, pd.DataFrame):
-            close = close.iloc[:, 0]
-        if isinstance(volume, pd.DataFrame):
-            volume = volume.iloc[:, 0]
-        for idx, value in close.dropna().items():
-            vol = None if volume is None else volume.get(idx)
-            rows.append((BENCHMARK_TICKER, idx.date().isoformat(), float(value), float(vol) if vol is not None and pd.notna(vol) else None, None))
+    # One convention for every performance series: adjusted close. This avoids
+    # comparing raw security prices with an adjusted benchmark series.
+    raw = yf.download(tickers=tickers, period=period, interval='1d', group_by='ticker',
+                      auto_adjust=True, repair=True, progress=False, threads=True)
+    security_rows = _rows(raw, tickers, observed_at, 'security')
 
+    bench_raw = yf.download(tickers=list(BENCHMARK_TICKERS), period=period, interval='1d',
+                            group_by='ticker', auto_adjust=True, repair=True,
+                            progress=False, threads=True)
+    benchmark_rows = _rows(bench_raw, list(BENCHMARK_TICKERS), observed_at, 'benchmark')
+    pit_rows = security_rows + benchmark_rows
+
+    # Immutable prospective ledger: provider revisions on later runs cannot
+    # rewrite an observation that was already stored for ticker/date.
+    conn.executemany(
+        '''INSERT OR IGNORE INTO market_pit
+           (ticker,date,adjusted_close,volume,observed_at,source,series_type)
+           VALUES(?,?,?,?,?,?,?)''', pit_rows
+    )
+
+    # Legacy table remains for the existing dashboard during migration. It now
+    # uses the same adjusted-close convention, but is NOT the experimental source
+    # of truth. New outcome code must read market_pit.
+    legacy_rows = [(t,d,c,v,None) for t,d,c,v,_,_,_ in pit_rows]
     conn.executemany(
         '''INSERT INTO market(ticker,date,close,volume,market_cap)
            VALUES(?,?,?,?,?)
-           ON CONFLICT(ticker,date) DO UPDATE SET close=excluded.close, volume=excluded.volume''', rows
+           ON CONFLICT(ticker,date) DO UPDATE SET close=excluded.close, volume=excluded.volume''',
+        legacy_rows
     )
     conn.commit()
     conn.close()
-    return len(rows)
+    return len(pit_rows)
