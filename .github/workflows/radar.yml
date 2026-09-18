@@ -14,6 +14,7 @@ on:
       - 'data/universe_seed.csv'
       - 'data/brief_memory.json'
       - 'data/brief_events/**'
+      - 'data/fundamentals_pit/**'
       - 'data/weekly_signals.json'
       - 'data/signal_research.json'
       - 'markers.js'
@@ -51,6 +52,9 @@ jobs:
       - run: python run.py --step all
       - name: Refresh cash-flow and ROIC fundamentals
         run: python scripts/collect_fundamentals.py
+      - name: Freeze observed fundamentals prospectively
+        if: github.event_name == 'schedule'
+        run: python scripts/freeze_fundamentals_pit.py
       - name: Freeze this week's Signal Scores only on the official schedule
         if: github.event_name == 'schedule'
         run: python scripts/generate_weekly_signals.py
@@ -60,10 +64,8 @@ jobs:
         run: sed -i "s#</body>#<script src=\"/markers.js?v=${GITHUB_SHA}\"></script><script src=\"/fundamentals.js?v=${GITHUB_SHA}\"></script><script src=\"/auto-refresh.js?v=${GITHUB_SHA}\"></script></body>#" index.html
       - name: Commit refreshed data and dashboard
         run: |
-          # Keep automated commits attributable to the repository owner so
-          # connected deployment providers accept and deploy them.
           git config user.name "Rickhunter-stack"
           git config user.email "184195632+Rickhunter-stack@users.noreply.github.com"
-          git add data/veille.db data/brief_memory.json data/fundamentals.json data/weekly_signals.json index.html favicon.svg markers.js fundamentals.js auto-refresh.js
+          git add data/veille.db data/brief_memory.json data/fundamentals.json data/fundamentals_pit data/weekly_signals.json index.html favicon.svg markers.js fundamentals.js auto-refresh.js
           git diff --cached --quiet || git commit -m "chore: refresh market, fundamentals and dashboard"
           git push
