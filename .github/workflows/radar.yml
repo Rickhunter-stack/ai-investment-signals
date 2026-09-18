@@ -44,6 +44,8 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       - run: pip install -r requirements.txt
+      - name: Validate workflow YAML
+        run: python -c "import pathlib,yaml; yaml.safe_load(pathlib.Path('.github/workflows/radar.yml').read_text())"
       - name: Run research integrity tests
         run: python -m unittest discover -s scripts -p 'test_*.py'
       - name: Verify append-only history on pushes
@@ -58,6 +60,12 @@ jobs:
       - name: Freeze this week's Signal Scores only on the official schedule
         if: github.event_name == 'schedule'
         run: python scripts/generate_weekly_signals.py
+      - name: Append matured prospective outcomes
+        if: github.event_name == 'schedule'
+        env:
+          EXPERIMENT_RUN_ID: ${{ github.run_id }}
+          EXPERIMENT_COMMIT_SHA: ${{ github.sha }}
+        run: python scripts/compute_outcomes.py
       - run: python scripts/build_static_dashboard.py
       - run: python scripts/inject_brief_memory.py
       - name: Enable chart markers, fundamentals and live deployment refresh
