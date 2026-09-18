@@ -293,3 +293,151 @@ This order may change for engineering reasons, but no later implementation may s
 The project exists to test a hypothesis, not to defend it.
 
 **Frozen historical observations, inconvenient outcomes, failed predictions and negative results are part of the dataset and must remain visible.**
+
+
+---
+
+# Amendment v1.1 - Market Integrity Convention
+
+**Amended:** 2026-09-18  
+**Effective:** for the first and all subsequent market observations generated after this amendment  
+**Reason:** the experimental market ledger contained zero observations when this amendment was adopted. The change therefore precedes any confirmatory market T0/outcome and is not informed by realized experimental returns.
+
+This amendment supersedes the market-data mechanics in sections 4.2, 5, 7, 12 (momentum data source), 16 and 23 where they conflict with the rules below. All other v1.0 provisions remain unchanged.
+
+## A1. Source of truth and append-only representation
+
+The confirmatory market-data source of truth is a Git-tracked, append-only JSON journal under `data/market_pit/`.
+
+Each monthly journal is a **flat JSON array**. Each record represents one prospectively observed `(ticker, session_date)` market observation and is appended in deterministic order by `session_date`, then `ticker`. Existing array prefixes may never be rewritten.
+
+SQLite `market_pit` and the legacy `market` table are caches/derived operational stores only. They must not be the authoritative source for confirmatory outcome computation. A cache may be rebuilt from the JSON journal without changing the journal.
+
+## A2. Frozen fields
+
+Each market record must preserve at minimum:
+
+- ticker;
+- session date;
+- raw close;
+- Yahoo adjusted close as a control field only;
+- dividend observed for that session, if any;
+- split ratio observed for that session, if any;
+- observation timestamp in UTC;
+- source/vendor;
+- collector/library version;
+- material request parameters;
+- frozen/integrity metadata required by the repository.
+
+The primary experimental price is **raw close**, not Yahoo adjusted close. Adjusted close is retained only to audit and compare conventions.
+
+## A3. No retrospective vendor repair
+
+First observation wins.
+
+A frozen historical record is not rewritten because the vendor later revises a historical close, adjusted close, dividend or split. In particular, an old dividend or corporate action may not be retrospectively inserted from a later download into an already frozen session.
+
+Vendor corrections discovered later may be documented separately as data-quality annotations, but they do not silently modify the confirmatory ledger.
+
+## A4. Eligible completed sessions
+
+The collector must not freeze the last daily bar returned by a market download. A session is eligible only when the same response already contains at least one more recent daily bar.
+
+This rule is primary because it avoids relying only on wall-clock cutoffs and covers partial sessions, holidays and early closes conservatively.
+
+A market calendar may be used as an additional validation layer, but must not weaken this rule.
+
+The collection lookback must be sufficiently long to tolerate ordinary pipeline interruptions. The initial implementation target is `period=1mo`; because the ledger is prospective, missing historical sessions are not silently reconstructed later if doing so would introduce information unavailable when those sessions should have been observed.
+
+## A5. Coverage frozen from first collection
+
+The market collector must prospectively include:
+
+- the ten confirmatory securities: NVDA, AVGO, QCOM, MU, GOOGL, AMZN, ADI, MDT, ISRG, GH;
+- confirmatory benchmarks: QQQ and SPY;
+- prespecified sensitivity/sector benchmarks: SMH, IHI and XBI.
+
+QQQ remains the confirmatory benchmark for NVDA, AVGO, QCOM, MU, GOOGL, AMZN and ADI.
+
+SPY remains the confirmatory benchmark for MDT, ISRG and GH.
+
+SMH, IHI and XBI are sensitivity/sector comparators only unless a future dated protocol promotes a different role prospectively.
+
+## A6. T0 convention under v1.1
+
+A weekly snapshot may anchor T0 only to an eligible completed session already present in the immutable JSON market journal.
+
+If the snapshot became available only after that completed session, T0 is the first later eligible completed session observed prospectively for which both the security and its confirmatory benchmark have records.
+
+No intraday price is used. No later vendor history may be used to manufacture an earlier T0.
+
+T0 eligibility is decided and frozen prospectively when the anchor is created.
+
+## A7. Total-return convention
+
+Returns are reconstructed from the frozen raw-close and corporate-action records rather than from later vendor-adjusted history.
+
+Let `P(t)` be frozen raw close and let `parts(T0) = 1`.
+
+For each eligible session `t` in `(T0, H]`, processed chronologically:
+
+1. if a split with ratio `s(t)` occurs, update  
+   `parts <- parts * s(t)`;
+2. if a cash dividend `d(t)` per share is recorded, reinvest it at that session's frozen raw close:  
+   `parts <- parts + parts * d(t) / P(t)`.
+
+Then:
+
+`total_return(H) = parts(H) * P(H) / P(T0) - 1`
+
+Benchmark total return is computed with the identical convention.
+
+`excess_return(H) = security_total_return(H) - benchmark_total_return(H)`
+
+Dividend reinvestment at the session close is an explicit modeling convention, not a claim about executable intraday timing. Its purpose is deterministic reproducibility from the frozen ledger.
+
+The implementation must include unit tests covering at least:
+
+- split only;
+- dividend only;
+- split and dividend within the same return window.
+
+## A8. Horizon measurement date
+
+M+1, M+3, M+6 and M+12 retain their definitions from v1.0.
+
+If the target calendar date is not represented by a common eligible session for security and benchmark, use the first later common eligible completed session present prospectively in the journal. Missing data remain pending/unavailable rather than being reconstructed from future downloads in violation of the ledger rules.
+
+## A9. Momentum and other price-derived baselines
+
+Any confirmatory price-derived baseline, including 12-1 momentum, must use only market observations that were prospectively frozen in the JSON journal and available at the relevant T0.
+
+No later-downloaded historical series may be used to fill pre-ledger history for confirmatory observations. Exploratory reconstructions must be labeled as such and kept separate.
+
+## A10. Corporate and exceptional events
+
+Splits and ordinary cash dividends are handled mechanically by section A7.
+
+Acquisitions, delistings, ticker changes, spin-offs, special distributions or other events that cannot be represented faithfully by the stated formula must be flagged. Their treatment requires a documented mechanical rule adopted without reference to whether the resulting return is favorable.
+
+No observation is removed merely because its realized outcome is inconvenient.
+
+## A11. Collector provenance
+
+Each frozen record must make the acquisition convention auditable, including the collector/library version and material request parameters. The implementation must pin the `yfinance` version used by the production pipeline rather than silently floating to a new release.
+
+A library/vendor upgrade may occur prospectively, but its activation date/version must remain observable in the ledger.
+
+## A12. Dry-run and production separation
+
+Tests of scheduled-only freeze/outcome logic must use temporary output locations or equivalent non-persistent fixtures.
+
+`workflow_dispatch` must not impersonate the official `schedule` event to create confirmatory freezes. Production confirmatory records are created only by the preregistered scheduled path.
+
+## A13. Integrity condition before first confirmatory market observation
+
+Market Integrity v2 code must implement this amendment before the first confirmatory market observation is accepted.
+
+If that implementation is not ready before an official scheduled run, the schedule should be temporarily disabled rather than create a first cohort using the superseded adjusted-close convention.
+
+This amendment was adopted while the confirmatory market ledger contained zero observations. No historical Signal Score or realized outcome is changed by v1.1.
