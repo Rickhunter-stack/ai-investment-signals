@@ -2,8 +2,8 @@ name: Radar refresh
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '15 21 * * 1-5'
+  # Confirmatory schedule temporarily paused on 2026-09-18 pending Market Integrity v2.
+  # Restore only after preregistration v1.2 and MIv2 acceptance criteria are merged.
   push:
     branches:
       - main
