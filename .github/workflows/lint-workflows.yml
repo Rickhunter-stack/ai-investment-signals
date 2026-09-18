@@ -1,0 +1,35 @@
+name: Workflow syntax guard
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install PyYAML
+      - name: Parse all workflow YAML files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+          files = sorted(Path(".github/workflows").glob("*.y*ml"))
+          assert files, "No workflow files found"
+          for path in files:
+              yaml.safe_load(path.read_text(encoding="utf-8"))
+              print(f"OK {path}")
+          PY
