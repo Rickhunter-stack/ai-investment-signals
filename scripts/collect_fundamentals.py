@@ -53,7 +53,13 @@ def one(ticker):
     latest=rows[-1].copy() if rows else {}
     fcf=latest.get('fcf')
     mcap=info.get('marketCap')
-    latest['fcf_yield_pct']=pct(fcf/mcap) if fcf is not None and mcap else None
+    financial_currency=info.get('financialCurrency')
+    market_currency=info.get('currency')
+    same_currency=bool(financial_currency and market_currency and financial_currency==market_currency)
+    latest['financial_currency']=financial_currency
+    latest['market_currency']=market_currency
+    latest['fcf_yield_currency_compatible']=same_currency
+    latest['fcf_yield_pct']=pct(fcf/mcap) if fcf is not None and mcap and same_currency else None
     if len(rows)>=4:
         latest['fcf_cagr_available_pct']=pct(cagr(rows[0].get('fcf'),rows[-1].get('fcf'),rows[-1]['year']-rows[0]['year']))
         latest['fcf_per_share_cagr_available_pct']=pct(cagr(rows[0].get('fcf_per_share'),rows[-1].get('fcf_per_share'),rows[-1]['year']-rows[0]['year']))
@@ -61,7 +67,7 @@ def one(ticker):
 
 def main():
     with UNIVERSE.open(encoding='utf-8') as f: tickers=[r['ticker'] for r in csv.DictReader(f)]
-    data={'generated_at':datetime.utcnow().isoformat(timespec='seconds')+'Z','methodology':{'fcf':'OCF - capex','fcf_yield':'latest annual FCF / current market cap','roic':'NOPAT / (equity + debt - cash)','note':'V1 uses standardized Yahoo Finance statements. SEC/EDGAR 10-year history is the next source layer.'},'companies':{}}
+    data={'generated_at':datetime.utcnow().isoformat(timespec='seconds')+'Z','methodology':{'fcf':'OCF - capex','fcf_yield':'latest annual FCF / current market cap only when financial and market currencies match','roic':'NOPAT / (equity + debt - cash)','note':'V1 uses standardized Yahoo Finance statements. SEC/EDGAR 10-year history is the next source layer.'},'companies':{}}
     for ticker in tickers:
         try: data['companies'][ticker]=one(ticker)
         except Exception as e: data['companies'][ticker]={'ticker':ticker,'status':'error','error':str(e)[:160],'annual':[]}
