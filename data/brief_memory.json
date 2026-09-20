@@ -8,5 +8,15 @@
     "watch_next": "Capex hyperscalers, HBM, power/cooling, photonique, nouveaux clients anchors et évolution des multiples de valorisation.",
     "invalidation": "Décélération durable des commandes/capex IA, contraction des marges chez les enablers ou valorisations devenant incompatibles avec la croissance réalisée.",
     "frozen": true
+  },
+  {
+    "date": "2026-09-20",
+    "summary": "Semaine surtout de confirmation plutôt que de rupture: les signaux forts QCOM-Amazon, AVGO custom XPU/networking, HBM4 de Micron, Alif chez ADI, robotique MDT et Guardant restent valides. Nouveau signal faible d'infrastructure: NVIDIA, Google et Emerald AI formalisent la flexibilite energetique des AI factories, ce qui renforce a la fois la duree de la demande et le risque de contrainte reseau/puissance.",
+    "stance": "constructif mais discipline sur valorisation et execution",
+    "themes": ["ai_infrastructure", "custom_silicon", "hbm", "edge_ai", "robotics", "molecular_diagnostics"],
+    "tickers": ["NVDA", "AVGO", "QCOM", "MU", "GOOGL", "AMZN", "ADI", "MDT", "ISRG", "GH"],
+    "watch_next": "Conversion des contrats custom silicon en revenus, cadence HBM4/HBM4E, contraintes de puissance des datacenters, integration Alif, adoption Cornerstone/Hugo et cadence de tests Guardant360 CDx.",
+    "invalidation": "Retards de capacite ou de puissance, ralentissement du capex hyperscaler, retards de ramp HBM/custom silicon, integration edge AI decevante ou adoption clinique/remboursement inferieurs aux attentes.",
+    "frozen": true
   }
 ]
