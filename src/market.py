@@ -69,6 +69,10 @@ def _append_journal(rows):
         path.write_text(json.dumps(old+items,indent=2,ensure_ascii=False,allow_nan=False)+"\n")
     return fresh
 
+def confirmatory_writes_enabled():
+    return os.getenv("CONFIRMATORY_WRITE")=="1"
+
+
 def update_market(period="1mo"):
     conn=connect(); df=seed_companies(conn); securities=df["ticker"].tolist()
     observed_at=datetime.now(timezone.utc).isoformat()
@@ -80,7 +84,7 @@ def update_market(period="1mo"):
     missing=sorted(expected-present)
     if not rows or missing:
         conn.close(); raise RuntimeError(f"market collection incomplete; refusing confirmatory write; missing={missing}")
-    confirmatory=os.getenv("CONFIRMATORY_WRITE")=="1"
+    confirmatory=confirmatory_writes_enabled()
     fresh=_append_journal(rows) if confirmatory else []
     # SQLite is cache/dashboard only. Rebuild compatible rows from newly frozen raw closes.
     cache=[(r["ticker"],r["session_date"],r["raw_close"],None,r["observed_at"],r["source"],r["series_type"]) for r in fresh]
