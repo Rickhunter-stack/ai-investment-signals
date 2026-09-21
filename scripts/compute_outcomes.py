@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; MARKET=ROOT/"data/market_pit"
 WEEKLY=ROOT/"data/weekly_signals.json"; OUT=ROOT/"data/outcomes_v1.json"; PROTOCOL=ROOT/"PREREGISTRATION.md"
 UNIVERSE={"NVDA":"QQQ","AVGO":"QQQ","QCOM":"QQQ","MU":"QQQ","GOOGL":"QQQ","AMZN":"QQQ","ADI":"QQQ","MDT":"SPY","ISRG":"SPY","GH":"SPY"}
-HORIZONS={"M1":1,"M3":3,"M6":6,"M12":12}; PROTOCOL_START=datetime.fromisoformat("2026-09-17T00:00:00+00:00"); SCHEMA="outcome-v1.1"
+HORIZONS={"M1":1,"M3":3,"M6":6,"M12":12}; MAX_T0_DELAY_DAYS=7; MAX_MEASUREMENT_DELAY_DAYS=7; PROTOCOL_START=datetime.fromisoformat("2026-09-17T00:00:00+00:00"); SCHEMA="outcome-v1.1"
 
 def protocol_sha256(): return hashlib.sha256(PROTOCOL.read_bytes()).hexdigest()
 def add_months(d,months):
@@ -37,14 +37,11 @@ def common_row(market,ticker,bench,on_or_after,observed_after=None,observed_befo
  common=sorted(set(a)&set(b))
  return None if not common else (common[0],a[common[0]],b[common[0]])
 
-def t0_row(market,ticker,bench,captured):
- ny=captured.astimezone(ZoneInfo("America/New_York"))
- # A session already frozen by snapshot time is admissible; otherwise a post-close
- # snapshot must wait for a strictly later session. Early-close handling is a v1.2 item.
- prior=common_row(market,ticker,bench,ny.date(),observed_before=captured)
- if prior: return prior
- start=date.fromordinal(ny.date().toordinal()+1) if ny.hour>=16 else ny.date()
- return common_row(market,ticker,bench,start,observed_after=captured)
+def t0_row(market,ticker,bench,captured,after_session):
+ # T0 is the first common prospectively admitted session strictly after the
+ # vendor boundary frozen into the weekly snapshot. No pre-snapshot fallback.
+ boundary=date.fromisoformat(after_session)
+ return common_row(market,ticker,bench,date.fromordinal(boundary.toordinal()+1),observed_after=captured)
 
 def total_return(rows,t0,h):
  base=next(r for r in rows if r["session_date"]==t0.isoformat()); parts=1.0
@@ -57,6 +54,23 @@ def total_return(rows,t0,h):
   if div: parts+=parts*div/float(r["raw_close"])
  end=next(r for r in rows if r["session_date"]==h.isoformat())
  return parts*float(end["raw_close"])/float(base["raw_close"])-1
+
+def gap_in_window(rows,start,end):
+ for r in rows:
+  d=date.fromisoformat(r["session_date"])
+  if start<d<=end and (r.get("gap_unbounded") or r.get("gap_sessions")): return True
+  for flag in r.get("quality_flags") or []:
+   affected_from=date.fromisoformat(flag.get("affected_from",flag["session_date"]))
+   affected_through=date.fromisoformat(flag.get("affected_through",flag["session_date"]))
+   if affected_from<=end and affected_through>=start: return True
+ return False
+
+def unavailable(base,label,snap,ticker,bench,score,t0d,target,reason,phash,run,sha):
+ return {"schema_version":SCHEMA,"outcome_id":f"{base}:{label}","snapshot_date":snap["date"],"ticker":ticker,
+  "benchmark":bench,"method_version":snap["method_version"],"signal_score":score.get("signal_score"),
+  "horizon":None if label=="T0" else label,"target_date":None if target is None else target.isoformat(),
+  "t0_date":None if t0d is None else t0d.isoformat(),"eligible_confirmatory":True,"protocol_sha256":phash,
+  "run_id":run,"commit_sha":sha,"status":"unavailable","unavailable_reason":reason,"frozen":True}
 
 def append_unique(existing,rows):
  ids={r["outcome_id"] for r in existing}; return existing+[r for r in rows if r["outcome_id"] not in ids]
@@ -74,9 +88,13 @@ def build_rows(snapshots,market,now,existing=None):
     if not anchor.get("eligible_confirmatory",False): continue
     t0d=date.fromisoformat(anchor["t0_date"])
    else:
-    hit=t0_row(market,ticker,bench,captured)
+    boundary=snap.get("t0_after_session",{}).get(ticker)
+    if not boundary: continue
+    hit=t0_row(market,ticker,bench,captured,boundary)
     if not hit: continue
     t0d,s,b=hit
+    if (t0d-date.fromisoformat(boundary)).days>MAX_T0_DELAY_DAYS:
+     rows.append(unavailable(base,"T0",snap,ticker,bench,score,t0d,None,"t0_delay_exceeded",phash,run,sha)); continue
     anchor={"schema_version":SCHEMA,"outcome_id":oid,"snapshot_date":snap["date"],"ticker":ticker,"benchmark":bench,
       "method_version":snap["method_version"],"signal_score":score.get("signal_score"),"t0_date":t0d.isoformat(),
       "security_t0":s["raw_close"],"benchmark_t0":b["raw_close"],"security_observed_at":s["observed_at"],"benchmark_observed_at":b["observed_at"],"eligible_confirmatory":True,
@@ -88,6 +106,11 @@ def build_rows(snapshots,market,now,existing=None):
     hit=common_row(market,ticker,bench,target)
     if not hit: continue
     hd,_,_=hit
+    reason=None
+    if (hd-target).days>MAX_MEASUREMENT_DELAY_DAYS: reason="measurement_delay_exceeded"
+    elif gap_in_window(market[ticker],t0d,hd) or gap_in_window(market[bench],t0d,hd): reason="market_gap_in_return_window"
+    if reason:
+     rows.append(unavailable(base,label,snap,ticker,bench,score,t0d,target,reason,anchor.get("protocol_sha256",phash),run,sha)); continue
     sr=total_return(market[ticker],t0d,hd); br=total_return(market[bench],t0d,hd)
     rows.append({"schema_version":SCHEMA,"outcome_id":f"{base}:{label}","snapshot_date":snap["date"],"ticker":ticker,
       "benchmark":bench,"method_version":snap["method_version"],"signal_score":score.get("signal_score"),"horizon":label,

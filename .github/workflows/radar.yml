@@ -61,10 +61,14 @@ jobs:
       - name: Verify append-only history on pushes
         if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
         run: python scripts/check_append_only_git.py "${{ github.event.before }}"
+      - name: Validate market journal schema
+        run: python scripts/validate_market_journal.py
       - name: Refresh operational market data
         if: github.event_name != 'pull_request'
         env:
           CONFIRMATORY_WRITE: ${{ github.event_name == 'schedule' && '1' || '0' }}
+          EXPERIMENT_RUN_ID: ${{ github.run_id }}
+          EXPERIMENT_COMMIT_SHA: ${{ github.sha }}
         run: python run.py --step all
       - name: Refresh cash-flow and ROIC fundamentals
         if: github.event_name != 'pull_request'
@@ -74,6 +78,8 @@ jobs:
         run: python scripts/freeze_fundamentals_pit.py
       - name: Freeze this week's Signal Scores only on the official schedule
         if: github.event_name == 'schedule'
+        env:
+          REQUIRE_MARKET_BOUNDARY: '1'
         run: python scripts/generate_weekly_signals.py
       - name: Append matured prospective outcomes
         if: github.event_name == 'schedule'
@@ -89,6 +95,9 @@ jobs:
       - name: Enable chart markers, fundamentals and live deployment refresh
         if: github.event_name != 'pull_request'
         run: sed -i "s#</body>#<script src=\"/markers.js?v=${GITHUB_SHA}\"></script><script src=\"/fundamentals.js?v=${GITHUB_SHA}\"></script><script src=\"/auto-refresh.js?v=${GITHUB_SHA}\"></script></body>#" index.html
+      - name: Validate confirmatory market journal before scheduled commit
+        if: github.event_name == 'schedule'
+        run: python scripts/validate_market_journal.py
       - name: Verify append-only history before scheduled commit
         if: github.event_name == 'schedule'
         run: python scripts/check_append_only_git.py HEAD

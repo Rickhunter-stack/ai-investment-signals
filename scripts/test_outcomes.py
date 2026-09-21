@@ -27,7 +27,39 @@ class OutcomeTests(unittest.TestCase):
   captured=datetime(2026,9,21,21,30,tzinfo=timezone.utc)
   m={"NVDA":[row("NVDA","2026-09-21",100,"2026-09-22T21:00:00+00:00"),row("NVDA","2026-09-22",101,"2026-09-23T21:00:00+00:00")],
      "QQQ":[row("QQQ","2026-09-21",500,"2026-09-22T21:00:00+00:00"),row("QQQ","2026-09-22",501,"2026-09-23T21:00:00+00:00")]}
-  self.assertEqual(o.t0_row(m,"NVDA","QQQ",captured)[0],date(2026,9,22))
+  self.assertEqual(o.t0_row(m,"NVDA","QQQ",captured,"2026-09-21")[0],date(2026,9,22))
+ def test_t0_never_uses_pre_boundary_admitted_row(self):
+  captured=datetime(2026,11,27,18,30,tzinfo=timezone.utc)
+  m={"NVDA":[row("NVDA","2026-11-25",100,"2026-11-27T17:00:00+00:00"),row("NVDA","2026-11-30",101,"2026-12-01T21:00:00+00:00")],
+     "QQQ":[row("QQQ","2026-11-25",500,"2026-11-27T17:00:00+00:00"),row("QQQ","2026-11-30",501,"2026-12-01T21:00:00+00:00")]}
+  self.assertEqual(o.t0_row(m,"NVDA","QQQ",captured,"2026-11-27")[0],date(2026,11,30))
+ def test_t0_requires_strictly_later_than_boundary(self):
+  captured=datetime(2026,11,27,18,30,tzinfo=timezone.utc)
+  m={"NVDA":[row("NVDA","2026-11-27",100,"2026-11-28T17:00:00+00:00"),row("NVDA","2026-11-30",101,"2026-12-01T21:00:00+00:00")],
+     "QQQ":[row("QQQ","2026-11-27",500,"2026-11-28T17:00:00+00:00"),row("QQQ","2026-11-30",501,"2026-12-01T21:00:00+00:00")]}
+  self.assertEqual(o.t0_row(m,"NVDA","QQQ",captured,"2026-11-27")[0],date(2026,11,30))
+ def test_t0_excessive_drift_is_unavailable(self):
+  snap={"date":"2026-09-21","captured_at":"2026-09-21T21:00:00+00:00","frozen":True,"method_version":"weekly-v1.0",
+        "t0_after_session":{"NVDA":"2026-09-21"},"scores":{"NVDA":{"signal_score":80}}}
+  m={"NVDA":[row("NVDA","2026-10-02",101,"2026-10-03T21:00:00+00:00")],
+     "QQQ":[row("QQQ","2026-10-02",501,"2026-10-03T21:00:00+00:00")]}
+  got=o.build_rows([snap],m,datetime(2026,10,4,tzinfo=timezone.utc))
+  self.assertEqual(got[0]["status"],"unavailable")
+  self.assertEqual(got[0]["unavailable_reason"],"t0_delay_exceeded")
+ def test_gap_metadata_marks_return_window_incomplete(self):
+  rows=[row("NVDA","2026-09-22",100),row("NVDA","2026-09-29",101)]
+  rows[1]["gap_sessions"]=["2026-09-25"]
+  self.assertTrue(o.gap_in_window(rows,date(2026,9,22),date(2026,9,29)))
+
+ def test_quality_flag_only_invalidates_overlapping_interval(self):
+  rows=[row("NVDA","2026-10-20",100),row("NVDA","2026-10-27",101),row("NVDA","2026-11-27",102)]
+  rows[0]["quality_flags"]=[{"session_date":"2026-10-20","affected_from":"2026-10-19","affected_through":"2026-10-20"}]
+  self.assertFalse(o.gap_in_window(rows,date(2026,10,27),date(2026,11,27)))
+ def test_quality_flag_invalidates_when_t0_is_affected_prior_session(self):
+  rows=[row("NVDA","2026-10-20",100),row("NVDA","2026-11-20",102)]
+  rows[0]["quality_flags"]=[{"session_date":"2026-10-21","affected_from":"2026-10-20","affected_through":"2026-10-21"}]
+  self.assertTrue(o.gap_in_window(rows,date(2026,10,20),date(2026,11,20)))
+
  def test_append_never_rewrites(self):
   old=[{"outcome_id":"A","excess_return":.1}]; new=[{"outcome_id":"A","excess_return":9.9},{"outcome_id":"B"}]
   got=o.append_unique(old,new); self.assertEqual(got[0]["excess_return"],.1); self.assertEqual(len(got),2)
