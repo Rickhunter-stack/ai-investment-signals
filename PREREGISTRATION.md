@@ -441,3 +441,82 @@ Market Integrity v2 code must implement this amendment before the first confirma
 If that implementation is not ready before an official scheduled run, the schedule should be temporarily disabled rather than create a first cohort using the superseded adjusted-close convention.
 
 This amendment was adopted while the confirmatory market ledger contained zero observations. No historical Signal Score or realized outcome is changed by v1.1.
+
+
+---
+
+# Amendment v1.2 - Market Integrity v2 Acceptance Convention
+
+**Amended:** 2026-09-21  
+**Effective:** before the first confirmatory market collection under the restored schedule  
+**Reason:** Market Integrity v2 has been merged while the confirmatory schedule remains paused. No confirmatory market observation has yet been generated under the restored schedule, so these rules are fixed prospectively before outcome generation.
+
+This amendment supplements v1.1. Where implementation details below are more conservative, they govern future confirmatory observations.
+
+## B1. Completed-session rule and early closes
+
+A4 remains primary: a session is eligible only when the same vendor response contains a strictly later daily session. Wall-clock market-close rules never make an otherwise ineligible last bar eligible.
+
+T0 selection therefore uses journal availability rather than a fixed 16:00 ET assumption. A session already frozen in the immutable journal before the weekly snapshot's `captured_at` may anchor T0. Otherwise T0 is the first later eligible common session for security and benchmark. This rule covers ordinary closes, early closes, holidays and weekends without requiring a hard-coded close time.
+
+## B2. Confirmatory collection completeness
+
+A scheduled confirmatory collection is atomic at the run level. Before any market journal write, all 15 frozen series must produce at least one eligible completed session:
+
+NVDA, AVGO, QCOM, MU, GOOGL, AMZN, ADI, MDT, ISRG, GH, QQQ, SPY, SMH, IHI, XBI.
+
+The collector must also reject duplicate session dates, non-positive/non-finite prices and malformed corporate-action fields. A partial run writes no confirmatory market observations.
+
+## B3. Corporate-action consistency
+
+Yahoo/yfinance fields are vendor observations, not unquestioned ground truth. For each eligible row, the project preserves vendor close, adjusted close, dividend, split ratio, repair flag, collector version and material request parameters.
+
+Because Yahoo historical Close and dividend fields may be split-adjusted, the collector reconstructs the A7 raw-price convention using split events present in the same prospectively observed response. Vendor values remain stored separately for audit.
+
+Before schedule activation, automated fixtures must cover at least: no action, cash dividend, 2:1 split, reverse split, split plus dividend, dividend before later split, multiple splits and malformed/non-finite action data.
+
+A vendor inconsistency that makes the mechanical reconstruction ambiguous must fail the confirmatory run or be explicitly flagged unavailable. It must not be silently repaired using later-downloaded history.
+
+## B4. Interruptions and lookback
+
+The confirmatory journal is prospective. After an interruption, sessions that were not observed under the prospective eligibility rule are not backfilled merely because they later appear in a vendor history download.
+
+The one-month request window is a transport/recovery window, not permission to reconstruct missed confirmatory history. On restart, only sessions whose first admissible observation is established by the current prospective response may be appended. Missing periods remain visible as missingness.
+
+If the interruption exceeds the configured lookback, the run must record/report the gap; it must not claim continuous point-in-time coverage.
+
+## B5. Run provenance
+
+Each confirmatory scheduled run must expose immutable provenance sufficient to link generated market observations, T0 anchors and outcomes to the execution that created them. At minimum this includes the Git commit SHA and GitHub Actions run ID for confirmatory writes, in addition to each market row's `observed_at`, collector/library version and request parameters.
+
+Manual, push and pull-request runs remain non-confirmatory and must not write the market journal, weekly frozen snapshot or outcomes.
+
+## B6. Append-only acceptance
+
+Repository checks must reject modification, deletion or prefix rewriting of existing frozen arrays in `data/market_pit`, `data/weekly_signals.json`, `data/outcomes_v1.json`, `data/fundamentals_pit` and `data/brief_events`.
+
+New appended market rows must also pass schema/integrity validation before a scheduled commit: frozen=true, ticker in the frozen 15-series market universe, valid ISO dates/timestamps, finite positive raw close, recognized series type, collector provenance and unique `(ticker, session_date)`.
+
+GitHub branch protection/rulesets are an infrastructure control outside the repository. Before schedule activation, `main` should require the relevant integrity checks to pass before merge. The repository cannot itself prove that this external setting is enabled.
+
+## B7. Outcome maturity
+
+An M+1/M+3/M+6/M+12 outcome may use only a frozen market observation already present prospectively in the Git journal. A later vendor download may not manufacture a missing historical horizon price. The first common eligible session on or after the calendar target is used only if that session itself was prospectively admitted to the journal.
+
+Outcome writes remain gated to the official confirmatory schedule.
+
+## B8. Activation gate
+
+The confirmatory schedule may be restored only after all of the following are true:
+
+1. Python sources compile and the full integrity test suite passes.
+2. Market-journal append-only and schema validation pass.
+3. Tests cover the corporate-action and T0 cases specified above.
+4. A manual/push dry run demonstrates zero confirmatory writes.
+5. The 15-series completeness rule fails closed.
+6. Long-interruption behavior is tested and documented.
+7. Run provenance is present in confirmatory records.
+8. Branch-protection/ruleset status has been manually verified on GitHub.
+9. An independent code review finds no P0/P1 issue affecting prospective integrity.
+
+Restoring the cron is a separate, explicit change after this acceptance gate. Merging this amendment does not itself activate confirmatory collection.
