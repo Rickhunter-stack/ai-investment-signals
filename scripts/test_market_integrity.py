@@ -45,7 +45,8 @@ class MarketIntegrityV2Tests(unittest.TestCase):
   idx=pd.to_datetime(["2026-09-15","2026-09-16","2026-09-17"])
   raw=pd.DataFrame({"Close":[100,50,51],"Adj Close":[50,50,51],"Dividends":[0,0,0],"Stock Splits":[0,2,0]},index=idx)
   rows=_eligible_rows(raw,["NVDA"],"2026-09-18T22:00:00+00:00","security")
-  self.assertEqual(rows[1]["quality_flags"][0]["kind"],"split_close_ambiguous")\n  self.assertFalse(rows[0]["quality_flags"])
+  self.assertEqual(rows[1]["quality_flags"][0]["kind"],"split_close_ambiguous")
+  self.assertFalse(rows[0]["quality_flags"])
  def test_split_ambiguity_detected_when_close_and_adj_close_are_both_unadjusted(self):
   idx=pd.to_datetime(["2026-09-14","2026-09-15","2026-09-16","2026-09-17"])
   raw=pd.DataFrame({"Close":[100,100,50,51],"Adj Close":[100,100,50,51],"Dividends":[0,0,0,0],"Stock Splits":[0,0,2,0]},index=idx)
