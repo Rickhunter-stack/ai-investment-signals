@@ -12,7 +12,7 @@ class MarketIntegrityV2Tests(unittest.TestCase):
  def test_confirmatory_batch_requires_all_15_series(self):
   rows=[]
   for t in list(CONFIRMATORY_SECURITIES)+list(BENCHMARK_TICKERS):
-   rows.append({"ticker":t,"session_date":"2026-09-17","raw_close":100.0,"observed_at":"2026-09-18T22:00:00+00:00","source":"yahoo","collector":"yfinance","collector_version":"1.7.0","request":{},"series_type":"security" if t in CONFIRMATORY_SECURITIES else "benchmark","dividend":0.0,"split_ratio":0.0,"frozen":True})
+   rows.append({"ticker":t,"session_date":"2026-09-17","raw_close":100.0,"observed_at":"2026-09-18T22:00:00+00:00","source":"yahoo","collector":"yfinance","collector_version":"1.7.0","request":{},"series_type":"security" if t in CONFIRMATORY_SECURITIES else "benchmark","dividend":0.0,"split_ratio":0.0,"run_id":"123","commit_sha":"abc","frozen":True})
   self.assertTrue(_validate_confirmatory_rows(rows))
   with self.assertRaises(RuntimeError): _validate_confirmatory_rows(rows[:-1])
  def test_confirmatory_batch_rejects_nonfinite_actions(self):
