@@ -2,7 +2,8 @@
 """Deterministic prospective outcomes from the immutable Git market journal."""
 from __future__ import annotations
 import calendar, hashlib, json, os
-from datetime import datetime,date,timezone\nfrom zoneinfo import ZoneInfo
+from datetime import datetime,date,timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; MARKET=ROOT/"data/market_pit"
 WEEKLY=ROOT/"data/weekly_signals.json"; OUT=ROOT/"data/outcomes_v1.json"; PROTOCOL=ROOT/"PREREGISTRATION.md"
@@ -36,7 +37,16 @@ def common_row(market,ticker,bench,on_or_after,observed_after=None,observed_befo
  common=sorted(set(a)&set(b))
  return None if not common else (common[0],a[common[0]],b[common[0]])
 
-def t0_row(market,ticker,bench,captured):\n ny=captured.astimezone(ZoneInfo("America/New_York"))\n # A session already frozen by snapshot time is admissible; otherwise a post-close\n # snapshot must wait for a strictly later session. Early-close handling is a v1.2 item.\n prior=common_row(market,ticker,bench,ny.date(),observed_before=captured)\n if prior: return prior\n start=date.fromordinal(ny.date().toordinal()+1) if ny.hour>=16 else ny.date()\n return common_row(market,ticker,bench,start,observed_after=captured)\n\ndef total_return(rows,t0,h):
+def t0_row(market,ticker,bench,captured):
+ ny=captured.astimezone(ZoneInfo("America/New_York"))
+ # A session already frozen by snapshot time is admissible; otherwise a post-close
+ # snapshot must wait for a strictly later session. Early-close handling is a v1.2 item.
+ prior=common_row(market,ticker,bench,ny.date(),observed_before=captured)
+ if prior: return prior
+ start=date.fromordinal(ny.date().toordinal()+1) if ny.hour>=16 else ny.date()
+ return common_row(market,ticker,bench,start,observed_after=captured)
+
+def total_return(rows,t0,h):
  base=next(r for r in rows if r["session_date"]==t0.isoformat()); parts=1.0
  for r in rows:
   d=date.fromisoformat(r["session_date"])
@@ -60,7 +70,9 @@ def build_rows(snapshots,market,now,existing=None):
   for ticker,score in snap.get("scores",{}).items():
    if ticker not in UNIVERSE: continue
    bench=UNIVERSE[ticker]; base=f'{snap["date"]}:{ticker}:{snap["method_version"]}'; oid=f"{base}:T0"; anchor=anchors.get(oid)
-   if anchor:\n    if not anchor.get("eligible_confirmatory",False): continue\n    t0d=date.fromisoformat(anchor["t0_date"])
+   if anchor:
+    if not anchor.get("eligible_confirmatory",False): continue
+    t0d=date.fromisoformat(anchor["t0_date"])
    else:
     hit=t0_row(market,ticker,bench,captured)
     if not hit: continue
@@ -86,8 +98,11 @@ def build_rows(snapshots,market,now,existing=None):
  return rows
 
 def main():
+ if os.getenv("CONFIRMATORY_WRITE")!="1":
+  print("outcomes: dry-run; confirmatory writes disabled"); return
  snaps=json.loads(WEEKLY.read_text()); market=load_market(); existing=json.loads(OUT.read_text()) if OUT.exists() else []
  updated=append_unique(existing,build_rows(snaps,market,datetime.now(timezone.utc),existing))
- OUT.write_text(json.dumps(updated,indent=2,ensure_ascii=False,allow_nan=False)+"\n")
+ OUT.write_text(json.dumps(updated,indent=2,ensure_ascii=False,allow_nan=False)+"
+")
  print(f"outcomes: appended {len(updated)-len(existing)} immutable row(s)")
 if __name__=="__main__": main()
