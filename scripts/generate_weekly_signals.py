@@ -124,12 +124,13 @@ def generate(root=ROOT, now=None):
         missing_market = sorted(market_universe - set(latest))
         if missing_market:
             raise ValueError(f'Missing market boundary series: {missing_market}')
-        # All confirmatory securities share one conservative vendor frontier.
-        # Divergence by more than one returned market session fails closed.
-        unique_dates = sorted(set(latest[t] for t in market_universe))
-        if len(unique_dates) > 2:
-            raise ValueError(f'Confirmatory market boundaries diverge by more than one session: {unique_dates}')
-        global_boundary = max(unique_dates)
+        # market.py computes this span on the union of sessions returned in the
+        # same vendor response, so weekends/holidays do not masquerade as drift.
+        if boundary.get('alignment_span_sessions') not in (0, 1):
+            raise ValueError('Confirmatory market boundaries are not aligned within one session')
+        global_boundary = boundary.get('global_boundary')
+        if global_boundary != max(latest[t] for t in market_universe):
+            raise ValueError('Invalid global market boundary')
         for ticker in BENCHMARK:
             t0_after_session[ticker] = global_boundary
     snapshot = {'date': today.isoformat(), 'frozen': True, 'method_version': METHOD,
