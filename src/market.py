@@ -1,104 +1,109 @@
-from datetime import datetime, timezone, time
-from zoneinfo import ZoneInfo
+from datetime import datetime, timezone
 from pathlib import Path
+import json, os
 import pandas as pd
 import yfinance as yf
 from .db import connect
 
-UNIVERSE = Path('data/universe_seed.csv')
-BENCHMARK_TICKERS = ('SPY', 'QQQ')
-SOURCE = 'yfinance'
-
+ROOT=Path(__file__).resolve().parents[1]
+UNIVERSE=ROOT/"data/universe_seed.csv"; JOURNAL=ROOT/"data/market_pit"
+CONFIRMATORY_SECURITIES=("NVDA","AVGO","QCOM","MU","GOOGL","AMZN","ADI","MDT","ISRG","GH")
+BENCHMARK_TICKERS=("SPY","QQQ","SMH","IHI","XBI"); SOURCE="yahoo"
+REQUEST={"period":"1mo","interval":"1d","auto_adjust":False,"repair":True,"actions":True}
 
 def seed_companies(conn):
-    df = pd.read_csv(UNIVERSE)
-    conn.executemany(
-        '''INSERT INTO companies(ticker, company, theme, role, subtheme, priority)
-           VALUES(?,?,?,?,?,?)
-           ON CONFLICT(ticker) DO UPDATE SET
-             company=excluded.company,
-             theme=excluded.theme,
-             role=excluded.role,
-             subtheme=excluded.subtheme,
-             priority=excluded.priority''',
-        df[['ticker','company','theme','role','subtheme','priority']].itertuples(index=False, name=None)
-    )
-    conn.commit()
-    return df
+ df=pd.read_csv(UNIVERSE)
+ conn.executemany("""INSERT INTO companies(ticker,company,theme,role,subtheme,priority) VALUES(?,?,?,?,?,?)
+ ON CONFLICT(ticker) DO UPDATE SET company=excluded.company,theme=excluded.theme,role=excluded.role,
+ subtheme=excluded.subtheme,priority=excluded.priority""",df[["ticker","company","theme","role","subtheme","priority"]].itertuples(index=False,name=None))
+ conn.commit(); return df
 
+def _frames(raw,tickers):
+ if isinstance(raw.columns,pd.MultiIndex):
+  level0=set(raw.columns.get_level_values(0))
+  if set(tickers)&level0: return {t:raw[t] for t in tickers if t in level0}
+  level1=set(raw.columns.get_level_values(1))
+  if set(tickers)&level1: return {t:raw.xs(t,axis=1,level=1) for t in tickers if t in level1}
+ return {tickers[0]:raw} if len(tickers)==1 else {}
 
-def _last_complete_session_date(now_utc):
-    """Conservative US-equity daily-bar cutoff: today is eligible only after 16:15 ET."""
-    ny = now_utc.astimezone(ZoneInfo('America/New_York'))
-    if ny.time() >= time(16, 15):
-        return ny.date()
-    return date_from_ordinal(ny.date().toordinal() - 1)
+def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
+ rows=[]; request=dict(request or REQUEST)
+ for ticker,frame in _frames(raw,tickers).items():
+  frame=frame.dropna(how="all").sort_index()
+  dates=[idx.date() for idx in frame.index]
+  duplicate_dates={d for d in dates if dates.count(d)>1}
+  max_date=max(dates) if dates else None
+  # Yahoo Close is split-adjusted historically. Undo splits that occur AFTER each
+  # session inside the same response, while retaining the vendor value for audit.
+  splits=[]
+  for idx,r in frame.iterrows():
+   s=r.get("Stock Splits",0.0)
+   if pd.notna(s) and float(s)>0: splits.append((idx.date(),float(s)))
+  for idx,r in frame.iterrows():
+   d=idx.date()
+   if d in duplicate_dates or max_date is None or not (max_date>d): continue
+   close=r.get("Close")
+   if pd.isna(close) or float(close)<=0: continue
+   factor=1.0
+   for sd,s in splits:
+    if sd>d: factor*=s
+   vendor_close=float(close); raw_close=vendor_close*factor
+   adj=r.get("Adj Close")
+   vendor_div=r.get("Dividends",0.0)
+   split=r.get("Stock Splits",0.0)
+   vendor_div=0.0 if pd.isna(vendor_div) else float(vendor_div)
+   div=vendor_div*factor
+   repaired=r.get("Repaired?",False)
+   rows.append({"ticker":ticker,"session_date":d.isoformat(),"raw_close":raw_close,
+    "vendor_close":vendor_close,"vendor_split_factor":factor,
+    "vendor_adjusted_close":None if adj is None or pd.isna(adj) else float(adj),
+    "dividend":div,"vendor_dividend":vendor_div,"split_ratio":0.0 if pd.isna(split) else float(split),
+    "repaired":False if pd.isna(repaired) else bool(repaired),"observed_at":observed_at,
+    "source":SOURCE,"collector":"yfinance","collector_version":yf.__version__,
+    "request":request,"series_type":series_type,"frozen":True})
+ return rows
 
+def _load_journal():
+ out={}
+ if JOURNAL.exists():
+  for p in sorted(JOURNAL.glob("*.json")):
+   data=json.loads(p.read_text())
+   if not isinstance(data,list): raise ValueError(f"{p}: market journal must be an array")
+   for r in data:
+    key=(r["ticker"],r["session_date"])
+    if key in out: raise ValueError(f"duplicate market observation: {key}")
+    out[key]=r
+ return out
 
-def date_from_ordinal(value):
-    from datetime import date
-    return date.fromordinal(value)
+def _append_journal(rows):
+ JOURNAL.mkdir(parents=True,exist_ok=True); existing=_load_journal(); fresh=[]
+ for r in sorted(rows,key=lambda x:(x["session_date"],x["ticker"])):
+  key=(r["ticker"],r["session_date"])
+  if key not in existing: existing[key]=r; fresh.append(r)
+ by_month={}
+ for r in fresh: by_month.setdefault(r["session_date"][:7],[]).append(r)
+ for month,items in by_month.items():
+  path=JOURNAL/f"{month}.json"; old=json.loads(path.read_text()) if path.exists() else []
+  tmp=path.with_suffix(".json.tmp")
+  tmp.write_text(json.dumps(old+items,indent=2,ensure_ascii=False,allow_nan=False)+"\n"); os.replace(tmp,path)
+ return fresh
 
+def confirmatory_writes_enabled(): return os.getenv("CONFIRMATORY_WRITE")=="1"
 
-def _rows(raw, tickers, observed_at, series_type, max_session_date=None):
-    rows = []
-    if len(tickers) == 1:
-        frames = {tickers[0]: raw}
-    else:
-        available = set(raw.columns.get_level_values(0)) if isinstance(raw.columns, pd.MultiIndex) else set()
-        frames = {ticker: raw[ticker] for ticker in tickers if ticker in available}
-    for ticker, frame in frames.items():
-        frame = frame.dropna(how='all')
-        for idx, r in frame.iterrows():
-            if max_session_date is not None and idx.date() > max_session_date:
-                continue
-            close, volume = r.get('Close'), r.get('Volume')
-            if pd.isna(close):
-                continue
-            rows.append((ticker, idx.date().isoformat(), float(close),
-                         float(volume) if pd.notna(volume) else None,
-                         observed_at, SOURCE, series_type))
-    return rows
-
-
-def update_market(period='5d'):
-    conn = connect()
-    df = seed_companies(conn)
-    tickers = df['ticker'].tolist()
-    now_utc = datetime.now(timezone.utc)
-    observed_at = now_utc.isoformat()
-    max_session_date = _last_complete_session_date(now_utc)
-
-    # One convention for every performance series: adjusted close. This avoids
-    # comparing raw security prices with an adjusted benchmark series.
-    raw = yf.download(tickers=tickers, period=period, interval='1d', group_by='ticker',
-                      auto_adjust=True, repair=True, progress=False, threads=True)
-    security_rows = _rows(raw, tickers, observed_at, 'security', max_session_date)
-
-    bench_raw = yf.download(tickers=list(BENCHMARK_TICKERS), period=period, interval='1d',
-                            group_by='ticker', auto_adjust=True, repair=True,
-                            progress=False, threads=True)
-    benchmark_rows = _rows(bench_raw, list(BENCHMARK_TICKERS), observed_at, 'benchmark', max_session_date)
-    pit_rows = security_rows + benchmark_rows
-
-    # Immutable prospective ledger: provider revisions on later runs cannot
-    # rewrite an observation that was already stored for ticker/date.
-    conn.executemany(
-        '''INSERT OR IGNORE INTO market_pit
-           (ticker,date,adjusted_close,volume,observed_at,source,series_type)
-           VALUES(?,?,?,?,?,?,?)''', pit_rows
-    )
-
-    # Legacy table remains for the existing dashboard during migration. It now
-    # uses the same adjusted-close convention, but is NOT the experimental source
-    # of truth. New outcome code must read market_pit.
-    legacy_rows = [(t,d,c,v,None) for t,d,c,v,_,_,_ in pit_rows]
-    conn.executemany(
-        '''INSERT INTO market(ticker,date,close,volume,market_cap)
-           VALUES(?,?,?,?,?)
-           ON CONFLICT(ticker,date) DO UPDATE SET close=excluded.close, volume=excluded.volume''',
-        legacy_rows
-    )
-    conn.commit()
-    conn.close()
-    return len(pit_rows)
+def update_market(period="1mo"):
+ conn=connect(); seed_companies(conn); securities=list(CONFIRMATORY_SECURITIES)
+ observed_at=datetime.now(timezone.utc).isoformat(); kwargs=dict(REQUEST); kwargs["period"]=period
+ raw=yf.download(tickers=securities,group_by="ticker",progress=False,threads=True,**kwargs)
+ bench=yf.download(tickers=list(BENCHMARK_TICKERS),group_by="ticker",progress=False,threads=True,**kwargs)
+ rows=_eligible_rows(raw,securities,observed_at,"security",kwargs)+_eligible_rows(bench,list(BENCHMARK_TICKERS),observed_at,"benchmark",kwargs)
+ expected=set(securities)|set(BENCHMARK_TICKERS); present={r["ticker"] for r in rows}; missing=sorted(expected-present)
+ if not rows or missing:
+  conn.close(); raise RuntimeError(f"market collection incomplete; refusing confirmatory write; missing={missing}")
+ fresh=_append_journal(rows) if confirmatory_writes_enabled() else []
+ cache=[(r["ticker"],r["session_date"],r["raw_close"],None,r["observed_at"],r["source"],r["series_type"]) for r in fresh]
+ conn.executemany("""INSERT OR IGNORE INTO market_pit (ticker,date,adjusted_close,volume,observed_at,source,series_type)
+ VALUES(?,?,?,?,?,?,?)""",cache)
+ legacy=[(r["ticker"],r["session_date"],r["raw_close"],None,None) for r in rows]
+ conn.executemany("""INSERT INTO market(ticker,date,close,volume,market_cap) VALUES(?,?,?,?,?)
+ ON CONFLICT(ticker,date) DO UPDATE SET close=excluded.close,volume=excluded.volume""",legacy)
+ conn.commit(); conn.close(); return len(fresh)
