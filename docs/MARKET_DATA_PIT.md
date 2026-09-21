@@ -1,33 +1,27 @@
-# Point-in-time market data convention
+# Market Integrity v2
 
-## Purpose
+## Confirmatory source of truth
 
-Future M+1 / M+3 / M+6 / M+12 evaluation needs prices that are comparable and cannot silently change after T0.
+The authoritative prospective market ledger is the Git-tracked journal in `data/market_pit/YYYY-MM.json`. SQLite tables `market_pit` and `market` are operational caches only. Confirmatory outcomes must read the JSON journal.
 
-## Experimental source of truth
+## Collection rule
 
-`market_pit` is the prospective market ledger. The legacy `market` table remains temporarily for dashboard compatibility and must not be used for future outcome calculations.
+The collector requests one month of daily data with `auto_adjust=False`, actions enabled, and stores raw close as the experimental price. Yahoo adjusted close is retained only as a control field. Each frozen row records ticker, session date, raw close, vendor adjusted close, dividend, split ratio, UTC observation time, vendor, collector, material request parameters, series type and `frozen=true`.
 
-## Price convention
-
-Securities and benchmarks are collected with the same `yfinance` convention: `auto_adjust=True` with repair enabled. The stored field is named `adjusted_close`.
-
-This removes the previous inconsistency where securities used raw Close while URTH used an adjusted series.
+A returned daily bar is eligible only if the same response contains a later daily bar. The last bar in a response is never frozen. Collection covers the ten preregistered securities plus QQQ, SPY, SMH, IHI and XBI. Empty or incomplete collection fails loudly before a confirmatory journal write.
 
 ## Immutability
 
-`market_pit` uses `(ticker, date)` as its primary key and collection uses `INSERT OR IGNORE`. Once the first observation for a ticker/date is stored, a later provider revision cannot overwrite it.
+First observation wins for each `(ticker, session_date)`. Existing monthly-array prefixes are never rewritten. The Git append-only guard covers `data/market_pit/*.json`, weekly signals, outcomes, brief events and fundamental PIT journals.
 
-Each row records `observed_at`, `source`, and whether it is a `security` or `benchmark`.
+## Outcomes
 
-## Benchmarks
+`scripts/compute_outcomes.py` reads only the Git JSON market ledger. Returns use frozen raw closes and reconstruct total return from prospectively observed dividends and splits. It never reads SQLite for confirmatory prices.
 
-SPY and QQQ are collected prospectively. The deterministic rule assigning a benchmark to each security will be frozen later in `PREREGISTRATION.md`; this PR intentionally does not choose the better-looking benchmark after outcomes are known.
+## Research provenance
 
-## Important limitation
+Each frozen weekly snapshot embeds the qualitative research inputs used for each ticker and stores SHA-256 hashes of the complete fundamentals and signal-research inputs. Because `weekly_signals.json` is append-only protected, the exact research evidence used by every confirmatory snapshot remains auditable even when the live `signal_research.json` later evolves.
 
-Adjusted-close histories supplied by a data vendor can themselves embed later corporate-action knowledge. Freezing the first value observed prevents subsequent rewrites in our database, but this is not a perfect institutional-grade point-in-time market-data feed. The limitation must remain documented when interpreting results.
+## Activation
 
-## T0 convention still to preregister
-
-This change does not yet decide whether an event published intraday is evaluated from publication-time price, next open, same close, or next close. That rule must be specified prospectively before outcome measurement begins.
+The production schedule remains paused. Restore it only after preregistration v1.2 and Market Integrity v2 are independently reviewed, tests pass, dry-run/manual runs demonstrate no confirmatory writes, and the acceptance criteria in the pause PR are satisfied.
