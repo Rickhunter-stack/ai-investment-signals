@@ -3,7 +3,7 @@ from unittest.mock import patch
 from datetime import datetime, timezone
 from pathlib import Path
 import pandas as pd
-from src.market import _eligible_rows, _latest_per_ticker, _validate_confirmatory_rows, confirmatory_writes_enabled, CONFIRMATORY_SECURITIES, BENCHMARK_TICKERS
+from src.market import _eligible_rows, _latest_per_ticker, _boundary_alignment, _validate_confirmatory_rows, confirmatory_writes_enabled, CONFIRMATORY_SECURITIES, BENCHMARK_TICKERS
 
 class MarketIntegrityV2Tests(unittest.TestCase):
  def test_manual_or_push_run_is_dry_for_confirmatory_ledger(self):
@@ -29,6 +29,19 @@ class MarketIntegrityV2Tests(unittest.TestCase):
    {"ticker":"QQQ","session_date":"2026-09-17"}]
   got=_latest_per_ticker(rows)
   self.assertEqual({(r["ticker"],r["session_date"]) for r in got},{("NVDA","2026-09-17"),("QQQ","2026-09-17")})
+ def test_boundary_alignment_rejects_more_than_one_session(self):
+  idx=pd.to_datetime(["2026-09-15","2026-09-16","2026-09-17","2026-09-18"])
+  a=pd.DataFrame({"Close":[100,101,102,103]},index=idx)
+  b=pd.DataFrame({"Close":[100,101,None,None]},index=idx)
+  raw=pd.concat({"NVDA":a,"QQQ":b},axis=1)
+  with self.assertRaises(RuntimeError):
+   _boundary_alignment(((raw,["NVDA","QQQ"]),))
+ def test_implausible_vendor_close_jump_fails_closed(self):
+  idx=pd.to_datetime(["2026-09-15","2026-09-16","2026-09-17"])
+  raw=pd.DataFrame({"Close":[100,250,251],"Dividends":[0,0,0],"Stock Splits":[0,0,0]},index=idx)
+  with self.assertRaises(ValueError):
+   _eligible_rows(raw,["NVDA"],"2026-09-18T22:00:00+00:00","security")
+
  def test_last_vendor_bar_is_never_frozen(self):
   idx=pd.to_datetime(["2026-09-17","2026-09-18"])
   raw=pd.DataFrame({"Close":[100.0,101.0],"Adj Close":[99.0,100.0],"Dividends":[0.0,0.0],"Stock Splits":[0.0,0.0]},index=idx)
