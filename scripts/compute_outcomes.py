@@ -2,7 +2,7 @@
 """Deterministic prospective outcomes from the immutable Git market journal."""
 from __future__ import annotations
 import calendar, hashlib, json, os
-from datetime import datetime,date,timezone
+from datetime import datetime,date,timezone\nfrom zoneinfo import ZoneInfo
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; MARKET=ROOT/"data/market_pit"
 WEEKLY=ROOT/"data/weekly_signals.json"; OUT=ROOT/"data/outcomes_v1.json"; PROTOCOL=ROOT/"PREREGISTRATION.md"
@@ -28,15 +28,15 @@ def load_market(path=MARKET):
  for rows in out.values(): rows.sort(key=lambda r:r["session_date"])
  return out
 
-def common_row(market,ticker,bench,on_or_after,observed_after=None):
+def common_row(market,ticker,bench,on_or_after,observed_after=None,observed_before=None):
  def eligible(r):
-  return date.fromisoformat(r["session_date"])>=on_or_after and (observed_after is None or datetime.fromisoformat(r["observed_at"])>=observed_after)
+  return date.fromisoformat(r["session_date"])>=on_or_after and (observed_after is None or datetime.fromisoformat(r["observed_at"])>=observed_after) and (observed_before is None or datetime.fromisoformat(r["observed_at"])<=observed_before)
  a={date.fromisoformat(r["session_date"]):r for r in market.get(ticker,[]) if eligible(r)}
  b={date.fromisoformat(r["session_date"]):r for r in market.get(bench,[]) if eligible(r)}
  common=sorted(set(a)&set(b))
  return None if not common else (common[0],a[common[0]],b[common[0]])
 
-def total_return(rows,t0,h):
+def t0_row(market,ticker,bench,captured):\n ny=captured.astimezone(ZoneInfo("America/New_York"))\n # A session already frozen by snapshot time is admissible; otherwise a post-close\n # snapshot must wait for a strictly later session. Early-close handling is a v1.2 item.\n prior=common_row(market,ticker,bench,ny.date(),observed_before=captured)\n if prior: return prior\n start=date.fromordinal(ny.date().toordinal()+1) if ny.hour>=16 else ny.date()\n return common_row(market,ticker,bench,start,observed_after=captured)\n\ndef total_return(rows,t0,h):
  base=next(r for r in rows if r["session_date"]==t0.isoformat()); parts=1.0
  for r in rows:
   d=date.fromisoformat(r["session_date"])
@@ -60,14 +60,14 @@ def build_rows(snapshots,market,now,existing=None):
   for ticker,score in snap.get("scores",{}).items():
    if ticker not in UNIVERSE: continue
    bench=UNIVERSE[ticker]; base=f'{snap["date"]}:{ticker}:{snap["method_version"]}'; oid=f"{base}:T0"; anchor=anchors.get(oid)
-   if anchor: t0d=date.fromisoformat(anchor["t0_date"])
+   if anchor:\n    if not anchor.get("eligible_confirmatory",False): continue\n    t0d=date.fromisoformat(anchor["t0_date"])
    else:
-    hit=common_row(market,ticker,bench,captured.date(),captured)
+    hit=t0_row(market,ticker,bench,captured)
     if not hit: continue
     t0d,s,b=hit
     anchor={"schema_version":SCHEMA,"outcome_id":oid,"snapshot_date":snap["date"],"ticker":ticker,"benchmark":bench,
       "method_version":snap["method_version"],"signal_score":score.get("signal_score"),"t0_date":t0d.isoformat(),
-      "security_t0":s["raw_close"],"benchmark_t0":b["raw_close"],"eligible_confirmatory":True,
+      "security_t0":s["raw_close"],"benchmark_t0":b["raw_close"],"security_observed_at":s["observed_at"],"benchmark_observed_at":b["observed_at"],"eligible_confirmatory":True,
       "eligibility_decided_at":now.isoformat(),"protocol_sha256":phash,"run_id":run,"commit_sha":sha,"status":"anchored","frozen":True}
     rows.append(anchor)
    for label,months in HORIZONS.items():
@@ -81,7 +81,7 @@ def build_rows(snapshots,market,now,existing=None):
       "benchmark":bench,"method_version":snap["method_version"],"signal_score":score.get("signal_score"),"horizon":label,
       "target_date":target.isoformat(),"measurement_date":hd.isoformat(),"t0_date":t0d.isoformat(),
       "security_return":round(sr,10),"benchmark_return":round(br,10),"excess_return":round(sr-br,10),
-      "eligible_confirmatory":True,"protocol_sha256":anchor.get("protocol_sha256",phash),"run_id":run,"commit_sha":sha,
+      "eligible_confirmatory":True,"protocol_sha256":anchor.get("protocol_sha256",phash),"t0_security_observed_at":anchor.get("security_observed_at"),"t0_benchmark_observed_at":anchor.get("benchmark_observed_at"),"measurement_security_observed_at":hit[1]["observed_at"],"measurement_benchmark_observed_at":hit[2]["observed_at"],"run_id":run,"commit_sha":sha,
       "status":"measured","frozen":True})
  return rows
 
