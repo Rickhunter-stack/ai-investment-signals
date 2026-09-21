@@ -37,17 +37,11 @@ def common_row(market,ticker,bench,on_or_after,observed_after=None,observed_befo
  common=sorted(set(a)&set(b))
  return None if not common else (common[0],a[common[0]],b[common[0]])
 
-def t0_row(market,ticker,bench,captured):
- # Journal admission time is authoritative. If a common eligible session was
- # already frozen before the snapshot, use the latest such session on/before
- # the snapshot date. Otherwise wait for the first common row observed later.
- def admitted(rows):
-  return {date.fromisoformat(r["session_date"]):r for r in rows if datetime.fromisoformat(r["observed_at"])<=captured}
- a=admitted(market.get(ticker,[])); b=admitted(market.get(bench,[]))
- prior=sorted(d for d in set(a)&set(b) if d<=captured.date())
- if prior:
-  d=prior[-1]; return d,a[d],b[d]
- return common_row(market,ticker,bench,captured.date(),observed_after=captured)
+def t0_row(market,ticker,bench,captured,after_session):
+ # T0 is the first common prospectively admitted session strictly after the
+ # vendor boundary frozen into the weekly snapshot. No pre-snapshot fallback.
+ boundary=date.fromisoformat(after_session)
+ return common_row(market,ticker,bench,date.fromordinal(boundary.toordinal()+1),observed_after=captured)
 
 def total_return(rows,t0,h):
  base=next(r for r in rows if r["session_date"]==t0.isoformat()); parts=1.0
@@ -77,7 +71,9 @@ def build_rows(snapshots,market,now,existing=None):
     if not anchor.get("eligible_confirmatory",False): continue
     t0d=date.fromisoformat(anchor["t0_date"])
    else:
-    hit=t0_row(market,ticker,bench,captured)
+    boundary=snap.get("t0_after_session",{}).get(ticker)
+    if not boundary: continue
+    hit=t0_row(market,ticker,bench,captured,boundary)
     if not hit: continue
     t0d,s,b=hit
     anchor={"schema_version":SCHEMA,"outcome_id":oid,"snapshot_date":snap["date"],"ticker":ticker,"benchmark":bench,
