@@ -28,6 +28,16 @@ class OutcomeTests(unittest.TestCase):
   m={"NVDA":[row("NVDA","2026-09-21",100,"2026-09-22T21:00:00+00:00"),row("NVDA","2026-09-22",101,"2026-09-23T21:00:00+00:00")],
      "QQQ":[row("QQQ","2026-09-21",500,"2026-09-22T21:00:00+00:00"),row("QQQ","2026-09-22",501,"2026-09-23T21:00:00+00:00")]}
   self.assertEqual(o.t0_row(m,"NVDA","QQQ",captured)[0],date(2026,9,22))
+ def test_t0_uses_latest_common_row_already_admitted(self):
+  captured=datetime(2026,11,27,18,30,tzinfo=timezone.utc)
+  m={"NVDA":[row("NVDA","2026-11-25",100,"2026-11-27T17:00:00+00:00")],
+     "QQQ":[row("QQQ","2026-11-25",500,"2026-11-27T17:00:00+00:00")]}
+  self.assertEqual(o.t0_row(m,"NVDA","QQQ",captured)[0],date(2026,11,25))
+ def test_t0_waits_when_no_common_row_was_admitted(self):
+  captured=datetime(2026,11,27,18,30,tzinfo=timezone.utc)
+  m={"NVDA":[row("NVDA","2026-11-27",100,"2026-11-28T17:00:00+00:00")],
+     "QQQ":[row("QQQ","2026-11-27",500,"2026-11-28T17:00:00+00:00")]}
+  self.assertEqual(o.t0_row(m,"NVDA","QQQ",captured)[0],date(2026,11,27))
  def test_append_never_rewrites(self):
   old=[{"outcome_id":"A","excess_return":.1}]; new=[{"outcome_id":"A","excess_return":9.9},{"outcome_id":"B"}]
   got=o.append_unique(old,new); self.assertEqual(got[0]["excess_return"],.1); self.assertEqual(len(got),2)
