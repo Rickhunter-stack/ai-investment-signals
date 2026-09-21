@@ -12,6 +12,7 @@ COMPONENTS = ('fundamental_strength', 'novelty', 'pricing_headroom',
               'valuation', 'execution_risk')
 METHOD = 'weekly-v1.0'
 BENCHMARK = {'NVDA':'QQQ','AVGO':'QQQ','QCOM':'QQQ','MU':'QQQ','GOOGL':'QQQ','AMZN':'QQQ','ADI':'QQQ','MDT':'SPY','ISRG':'SPY','GH':'SPY'}
+MARKET_SERIES = set(BENCHMARK) | {'QQQ','SPY','SMH','IHI','XBI'}
 
 
 def number(value):
@@ -112,7 +113,8 @@ def generate(root=ROOT, now=None):
                     key=lambda t: (-scores[t]['signal_score'], t))
     t0_after_session = {}
     boundary_path = root / 'data/market_boundary_runtime.json'
-    if os.getenv('REQUIRE_MARKET_BOUNDARY') == '1':
+    require_boundary = root.resolve() == ROOT.resolve() or os.getenv('REQUIRE_MARKET_BOUNDARY') == '1'
+    if require_boundary:
         if not boundary_path.exists():
             raise ValueError('Confirmatory snapshot requires current market boundary')
         boundary = json.loads(boundary_path.read_text())
@@ -120,7 +122,7 @@ def generate(root=ROOT, now=None):
         if observed > now or (now-observed).total_seconds() > 3600:
             raise ValueError('Market boundary must come from the current scheduled run')
         latest = boundary['latest_returned_session']
-        market_universe = set(BENCHMARK) | set(BENCHMARK.values())
+        market_universe = MARKET_SERIES
         missing_market = sorted(market_universe - set(latest))
         if missing_market:
             raise ValueError(f'Missing market boundary series: {missing_market}')
