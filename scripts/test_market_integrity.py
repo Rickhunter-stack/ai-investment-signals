@@ -52,9 +52,10 @@ class MarketIntegrityV2Tests(unittest.TestCase):
   raw=pd.DataFrame({"Close":[100,100,50,51],"Adj Close":[100,100,50,51],"Dividends":[0,0,0,0],"Stock Splits":[0,0,2,0]},index=idx)
   rows=_eligible_rows(raw,["NVDA"],"2026-09-18T22:00:00+00:00","security")
   flagged=[r for r in rows if r["quality_flags"]]
-  self.assertEqual(len(flagged),1)
-  self.assertEqual(flagged[0]["session_date"],"2026-09-16")
+  self.assertEqual(len(flagged),2)
+  self.assertEqual([r["session_date"] for r in flagged],["2026-09-15","2026-09-16"])
   self.assertEqual(flagged[0]["quality_flags"][0]["affected_from"],"2026-09-15")
+  self.assertEqual(flagged[1]["quality_flags"][0]["affected_through"],"2026-09-16")
  def test_large_real_move_with_no_split_has_no_quality_flag(self):
   idx=pd.to_datetime(["2026-09-14","2026-09-15","2026-09-16"])
   raw=pd.DataFrame({"Close":[100,15,16],"Adj Close":[100,15,16],"Dividends":[0,0,0],"Stock Splits":[0,0,0]},index=idx)
