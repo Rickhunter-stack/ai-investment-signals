@@ -2,6 +2,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 import json, math, os
 import pandas as pd
+import exchange_calendars as xcals
 import yfinance as yf
 from .db import connect
 
@@ -41,17 +42,24 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
   for idx,r in frame.iterrows():
    s=r.get("Stock Splits",0.0)
    if pd.notna(s) and float(s)>0: splits.append((idx.date(),float(s)))
-  # Yahoo Close is expected to be split-adjusted. A very large adjacent Close
-  # discontinuity is therefore inconsistent with that convention, whether or
-  # not a split flag is present, and must be reviewed rather than frozen.
-  valid_close=[]
+  # Only split-labelled sessions are checked. Large genuine market moves
+  # without a split are never censored. If Close shows the split ratio while
+  # Adj Close remains continuous, the vendor Close convention is ambiguous.
+  split_anomalies=[]
+  valid=[]
   for idx,r in frame.iterrows():
-   v=r.get("Close")
-   if pd.notna(v) and math.isfinite(float(v)) and float(v)>0: valid_close.append((idx.date(),float(v),float(r.get("Stock Splits",0.0) or 0.0)))
-  for (d0,p0,_),(d1,p1,s1) in zip(valid_close,valid_close[1:]):
-   move=abs(p1/p0-1.0)
-   if move>0.80:
-    raise ValueError(f"vendor close continuity anomaly for {ticker}: {d0}->{d1} move={move:.3f} split={s1}")
+   close=r.get("Close"); adj=r.get("Adj Close"); split=r.get("Stock Splits",0.0)
+   if pd.notna(close) and math.isfinite(float(close)) and float(close)>0:
+    valid.append((idx.date(),float(close),None if adj is None or pd.isna(adj) else float(adj),
+                  0.0 if pd.isna(split) else float(split)))
+  for (d0,p0,a0,_),(d1,p1,a1,s1) in zip(valid,valid[1:]):
+   if s1>0 and a0 not in (None,0) and a1 not in (None,0):
+    close_ratio=p0/p1; adj_ratio=a0/a1
+    close_matches=abs(close_ratio/s1-1.0)<=0.15
+    adj_continuous=abs(adj_ratio-1.0)<=0.15
+    if close_matches and adj_continuous:
+     split_anomalies.append({"session_date":d1.isoformat(),"kind":"split_close_not_adjusted",
+                             "split_ratio":s1,"close_ratio":close_ratio,"adj_ratio":adj_ratio})
   for idx,r in frame.iterrows():
    d=idx.date()
    if max_date is None or not (max_date>d): continue
@@ -73,7 +81,7 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
     "dividend":div,"vendor_dividend":vendor_div,"split_ratio":float("nan") if pd.isna(split) else float(split),
     "repaired":False if pd.isna(repaired) else bool(repaired),"observed_at":observed_at,
     "source":SOURCE,"collector":"yfinance","collector_version":yf.__version__,
-    "request":request,"series_type":series_type,"run_id":os.getenv("EXPERIMENT_RUN_ID"),"commit_sha":os.getenv("EXPERIMENT_COMMIT_SHA"),"frozen":True})
+    "request":request,"series_type":series_type,"run_id":os.getenv("EXPERIMENT_RUN_ID"),"commit_sha":os.getenv("EXPERIMENT_COMMIT_SHA"),"quality_flags":list(split_anomalies),"frozen":True})
  return rows
 
 def _latest_per_ticker(rows):
@@ -121,6 +129,23 @@ def _boundary_alignment(raw_groups):
   if span>1: raise RuntimeError(f"confirmatory vendor frontiers diverge by {span} sessions")
  else: span=0
  return {t:d.isoformat() for t,d in latest.items()},span
+
+def _expected_xnys_frontier(observed_at):
+ observed=pd.Timestamp(observed_at)
+ if observed.tzinfo is None: observed=observed.tz_localize("UTC")
+ else: observed=observed.tz_convert("UTC")
+ cal=xcals.get_calendar("XNYS")
+ sessions=cal.sessions_in_range((observed-pd.Timedelta(days=14)).date(),observed.date())
+ opened=[s for s in sessions if cal.session_open(s)<=observed]
+ if not opened: raise RuntimeError("cannot resolve XNYS frontier")
+ return opened[-1].date().isoformat()
+
+def _validate_calendar_frontier(boundary,observed_at):
+ expected=_expected_xnys_frontier(observed_at)
+ latest=max(boundary.values())
+ if latest!=expected:
+  raise RuntimeError(f"stale vendor frontier: latest={latest} expected_xnys={expected}")
+ return expected
 
 def _load_journal():
  out={}
@@ -197,7 +222,7 @@ def update_market(period="1mo"):
   expected=set(securities)|set(BENCHMARK_TICKERS)
   if set(boundary)!=expected:
    conn.close(); raise RuntimeError(f"market boundary incomplete: {sorted(expected-set(boundary))}")
-  global_boundary=max(boundary.values())
+  global_boundary=_validate_calendar_frontier(boundary,observed_at)
   (ROOT/"data/market_boundary_runtime.json").write_text(json.dumps({"observed_at":observed_at,"latest_returned_session":boundary,"global_boundary":global_boundary,"alignment_span_sessions":alignment_span},sort_keys=True)+chr(10))
   _report_long_gaps(confirmatory_rows)
   fresh=_append_journal(confirmatory_rows)
