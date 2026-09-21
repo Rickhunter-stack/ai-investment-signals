@@ -3,7 +3,7 @@ from unittest.mock import patch
 from datetime import datetime, timezone
 from pathlib import Path
 import pandas as pd
-from src.market import _eligible_rows, _latest_per_ticker, _boundary_alignment, _validate_confirmatory_rows, confirmatory_writes_enabled, CONFIRMATORY_SECURITIES, BENCHMARK_TICKERS
+from src.market import _eligible_rows, _latest_per_ticker, _boundary_alignment, _expected_xnys_frontier, _validate_calendar_frontier, _validate_confirmatory_rows, confirmatory_writes_enabled, CONFIRMATORY_SECURITIES, BENCHMARK_TICKERS
 
 class MarketIntegrityV2Tests(unittest.TestCase):
  def test_manual_or_push_run_is_dry_for_confirmatory_ledger(self):
@@ -36,11 +36,21 @@ class MarketIntegrityV2Tests(unittest.TestCase):
   raw=pd.concat({"NVDA":a,"QQQ":b},axis=1)
   with self.assertRaises(RuntimeError):
    _boundary_alignment(((raw,["NVDA","QQQ"]),))
- def test_implausible_vendor_close_jump_fails_closed(self):
+ def test_large_real_move_without_split_is_not_censored(self):
   idx=pd.to_datetime(["2026-09-15","2026-09-16","2026-09-17"])
-  raw=pd.DataFrame({"Close":[100,250,251],"Dividends":[0,0,0],"Stock Splits":[0,0,0]},index=idx)
-  with self.assertRaises(ValueError):
-   _eligible_rows(raw,["NVDA"],"2026-09-18T22:00:00+00:00","security")
+  raw=pd.DataFrame({"Close":[100,190,191],"Adj Close":[100,190,191],"Dividends":[0,0,0],"Stock Splits":[0,0,0]},index=idx)
+  rows=_eligible_rows(raw,["NVDA"],"2026-09-18T22:00:00+00:00","security")
+  self.assertFalse(rows[-1]["quality_flags"])
+ def test_unadjusted_split_signature_is_flagged_not_batch_censored(self):
+  idx=pd.to_datetime(["2026-09-15","2026-09-16","2026-09-17"])
+  raw=pd.DataFrame({"Close":[100,50,51],"Adj Close":[50,50,51],"Dividends":[0,0,0],"Stock Splits":[0,2,0]},index=idx)
+  rows=_eligible_rows(raw,["NVDA"],"2026-09-18T22:00:00+00:00","security")
+  self.assertEqual(rows[-1]["quality_flags"][0]["kind"],"split_close_not_adjusted")
+ def test_xnys_frontier_catches_global_vendor_lag(self):
+  observed="2026-11-27T18:30:00+00:00"
+  self.assertEqual(_expected_xnys_frontier(observed),"2026-11-27")
+  with self.assertRaises(RuntimeError):
+   _validate_calendar_frontier({"NVDA":"2026-11-25","QQQ":"2026-11-25"},observed)
 
  def test_last_vendor_bar_is_never_frozen(self):
   idx=pd.to_datetime(["2026-09-17","2026-09-18"])
