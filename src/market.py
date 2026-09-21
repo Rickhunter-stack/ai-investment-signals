@@ -48,12 +48,12 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
    for sd,s in splits:
     if sd>d: factor*=s
    vendor_close=float(close); raw_close=vendor_close*factor
-   adj=r.get("Adj Close"); div=r.get("Dividends",0.0); split=r.get("Stock Splits",0.0)
+   adj=r.get("Adj Close"); vendor_div=r.get("Dividends",0.0); split=r.get("Stock Splits",0.0)\n   vendor_div=0.0 if pd.isna(vendor_div) else float(vendor_div); div=vendor_div*factor
    repaired=r.get("Repaired?",False)
    rows.append({"ticker":ticker,"session_date":d.isoformat(),"raw_close":raw_close,
     "vendor_close":vendor_close,"vendor_split_factor":factor,
     "vendor_adjusted_close":None if adj is None or pd.isna(adj) else float(adj),
-    "dividend":0.0 if pd.isna(div) else float(div),"split_ratio":0.0 if pd.isna(split) else float(split),
+    "dividend":div,"vendor_dividend":vendor_div,"split_ratio":0.0 if pd.isna(split) else float(split),
     "repaired":False if pd.isna(repaired) else bool(repaired),"observed_at":observed_at,
     "source":SOURCE,"collector":"yfinance","collector_version":yf.__version__,
     "request":request,"series_type":series_type,"frozen":True})
