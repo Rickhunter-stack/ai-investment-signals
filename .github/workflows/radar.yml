@@ -70,8 +70,8 @@ jobs:
         run: python scripts/check_append_only_git.py "${{ github.event.before }}"
       - name: Validate market journal schema
         run: python scripts/validate_market_journal.py
-      - name: Preflight scheduled persistence credentials
-        if: github.event_name == 'schedule'
+      - name: Preflight automation credentials
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.AUTOMATION_TOKEN }}
         run: |
@@ -160,5 +160,36 @@ jobs:
             --body "Automated persistence for scheduled run \`${GITHUB_RUN_ID}\` from source commit \`${GITHUB_SHA}\`. Confirmatory data remains subject to the repository append-only checks and protected-main rules.")"
 
           echo "Created $pr_url"
-          gh pr checks "$pr_url" --required --watch --fail-fast
-          gh pr merge "$pr_url" --merge --delete-branch --match-head-commit "$(git rev-parse HEAD)"
+          pr_number="${pr_url##*/}"
+          head_sha="$(git rev-parse HEAD)"
+
+          # Fine-grained PATs cannot use the Checks API directly. Poll the PR's
+          # protected-branch merge state instead; "clean" means the required
+          # status checks and branch rules are satisfied.
+          for attempt in $(seq 1 80); do
+            state="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${pr_number}" --jq '.mergeable_state')"
+            echo "Protected PR mergeable_state=$state (attempt $attempt/80)"
+            if [ "$state" = "clean" ]; then
+              break
+            fi
+            if [ "$state" = "dirty" ]; then
+              echo "::error::Automation PR has merge conflicts"
+              exit 1
+            fi
+            if [ "$attempt" -eq 80 ]; then
+              echo "::error::Timed out waiting for protected PR checks"
+              exit 1
+            fi
+            sleep 15
+          done
+
+          merged="$(gh api --method PUT "repos/${GITHUB_REPOSITORY}/pulls/${pr_number}/merge" \
+            -f merge_method=merge \
+            -f sha="$head_sha" \
+            --jq '.merged')"
+          if [ "$merged" != "true" ]; then
+            echo "::error::Protected automation PR was not merged"
+            exit 1
+          fi
+
+          gh api --method DELETE "repos/${GITHUB_REPOSITORY}/git/refs/heads/${branch}" || true
