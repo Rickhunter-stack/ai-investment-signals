@@ -477,7 +477,7 @@ Because Yahoo historical Close and dividend fields may be split-adjusted, the co
 
 Before schedule activation, automated fixtures must cover at least: no action, cash dividend, 2:1 split, reverse split, split plus dividend, dividend before later split, multiple splits and malformed/non-finite action data.
 
-The collector does not reject large price moves merely because of their magnitude. On a vendor-labelled split session it instead performs a relational audit between the split ratio, adjacent Close values and Adj Close values. A signature consistent with an unadjusted Close while Adj Close remains continuous is recorded as a ticker-specific `quality_flags` anomaly. The batch itself is not censored solely because of a large economic price move; any outcome return window crossing a recorded quality anomaly is frozen as unavailable.
+The collector does not reject large price moves merely because of their magnitude. On a vendor-labelled split session it instead performs a relational audit between the declared split ratio and adjacent Close values, retaining Adj Close as audit evidence. If the adjacent Close ratio itself matches the declared split ratio, the vendor history is treated as ambiguous regardless of Adj Close and a ticker-specific `quality_flags` anomaly records the affected interval from the preceding session through the split session. The batch itself is not censored solely because of a large economic price move; only an outcome return interval [T0,H] overlapping that recorded affected interval is frozen as unavailable.
 
 A vendor inconsistency that makes the mechanical reconstruction ambiguous must fail the confirmatory run or be explicitly flagged unavailable. It must not be silently repaired using later-downloaded history.
 
