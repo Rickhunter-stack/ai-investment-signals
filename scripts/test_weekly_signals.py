@@ -1,8 +1,10 @@
 import json
+import os
 import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from unittest.mock import patch
 
 from generate_weekly_signals import generate, validate_history
 
@@ -31,6 +33,16 @@ class WeeklySignalsTests(unittest.TestCase):
 
     def history(self):
         return json.loads((self.root / 'data/weekly_signals.json').read_text())
+
+    def test_confirmatory_snapshot_freezes_t0_boundary(self):
+        self.write('signal_research', {})
+        boundary={'observed_at':'2026-09-14T20:50:00+00:00','latest_returned_session':{'AAA':'2026-09-14','BBB':'2026-09-14'}}
+        (self.root/'data/market_boundary_runtime.json').write_text(json.dumps(boundary))
+        old=dict(__import__('scripts.generate_weekly_signals',fromlist=['BENCHMARK']).BENCHMARK)
+        import generate_weekly_signals as g
+        with patch.dict(g.BENCHMARK,{'AAA':'BBB','BBB':'AAA'},clear=True), patch.dict(os.environ,{'REQUIRE_MARKET_BOUNDARY':'1'}):
+            self.assertTrue(self.run_at(14))
+        self.assertEqual(self.history()[0]['t0_after_session']['AAA'],'2026-09-14')
 
     def test_partial_and_ticker_specific(self):
         self.assertTrue(self.run_at(14))
