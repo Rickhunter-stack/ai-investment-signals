@@ -135,7 +135,7 @@ def update_market(period="1mo"):
  rows=_eligible_rows(raw,securities,observed_at,"security",kwargs)+_eligible_rows(bench,list(BENCHMARK_TICKERS),observed_at,"benchmark",kwargs)
  confirmatory_rows=_latest_per_ticker(rows)
  if confirmatory_writes_enabled():
-  try: _validate_confirmatory_rows(confirmatory_rows)
+  try: _validate_confirmatory_rows(rows)
   except (ValueError,RuntimeError):
    conn.close(); raise
   boundary={**_collection_boundary(raw,securities),**_collection_boundary(bench,list(BENCHMARK_TICKERS))}
