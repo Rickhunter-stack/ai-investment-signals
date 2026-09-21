@@ -45,7 +45,21 @@ class MarketIntegrityV2Tests(unittest.TestCase):
   idx=pd.to_datetime(["2026-09-15","2026-09-16","2026-09-17"])
   raw=pd.DataFrame({"Close":[100,50,51],"Adj Close":[50,50,51],"Dividends":[0,0,0],"Stock Splits":[0,2,0]},index=idx)
   rows=_eligible_rows(raw,["NVDA"],"2026-09-18T22:00:00+00:00","security")
-  self.assertEqual(rows[-1]["quality_flags"][0]["kind"],"split_close_not_adjusted")
+  self.assertEqual(rows[1]["quality_flags"][0]["kind"],"split_close_ambiguous")\n  self.assertFalse(rows[0]["quality_flags"])
+ def test_split_ambiguity_detected_when_close_and_adj_close_are_both_unadjusted(self):
+  idx=pd.to_datetime(["2026-09-14","2026-09-15","2026-09-16","2026-09-17"])
+  raw=pd.DataFrame({"Close":[100,100,50,51],"Adj Close":[100,100,50,51],"Dividends":[0,0,0,0],"Stock Splits":[0,0,2,0]},index=idx)
+  rows=_eligible_rows(raw,["NVDA"],"2026-09-18T22:00:00+00:00","security")
+  flagged=[r for r in rows if r["quality_flags"]]
+  self.assertEqual(len(flagged),1)
+  self.assertEqual(flagged[0]["session_date"],"2026-09-16")
+  self.assertEqual(flagged[0]["quality_flags"][0]["affected_from"],"2026-09-15")
+ def test_large_real_move_with_no_split_has_no_quality_flag(self):
+  idx=pd.to_datetime(["2026-09-14","2026-09-15","2026-09-16"])
+  raw=pd.DataFrame({"Close":[100,15,16],"Adj Close":[100,15,16],"Dividends":[0,0,0],"Stock Splits":[0,0,0]},index=idx)
+  rows=_eligible_rows(raw,["NVDA"],"2026-09-17T22:00:00+00:00","security")
+  self.assertTrue(all(not r["quality_flags"] for r in rows))
+
  def test_xnys_frontier_catches_global_vendor_lag(self):
   observed="2026-11-27T18:30:00+00:00"
   self.assertEqual(_expected_xnys_frontier(observed),"2026-11-27")
