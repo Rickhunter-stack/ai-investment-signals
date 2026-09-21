@@ -38,6 +38,7 @@ def tracked_paths(base_ref):
     paths={'data/weekly_signals.json','data/outcomes_v1.json'}
     paths.update(journal_paths(base_ref,'data/brief_events'))
     paths.update(journal_paths(base_ref,'data/fundamentals_pit'))
+    paths.update(journal_paths(base_ref,'data/market_pit'))
     return sorted(paths)
 
 def main():
