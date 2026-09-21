@@ -28,9 +28,11 @@ def load_market(path=MARKET):
  for rows in out.values(): rows.sort(key=lambda r:r["session_date"])
  return out
 
-def common_row(market,ticker,bench,on_or_after):
- a={date.fromisoformat(r["session_date"]):r for r in market.get(ticker,[]) if date.fromisoformat(r["session_date"])>=on_or_after}
- b={date.fromisoformat(r["session_date"]):r for r in market.get(bench,[]) if date.fromisoformat(r["session_date"])>=on_or_after}
+def common_row(market,ticker,bench,on_or_after,observed_after=None):
+ def eligible(r):
+  return date.fromisoformat(r["session_date"])>=on_or_after and (observed_after is None or datetime.fromisoformat(r["observed_at"])>=observed_after)
+ a={date.fromisoformat(r["session_date"]):r for r in market.get(ticker,[]) if eligible(r)}
+ b={date.fromisoformat(r["session_date"]):r for r in market.get(bench,[]) if eligible(r)}
  common=sorted(set(a)&set(b))
  return None if not common else (common[0],a[common[0]],b[common[0]])
 
@@ -60,11 +62,9 @@ def build_rows(snapshots,market,now,existing=None):
    bench=UNIVERSE[ticker]; base=f'{snap["date"]}:{ticker}:{snap["method_version"]}'; oid=f"{base}:T0"; anchor=anchors.get(oid)
    if anchor: t0d=date.fromisoformat(anchor["t0_date"])
    else:
-    hit=common_row(market,ticker,bench,captured.date())
+    hit=common_row(market,ticker,bench,captured.date(),captured)
     if not hit: continue
     t0d,s,b=hit
-    # Frozen observations must have been observed no earlier than snapshot availability.
-    if datetime.fromisoformat(s["observed_at"])<captured or datetime.fromisoformat(b["observed_at"])<captured: continue
     anchor={"schema_version":SCHEMA,"outcome_id":oid,"snapshot_date":snap["date"],"ticker":ticker,"benchmark":bench,
       "method_version":snap["method_version"],"signal_score":score.get("signal_score"),"t0_date":t0d.isoformat(),
       "security_t0":s["raw_close"],"benchmark_t0":b["raw_close"],"eligible_confirmatory":True,
