@@ -33,8 +33,11 @@ on:
 permissions:
   contents: read
 
+# Separate event/ref groups are required because a scheduled run opens a protected
+# persistence PR and waits for that PR's checks. A single global group would
+# deadlock the scheduled run against its own pull_request validation.
 concurrency:
-  group: radar-refresh
+  group: radar-refresh-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
