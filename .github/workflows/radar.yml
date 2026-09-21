@@ -91,6 +91,9 @@ jobs:
       - name: Enable chart markers, fundamentals and live deployment refresh
         if: github.event_name != 'pull_request'
         run: sed -i "s#</body>#<script src=\"/markers.js?v=${GITHUB_SHA}\"></script><script src=\"/fundamentals.js?v=${GITHUB_SHA}\"></script><script src=\"/auto-refresh.js?v=${GITHUB_SHA}\"></script></body>#" index.html
+      - name: Validate confirmatory market journal before scheduled commit
+        if: github.event_name == 'schedule'
+        run: python scripts/validate_market_journal.py
       - name: Verify append-only history before scheduled commit
         if: github.event_name == 'schedule'
         run: python scripts/check_append_only_git.py HEAD
