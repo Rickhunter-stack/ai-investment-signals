@@ -457,7 +457,7 @@ This amendment supplements v1.1. Where implementation details below are more con
 
 A4 remains primary: a session is eligible only when the same vendor response contains a strictly later daily session. Wall-clock market-close rules never make an otherwise ineligible last bar eligible.
 
-For each weekly snapshot, the scheduled market response freezes a `t0_after_session` boundary for every confirmatory security: the later of the last daily bar returned for that security and its confirmatory benchmark. This boundary is stored inside the immutable weekly snapshot.
+For each weekly snapshot, the scheduled market response first verifies that the latest returned bars across all 15 confirmatory market series differ by at most one returned market session. It then freezes one conservative global boundary equal to the latest of those 15 bars. That same boundary is stored as `t0_after_session` for each of the 10 confirmatory securities inside the immutable weekly snapshot; non-confirmatory seed tickers do not require a T0 boundary.
 
 T0 is the first prospectively admitted common eligible session STRICTLY AFTER that frozen boundary. No session on or before the boundary may anchor T0, even if it was already present in the market journal. This supersedes the ambiguous timing mechanics in A6 while preserving A6's no-look-ahead purpose. It covers ordinary closes, early closes, holidays and weekends without a wall-clock cutoff.
 
@@ -477,6 +477,8 @@ Because Yahoo historical Close and dividend fields may be split-adjusted, the co
 
 Before schedule activation, automated fixtures must cover at least: no action, cash dividend, 2:1 split, reverse split, split plus dividend, dividend before later split, multiple splits and malformed/non-finite action data.
 
+The collector also fails closed on an implausible adjacent vendor-Close discontinuity (>80%) because Yahoo Close is expected to be split-adjusted. This is an integrity alarm, not an economic-return threshold; a triggered case requires review before admission.
+
 A vendor inconsistency that makes the mechanical reconstruction ambiguous must fail the confirmatory run or be explicitly flagged unavailable. It must not be silently repaired using later-downloaded history.
 
 ## B4. Interruptions and lookback
@@ -485,13 +487,15 @@ The confirmatory journal is prospective. After an interruption, sessions that we
 
 The one-month request window is a transport/recovery window, not permission to reconstruct missed confirmatory history. On every run, only the newest eligible completed session per ticker may be appended. Older eligible bars returned inside the one-month lookback are context for completion and split reconstruction only and are never backfilled. After an interruption, missed sessions therefore remain absent and visible as missingness.
 
+When a later run can see eligible vendor sessions between the last frozen journal row and the newly admitted row, their dates are recorded only as `gap_sessions` metadata on the new row; their historical prices are not inserted. A gap extending beyond the request window is marked `gap_unbounded=true`. Any outcome return window crossing either marker is frozen as unavailable rather than reconstructed.
+
 If the interruption exceeds the configured lookback, the run must record/report the gap; it must not claim continuous point-in-time coverage.
 
 ## B5. Run provenance
 
 Each confirmatory scheduled run must expose immutable provenance sufficient to link generated market observations, T0 anchors and outcomes to the execution that created them. At minimum this includes the Git commit SHA and GitHub Actions run ID for confirmatory writes, in addition to each market row's `observed_at`, collector/library version and request parameters.
 
-Manual, push and pull-request runs remain non-confirmatory and must not write the market journal, weekly frozen snapshot or outcomes.
+Manual, push and pull-request runs remain non-confirmatory and must not write the market journal, weekly frozen snapshot or outcomes. The canonical weekly snapshot generator also checks the GitHub event provenance and refuses to consume an ISO week unless `GITHUB_EVENT_NAME=schedule`; isolated test roots are exempt.
 
 ## B6. Append-only acceptance
 
@@ -504,6 +508,8 @@ GitHub branch protection/rulesets are an infrastructure control outside the repo
 ## B7. Outcome maturity
 
 An M+1/M+3/M+6/M+12 outcome may use only a frozen market observation already present prospectively in the Git journal. A later vendor download may not manufacture a missing historical horizon price. The first common eligible session on or after the calendar target is used only if that session itself was prospectively admitted to the journal.
+
+T0 must occur no more than 7 calendar days after the snapshot's frozen global vendor boundary. A horizon measurement must occur no more than 7 calendar days after its target date. Exceeding either bound freezes the corresponding record as `unavailable`. A return window that crosses recorded `gap_sessions` or `gap_unbounded` metadata is likewise unavailable.
 
 Outcome writes remain gated to the official confirmatory schedule.
 
