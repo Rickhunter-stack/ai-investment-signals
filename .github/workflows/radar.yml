@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   # Confirmatory schedule temporarily paused on 2026-09-18 pending Market Integrity v2.
   # Restore only after preregistration v1.2 and MIv2 acceptance criteria are merged.
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -15,6 +18,7 @@ on:
       - 'data/brief_memory.json'
       - 'data/brief_events/**'
       - 'data/fundamentals_pit/**'
+      - 'data/market_pit/**'
       - 'data/outcomes_v1.json'
       - 'data/weekly_signals.json'
       - 'data/signal_research.json'
@@ -49,6 +53,9 @@ jobs:
         run: python -c "import pathlib,yaml; yaml.safe_load(pathlib.Path('.github/workflows/radar.yml').read_text())"
       - name: Run research integrity tests
         run: python -m unittest discover -s scripts -p 'test_*.py'
+      - name: Verify append-only history on pull requests
+        if: github.event_name == 'pull_request'
+        run: python scripts/check_append_only_git.py "${{ github.event.pull_request.base.sha }}"
       - name: Verify append-only history on pushes
         if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
         run: python scripts/check_append_only_git.py "${{ github.event.before }}"
@@ -67,6 +74,7 @@ jobs:
       - name: Append matured prospective outcomes
         if: github.event_name == 'schedule'
         env:
+          CONFIRMATORY_WRITE: '1'
           EXPERIMENT_RUN_ID: ${{ github.run_id }}
           EXPERIMENT_COMMIT_SHA: ${{ github.sha }}
         run: python scripts/compute_outcomes.py
@@ -74,7 +82,11 @@ jobs:
       - run: python scripts/inject_brief_memory.py
       - name: Enable chart markers, fundamentals and live deployment refresh
         run: sed -i "s#</body>#<script src=\"/markers.js?v=${GITHUB_SHA}\"></script><script src=\"/fundamentals.js?v=${GITHUB_SHA}\"></script><script src=\"/auto-refresh.js?v=${GITHUB_SHA}\"></script></body>#" index.html
+      - name: Verify append-only history before scheduled commit
+        if: github.event_name == 'schedule'
+        run: python scripts/check_append_only_git.py HEAD
       - name: Commit refreshed data and dashboard
+        if: github.event_name != 'pull_request'
         run: |
           git config user.name "Rickhunter-stack"
           git config user.email "184195632+Rickhunter-stack@users.noreply.github.com"
