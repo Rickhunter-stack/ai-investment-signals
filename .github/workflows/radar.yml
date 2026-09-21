@@ -2,8 +2,10 @@ name: Radar refresh
 
 on:
   workflow_dispatch:
-  # Confirmatory schedule temporarily paused on 2026-09-18 pending Market Integrity v2.
-  # Restore only after the protected-PR persistence path and final operational checks pass.
+  # Official confirmatory run. GitHub cron uses UTC.
+  # 23:30 UTC gives a 2h30-3h30 margin after the regular NYSE close across US DST.
+  schedule:
+    - cron: '30 23 * * 1'
   pull_request:
     branches:
       - main
@@ -68,6 +70,20 @@ jobs:
         run: python scripts/check_append_only_git.py "${{ github.event.before }}"
       - name: Validate market journal schema
         run: python scripts/validate_market_journal.py
+      - name: Preflight scheduled persistence credentials
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMATION_TOKEN }}
+        run: |
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::AUTOMATION_TOKEN is required before any confirmatory collection"
+            exit 1
+          fi
+          push_ok="$(gh api "repos/${GITHUB_REPOSITORY}" --jq '.permissions.push // false')"
+          if [ "$push_ok" != "true" ]; then
+            echo "::error::AUTOMATION_TOKEN cannot write repository contents"
+            exit 1
+          fi
       - name: Refresh operational market data
         if: github.event_name != 'pull_request'
         env:
