@@ -63,6 +63,11 @@ def research_score(entry, component, today):
 
 
 def generate(root=ROOT, now=None):
+    # The canonical repository history is reserved for the official scheduled
+    # path. Tests may use an isolated root, but local/push/PR invocations may
+    # not consume the production ISO week.
+    if root.resolve() == ROOT.resolve() and os.getenv('GITHUB_EVENT_NAME') != 'schedule':
+        raise RuntimeError('Canonical weekly snapshots may be frozen only by the schedule event')
     now = now or datetime.now(timezone.utc)
     today = now.astimezone(timezone.utc).date()
     target = root / 'data/weekly_signals.json'
@@ -115,10 +120,18 @@ def generate(root=ROOT, now=None):
         if observed > now or (now-observed).total_seconds() > 3600:
             raise ValueError('Market boundary must come from the current scheduled run')
         latest = boundary['latest_returned_session']
-        for ticker in tickers:
-            if ticker not in BENCHMARK or ticker not in latest or BENCHMARK[ticker] not in latest:
-                raise ValueError(f'Missing T0 boundary for {ticker}')
-            t0_after_session[ticker] = max(latest[ticker], latest[BENCHMARK[ticker]])
+        market_universe = set(BENCHMARK) | set(BENCHMARK.values())
+        missing_market = sorted(market_universe - set(latest))
+        if missing_market:
+            raise ValueError(f'Missing market boundary series: {missing_market}')
+        # All confirmatory securities share one conservative vendor frontier.
+        # Divergence by more than one returned market session fails closed.
+        unique_dates = sorted(set(latest[t] for t in market_universe))
+        if len(unique_dates) > 2:
+            raise ValueError(f'Confirmatory market boundaries diverge by more than one session: {unique_dates}')
+        global_boundary = max(unique_dates)
+        for ticker in BENCHMARK:
+            t0_after_session[ticker] = global_boundary
     snapshot = {'date': today.isoformat(), 'frozen': True, 'method_version': METHOD,
                 'captured_at': now.isoformat(), 'scores': scores, 'top3': ranked[:3],
                 'fundamentals_generated_at': fundamentals['generated_at'],
