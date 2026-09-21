@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 import json, math, os
 import pandas as pd
@@ -113,6 +113,16 @@ def _validate_confirmatory_rows(rows):
  if missing: raise RuntimeError(f"market collection incomplete; refusing confirmatory write; missing={missing}")
  return True
 
+def _report_long_gaps(rows,lookback_days=31):
+ existing=_load_journal()
+ latest={}
+ for (ticker,session),_ in existing.items():
+  if ticker not in latest or session>latest[ticker]: latest[ticker]=session
+ for r in rows:
+  previous=latest.get(r["ticker"])
+  if previous and (date.fromisoformat(r["session_date"])-date.fromisoformat(previous)).days>lookback_days:
+   print(f"MARKET_GAP ticker={r['ticker']} previous={previous} resumed={r['session_date']} no_backfill=true")
+
 def _append_journal(rows):
  JOURNAL.mkdir(parents=True,exist_ok=True); existing=_load_journal(); fresh=[]
  for r in sorted(rows,key=lambda x:(x["session_date"],x["ticker"])):
@@ -144,6 +154,7 @@ def update_market(period="1mo"):
   if set(boundary)!=expected:
    conn.close(); raise RuntimeError(f"market boundary incomplete: {sorted(expected-set(boundary))}")
   (ROOT/"data/market_boundary_runtime.json").write_text(json.dumps({"observed_at":observed_at,"latest_returned_session":boundary},sort_keys=True)+chr(10))
+  _report_long_gaps(confirmatory_rows)
   fresh=_append_journal(confirmatory_rows)
  else:
   fresh=[]
