@@ -2,8 +2,7 @@ name: Workflow syntax guard
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/**'
+    branches: [main]
   push:
     branches: [main]
     paths:
@@ -15,6 +14,7 @@ permissions:
 
 jobs:
   validate:
+    name: workflow-syntax
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
