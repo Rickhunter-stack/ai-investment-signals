@@ -1,8 +1,10 @@
 # Signal Score hebdomadaire V1
 
 Le workflow collecte les fondamentaux puis exécute `scripts/generate_weekly_signals.py`
-avant le builder. Le premier passage de chaque semaine ISO (normalement lundi à
-21:15 UTC) fige un snapshot. Le premier passage après installation initialise
+avant le builder. Le passage confirmatoire officiel est planifié le lundi à
+23:30 UTC. Cette heure conserve environ 2 h 30 à 3 h 30 de marge après la
+clôture régulière du NYSE selon la période de DST américaine avant de figer
+le snapshot. Le premier passage après installation initialise
 l'historique à la date UTC réelle. Les passages suivants ne modifient rien cette
 semaine, même si les entrées changent. Aucun rattrapage historique n'est effectué.
 
