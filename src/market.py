@@ -33,6 +33,7 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
   frame=frame.dropna(how="all").sort_index()
   dates=[idx.date() for idx in frame.index]
   duplicate_dates={d for d in dates if dates.count(d)>1}
+  if duplicate_dates: raise ValueError(f"duplicate vendor session dates for {ticker}: {sorted(duplicate_dates)}")
   max_date=max(dates) if dates else None
   # Yahoo Close is split-adjusted historically. Undo splits that occur AFTER each
   # session inside the same response, while retaining the vendor value for audit.
@@ -42,9 +43,9 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
    if pd.notna(s) and float(s)>0: splits.append((idx.date(),float(s)))
   for idx,r in frame.iterrows():
    d=idx.date()
-   if d in duplicate_dates or max_date is None or not (max_date>d): continue
+   if max_date is None or not (max_date>d): continue
    close=r.get("Close")
-   if pd.isna(close) or float(close)<=0: continue
+   if pd.isna(close) or not math.isfinite(float(close)) or float(close)<=0: raise ValueError(f"invalid eligible Close for {ticker} {d}")
    factor=1.0
    for sd,s in splits:
     if sd>d: factor*=s
