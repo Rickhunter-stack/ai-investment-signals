@@ -457,7 +457,7 @@ This amendment supplements v1.1. Where implementation details below are more con
 
 A4 remains primary: a session is eligible only when the same vendor response contains a strictly later daily session. Wall-clock market-close rules never make an otherwise ineligible last bar eligible.
 
-For each weekly snapshot, the scheduled market response first verifies that the latest returned bars across all 15 confirmatory market series differ by at most one returned market session. It then freezes one conservative global boundary equal to the latest of those 15 bars. That same boundary is stored as `t0_after_session` for each of the 10 confirmatory securities inside the immutable weekly snapshot; non-confirmatory seed tickers do not require a T0 boundary.
+For each weekly snapshot, the scheduled market response first verifies that the latest returned bars across all 15 confirmatory market series differ by at most one returned market session. It also validates the global frontier against the XNYS exchange calendar: the latest returned bar must equal the latest XNYS session whose market open has occurred by `observed_at`; a globally stale vendor response therefore fails closed. It then freezes one conservative global boundary equal to that validated latest session. That same boundary is stored as `t0_after_session` for each of the 10 confirmatory securities inside the immutable weekly snapshot; non-confirmatory seed tickers do not require a T0 boundary.
 
 T0 is the first prospectively admitted common eligible session STRICTLY AFTER that frozen boundary. No session on or before the boundary may anchor T0, even if it was already present in the market journal. This supersedes the ambiguous timing mechanics in A6 while preserving A6's no-look-ahead purpose. It covers ordinary closes, early closes, holidays and weekends without a wall-clock cutoff.
 
@@ -477,7 +477,7 @@ Because Yahoo historical Close and dividend fields may be split-adjusted, the co
 
 Before schedule activation, automated fixtures must cover at least: no action, cash dividend, 2:1 split, reverse split, split plus dividend, dividend before later split, multiple splits and malformed/non-finite action data.
 
-The collector also fails closed on an implausible adjacent vendor-Close discontinuity (>80%) because Yahoo Close is expected to be split-adjusted. This is an integrity alarm, not an economic-return threshold; a triggered case requires review before admission.
+The collector does not reject large price moves merely because of their magnitude. On a vendor-labelled split session it instead performs a relational audit between the split ratio, adjacent Close values and Adj Close values. A signature consistent with an unadjusted Close while Adj Close remains continuous is recorded as a ticker-specific `quality_flags` anomaly. The batch itself is not censored solely because of a large economic price move; any outcome return window crossing a recorded quality anomaly is frozen as unavailable.
 
 A vendor inconsistency that makes the mechanical reconstruction ambiguous must fail the confirmatory run or be explicitly flagged unavailable. It must not be silently repaired using later-downloaded history.
 
