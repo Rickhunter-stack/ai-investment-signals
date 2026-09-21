@@ -62,9 +62,9 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
     "repaired":False if pd.isna(repaired) else bool(repaired),"observed_at":observed_at,
     "source":SOURCE,"collector":"yfinance","collector_version":yf.__version__,
     "request":request,"series_type":series_type,"run_id":os.getenv("EXPERIMENT_RUN_ID"),"commit_sha":os.getenv("EXPERIMENT_COMMIT_SHA"),"frozen":True})
- # Prospective rule: a run may admit only the newest eligible completed
- # session for each ticker. Older bars in the lookback are context for the
- # last-bar rule and split reconstruction, never retrospective backfill.
+ return rows
+
+def _latest_per_ticker(rows):
  newest={}
  for r in rows:
   old=newest.get(r["ticker"])
@@ -133,8 +133,9 @@ def update_market(period="1mo"):
  raw=yf.download(tickers=securities,group_by="ticker",progress=False,threads=True,**kwargs)
  bench=yf.download(tickers=list(BENCHMARK_TICKERS),group_by="ticker",progress=False,threads=True,**kwargs)
  rows=_eligible_rows(raw,securities,observed_at,"security",kwargs)+_eligible_rows(bench,list(BENCHMARK_TICKERS),observed_at,"benchmark",kwargs)
+ confirmatory_rows=_latest_per_ticker(rows)
  if confirmatory_writes_enabled():
-  try: _validate_confirmatory_rows(rows)
+  try: _validate_confirmatory_rows(confirmatory_rows)
   except (ValueError,RuntimeError):
    conn.close(); raise
   boundary={**_collection_boundary(raw,securities),**_collection_boundary(bench,list(BENCHMARK_TICKERS))}
@@ -142,7 +143,7 @@ def update_market(period="1mo"):
   if set(boundary)!=expected:
    conn.close(); raise RuntimeError(f"market boundary incomplete: {sorted(expected-set(boundary))}")
   (ROOT/"data/market_boundary_runtime.json").write_text(json.dumps({"observed_at":observed_at,"latest_returned_session":boundary},sort_keys=True)+"\\n")
-  fresh=_append_journal(rows)
+  fresh=_append_journal(confirmatory_rows)
  else:
   fresh=[]
  cache=[(r["ticker"],r["session_date"],r["raw_close"],None,r["observed_at"],r["source"],r["series_type"]) for r in fresh]
