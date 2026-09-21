@@ -60,7 +60,7 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
     "dividend":div,"vendor_dividend":vendor_div,"split_ratio":0.0 if pd.isna(split) else float(split),
     "repaired":False if pd.isna(repaired) else bool(repaired),"observed_at":observed_at,
     "source":SOURCE,"collector":"yfinance","collector_version":yf.__version__,
-    "request":request,"series_type":series_type,"frozen":True})
+    "request":request,"series_type":series_type,"run_id":os.getenv("EXPERIMENT_RUN_ID"),"commit_sha":os.getenv("EXPERIMENT_COMMIT_SHA"),"frozen":True})
  return rows
 
 def _load_journal():
