@@ -39,7 +39,7 @@ class WeeklySignalsTests(unittest.TestCase):
         boundary={'observed_at':'2026-09-14T20:50:00+00:00','latest_returned_session':{'AAA':'2026-09-14','BBB':'2026-09-14'},'global_boundary':'2026-09-14','alignment_span_sessions':0}
         (self.root/'data/market_boundary_runtime.json').write_text(json.dumps(boundary))
         import generate_weekly_signals as g
-        with patch.dict(g.BENCHMARK,{'AAA':'BBB','BBB':'AAA'},clear=True), patch.dict(os.environ,{'REQUIRE_MARKET_BOUNDARY':'1'}):
+        with patch.dict(g.BENCHMARK,{'AAA':'BBB','BBB':'AAA'},clear=True), patch.object(g,'MARKET_SERIES',{'AAA','BBB'}), patch.dict(os.environ,{'REQUIRE_MARKET_BOUNDARY':'1'}):
             self.assertTrue(self.run_at(14))
         self.assertEqual(self.history()[0]['t0_after_session']['AAA'],'2026-09-14')
 
