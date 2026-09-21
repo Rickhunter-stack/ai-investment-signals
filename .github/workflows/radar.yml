@@ -3,7 +3,7 @@ name: Radar refresh
 on:
   workflow_dispatch:
   # Confirmatory schedule temporarily paused on 2026-09-18 pending Market Integrity v2.
-  # Restore only after preregistration v1.2 and MIv2 acceptance criteria are merged.
+  # Restore only after the protected-PR persistence path and final operational checks pass.
   pull_request:
     branches:
       - main
@@ -31,7 +31,7 @@ on:
       - '.github/workflows/radar.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: radar-refresh
@@ -39,11 +39,13 @@ concurrency:
 
 jobs:
   refresh:
+    name: research-integrity
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -95,22 +97,49 @@ jobs:
       - name: Enable chart markers, fundamentals and live deployment refresh
         if: github.event_name != 'pull_request'
         run: sed -i "s#</body>#<script src=\"/markers.js?v=${GITHUB_SHA}\"></script><script src=\"/fundamentals.js?v=${GITHUB_SHA}\"></script><script src=\"/auto-refresh.js?v=${GITHUB_SHA}\"></script></body>#" index.html
-      - name: Validate confirmatory market journal before scheduled commit
+      - name: Validate confirmatory market journal before scheduled persistence
         if: github.event_name == 'schedule'
         run: python scripts/validate_market_journal.py
-      - name: Verify append-only history before scheduled commit
+      - name: Verify append-only history before scheduled persistence
         if: github.event_name == 'schedule'
         run: python scripts/check_append_only_git.py HEAD
-      - name: Commit refreshed data and dashboard
-        if: github.event_name != 'pull_request'
+      - name: Persist scheduled outputs through protected PR
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMATION_TOKEN }}
         run: |
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::AUTOMATION_TOKEN is required for scheduled persistence through a protected pull request"
+            exit 1
+          fi
+
           git config user.name "Rickhunter-stack"
           git config user.email "184195632+Rickhunter-stack@users.noreply.github.com"
+
+          branch="automation/radar-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git switch -c "$branch"
+
           # Some prospective outputs only exist on scheduled runs. Add only paths that exist.
           for path in data/veille.db data/brief_memory.json data/fundamentals.json data/fundamentals_pit data/market_pit data/outcomes_v1.json data/weekly_signals.json index.html favicon.svg markers.js fundamentals.js auto-refresh.js; do
             if [ -e "$path" ]; then
               git add -- "$path"
             fi
           done
-          git diff --cached --quiet || git commit -m "chore: refresh market, fundamentals and dashboard"
-          git push
+
+          if git diff --cached --quiet; then
+            echo "No scheduled changes to persist."
+            exit 0
+          fi
+
+          git commit -m "chore: persist scheduled radar run ${GITHUB_RUN_NUMBER}"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$branch"
+
+          pr_url="$(gh pr create \
+            --base main \
+            --head "$branch" \
+            --title "chore: persist scheduled radar run ${GITHUB_RUN_NUMBER}" \
+            --body "Automated persistence for scheduled run \`${GITHUB_RUN_ID}\` from source commit \`${GITHUB_SHA}\`. Confirmatory data remains subject to the repository append-only checks and protected-main rules.")"
+
+          echo "Created $pr_url"
+          gh pr checks "$pr_url" --required --watch --fail-fast
+          gh pr merge "$pr_url" --merge --delete-branch --match-head-commit "$(git rev-parse HEAD)"
