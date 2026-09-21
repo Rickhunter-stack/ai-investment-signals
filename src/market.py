@@ -48,7 +48,11 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
    for sd,s in splits:
     if sd>d: factor*=s
    vendor_close=float(close); raw_close=vendor_close*factor
-   adj=r.get("Adj Close"); vendor_div=r.get("Dividends",0.0); split=r.get("Stock Splits",0.0)\n   vendor_div=0.0 if pd.isna(vendor_div) else float(vendor_div); div=vendor_div*factor
+   adj=r.get("Adj Close")
+   vendor_div=r.get("Dividends",0.0)
+   split=r.get("Stock Splits",0.0)
+   vendor_div=0.0 if pd.isna(vendor_div) else float(vendor_div)
+   div=vendor_div*factor
    repaired=r.get("Repaired?",False)
    rows.append({"ticker":ticker,"session_date":d.isoformat(),"raw_close":raw_close,
     "vendor_close":vendor_close,"vendor_split_factor":factor,
