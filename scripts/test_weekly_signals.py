@@ -36,12 +36,28 @@ class WeeklySignalsTests(unittest.TestCase):
 
     def test_confirmatory_snapshot_freezes_t0_boundary(self):
         self.write('signal_research', {})
-        boundary={'observed_at':'2026-09-14T20:50:00+00:00','latest_returned_session':{'AAA':'2026-09-14','BBB':'2026-09-14'}}
+        boundary={'observed_at':'2026-09-14T20:50:00+00:00','latest_returned_session':{'AAA':'2026-09-14','BBB':'2026-09-14'},'global_boundary':'2026-09-14','alignment_span_sessions':0}
         (self.root/'data/market_boundary_runtime.json').write_text(json.dumps(boundary))
         import generate_weekly_signals as g
         with patch.dict(g.BENCHMARK,{'AAA':'BBB','BBB':'AAA'},clear=True), patch.dict(os.environ,{'REQUIRE_MARKET_BOUNDARY':'1'}):
             self.assertTrue(self.run_at(14))
         self.assertEqual(self.history()[0]['t0_after_session']['AAA'],'2026-09-14')
+
+    def test_real_seed_shape_requires_boundaries_only_for_confirmatory_universe(self):
+        import generate_weekly_signals as g
+        tickers = ['NVDA','MSFT','GOOGL','AMZN','META','AVGO','MU','QCOM','ADI','MRVL','ANET','VRT','COHR','LITE','TSLA','ISRG','TER','ROK','CGNX','SYM','MDT','LLY','NVO','REGN','VRTX','AMGN','AZN','TMO','DHR','CRL','IQV','WST','GH']
+        (self.root / 'data/universe_seed.csv').write_text('ticker\\n' + '\\n'.join(tickers) + '\\n')
+        self.write('fundamentals', {'generated_at': '2026-09-14T10:00:00Z', 'companies': {}})
+        market = set(g.BENCHMARK) | set(g.BENCHMARK.values())
+        latest = {t: '2026-09-14' for t in market}
+        boundary = {'observed_at': '2026-09-14T20:50:00+00:00', 'latest_returned_session': latest,
+                    'global_boundary': '2026-09-14', 'alignment_span_sessions': 0}
+        (self.root / 'data/market_boundary_runtime.json').write_text(json.dumps(boundary))
+        with patch.dict(os.environ, {'REQUIRE_MARKET_BOUNDARY': '1'}):
+            self.assertTrue(self.run_at(14))
+        snap = self.history()[0]
+        self.assertEqual(set(snap['t0_after_session']), set(g.BENCHMARK))
+        self.assertNotIn('MSFT', snap['t0_after_session'])
 
     def test_partial_and_ticker_specific(self):
         self.assertTrue(self.run_at(14))
