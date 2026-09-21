@@ -38,6 +38,19 @@ class OutcomeTests(unittest.TestCase):
   m={"NVDA":[row("NVDA","2026-11-27",100,"2026-11-28T17:00:00+00:00"),row("NVDA","2026-11-30",101,"2026-12-01T21:00:00+00:00")],
      "QQQ":[row("QQQ","2026-11-27",500,"2026-11-28T17:00:00+00:00"),row("QQQ","2026-11-30",501,"2026-12-01T21:00:00+00:00")]}
   self.assertEqual(o.t0_row(m,"NVDA","QQQ",captured,"2026-11-27")[0],date(2026,11,30))
+ def test_t0_excessive_drift_is_unavailable(self):
+  snap={"date":"2026-09-21","captured_at":"2026-09-21T21:00:00+00:00","frozen":True,"method_version":"weekly-v1.0",
+        "t0_after_session":{"NVDA":"2026-09-21"},"scores":{"NVDA":{"signal_score":80}}}
+  m={"NVDA":[row("NVDA","2026-10-02",101,"2026-10-03T21:00:00+00:00")],
+     "QQQ":[row("QQQ","2026-10-02",501,"2026-10-03T21:00:00+00:00")]}
+  got=o.build_rows([snap],m,datetime(2026,10,4,tzinfo=timezone.utc))
+  self.assertEqual(got[0]["status"],"unavailable")
+  self.assertEqual(got[0]["unavailable_reason"],"t0_delay_exceeded")
+ def test_gap_metadata_marks_return_window_incomplete(self):
+  rows=[row("NVDA","2026-09-22",100),row("NVDA","2026-09-29",101)]
+  rows[1]["gap_sessions"]=["2026-09-25"]
+  self.assertTrue(o.gap_in_window(rows,date(2026,9,22),date(2026,9,29)))
+
  def test_append_never_rewrites(self):
   old=[{"outcome_id":"A","excess_return":.1}]; new=[{"outcome_id":"A","excess_return":9.9},{"outcome_id":"B"}]
   got=o.append_unique(old,new); self.assertEqual(got[0]["excess_return"],.1); self.assertEqual(len(got),2)
