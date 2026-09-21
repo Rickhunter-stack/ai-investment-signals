@@ -102,7 +102,6 @@ def main():
   print("outcomes: dry-run; confirmatory writes disabled"); return
  snaps=json.loads(WEEKLY.read_text()); market=load_market(); existing=json.loads(OUT.read_text()) if OUT.exists() else []
  updated=append_unique(existing,build_rows(snaps,market,datetime.now(timezone.utc),existing))
- OUT.write_text(json.dumps(updated,indent=2,ensure_ascii=False,allow_nan=False)+"
-")
+ OUT.write_text(json.dumps(updated,indent=2,ensure_ascii=False,allow_nan=False)+chr(10))
  print(f"outcomes: appended {len(updated)-len(existing)} immutable row(s)")
 if __name__=="__main__": main()
