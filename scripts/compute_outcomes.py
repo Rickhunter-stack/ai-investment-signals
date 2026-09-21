@@ -58,7 +58,7 @@ def total_return(rows,t0,h):
 def gap_in_window(rows,start,end):
  for r in rows:
   d=date.fromisoformat(r["session_date"])
-  if start<d<=end and (r.get("gap_unbounded") or r.get("gap_sessions")): return True
+  if start<d<=end and (r.get("gap_unbounded") or r.get("gap_sessions") or r.get("quality_flags")): return True
  return False
 
 def unavailable(base,label,snap,ticker,bench,score,t0d,target,reason,phash,run,sha):
