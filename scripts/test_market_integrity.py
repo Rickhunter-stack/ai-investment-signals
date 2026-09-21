@@ -61,6 +61,14 @@ class MarketIntegrityV2Tests(unittest.TestCase):
   rows=_eligible_rows(raw,["NVDA"],"2026-09-17T22:00:00+00:00","security")
   self.assertTrue(all(not r["quality_flags"] for r in rows))
 
+ def test_split_flag_is_already_on_presplit_eligible_row(self):
+  idx=pd.to_datetime(["2026-11-05","2026-11-06","2026-11-09"])
+  raw=pd.DataFrame({"Close":[100,100,50],"Adj Close":[100,100,50],"Dividends":[0,0,0],"Stock Splits":[0,0,2]},index=idx)
+  rows=_eligible_rows(raw,["NVDA"],"2026-11-09T21:15:00+00:00","security")
+  presplit=[r for r in rows if r["session_date"]=="2026-11-06"][0]
+  self.assertEqual(len(presplit["quality_flags"]),1)
+  self.assertEqual(presplit["quality_flags"][0]["affected_through"],"2026-11-09")
+
  def test_xnys_frontier_catches_global_vendor_lag(self):
   observed="2026-11-27T18:30:00+00:00"
   self.assertEqual(_expected_xnys_frontier(observed),"2026-11-27")
