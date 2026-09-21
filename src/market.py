@@ -41,6 +41,17 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
   for idx,r in frame.iterrows():
    s=r.get("Stock Splits",0.0)
    if pd.notna(s) and float(s)>0: splits.append((idx.date(),float(s)))
+  # Yahoo Close is expected to be split-adjusted. A very large adjacent Close
+  # discontinuity is therefore inconsistent with that convention, whether or
+  # not a split flag is present, and must be reviewed rather than frozen.
+  valid_close=[]
+  for idx,r in frame.iterrows():
+   v=r.get("Close")
+   if pd.notna(v) and math.isfinite(float(v)) and float(v)>0: valid_close.append((idx.date(),float(v),float(r.get("Stock Splits",0.0) or 0.0)))
+  for (d0,p0,_),(d1,p1,s1) in zip(valid_close,valid_close[1:]):
+   move=abs(p1/p0-1.0)
+   if move>0.80:
+    raise ValueError(f"vendor close continuity anomaly for {ticker}: {d0}->{d1} move={move:.3f} split={s1}")
   for idx,r in frame.iterrows():
    d=idx.date()
    if max_date is None or not (max_date>d): continue
