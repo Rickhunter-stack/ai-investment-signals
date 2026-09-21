@@ -1,5 +1,6 @@
 pandas>=2.2
 pyyaml>=6.0
+scipy>=1.13,<2
 yfinance==1.7.0
 streamlit>=1.40
 exchange_calendars>=4.13,<5
