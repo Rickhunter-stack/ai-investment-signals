@@ -38,13 +38,16 @@ def common_row(market,ticker,bench,on_or_after,observed_after=None,observed_befo
  return None if not common else (common[0],a[common[0]],b[common[0]])
 
 def t0_row(market,ticker,bench,captured):
- ny=captured.astimezone(ZoneInfo("America/New_York"))
- # A session already frozen by snapshot time is admissible; otherwise a post-close
- # snapshot must wait for a strictly later session. Early-close handling is a v1.2 item.
- prior=common_row(market,ticker,bench,ny.date(),observed_before=captured)
- if prior: return prior
- start=date.fromordinal(ny.date().toordinal()+1) if ny.hour>=16 else ny.date()
- return common_row(market,ticker,bench,start,observed_after=captured)
+ # Journal admission time is authoritative. If a common eligible session was
+ # already frozen before the snapshot, use the latest such session on/before
+ # the snapshot date. Otherwise wait for the first common row observed later.
+ def admitted(rows):
+  return {date.fromisoformat(r["session_date"]):r for r in rows if datetime.fromisoformat(r["observed_at"])<=captured}
+ a=admitted(market.get(ticker,[])); b=admitted(market.get(bench,[]))
+ prior=sorted(d for d in set(a)&set(b) if d<=captured.date())
+ if prior:
+  d=prior[-1]; return d,a[d],b[d]
+ return common_row(market,ticker,bench,captured.date(),observed_after=captured)
 
 def total_return(rows,t0,h):
  base=next(r for r in rows if r["session_date"]==t0.isoformat()); parts=1.0
