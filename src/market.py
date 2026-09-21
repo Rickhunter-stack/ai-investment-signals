@@ -80,7 +80,7 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
     "dividend":div,"vendor_dividend":vendor_div,"split_ratio":float("nan") if pd.isna(split) else float(split),
     "repaired":False if pd.isna(repaired) else bool(repaired),"observed_at":observed_at,
     "source":SOURCE,"collector":"yfinance","collector_version":yf.__version__,
-    "request":request,"series_type":series_type,"run_id":os.getenv("EXPERIMENT_RUN_ID"),"commit_sha":os.getenv("EXPERIMENT_COMMIT_SHA"),"quality_flags":[anomaly_by_date[d.isoformat()]] if d.isoformat() in anomaly_by_date else [],"frozen":True})
+    "request":request,"series_type":series_type,"run_id":os.getenv("EXPERIMENT_RUN_ID"),"commit_sha":os.getenv("EXPERIMENT_COMMIT_SHA"),"quality_flags":[a for a in anomaly_by_date.values() if a["affected_from"] <= d.isoformat() <= a["affected_through"]],"frozen":True})
  return rows
 
 def _latest_per_ticker(rows):
