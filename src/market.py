@@ -42,10 +42,10 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
   for idx,r in frame.iterrows():
    s=r.get("Stock Splits",0.0)
    if pd.notna(s) and float(s)>0: splits.append((idx.date(),float(s)))
-  # Only split-labelled sessions are checked. Large genuine market moves
-  # without a split are never censored. If Close shows the split ratio while
-  # Adj Close remains continuous, the vendor Close convention is ambiguous.
-  split_anomalies=[]
+  # Audit only vendor-labelled split sessions. A price move by itself is never
+  # censored. If adjacent Close values themselves encode the declared split
+  # ratio, the vendor history is ambiguous whether Adj Close agrees or not.
+  anomaly_by_date={}
   valid=[]
   for idx,r in frame.iterrows():
    close=r.get("Close"); adj=r.get("Adj Close"); split=r.get("Stock Splits",0.0)
@@ -53,13 +53,12 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
     valid.append((idx.date(),float(close),None if adj is None or pd.isna(adj) else float(adj),
                   0.0 if pd.isna(split) else float(split)))
   for (d0,p0,a0,_),(d1,p1,a1,s1) in zip(valid,valid[1:]):
-   if s1>0 and a0 not in (None,0) and a1 not in (None,0):
-    close_ratio=p0/p1; adj_ratio=a0/a1
-    close_matches=abs(close_ratio/s1-1.0)<=0.15
-    adj_continuous=abs(adj_ratio-1.0)<=0.15
-    if close_matches and adj_continuous:
-     split_anomalies.append({"session_date":d1.isoformat(),"kind":"split_close_not_adjusted",
-                             "split_ratio":s1,"close_ratio":close_ratio,"adj_ratio":adj_ratio})
+   if s1>0:
+    close_ratio=p0/p1
+    if abs(close_ratio/s1-1.0)<=0.15:
+     anomaly_by_date[d1.isoformat()]={"session_date":d1.isoformat(),"affected_from":d0.isoformat(),
+       "affected_through":d1.isoformat(),"kind":"split_close_ambiguous","split_ratio":s1,
+       "close_ratio":close_ratio,"adj_ratio":None if a0 in (None,0) or a1 in (None,0) else a0/a1}
   for idx,r in frame.iterrows():
    d=idx.date()
    if max_date is None or not (max_date>d): continue
@@ -81,7 +80,7 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
     "dividend":div,"vendor_dividend":vendor_div,"split_ratio":float("nan") if pd.isna(split) else float(split),
     "repaired":False if pd.isna(repaired) else bool(repaired),"observed_at":observed_at,
     "source":SOURCE,"collector":"yfinance","collector_version":yf.__version__,
-    "request":request,"series_type":series_type,"run_id":os.getenv("EXPERIMENT_RUN_ID"),"commit_sha":os.getenv("EXPERIMENT_COMMIT_SHA"),"quality_flags":list(split_anomalies),"frozen":True})
+    "request":request,"series_type":series_type,"run_id":os.getenv("EXPERIMENT_RUN_ID"),"commit_sha":os.getenv("EXPERIMENT_COMMIT_SHA"),"quality_flags":[anomaly_by_date[d.isoformat()]] if d.isoformat() in anomaly_by_date else [],"frozen":True})
  return rows
 
 def _latest_per_ticker(rows):
