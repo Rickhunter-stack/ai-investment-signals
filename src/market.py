@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from pathlib import Path
-import json, os
+import json, math, os
 import pandas as pd
 import yfinance as yf
 from .db import connect
@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 UNIVERSE=ROOT/"data/universe_seed.csv"; JOURNAL=ROOT/"data/market_pit"
 CONFIRMATORY_SECURITIES=("NVDA","AVGO","QCOM","MU","GOOGL","AMZN","ADI","MDT","ISRG","GH")
 BENCHMARK_TICKERS=("SPY","QQQ","SMH","IHI","XBI"); SOURCE="yahoo"
-REQUEST={"period":"1mo","interval":"1d","auto_adjust":False,"repair":True,"actions":True}
+REQUEST={"period":"1mo","interval":"1d","auto_adjust":False,"repair":True,"actions":True}\nREQUIRED_FIELDS=("ticker","session_date","raw_close","observed_at","source","collector","collector_version","request","series_type","frozen")
 
 def seed_companies(conn):
  df=pd.read_csv(UNIVERSE)
@@ -74,6 +74,26 @@ def _load_journal():
     if key in out: raise ValueError(f"duplicate market observation: {key}")
     out[key]=r
  return out
+
+def _validate_confirmatory_rows(rows):
+ expected=set(CONFIRMATORY_SECURITIES)|set(BENCHMARK_TICKERS)
+ by_ticker={t:0 for t in expected}; seen=set()
+ for r in rows:
+  missing=[k for k in REQUIRED_FIELDS if k not in r]
+  if missing: raise ValueError(f"market row missing fields: {missing}")
+  if r["ticker"] not in expected: raise ValueError(f"unexpected confirmatory ticker: {r['ticker']}")
+  key=(r["ticker"],r["session_date"])
+  if key in seen: raise ValueError(f"duplicate collected market row: {key}")
+  seen.add(key); by_ticker[r["ticker"]]+=1
+  if r["frozen"] is not True or r["series_type"] not in {"security","benchmark"}: raise ValueError(f"invalid integrity metadata: {key}")
+  if not math.isfinite(float(r["raw_close"])) or float(r["raw_close"])<=0: raise ValueError(f"invalid raw close: {key}")
+  for field in ("dividend","split_ratio"):
+   value=float(r.get(field,0.0))
+   if not math.isfinite(value) or value<0: raise ValueError(f"invalid {field}: {key}")
+  datetime.fromisoformat(r["observed_at"].replace("Z","+00:00"))
+ missing=sorted(t for t,n in by_ticker.items() if n<1)
+ if missing: raise RuntimeError(f"market collection incomplete; refusing confirmatory write; missing={missing}")
+ return True
 
 def _append_journal(rows):
  JOURNAL.mkdir(parents=True,exist_ok=True); existing=_load_journal(); fresh=[]
