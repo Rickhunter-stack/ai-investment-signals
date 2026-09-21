@@ -46,7 +46,7 @@ class WeeklySignalsTests(unittest.TestCase):
     def test_real_seed_shape_requires_boundaries_only_for_confirmatory_universe(self):
         import generate_weekly_signals as g
         tickers = ['NVDA','MSFT','GOOGL','AMZN','META','AVGO','MU','QCOM','ADI','MRVL','ANET','VRT','COHR','LITE','TSLA','ISRG','TER','ROK','CGNX','SYM','MDT','LLY','NVO','REGN','VRTX','AMGN','AZN','TMO','DHR','CRL','IQV','WST','GH']
-        (self.root / 'data/universe_seed.csv').write_text('ticker\\n' + '\\n'.join(tickers) + '\\n')
+        (self.root / 'data/universe_seed.csv').write_text('ticker\n' + '\n'.join(tickers) + '\n')
         self.write('fundamentals', {'generated_at': '2026-09-14T10:00:00Z', 'companies': {}})
         market = g.MARKET_SERIES
         latest = {t: '2026-09-14' for t in market}
