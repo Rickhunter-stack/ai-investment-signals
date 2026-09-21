@@ -65,6 +65,8 @@ jobs:
         if: github.event_name != 'pull_request'
         env:
           CONFIRMATORY_WRITE: ${{ github.event_name == 'schedule' && '1' || '0' }}
+          EXPERIMENT_RUN_ID: ${{ github.run_id }}
+          EXPERIMENT_COMMIT_SHA: ${{ github.sha }}
         run: python run.py --step all
       - name: Refresh cash-flow and ROIC fundamentals
         if: github.event_name != 'pull_request'
