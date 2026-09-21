@@ -51,6 +51,15 @@ class OutcomeTests(unittest.TestCase):
   rows[1]["gap_sessions"]=["2026-09-25"]
   self.assertTrue(o.gap_in_window(rows,date(2026,9,22),date(2026,9,29)))
 
+ def test_quality_flag_only_invalidates_overlapping_interval(self):
+  rows=[row("NVDA","2026-10-20",100),row("NVDA","2026-10-27",101),row("NVDA","2026-11-27",102)]
+  rows[0]["quality_flags"]=[{"session_date":"2026-10-20","affected_from":"2026-10-19","affected_through":"2026-10-20"}]
+  self.assertFalse(o.gap_in_window(rows,date(2026,10,27),date(2026,11,27)))
+ def test_quality_flag_invalidates_when_t0_is_affected_prior_session(self):
+  rows=[row("NVDA","2026-10-20",100),row("NVDA","2026-11-20",102)]
+  rows[0]["quality_flags"]=[{"session_date":"2026-10-21","affected_from":"2026-10-20","affected_through":"2026-10-21"}]
+  self.assertTrue(o.gap_in_window(rows,date(2026,10,20),date(2026,11,20)))
+
  def test_append_never_rewrites(self):
   old=[{"outcome_id":"A","excess_return":.1}]; new=[{"outcome_id":"A","excess_return":9.9},{"outcome_id":"B"}]
   got=o.append_unique(old,new); self.assertEqual(got[0]["excess_return"],.1); self.assertEqual(len(got),2)
