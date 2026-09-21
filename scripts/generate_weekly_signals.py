@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 COMPONENTS = ('fundamental_strength', 'novelty', 'pricing_headroom',
               'valuation', 'execution_risk')
 METHOD = 'weekly-v1.0'
+BENCHMARK = {'NVDA':'QQQ','AVGO':'QQQ','QCOM':'QQQ','MU':'QQQ','GOOGL':'QQQ','AMZN':'QQQ','ADI':'QQQ','MDT':'SPY','ISRG':'SPY','GH':'SPY'}
 
 
 def number(value):
@@ -104,9 +105,24 @@ def generate(root=ROOT, now=None):
         scores[ticker] = score
     ranked = sorted((t for t in tickers if scores[t]['signal_score'] is not None),
                     key=lambda t: (-scores[t]['signal_score'], t))
+    t0_after_session = {}
+    boundary_path = root / 'data/market_boundary_runtime.json'
+    if os.getenv('REQUIRE_MARKET_BOUNDARY') == '1':
+        if not boundary_path.exists():
+            raise ValueError('Confirmatory snapshot requires current market boundary')
+        boundary = json.loads(boundary_path.read_text())
+        observed = datetime.fromisoformat(boundary['observed_at'].replace('Z', '+00:00'))
+        if observed > now or (now-observed).total_seconds() > 3600:
+            raise ValueError('Market boundary must come from the current scheduled run')
+        latest = boundary['latest_returned_session']
+        for ticker in tickers:
+            if ticker not in BENCHMARK or ticker not in latest or BENCHMARK[ticker] not in latest:
+                raise ValueError(f'Missing T0 boundary for {ticker}')
+            t0_after_session[ticker] = max(latest[ticker], latest[BENCHMARK[ticker]])
     snapshot = {'date': today.isoformat(), 'frozen': True, 'method_version': METHOD,
                 'captured_at': now.isoformat(), 'scores': scores, 'top3': ranked[:3],
                 'fundamentals_generated_at': fundamentals['generated_at'],
+                't0_after_session': t0_after_session,
                 'input_sha256': {name: hashlib.sha256(raw).hexdigest() for name, raw in
                                  [('fundamentals', fundamentals_raw), ('research', research_raw)]}}
     validate_history(history + [snapshot])
