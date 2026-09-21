@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 from pathlib import Path
 import json
+import os
 import pandas as pd
 import yfinance as yf
 from .db import connect
@@ -79,7 +80,8 @@ def update_market(period="1mo"):
     missing=sorted(expected-present)
     if not rows or missing:
         conn.close(); raise RuntimeError(f"market collection incomplete; refusing confirmatory write; missing={missing}")
-    fresh=_append_journal(rows)
+    confirmatory=os.getenv("CONFIRMATORY_WRITE")=="1"
+    fresh=_append_journal(rows) if confirmatory else []
     # SQLite is cache/dashboard only. Rebuild compatible rows from newly frozen raw closes.
     cache=[(r["ticker"],r["session_date"],r["raw_close"],None,r["observed_at"],r["source"],r["series_type"]) for r in fresh]
     conn.executemany("""INSERT OR IGNORE INTO market_pit
