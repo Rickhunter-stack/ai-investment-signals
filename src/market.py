@@ -79,6 +79,20 @@ def _collection_boundary(raw,tickers):
   if dates: out[ticker]=dates[-1].isoformat()
  return out
 
+def _boundary_alignment(raw_groups):
+ latest={}; calendar=set()
+ for raw,tickers in raw_groups:
+  for ticker,frame in _frames(raw,tickers).items():
+   dates=sorted({idx.date() for idx in frame.dropna(how="all").index})
+   calendar.update(dates)
+   if dates: latest[ticker]=dates[-1]
+ ordered=sorted(calendar); pos={d:i for i,d in enumerate(ordered)}
+ if latest:
+  span=max(pos[d] for d in latest.values())-min(pos[d] for d in latest.values())
+  if span>1: raise RuntimeError(f"confirmatory vendor frontiers diverge by {span} sessions")
+ else: span=0
+ return {t:d.isoformat() for t,d in latest.items()},span
+
 def _load_journal():
  out={}
  if JOURNAL.exists():
@@ -149,11 +163,12 @@ def update_market(period="1mo"):
   try: _validate_confirmatory_rows(rows)
   except (ValueError,RuntimeError):
    conn.close(); raise
-  boundary={**_collection_boundary(raw,securities),**_collection_boundary(bench,list(BENCHMARK_TICKERS))}
+  boundary,alignment_span=_boundary_alignment(((raw,securities),(bench,list(BENCHMARK_TICKERS))))
   expected=set(securities)|set(BENCHMARK_TICKERS)
   if set(boundary)!=expected:
    conn.close(); raise RuntimeError(f"market boundary incomplete: {sorted(expected-set(boundary))}")
-  (ROOT/"data/market_boundary_runtime.json").write_text(json.dumps({"observed_at":observed_at,"latest_returned_session":boundary},sort_keys=True)+chr(10))
+  global_boundary=max(boundary.values())
+  (ROOT/"data/market_boundary_runtime.json").write_text(json.dumps({"observed_at":observed_at,"latest_returned_session":boundary,"global_boundary":global_boundary,"alignment_span_sessions":alignment_span},sort_keys=True)+chr(10))
   _report_long_gaps(confirmatory_rows)
   fresh=_append_journal(confirmatory_rows)
  else:
