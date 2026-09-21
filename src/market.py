@@ -141,7 +141,7 @@ def update_market(period="1mo"):
   expected=set(securities)|set(BENCHMARK_TICKERS)
   if set(boundary)!=expected:
    conn.close(); raise RuntimeError(f"market boundary incomplete: {sorted(expected-set(boundary))}")
-  os.environ["MARKET_BOUNDARY_JSON"]=json.dumps({"observed_at":observed_at,"latest_returned_session":boundary},sort_keys=True)
+  (ROOT/"data/market_boundary_runtime.json").write_text(json.dumps({"observed_at":observed_at,"latest_returned_session":boundary},sort_keys=True)+"\\n")
   fresh=_append_journal(rows)
  else:
   fresh=[]
