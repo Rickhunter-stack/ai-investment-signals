@@ -447,7 +447,7 @@ This amendment was adopted while the confirmatory market ledger contained zero o
 
 # Amendment v1.2 - Market Integrity v2 Acceptance Convention
 
-**Amended:** 2026-09-21  
+**Amended:** 2026-09-21
 **Effective:** before the first confirmatory market collection under the restored schedule  
 **Reason:** Market Integrity v2 has been merged while the confirmatory schedule remains paused. No confirmatory market observation has yet been generated under the restored schedule, so these rules are fixed prospectively before outcome generation.
 
@@ -457,7 +457,9 @@ This amendment supplements v1.1. Where implementation details below are more con
 
 A4 remains primary: a session is eligible only when the same vendor response contains a strictly later daily session. Wall-clock market-close rules never make an otherwise ineligible last bar eligible.
 
-T0 selection therefore uses journal availability rather than a fixed 16:00 ET assumption. A session already frozen in the immutable journal before the weekly snapshot's `captured_at` may anchor T0. Otherwise T0 is the first later eligible common session for security and benchmark. This rule covers ordinary closes, early closes, holidays and weekends without requiring a hard-coded close time.
+For each weekly snapshot, the scheduled market response freezes a `t0_after_session` boundary for every confirmatory security: the later of the last daily bar returned for that security and its confirmatory benchmark. This boundary is stored inside the immutable weekly snapshot.
+
+T0 is the first prospectively admitted common eligible session STRICTLY AFTER that frozen boundary. No session on or before the boundary may anchor T0, even if it was already present in the market journal. This supersedes the ambiguous timing mechanics in A6 while preserving A6's no-look-ahead purpose. It covers ordinary closes, early closes, holidays and weekends without a wall-clock cutoff.
 
 ## B2. Confirmatory collection completeness
 
@@ -481,7 +483,7 @@ A vendor inconsistency that makes the mechanical reconstruction ambiguous must f
 
 The confirmatory journal is prospective. After an interruption, sessions that were not observed under the prospective eligibility rule are not backfilled merely because they later appear in a vendor history download.
 
-The one-month request window is a transport/recovery window, not permission to reconstruct missed confirmatory history. On restart, only sessions whose first admissible observation is established by the current prospective response may be appended. Missing periods remain visible as missingness.
+The one-month request window is a transport/recovery window, not permission to reconstruct missed confirmatory history. On every run, only the newest eligible completed session per ticker may be appended. Older eligible bars returned inside the one-month lookback are context for completion and split reconstruction only and are never backfilled. After an interruption, missed sessions therefore remain absent and visible as missingness.
 
 If the interruption exceeds the configured lookback, the run must record/report the gap; it must not claim continuous point-in-time coverage.
 
