@@ -29,8 +29,8 @@ class MarketIntegrityV2Tests(unittest.TestCase):
  def test_duplicate_session_date_is_never_frozen(self):
   idx=pd.to_datetime(["2026-09-17","2026-09-18 00:00","2026-09-18 15:31"],format="mixed")
   raw=pd.DataFrame({"Close":[100,101,50],"Adj Close":[100,101,50],"Dividends":[0,0,0],"Stock Splits":[0,0,0]},index=idx)
-  rows=_eligible_rows(raw,["NVDA"],"2026-09-18T22:00:00+00:00","security")
-  self.assertEqual([r["session_date"] for r in rows],["2026-09-17"])
+  with self.assertRaises(ValueError):
+   _eligible_rows(raw,["NVDA"],"2026-09-18T22:00:00+00:00","security")
  def test_vendor_split_adjustment_is_undone(self):
   idx=pd.to_datetime(["2026-01-13","2026-01-14","2026-01-15","2026-01-16"])
   raw=pd.DataFrame({"Close":[100,105,52.5,55],"Adj Close":[100,105,52.5,55],"Dividends":[0,0,0,0],"Stock Splits":[0,0,2,0]},index=idx)
