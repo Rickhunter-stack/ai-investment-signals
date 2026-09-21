@@ -48,7 +48,7 @@ class WeeklySignalsTests(unittest.TestCase):
         tickers = ['NVDA','MSFT','GOOGL','AMZN','META','AVGO','MU','QCOM','ADI','MRVL','ANET','VRT','COHR','LITE','TSLA','ISRG','TER','ROK','CGNX','SYM','MDT','LLY','NVO','REGN','VRTX','AMGN','AZN','TMO','DHR','CRL','IQV','WST','GH']
         (self.root / 'data/universe_seed.csv').write_text('ticker\\n' + '\\n'.join(tickers) + '\\n')
         self.write('fundamentals', {'generated_at': '2026-09-14T10:00:00Z', 'companies': {}})
-        market = set(g.BENCHMARK) | set(g.BENCHMARK.values())
+        market = g.MARKET_SERIES
         latest = {t: '2026-09-14' for t in market}
         boundary = {'observed_at': '2026-09-14T20:50:00+00:00', 'latest_returned_session': latest,
                     'global_boundary': '2026-09-14', 'alignment_span_sessions': 0}
@@ -56,6 +56,7 @@ class WeeklySignalsTests(unittest.TestCase):
         with patch.dict(os.environ, {'REQUIRE_MARKET_BOUNDARY': '1'}):
             self.assertTrue(self.run_at(14))
         snap = self.history()[0]
+        self.assertEqual(len(snap['scores']), 33)
         self.assertEqual(set(snap['t0_after_session']), set(g.BENCHMARK))
         self.assertNotIn('MSFT', snap['t0_after_session'])
 
