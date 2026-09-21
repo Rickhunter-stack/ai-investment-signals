@@ -52,7 +52,10 @@ jobs:
       - name: Verify append-only history on pushes
         if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
         run: python scripts/check_append_only_git.py "${{ github.event.before }}"
-      - run: python run.py --step all
+      - name: Refresh operational market data
+        env:
+          CONFIRMATORY_WRITE: ${{ github.event_name == 'schedule' && '1' || '0' }}
+        run: python run.py --step all
       - name: Refresh cash-flow and ROIC fundamentals
         run: python scripts/collect_fundamentals.py
       - name: Freeze observed fundamentals prospectively
