@@ -38,7 +38,6 @@ class WeeklySignalsTests(unittest.TestCase):
         self.write('signal_research', {})
         boundary={'observed_at':'2026-09-14T20:50:00+00:00','latest_returned_session':{'AAA':'2026-09-14','BBB':'2026-09-14'}}
         (self.root/'data/market_boundary_runtime.json').write_text(json.dumps(boundary))
-        old=dict(__import__('scripts.generate_weekly_signals',fromlist=['BENCHMARK']).BENCHMARK)
         import generate_weekly_signals as g
         with patch.dict(g.BENCHMARK,{'AAA':'BBB','BBB':'AAA'},clear=True), patch.dict(os.environ,{'REQUIRE_MARKET_BOUNDARY':'1'}):
             self.assertTrue(self.run_at(14))
