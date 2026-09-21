@@ -72,6 +72,24 @@ def _latest_per_ticker(rows):
   if old is None or r["session_date"]>old["session_date"]: newest[r["ticker"]]=r
  return [newest[t] for t in sorted(newest)]
 
+def _annotate_gap_metadata(newest,all_rows):
+ existing=_load_journal()
+ latest_existing={}
+ for (ticker,session),_ in existing.items():
+  if ticker not in latest_existing or session>latest_existing[ticker]: latest_existing[ticker]=session
+ by_ticker={}
+ for r in all_rows: by_ticker.setdefault(r["ticker"],[]).append(r)
+ for r in newest:
+  previous=latest_existing.get(r["ticker"])
+  r["gap_sessions"]=[]
+  r["gap_unbounded"]=False
+  if not previous: continue
+  r["gap_sessions"]=sorted(x["session_date"] for x in by_ticker.get(r["ticker"],[])
+                           if previous < x["session_date"] < r["session_date"])
+  if (date.fromisoformat(r["session_date"])-date.fromisoformat(previous)).days>31:
+   r["gap_unbounded"]=True
+ return newest
+
 def _collection_boundary(raw,tickers):
  frames=_frames(raw,tickers); out={}
  for ticker,frame in frames.items():
@@ -160,6 +178,7 @@ def update_market(period="1mo"):
  rows=_eligible_rows(raw,securities,observed_at,"security",kwargs)+_eligible_rows(bench,list(BENCHMARK_TICKERS),observed_at,"benchmark",kwargs)
  confirmatory_rows=_latest_per_ticker(rows)
  if confirmatory_writes_enabled():
+  confirmatory_rows=_annotate_gap_metadata(confirmatory_rows,rows)
   try: _validate_confirmatory_rows(rows)
   except (ValueError,RuntimeError):
    conn.close(); raise
