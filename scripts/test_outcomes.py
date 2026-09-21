@@ -14,6 +14,20 @@ class OutcomeTests(unittest.TestCase):
  def test_total_return_reinvests_dividend(self):
   m=[row("X","2026-01-01",100),row("X","2026-02-01",100,div=10)]
   self.assertAlmostEqual(o.total_return(m,date(2026,1,1),date(2026,2,1)),.1)
+ def test_total_return_split_only(self):
+  m=[row("X","2026-01-01",100),row("X","2026-02-01",50,split=2)]
+  self.assertAlmostEqual(o.total_return(m,date(2026,1,1),date(2026,2,1)),0)
+ def test_total_return_reverse_split(self):
+  m=[row("X","2026-01-01",10),row("X","2026-02-01",100,split=.1)]
+  self.assertAlmostEqual(o.total_return(m,date(2026,1,1),date(2026,2,1)),0)
+ def test_total_return_split_and_dividend(self):
+  m=[row("X","2026-01-01",100),row("X","2026-02-01",50,div=1,split=2)]
+  self.assertAlmostEqual(o.total_return(m,date(2026,1,1),date(2026,2,1)),.02)
+ def test_t0_post_close_waits_for_later_session(self):
+  captured=datetime(2026,9,21,21,30,tzinfo=timezone.utc)
+  m={"NVDA":[row("NVDA","2026-09-21",100,"2026-09-22T21:00:00+00:00"),row("NVDA","2026-09-22",101,"2026-09-23T21:00:00+00:00")],
+     "QQQ":[row("QQQ","2026-09-21",500,"2026-09-22T21:00:00+00:00"),row("QQQ","2026-09-22",501,"2026-09-23T21:00:00+00:00")]}
+  self.assertEqual(o.t0_row(m,"NVDA","QQQ",captured)[0],date(2026,9,22))
  def test_append_never_rewrites(self):
   old=[{"outcome_id":"A","excess_return":.1}]; new=[{"outcome_id":"A","excess_return":9.9},{"outcome_id":"B"}]
   got=o.append_unique(old,new); self.assertEqual(got[0]["excess_return"],.1); self.assertEqual(len(got),2)
