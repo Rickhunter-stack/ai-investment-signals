@@ -1,35 +1,107 @@
 let AIS_FUND={companies:{}};
 const F_METRICS={fcf_per_share:['FCF / action','€/$ par action'],fcf_margin_pct:['Marge FCF','%'],roic_pct:['ROIC','%'],capex_ocf_pct:['CAPEX / OCF','%'],fcf_yield_pct:['FCF yield','%']};
 function ffmt(v,s=''){return v==null?'—':Number(v).toLocaleString('fr-FR',{maximumFractionDigits:2})+s}
+
+const SIGNAL_HELP=`
+<strong>Lire le Signal Score</strong>
+<span>Le score global synthétise cinq dimensions sur 100. Plus haut est favorable, sauf le risque d’exécution où 100 signifie un risque élevé.</span>
+<b>Solidité fondamentale</b><span>Qualité de la génération de cash et efficacité du capital, à partir notamment de la marge FCF et du ROIC.</span>
+<b>Nouveauté</b><span>Mesure si les informations récentes changent réellement la thèse plutôt que de simplement répéter ce que le marché sait déjà.</span>
+<b>Potentiel non pricé</b><span>Évalue la marge entre ce que les nouvelles preuves suggèrent et ce que le cours semble déjà intégrer.</span>
+<b>Valorisation</b><span>Met le prix payé en regard de la génération de cash actuelle. Une valorisation favorable ne suffit pas seule à valider une thèse.</span>
+<b>Risque d’exécution</b><span>Risque que l’entreprise n’arrive pas à convertir la thèse en résultats. Ici, un score élevé est défavorable.</span>
+<span class="ratio-benchmark">Lecture rapide : le score global est un outil de comparaison, pas une règle automatique d’achat.</span>
+`;
+
+const THESIS_HELP=`
+<strong>Lire les indicateurs de thèse</strong>
+<b>Signal industriel</b><span>Traction réelle : demande, backlog, capacité, commandes.</span>
+<span class="ratio-benchmark">Repère : &lt;40 faible · 40-60 à confirmer · 60-75 positif · &gt;75 fort</span>
+<b>Confirmation financière</b><span>La traction se retrouve dans les revenus, marges et cash-flows.</span>
+<span class="ratio-benchmark">Repère : &gt;60 confirme la thèse · &gt;75 confirmation forte</span>
+<b>Criticité</b><span>Importance du maillon dans la chaîne de valeur et difficulté à le remplacer.</span>
+<span class="ratio-benchmark">Repère : &gt;70 = maillon particulièrement stratégique</span>
+<b>Valorisation</b><span>Remet le potentiel en regard du prix payé. À lire avec la croissance et la qualité.</span>
+<span class="ratio-benchmark">Repère : &gt;60 favorable · &lt;40 valorisation exigeante</span>
+<b>Diversité des preuves</b><span>Plus les sources indépendantes convergent, plus le signal est robuste.</span>
+<span class="ratio-benchmark">Repère : &gt;60 correct · &gt;75 robuste</span>
+<em>Un tiret signifie qu’aucune thèse figée n’est disponible pour cet indicateur.</em>
+`;
+
+const FUND_HELP=`
+<strong>Lire les fondamentaux</strong>
+<b>FCF yield</b><span>FCF / capitalisation. Mesure le cash libre généré pour le prix payé.</span>
+<span class="ratio-benchmark">Repère : &lt;2% exigeant · 2-4% correct si forte croissance · 4-6% attractif · &gt;6% élevé à vérifier</span>
+<b>Marge FCF</b><span>FCF / chiffre d’affaires. Mesure la conversion des ventes en cash libre.</span>
+<span class="ratio-benchmark">Repère : &lt;10% faible · 10-20% solide · &gt;20% très bon · &gt;30% excellent</span>
+<b>ROIC</b><span>Rendement du capital investi. Le point clé est l’écart durable avec le coût du capital.</span>
+<span class="ratio-benchmark">Repère : &lt;8% faible · 8-12% correct · 12-20% très bon · &gt;20% excellent</span>
+<b>CAPEX / OCF</b><span>Part du cash opérationnel réinvestie. Plus bas n’est pas automatiquement meilleur.</span>
+<span class="ratio-benchmark">Repère : &lt;25% léger · 25-50% modéré · &gt;50% très capitalistique ou phase d’investissement</span>
+<b>FCF / action</b><span>Cash libre ramené à une action. L’évolution compte davantage que le niveau absolu.</span>
+<span class="ratio-benchmark">Repère : pas de cible absolue · viser une progression régulière, idéalement &gt;8-10%/an sur plusieurs années</span>
+<b>Croissance FCF</b><span>Tendance pluriannuelle du cash libre. À confronter au FCF yield et à la dilution.</span>
+<span class="ratio-benchmark">Repère : 5-10%/an solide · 10-15% fort · &gt;15% très fort si durable</span>
+<em>Lecture d’ensemble : qualité + croissance + valorisation. Les seuils sont des ordres de grandeur et varient selon le secteur et la phase d’investissement.</em>
+`;
+
+function helpMarkup(label,content){
+  return '<span class="ratio-help"><button class="ratio-help-btn" type="button" aria-label="'+label+'" aria-expanded="false">?</button><span class="ratio-tooltip" role="tooltip">'+content+'</span></span>';
+}
+
+function setupHelp(sc){
+  const positionTip=(btn,tip)=>{
+    if(!tip)return;
+    const r=sc.getBoundingClientRect(), gap=12, pad=12;
+    const w=Math.min(500,Math.max(340,r.left-gap-pad));
+    let left=r.left-gap-w;
+    if(left<pad) left=pad;
+    let top=Math.max(pad,r.top);
+    const maxH=Math.max(260,window.innerHeight-top-pad);
+    tip.style.setProperty('--ratio-left',`${left}px`);
+    tip.style.setProperty('--ratio-top',`${top}px`);
+    tip.style.setProperty('--ratio-width',`${w}px`);
+    tip.style.setProperty('--ratio-max-height',`${maxH}px`);
+  };
+  const closeAll=(except=null)=>{
+    sc.querySelectorAll('.ratio-help').forEach(wrap=>{
+      if(wrap===except)return;
+      wrap.classList.remove('open');
+      wrap.querySelector('.ratio-help-btn')?.setAttribute('aria-expanded','false');
+    });
+  };
+  sc.querySelectorAll('.ratio-help-btn').forEach(btn=>{
+    const tip=btn.nextElementSibling;
+    btn.addEventListener('mouseenter',()=>positionTip(btn,tip));
+    btn.addEventListener('focus',()=>positionTip(btn,tip));
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      positionTip(btn,tip);
+      const wrap=btn.closest('.ratio-help');
+      const willOpen=!wrap.classList.contains('open');
+      closeAll(wrap);
+      wrap.classList.toggle('open',willOpen);
+      btn.setAttribute('aria-expanded',String(willOpen));
+    });
+  });
+  window.addEventListener('resize',()=>sc.querySelectorAll('.ratio-help.open .ratio-help-btn').forEach(btn=>positionTip(btn,btn.nextElementSibling)));
+  document.addEventListener('click',()=>closeAll());
+}
+
 function addFundUI(){
  const pc=document.querySelector('.pricecard h3'); if(pc&&!document.getElementById('fundMetric')) pc.innerHTML='Cotation & fondamentaux <select id="fundMetric" style="float:right"><option value="">Cours seul</option>'+Object.entries(F_METRICS).map(([k,v])=>`<option value="${k}">${v[0]}</option>`).join('')+'</select>';
  const sc=document.querySelector('.scorecard');
  if(sc&&!document.getElementById('fundCards')){
    sc.classList.add('with-fundamentals');
-   const h=sc.querySelector('h3');
-   if(h) h.innerHTML='Indicateurs de thèse <span class="ratio-help"><button class="ratio-help-btn" type="button" aria-label="Comment lire les indicateurs" aria-expanded="false">?</button><span class="ratio-tooltip" role="tooltip"><strong>Comment lire cette card</strong><span class="ratio-tip-section">THÈSE - scores sur 100</span><b>Signal industriel</b><span>Traction réelle : demande, backlog, capacité, commandes.</span><span class="ratio-benchmark">Repère : &lt;40 faible · 40-60 à confirmer · 60-75 positif · &gt;75 fort</span><b>Confirmation financière</b><span>La traction se retrouve dans les revenus, marges et cash-flows.</span><span class="ratio-benchmark">Repère : &gt;60 confirme la thèse · &gt;75 confirmation forte</span><b>Criticité</b><span>Importance du maillon dans la chaîne de valeur et difficulté à le remplacer.</span><span class="ratio-benchmark">Repère : &gt;70 = maillon particulièrement stratégique</span><b>Valorisation</b><span>Remet le potentiel en regard du prix payé. À lire avec la croissance et la qualité.</span><span class="ratio-benchmark">Repère : &gt;60 favorable · &lt;40 valorisation exigeante</span><b>Diversité des preuves</b><span>Plus les sources indépendantes convergent, plus le signal est robuste.</span><span class="ratio-benchmark">Repère : &gt;60 correct · &gt;75 robuste</span><span class="ratio-tip-section">FONDAMENTAUX</span><b>FCF yield</b><span>FCF / capitalisation. Mesure le cash libre généré pour le prix payé.</span><span class="ratio-benchmark">Repère : &lt;2% exigeant · 2-4% correct si forte croissance · 4-6% attractif · &gt;6% élevé à vérifier</span><b>Marge FCF</b><span>FCF / chiffre d’affaires. Mesure la conversion des ventes en cash libre.</span><span class="ratio-benchmark">Repère : &lt;10% faible · 10-20% solide · &gt;20% très bon · &gt;30% excellent</span><b>ROIC</b><span>Rendement du capital investi. Le point clé est l’écart durable avec le coût du capital.</span><span class="ratio-benchmark">Repère : &lt;8% faible · 8-12% correct · 12-20% très bon · &gt;20% excellent</span><b>CAPEX / OCF</b><span>Part du cash opérationnel réinvestie. Ici, plus bas n’est pas automatiquement meilleur.</span><span class="ratio-benchmark">Repère : &lt;25% léger · 25-50% modéré · &gt;50% très capitalistique ou phase d’investissement</span><b>FCF / action</b><span>Cash libre ramené à une action. L’évolution compte davantage que le niveau absolu.</span><span class="ratio-benchmark">Repère : pas de cible absolue · viser une progression régulière, idéalement &gt;8-10%/an sur plusieurs années</span><b>Croissance FCF</b><span>Tendance pluriannuelle du cash libre. À confronter au FCF yield et à la dilution.</span><span class="ratio-benchmark">Repère : 5-10%/an solide · 10-15% fort · &gt;15% très fort si durable</span><em>Lecture d’ensemble : qualité + croissance + valorisation. Ces seuils sont des ordres de grandeur, pas des règles d’achat. Ils varient selon le secteur, la cyclicité et la phase d’investissement.</em></span></span>';
-   sc.insertAdjacentHTML('beforeend','<div class="fund-section-title">Fondamentaux</div><div id="fundCards" class="scoregrid fund-grid"></div>');
-   const helpBtn=sc.querySelector('.ratio-help-btn'), tip=sc.querySelector('.ratio-tooltip');
-   const positionTip=()=>{
-     if(!tip)return;
-     const r=sc.getBoundingClientRect(), gap=12, pad=12;
-     const w=Math.min(470,Math.max(320,r.left-gap-pad));
-     let left=r.left-gap-w;
-     if(left<pad) left=pad;
-     let top=Math.max(pad,r.top);
-     const maxH=Math.max(240,window.innerHeight-top-pad);
-     tip.style.setProperty('--ratio-left',`${left}px`);
-     tip.style.setProperty('--ratio-top',`${top}px`);
-     tip.style.setProperty('--ratio-width',`${w}px`);
-     tip.style.setProperty('--ratio-max-height',`${maxH}px`);
-   };
-   if(helpBtn){
-     helpBtn.addEventListener('mouseenter',positionTip);
-     helpBtn.addEventListener('focus',positionTip);
-     helpBtn.addEventListener('click',e=>{e.stopPropagation();positionTip();const wrap=helpBtn.closest('.ratio-help');const open=wrap.classList.toggle('open');helpBtn.setAttribute('aria-expanded',String(open));});
-     window.addEventListener('resize',positionTip);
-     document.addEventListener('click',()=>{const wrap=helpBtn.closest('.ratio-help');wrap.classList.remove('open');helpBtn.setAttribute('aria-expanded','false');});
-   }
+
+   const signalHeading=sc.querySelector('.signalblock h4');
+   if(signalHeading) signalHeading.innerHTML='Signal Score '+helpMarkup('Comment lire le Signal Score',SIGNAL_HELP);
+
+   const thesisHeading=sc.querySelector('h3');
+   if(thesisHeading) thesisHeading.innerHTML='Indicateurs de thèse '+helpMarkup('Comment lire les indicateurs de thèse',THESIS_HELP);
+
+   sc.insertAdjacentHTML('beforeend','<div class="fund-section-title"><span>Fondamentaux</span>'+helpMarkup('Comment lire les fondamentaux',FUND_HELP)+'</div><div id="fundCards" class="scoregrid fund-grid"></div>');
+   setupHelp(sc);
  }
  if(!document.getElementById('fundCompactStyle')){
    const style=document.createElement('style'); style.id='fundCompactStyle'; style.textContent=`
@@ -40,20 +112,33 @@ function addFundUI(){
    .scorecard.with-fundamentals .score b{font-size:.98rem;line-height:1.08;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
    .scorecard.with-fundamentals .score span{font-size:.59rem;line-height:1.15;margin-top:4px;white-space:normal}
    .scorecard.with-fundamentals .thesis{margin-top:1px;padding-top:5px;flex:0 0 auto}
-   .fund-section-title{margin-top:1px;padding-top:5px;border-top:1px solid var(--rule);font-size:.63rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}
+   .signalblock h4{display:flex;align-items:center;justify-content:space-between;gap:8px}
+   .fund-section-title{margin-top:1px;padding-top:5px;border-top:1px solid var(--rule);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:8px}
    .scorecard.with-fundamentals .fund-grid{margin-top:0!important}
    .ratio-help{position:relative;display:inline-flex;flex:0 0 auto}
-   .ratio-help-btn{width:20px;height:20px;padding:0;border-radius:50%;display:grid;place-items:center;background:var(--panel2);border:1px solid var(--accent);color:var(--accent);font-size:.72rem;font-weight:900;line-height:1}
+   .ratio-help-btn{width:22px;height:22px;padding:0;border-radius:50%;display:grid;place-items:center;background:var(--panel2);border:1px solid var(--accent);color:var(--accent);font-size:.78rem;font-weight:900;line-height:1}
    .ratio-help-btn:hover,.ratio-help.open .ratio-help-btn{background:var(--accent);color:var(--bg)}
-   .ratio-tooltip{display:none;position:fixed;z-index:80;left:var(--ratio-left,12px);top:var(--ratio-top,12px);width:var(--ratio-width,470px);max-height:var(--ratio-max-height,72vh);overflow:auto;padding:14px 15px;background:#101719;border:1px solid var(--accent);border-radius:9px;box-shadow:0 12px 32px rgba(0,0,0,.45);color:#d4dddc;font-size:.79rem;line-height:1.42;font-weight:400;text-align:left}
-   .ratio-help:hover .ratio-tooltip,.ratio-help:focus-within .ratio-tooltip,.ratio-help.open .ratio-tooltip{display:grid;grid-template-columns:1fr;gap:2px}
-   .ratio-tooltip strong{font-size:.98rem;color:var(--ink);margin-bottom:4px}
-   .ratio-tooltip b{color:var(--accent);font-size:.8rem;margin-top:6px}
-   .ratio-tooltip .ratio-tip-section{margin-top:9px;padding-top:7px;border-top:1px solid var(--rule);color:var(--amber);font-size:.69rem;letter-spacing:.1em;font-weight:900}
-   .ratio-tooltip .ratio-benchmark{color:#e4bd68;font-size:.73rem;font-weight:700;margin:1px 0 3px}
-   .ratio-tooltip em{margin-top:10px;padding:8px 9px;border-radius:6px;background:var(--panel2);color:var(--ink);font-size:.75rem;line-height:1.4;font-style:normal;font-weight:700}
+   .ratio-tooltip{display:none;position:fixed;z-index:80;left:var(--ratio-left,12px);top:var(--ratio-top,12px);width:var(--ratio-width,500px);max-height:var(--ratio-max-height,76vh);overflow:auto;padding:18px 19px;background:#101719;border:1px solid var(--accent);border-radius:10px;box-shadow:0 14px 36px rgba(0,0,0,.48);color:#d4dddc;font-size:.94rem;line-height:1.58;font-weight:400;text-align:left;text-transform:none;letter-spacing:normal}
+   .ratio-help:hover .ratio-tooltip,.ratio-help:focus-within .ratio-tooltip,.ratio-help.open .ratio-tooltip{display:grid;grid-template-columns:1fr;gap:5px}
+   .ratio-tooltip strong{font-size:1.12rem;line-height:1.3;color:var(--ink);margin-bottom:7px}
+   .ratio-tooltip b{color:var(--accent);font-size:.96rem;line-height:1.35;margin-top:8px}
+   .ratio-tooltip .ratio-benchmark{color:#e4bd68;font-size:.88rem;line-height:1.45;font-weight:700;margin:1px 0 4px}
+   .ratio-tooltip em{margin-top:11px;padding:10px 11px;border-radius:7px;background:var(--panel2);color:var(--ink);font-size:.88rem;line-height:1.5;font-style:normal;font-weight:700}
+
+   .readcard h3{font-size:1.02rem!important;margin-bottom:10px!important}
+   .readcard .brief-memory-scroll{overflow:auto;max-height:100%}
+   .readcard .brief-memory-item{border-left:2px solid var(--accent);padding:1px 0 12px 12px;margin-bottom:14px}
+   .readcard .brief-memory-title{font-size:.88rem;color:var(--accent);font-weight:800;line-height:1.35}
+   .readcard .brief-memory-summary{font-size:.9rem;color:#d4dddc;margin-top:6px;line-height:1.55}
+   .readcard .brief-memory-watch{font-size:.8rem;margin-top:6px;line-height:1.48}
+   /* Fallback for the currently generated index until the next scheduled rebuild. */
+   .readcard>div>div[style*="border-left"]{padding:1px 0 12px 12px!important;margin-bottom:14px!important}
+   .readcard>div>div[style*="border-left"]>div:first-child{font-size:.88rem!important;line-height:1.35!important}
+   .readcard>div>div[style*="border-left"]>div:nth-child(2){font-size:.9rem!important;line-height:1.55!important;margin-top:6px!important}
+   .readcard>div>div[style*="border-left"]>div:nth-child(3){font-size:.8rem!important;line-height:1.48!important;margin-top:6px!important}
+
    @media(max-width:1100px){.scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(2,minmax(0,1fr))}.scorecard.with-fundamentals .score{min-height:43px;padding:5px 6px}.scorecard.with-fundamentals .score b{font-size:.9rem}}
-   @media(max-width:850px){.scorecard.with-fundamentals{overflow:visible}.scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(2,minmax(0,1fr))}.ratio-tooltip{left:16px!important;right:16px;top:16px!important;width:auto!important;max-height:80vh!important;font-size:.82rem}}
+   @media(max-width:850px){.scorecard.with-fundamentals{overflow:visible}.scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(2,minmax(0,1fr))}.ratio-tooltip{left:16px!important;right:16px;top:16px!important;width:auto!important;max-height:80vh!important;font-size:.96rem}.ratio-tooltip strong{font-size:1.1rem}.readcard .brief-memory-summary{font-size:.94rem}}
    `; document.head.appendChild(style);
  }
  document.getElementById('fundMetric')?.addEventListener('change',renderFundamentals);
