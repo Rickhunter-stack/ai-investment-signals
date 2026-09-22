@@ -137,7 +137,41 @@ function addFundUI(){
    .readcard>div>div[style*="border-left"]>div:nth-child(2){font-size:.9rem!important;line-height:1.55!important;margin-top:6px!important}
    .readcard>div>div[style*="border-left"]>div:nth-child(3){font-size:.8rem!important;line-height:1.48!important;margin-top:6px!important}
 
-   @media(max-width:1100px){.scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(2,minmax(0,1fr))}.scorecard.with-fundamentals .score{min-height:43px;padding:5px 6px}.scorecard.with-fundamentals .score b{font-size:.9rem}}
+   .readcard{cursor:pointer;position:relative}
+   .readcard:hover{border-color:rgba(95,196,203,.58)}
+   .readcard h3{display:flex;align-items:center;justify-content:space-between;gap:10px}
+   .brief-open-hint{display:inline-flex;align-items:center;gap:5px;color:var(--accent);font-size:.7rem;font-weight:800;white-space:nowrap}
+   .brief-open-hint::before{content:'↗';font-size:.82rem}
+
+   body.brief-archive-open{overflow:hidden}
+   .brief-archive-overlay{display:none;position:fixed;inset:0;z-index:140;background:rgba(3,8,10,.82);backdrop-filter:blur(5px);padding:4vh 3vw}
+   .brief-archive-overlay.open{display:flex;align-items:center;justify-content:center}
+   .brief-archive-modal{width:min(1180px,94vw);height:min(88vh,920px);display:flex;flex-direction:column;background:#101719;border:1px solid var(--accent);border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.6);overflow:hidden}
+   .brief-archive-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding:20px 22px 14px;border-bottom:1px solid var(--rule)}
+   .brief-archive-head h2{margin:0;font-size:1.4rem}
+   .brief-archive-subtitle{margin-top:4px;color:var(--muted);font-size:.88rem}
+   .brief-archive-close{width:34px;height:34px;padding:0;border-radius:50%;font-size:1.15rem;line-height:1;background:var(--panel2);border:1px solid var(--rule)}
+   .brief-archive-close:hover{border-color:var(--accent);color:var(--accent)}
+   .brief-archive-tools{display:grid;grid-template-columns:minmax(260px,1.5fr) minmax(150px,.55fr) minmax(150px,.55fr) auto;gap:10px;align-items:end;padding:14px 22px;border-bottom:1px solid var(--rule);background:rgba(18,28,30,.75)}
+   .brief-archive-field{display:flex;flex-direction:column;gap:5px}
+   .brief-archive-field label{font-size:.72rem;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+   .brief-archive-field input{width:100%;background:var(--panel2);border:1px solid var(--rule);border-radius:8px;color:var(--ink);padding:9px 10px;font:inherit}
+   .brief-archive-field input:focus{outline:none;border-color:var(--accent)}
+   .brief-archive-reset{border-radius:8px;height:38px;padding:0 12px}
+   .brief-archive-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 22px;color:var(--muted);font-size:.8rem;border-bottom:1px solid var(--rule)}
+   .brief-archive-list{overflow:auto;padding:4px 22px 22px}
+   .brief-archive-item{padding:18px 4px 18px 14px;border-left:3px solid var(--accent);border-bottom:1px solid var(--rule)}
+   .brief-archive-item:last-child{border-bottom:0}
+   .brief-archive-date{color:var(--accent);font-size:.9rem;font-weight:900}
+   .brief-archive-stance{color:var(--amber);font-weight:800}
+   .brief-archive-summary{margin-top:8px;color:#e0e8e7;font-size:1rem;line-height:1.65}
+   .brief-archive-watch{margin-top:9px;color:var(--muted);font-size:.9rem;line-height:1.55}
+   .brief-archive-watch b{color:#b9c8c7}
+   .brief-archive-tickers{margin-top:8px;display:flex;gap:5px;flex-wrap:wrap}
+   .brief-archive-ticker{font-size:.68rem;border:1px solid var(--rule);border-radius:999px;padding:2px 7px;color:var(--accent)}
+   .brief-archive-empty{padding:42px 10px;text-align:center;color:var(--muted);font-size:.95rem}
+
+   @media(max-width:1100px){.scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(2,minmax(0,1fr))}.scorecard.with-fundamentals .score{min-height:43px;padding:5px 6px}.scorecard.with-fundamentals .score b{font-size:.9rem}.brief-archive-tools{grid-template-columns:1fr 1fr}.brief-archive-search{grid-column:1/-1}}
    @media(max-width:850px){.scorecard.with-fundamentals{overflow:visible}.scorecard.with-fundamentals>.scoregrid{grid-template-columns:repeat(2,minmax(0,1fr))}.ratio-tooltip{left:16px!important;right:16px;top:16px!important;width:auto!important;max-height:80vh!important;font-size:.96rem}.ratio-tooltip strong{font-size:1.1rem}.readcard .brief-memory-summary{font-size:.94rem}}
    `; document.head.appendChild(style);
  }
@@ -158,5 +192,98 @@ function renderFundamentals(){
  }
  priceChart.update();
 }
-fetch('/data/fundamentals.json').then(r=>r.ok?r.json():{companies:{}}).then(d=>{AIS_FUND=d;addFundUI();renderFundamentals()}).catch(()=>{});
+
+let AIS_BRIEF_ARCHIVE=[];
+
+function briefEscapeHtml(value){
+  return String(value==null?'':value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]});
+}
+function briefSearchText(item){
+  return [item.date,item.stance,item.summary,item.watch_next].concat(item.tickers||[]).filter(Boolean).join(' ').toLowerCase();
+}
+function renderBriefArchive(){
+  const list=document.getElementById('briefArchiveList');
+  const meta=document.getElementById('briefArchiveCount');
+  if(!list||!meta)return;
+  const q=(document.getElementById('briefArchiveSearch')?.value||'').trim().toLowerCase();
+  const from=document.getElementById('briefArchiveFrom')?.value||'';
+  const to=document.getElementById('briefArchiveTo')?.value||'';
+  const filtered=[...AIS_BRIEF_ARCHIVE]
+    .filter(function(item){return (!q||briefSearchText(item).includes(q))&&(!from||String(item.date||'')>=from)&&(!to||String(item.date||'')<=to)})
+    .sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''))});
+  meta.textContent=String(filtered.length)+' brief'+(filtered.length>1?'s':'')+' affiché'+(filtered.length>1?'s':'')+' sur '+String(AIS_BRIEF_ARCHIVE.length);
+  if(!filtered.length){
+    list.innerHTML='<div class="brief-archive-empty">Aucun brief ne correspond à ces filtres.</div>';
+    return;
+  }
+  list.innerHTML=filtered.map(function(item){
+    const stance=item.stance?' · <span class="brief-archive-stance">'+briefEscapeHtml(item.stance)+'</span>':'';
+    const watch=item.watch_next?'<div class="brief-archive-watch"><b>À surveiller :</b> '+briefEscapeHtml(item.watch_next)+'</div>':'';
+    const tickers=(item.tickers||[]).length?'<div class="brief-archive-tickers">'+item.tickers.map(function(t){return '<span class="brief-archive-ticker">'+briefEscapeHtml(t)+'</span>'}).join('')+'</div>':'';
+    return '<article class="brief-archive-item"><div class="brief-archive-date">'+briefEscapeHtml(item.date||'')+stance+'</div><div class="brief-archive-summary">'+briefEscapeHtml(item.summary||'')+'</div>'+watch+tickers+'</article>';
+  }).join('');
+}
+function openBriefArchive(){
+  const overlay=document.getElementById('briefArchiveOverlay');
+  if(!overlay)return;
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden','false');
+  document.body.classList.add('brief-archive-open');
+  renderBriefArchive();
+  setTimeout(function(){document.getElementById('briefArchiveSearch')?.focus()},30);
+}
+function closeBriefArchive(){
+  const overlay=document.getElementById('briefArchiveOverlay');
+  if(!overlay)return;
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden','true');
+  document.body.classList.remove('brief-archive-open');
+}
+function setupBriefArchive(){
+  const card=document.querySelector('.readcard');
+  if(!card||document.getElementById('briefArchiveOverlay'))return;
+  card.setAttribute('role','button');
+  card.setAttribute('tabindex','0');
+  card.setAttribute('aria-label','Ouvrir les archives des briefs');
+  const title=card.querySelector('h3');
+  if(title&&!title.querySelector('.brief-open-hint')) title.insertAdjacentHTML('beforeend','<span class="brief-open-hint">Ouvrir l’archive</span>');
+  card.addEventListener('click',openBriefArchive);
+  card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openBriefArchive()}});
+
+  const modalHtml=
+    '<div class="brief-archive-overlay" id="briefArchiveOverlay" aria-hidden="true">'+
+      '<section class="brief-archive-modal" role="dialog" aria-modal="true" aria-labelledby="briefArchiveTitle">'+
+        '<header class="brief-archive-head">'+
+          '<div><h2 id="briefArchiveTitle">Mémoire des briefs</h2><div class="brief-archive-subtitle">Archive chronologique, recherche plein texte et filtrage par dates</div></div>'+
+          '<button class="brief-archive-close" id="briefArchiveClose" type="button" aria-label="Fermer">×</button>'+
+        '</header>'+
+        '<div class="brief-archive-tools">'+
+          '<div class="brief-archive-field brief-archive-search"><label for="briefArchiveSearch">Recherche</label><input id="briefArchiveSearch" type="search" placeholder="Ex. HBM, robotique, valorisation, QCOM..."></div>'+
+          '<div class="brief-archive-field"><label for="briefArchiveFrom">Du</label><input id="briefArchiveFrom" type="date"></div>'+
+          '<div class="brief-archive-field"><label for="briefArchiveTo">Au</label><input id="briefArchiveTo" type="date"></div>'+
+          '<button class="brief-archive-reset" id="briefArchiveReset" type="button">Réinitialiser</button>'+
+        '</div>'+
+        '<div class="brief-archive-meta"><span id="briefArchiveCount"></span><span>Tri : plus récent d’abord</span></div>'+
+        '<div class="brief-archive-list" id="briefArchiveList"></div>'+
+      '</section>'+
+    '</div>';
+  document.body.insertAdjacentHTML('beforeend',modalHtml);
+
+  ['briefArchiveSearch','briefArchiveFrom','briefArchiveTo'].forEach(function(id){document.getElementById(id)?.addEventListener('input',renderBriefArchive)});
+  document.getElementById('briefArchiveReset')?.addEventListener('click',function(){
+    ['briefArchiveSearch','briefArchiveFrom','briefArchiveTo'].forEach(function(id){const el=document.getElementById(id);if(el)el.value=''});
+    renderBriefArchive();
+  });
+  document.getElementById('briefArchiveClose')?.addEventListener('click',function(e){e.stopPropagation();closeBriefArchive()});
+  document.getElementById('briefArchiveOverlay')?.addEventListener('click',function(e){if(e.target===e.currentTarget)closeBriefArchive()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBriefArchive()});
+}
+
+fetch('/data/brief_memory.json').then(function(r){return r.ok?r.json():[]}).then(function(d){
+  AIS_BRIEF_ARCHIVE=Array.isArray(d)?d:[];
+  setupBriefArchive();
+  renderBriefArchive();
+}).catch(function(){AIS_BRIEF_ARCHIVE=[];setupBriefArchive();renderBriefArchive()});
+
+fetch('/data/fundamentals.json').then(r=>r.ok?r.json():{companies:{}}).then(d=>{AIS_FUND=d;addFundUI();renderFundamentals();setupBriefArchive()}).catch(()=>{setupBriefArchive()});
 document.addEventListener('ais:tickerchange',renderFundamentals);
