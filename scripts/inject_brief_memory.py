@@ -20,11 +20,15 @@ def render_items(items):
         stance = item.get("stance")
         stance_html = f' · <span style="color:var(--amber)">{esc(stance)}</span>' if stance else ""
         watch = item.get("watch_next")
-        watch_html = f'<div class="muted" style="font-size:.64rem;margin-top:3px">À surveiller : {esc(watch)}</div>' if watch else ""
+        watch_html = (
+            f'<div class="muted brief-memory-watch">À surveiller : {esc(watch)}</div>'
+            if watch
+            else ""
+        )
         chunks.append(
-            '<div style="border-left:2px solid var(--accent);padding:0 0 8px 9px;margin-bottom:9px">'
-            f'<div style="font-size:.66rem;color:var(--accent);font-weight:800">{esc(item.get("date"))}{stance_html}</div>'
-            f'<div style="font-size:.72rem;color:#d4dddc;margin-top:3px">{esc(item.get("summary"))}</div>'
+            '<div class="brief-memory-item">'
+            f'<div class="brief-memory-title">{esc(item.get("date"))}{stance_html}</div>'
+            f'<div class="brief-memory-summary">{esc(item.get("summary"))}</div>'
             f'{watch_html}</div>'
         )
     return "".join(chunks)
@@ -44,7 +48,7 @@ def main():
     block = (
         '<section class="card readcard">'
         '<h3>Mémoire des briefs</h3>'
-        '<div style="overflow:auto;max-height:100%">'
+        '<div class="brief-memory-scroll">'
         + render_items(items)
         + '</div></section>'
     )
