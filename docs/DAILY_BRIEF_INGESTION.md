@@ -34,3 +34,8 @@ For every new brief after activation:
 8. Fail closed if validation, complete reading of an existing daily file, SHA-guarded update, or post-write verification is unavailable.
 
 Daily journals are source-of-truth files, not temporary shards. Aggregated views may be derived later, but must never replace or mutate these frozen source journals.
+
+
+## Unified research entry point
+
+The preferred daily research workflow is defined in `docs/UNIFIED_DAILY_BRIEF_V1.md`. It replaces separate overlapping daily AI-sector and recurring-company briefs with one evidence pass. This ingestion document remains authoritative for the write path and frozen-event integrity rules.
