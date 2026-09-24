@@ -1,6 +1,6 @@
 # Daily brief ingestion v1
 
-After the human-readable ChatGPT brief, each investment-relevant selected item may be encoded as one `brief-event-v1` object and appended prospectively to `data/brief_events/YYYY-MM.json`.
+After the human-readable ChatGPT brief, each investment-relevant selected item may be encoded as one `brief-event-v1` object and written prospectively to one immutable daily journal `data/brief_events/YYYY-MM-DD.json`.
 
 Rules:
 - record only information available at `captured_at`;
@@ -19,17 +19,18 @@ Rules:
 Run `python -m unittest discover -s scripts -p 'test_brief*.py'` before activation.
 
 
-## Safe GitHub write protocol
+## Daily immutable journal protocol
 
-When ingestion is performed through the GitHub connector, the monthly journal must be updated with optimistic concurrency rather than from a truncated preview:
+The legacy monthly journals (for example `data/brief_events/2026-09.json`) remain frozen source history and are never migrated, split, edited, deleted or reordered.
 
-1. Read the complete `data/brief_events/YYYY-MM.json` with the repository file-content operation (`fetch_file`), and retain its current blob SHA.
-2. Parse the complete JSON array and validate the frozen history before changing anything.
-3. Build and story-classify only the new events. Reject any event without a reliable timezone-aware `published_at`.
-4. Append new events in memory. Never edit, delete, reorder, normalize, or reserialize historical event objects semantically.
-5. Run the same journal and append-only validation rules before writing.
-6. Replace the repository file only with the complete validated array and pass the previously fetched blob SHA to the file update operation. The SHA is an optimistic-concurrency guard: if the file changed after the read, the write must fail rather than overwrite concurrent history.
-7. Re-read the file after the write and verify that all previous event IDs are still present unchanged and that every new event ID appears exactly once.
-8. If a complete file read, SHA-guarded update, validation, or verification is unavailable, fail closed and report ingestion failure. Never reconstruct the journal from a truncated response.
+For every new brief after activation:
+1. Read all available historical journals under `data/brief_events/` for story comparison. Both legacy `YYYY-MM.json` and daily `YYYY-MM-DD.json` files are valid history.
+2. Build and validate only events with a reliable timezone-aware `published_at` not later than `captured_at`.
+3. Story-classify each new event against the combined frozen history.
+4. Write the day's events only to `data/brief_events/YYYY-MM-DD.json`.
+5. If that daily file does not exist, create it as a JSON array. If it already exists, fetch its complete contents and SHA and append only to it using optimistic concurrency.
+6. Never rewrite a legacy monthly journal to ingest a new brief.
+7. Re-read the daily file after writing and verify that previous entries are unchanged and every new event ID occurs exactly once.
+8. Fail closed if validation, complete reading of an existing daily file, SHA-guarded update, or post-write verification is unavailable.
 
-Do not use generic page previews or truncated search/fetch output as the source for a journal replacement. The repository file-content read is the authoritative path for connector-based ingestion.
+Daily journals are source-of-truth files, not temporary shards. Aggregated views may be derived later, but must never replace or mutate these frozen source journals.
