@@ -64,6 +64,7 @@ def load_history(path: Path):
             if not isinstance(payload, list):
                 raise ValueError(f"{journal}: journal must be an array")
             history.extend(payload)
+        history.sort(key=lambda event: (event.get("captured_at", ""), event.get("event_id", "")))
         return history
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, list):
