@@ -65,13 +65,22 @@ def validate_append_only(previous,current):
     validate_journal(previous); validate_journal(current)
     if len(current)<len(previous) or current[:len(previous)]!=previous: raise ValueError("brief-event history is append-only; frozen events cannot change")
 
+MONTHLY_NAME=re.compile(r"^[0-9]{4}-[0-9]{2}$")
+DAILY_NAME=re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
+
 def main():
-    paths=sorted(DATA_DIR.glob("????-??.json"))
+    paths=sorted(DATA_DIR.glob("*.json"))
+    seen_global=set()
     for path in paths:
+        if not (MONTHLY_NAME.fullmatch(path.stem) or DAILY_NAME.fullmatch(path.stem)):
+            raise ValueError(f"{path.name}: unsupported brief-event journal name")
         events=json.loads(path.read_text(encoding="utf-8")); validate_journal(events)
         for e in events:
-            if e["captured_at"][:7]!=path.stem: raise ValueError(f"{e['event_id']} belongs in {e['captured_at'][:7]}.json")
-    print(f"Validated {len(paths)} brief-event journal(s)")
+            expected=e["captured_at"][:10] if DAILY_NAME.fullmatch(path.stem) else e["captured_at"][:7]
+            if expected!=path.stem: raise ValueError(f"{e['event_id']} belongs in {expected}.json")
+            if e["event_id"] in seen_global: raise ValueError(f"duplicate event_id across journals: {e['event_id']}")
+            seen_global.add(e["event_id"])
+    print(f"Validated {len(paths)} brief-event journal(s), {len(seen_global)} unique event(s)")
 if __name__=="__main__":
     try: main()
     except (ValueError,json.JSONDecodeError) as exc:
