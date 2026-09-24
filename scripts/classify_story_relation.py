@@ -56,11 +56,27 @@ def classify(new, history):
     return {"story_id": story_id, "relation": proposed_relation(new, old), "matched_event_id": old.get("event_id"), "similarity": round(score, 3)}
 
 
+def load_history(path: Path):
+    if path.is_dir():
+        history = []
+        for journal in sorted(path.glob("*.json")):
+            payload = json.loads(journal.read_text(encoding="utf-8"))
+            if not isinstance(payload, list):
+                raise ValueError(f"{journal}: journal must be an array")
+            history.extend(payload)
+        history.sort(key=lambda event: (event.get("captured_at", ""), event.get("event_id", "")))
+        return history
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, list):
+        raise ValueError("history must be an array")
+    return payload
+
+
 def main():
     if len(sys.argv) != 3:
-        raise SystemExit("usage: classify_story_relation.py NEW_EVENT.json HISTORY.json")
+        raise SystemExit("usage: classify_story_relation.py NEW_EVENT.json HISTORY.json|JOURNAL_DIR")
     new = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-    history = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
+    history = load_history(Path(sys.argv[2]))
     print(json.dumps(classify(new, history), ensure_ascii=False, indent=2))
 
 if __name__ == "__main__":

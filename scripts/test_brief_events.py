@@ -1,7 +1,11 @@
 import copy
 import unittest
+import json
+import tempfile
+from pathlib import Path
 
 from validate_brief_events import validate_append_only, validate_event, validate_journal
+from classify_story_relation import load_history
 
 
 def event(event_id="EVT-20260916-0001", captured="2026-09-16T19:00:00+00:00"):
@@ -67,6 +71,16 @@ class BriefEventTests(unittest.TestCase):
         item["frozen"] = False
         with self.assertRaises(ValueError):
             validate_event(item)
+
+    def test_story_history_loads_multiple_journals(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            (root/"2026-09.json").write_text(json.dumps([event()]), encoding="utf-8")
+            second=event("EVT-20260917-0002", "2026-09-17T20:00:00+00:00")
+            second["published_at"]="2026-09-17T12:00:00+00:00"
+            (root/"2026-09-17.json").write_text(json.dumps([second]), encoding="utf-8")
+            history=load_history(root)
+            self.assertEqual([x["event_id"] for x in history], ["EVT-20260916-0001","EVT-20260917-0002"])
 
 
 if __name__ == "__main__":

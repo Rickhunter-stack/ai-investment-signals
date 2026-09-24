@@ -1,4 +1,4 @@
-"""Append structured ChatGPT brief events to the immutable monthly journal."""
+"""Append structured ChatGPT brief events to immutable daily journals."""
 from __future__ import annotations
 import json, sys
 from pathlib import Path
@@ -11,10 +11,10 @@ def ingest(events):
     if not events: return []
     for event in events: validate_event(event)
     grouped={}
-    for event in events: grouped.setdefault(event["captured_at"][:7],[]).append(event)
+    for event in events: grouped.setdefault(event["captured_at"][:10],[]).append(event)
     written=[]; DATA_DIR.mkdir(parents=True,exist_ok=True)
-    for month, additions in grouped.items():
-        path=DATA_DIR/f"{month}.json"; previous=json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+    for day, additions in grouped.items():
+        path=DATA_DIR/f"{day}.json"; previous=json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
         existing={e["event_id"] for e in previous}; duplicates=existing.intersection(e["event_id"] for e in additions)
         if duplicates: raise ValueError(f"event_id already exists: {sorted(duplicates)}")
         current=previous+additions; validate_append_only(previous,current)
