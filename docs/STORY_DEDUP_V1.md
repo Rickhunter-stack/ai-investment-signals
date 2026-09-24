@@ -22,3 +22,8 @@ The classifier is intentionally conservative and is a proposal, not a black-box 
 Events already frozen remain untouched. Prospectively, `published_at` is mandatory, timezone-aware and cannot be later than `captured_at`. This gives future outcome analysis a defensible information timestamp T0.
 
 A factual error discovered later must be represented by a new `CONTRADICT`/correction event linked to the story, never by editing the frozen original.
+
+
+## Journal layout
+
+Story matching uses the combined frozen history from every JSON journal under `data/brief_events/`. Legacy monthly journals and new daily journals are equivalent historical inputs; file boundaries never define story boundaries.
