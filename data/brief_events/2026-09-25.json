@@ -1,0 +1,163 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260925-ISLAND64",
+    "captured_at": "2026-09-25T08:07:34+02:00",
+    "published_at": "2026-09-24T10:37:00+00:00",
+    "title": "Island lève 400 millions de dollars à une valorisation de 6,4 milliards sur la sécurité des agents IA",
+    "factual_summary": "La société de cybersécurité Island a levé 400 millions de dollars à une valorisation de 6,4 milliards de dollars, en hausse de plus de 30% par rapport à 2025, alors que les entreprises déploient davantage d'agents IA et cherchent à contrôler leurs accès aux systèmes et données.",
+    "type": "FACT",
+    "theme": "IA et cybersécurité",
+    "subtheme": "Sécurité des agents IA",
+    "companies": [
+      "Island"
+    ],
+    "tickers": [],
+    "sector": "Cybersecurity",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/ai-startup-island-valued-64-billion-latest-funding-round-2026-09-24/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 83,
+    "novelty": 84,
+    "confidence": 96,
+    "execution_risk": 58,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La diffusion des agents IA crée une nouvelle couche de demande pour les outils contrôlant identité, navigation, accès aux données et actions autonomes dans l'entreprise."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260925-LLYONSWIK",
+    "captured_at": "2026-09-25T08:07:34+02:00",
+    "published_at": "2026-09-24T11:27:00+00:00",
+    "title": "La FDA approuve l'insuline basale hebdomadaire Onswik d'Eli Lilly dans le diabète de type 2",
+    "factual_summary": "La FDA américaine a approuvé Onswik, l'insuline basale hebdomadaire d'Eli Lilly, pour les adultes atteints de diabète de type 2; l'approbation repose sur quatre études de phase avancée totalisant plus de 3 400 adultes.",
+    "type": "FACT",
+    "theme": "Médecine et investissement",
+    "subtheme": "Insuline hebdomadaire diabète de type 2",
+    "companies": [
+      "Eli Lilly",
+      "Novo Nordisk"
+    ],
+    "tickers": [
+      "LLY",
+      "NVO"
+    ],
+    "sector": "Pharmaceuticals",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/us-fda-approves-lillys-once-weekly-insulin-injection-type-2-diabetes-2026-09-24/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 88,
+    "novelty": 87,
+    "confidence": 98,
+    "execution_risk": 42,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les insulines basales hebdomadaires peuvent déplacer la concurrence du diabète vers la simplicité d'usage et l'observance, en plus de l'efficacité glycémique."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260925-MRKDME",
+    "captured_at": "2026-09-25T08:07:34+02:00",
+    "published_at": "2026-09-24T10:57:00+00:00",
+    "title": "Merck atteint le critère principal de phase avancée avec un nouveau mécanisme dans l'œdème maculaire diabétique",
+    "factual_summary": "Le remigromig de Merck a été non inférieur au ranibizumab sur l'acuité visuelle à 52 semaines chez 984 patients atteints d'œdème maculaire diabétique; Merck signale toutefois davantage d'arrêts liés à certaines complications vasculaires rétiniennes et poursuit l'analyse de sécurité.",
+    "type": "FACT",
+    "theme": "Médecine et biotechnologies",
+    "subtheme": "Œdème maculaire diabétique",
+    "companies": [
+      "Merck & Co",
+      "Roche"
+    ],
+    "tickers": [
+      "MRK"
+    ],
+    "sector": "Pharmaceuticals",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/mercks-eye-disease-drug-meets-main-goal-trial-2026-09-24/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 82,
+    "novelty": 86,
+    "confidence": 95,
+    "execution_risk": 60,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Un mécanisme Wnt efficace pourrait ouvrir à Merck une nouvelle franchise en ophtalmologie, mais le signal de sécurité doit être clarifié avant d'estimer le potentiel commercial."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260925-AIHEALTH1B",
+    "captured_at": "2026-09-25T08:07:34+02:00",
+    "published_at": "2026-09-24T10:03:00+00:00",
+    "title": "Blue Cross estime que les outils IA ont contribué à près d'un milliard de dollars de surcoûts de soins",
+    "factual_summary": "Une étude de la Blue Cross Blue Shield Association estime que l'intensification du codage et des soins, associée notamment à des outils IA détectant des diagnostics secondaires dans les dossiers, a contribué à 942 millions de dollars de coûts supplémentaires sur 2024-2025 par rapport à 2023.",
+    "type": "FACT",
+    "theme": "IA et santé",
+    "subtheme": "Économie de l'IA clinique et codage médical",
+    "companies": [],
+    "tickers": [],
+    "sector": "Healthcare technology and insurance",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/ai-tools-generated-nearly-1-billion-extra-costs-blue-cross-insurers-say-2026-09-24/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 85,
+    "novelty": 91,
+    "confidence": 91,
+    "execution_risk": 66,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'IA clinique peut créer de la valeur en révélant davantage de complexité médicale tout en déclenchant un conflit économique croissant entre fournisseurs de soins et payeurs sur le codage et le remboursement."
+    },
+    "frozen": true
+  }
+]
