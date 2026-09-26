@@ -80,5 +80,45 @@
       "statement": "La bataille des assistants d'entreprise se déplace du chat vers des agents persistants dotés d'identités et de permissions."
     },
     "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260926-SOLIDIPO",
+    "captured_at": "2026-09-26T08:17:48+02:00",
+    "published_at": "2026-09-25T16:47:00+00:00",
+    "title": "Solidigm envisage une IPO pouvant la valoriser jusqu'à 150 milliards de dollars",
+    "factual_summary": "Solidigm, filiale NAND et SSD de SK Hynix, envisage une introduction en Bourse dès 2027 pouvant lever environ 15 milliards de dollars et valoriser l'entreprise jusqu'à 150 milliards; aucun plan définitif n'est confirmé.",
+    "type": "FACT",
+    "theme": "Semi-conducteurs et Bourse",
+    "subtheme": "Stockage NAND et SSD pour infrastructure IA",
+    "companies": [
+      "Solidigm",
+      "SK Hynix"
+    ],
+    "tickers": [],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 86,
+    "novelty": 90,
+    "confidence": 91,
+    "execution_risk": 63,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La croissance des volumes de données IA élargit la chaîne de valeur investissable au stockage haute capacité."
+    },
+    "frozen": true
   }
 ]
