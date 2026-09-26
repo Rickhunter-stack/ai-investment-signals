@@ -1,0 +1,84 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260926-MUSESEC",
+    "captured_at": "2026-09-26T08:17:48+02:00",
+    "published_at": "2026-09-25T17:55:00+00:00",
+    "title": "La faille de Meta Muse confirme le risque de sécurité des agents IA",
+    "factual_summary": "Meta ajoute un avertissement de sécurité dans Muse après une vulnérabilité pouvant donner accès à la machine virtuelle dédiée d'un utilisateur et à des données sensibles.",
+    "type": "FACT",
+    "theme": "IA et cybersécurité",
+    "subtheme": "Sécurité des agents IA",
+    "companies": [
+      "Meta Platforms"
+    ],
+    "tickers": [
+      "META"
+    ],
+    "sector": "Cybersecurity",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/meta-bolsters-muse-safety-warning-after-security-vulnerability-found-information-2026-09-25/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 88,
+    "novelty": 82,
+    "confidence": 93,
+    "execution_risk": 76,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260925-ISLAND64",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'adoption des agents autonomes transforme la sécurité, les permissions et la traçabilité en couche critique."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260926-MSFTAGENT",
+    "captured_at": "2026-09-26T08:17:48+02:00",
+    "published_at": "2026-09-25T12:01:00+00:00",
+    "title": "Microsoft transforme Copilot en poste de travail agentique",
+    "factual_summary": "Microsoft a annoncé Code et Autopilot, un agent permanent doté de sa propre identité dans l'annuaire d'entreprise et de permissions contrôlables.",
+    "type": "FACT",
+    "theme": "IA et logiciels",
+    "subtheme": "Agents IA d'entreprise",
+    "companies": [
+      "Microsoft"
+    ],
+    "tickers": [
+      "MSFT"
+    ],
+    "sector": "Enterprise software",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/microsoft-revamps-copilot-with-code-generation-agentic-ai-tools-2026-09-25/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 90,
+    "novelty": 87,
+    "confidence": 97,
+    "execution_risk": 52,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La bataille des assistants d'entreprise se déplace du chat vers des agents persistants dotés d'identités et de permissions."
+    },
+    "frozen": true
+  }
+]
