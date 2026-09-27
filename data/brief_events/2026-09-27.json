@@ -1,0 +1,166 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260927-MSMUSESEC",
+    "captured_at": "2026-09-27T08:15:55+02:00",
+    "published_at": "2026-09-25T18:15:00+00:00",
+    "title": "Une vulnérabilité de Meta Muse expose le risque de sécurité des agents personnels autonomes",
+    "factual_summary": "Meta ajoute un avertissement de sécurité plus clair à Muse après la découverte d'une vulnérabilité qui aurait pu permettre l'accès à la machine virtuelle dédiée d'un utilisateur, contenant notamment emails et fichiers; Sensor Tower estime environ 2,8 millions de téléchargements en deux semaines.",
+    "type": "FACT",
+    "theme": "IA et cybersécurité",
+    "subtheme": "Sécurité des agents IA",
+    "companies": [
+      "Meta Platforms"
+    ],
+    "tickers": [
+      "META"
+    ],
+    "sector": "AI software and cybersecurity",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/meta-bolsters-muse-safety-warning-after-security-vulnerability-found-information-2026-09-25/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 88,
+    "novelty": 86,
+    "confidence": 90,
+    "execution_risk": 75,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260925-ISLAND64",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'autonomie croissante des agents crée une couche de demande structurelle pour l'identité, les permissions, l'isolation et l'audit de leurs actions."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260927-MSAUTOPILOT",
+    "captured_at": "2026-09-27T08:15:55+02:00",
+    "published_at": "2026-09-25T12:04:00+00:00",
+    "title": "Microsoft transforme Copilot avec Code et un agent Autopilot doté d'une identité d'entreprise",
+    "factual_summary": "Microsoft a dévoilé Code pour créer des applications et tableaux de bord par langage naturel ainsi qu'Autopilot, un agent permanent doté de sa propre identité dans l'annuaire d'entreprise et de permissions contrôlables; Word, Excel et PowerPoint sont aussi intégrés directement dans Copilot.",
+    "type": "FACT",
+    "theme": "IA et logiciels",
+    "subtheme": "Agents IA d'entreprise",
+    "companies": [
+      "Microsoft"
+    ],
+    "tickers": [
+      "MSFT"
+    ],
+    "sector": "Enterprise AI software",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/microsoft-revamps-copilot-code-generation-agentic-ai-tools-2026-09-25/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 91,
+    "novelty": 89,
+    "confidence": 96,
+    "execution_risk": 48,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'IA d'entreprise évolue du chatbot vers des agents persistants intégrés à l'identité, aux permissions et aux outils de travail, renforçant potentiellement l'avantage de distribution de Microsoft."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260927-DAYONEIPO",
+    "captured_at": "2026-09-27T08:15:55+02:00",
+    "published_at": "2026-09-25T14:24:00+00:00",
+    "title": "Les investisseurs deviennent plus sélectifs sur les IPO de data centers IA",
+    "factual_summary": "DayOne poursuit une IPO américaine potentielle dès novembre alors que le report de SB Energy et d'autres revers dans l'écosystème resserrent la fenêtre de marché; les investisseurs accordent davantage d'importance à la puissance sécurisée, aux capacités opérationnelles, aux contrats longs et à la diversification des clients.",
+    "type": "WEAK_SIGNAL",
+    "theme": "IA et investissement",
+    "subtheme": "Financement des infrastructures IA",
+    "companies": [
+      "DayOne",
+      "SB Energy"
+    ],
+    "tickers": [],
+    "sector": "AI infrastructure and data centers",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/data-center-ipo-hopefuls-brave-tougher-market-investor-scrutiny-grows-2026-09-25/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 87,
+    "novelty": 84,
+    "confidence": 91,
+    "execution_risk": 72,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260917-CRUX22B",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Le financement des infrastructures IA devient plus discriminant et valorise davantage la capacité réellement alimentée, opérationnelle et contractée que les seuls projets ou annonces de CAPEX."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260927-NVONANEXA",
+    "captured_at": "2026-09-27T08:15:55+02:00",
+    "published_at": "2026-09-25T06:57:00+00:00",
+    "title": "Novo Nordisk signe avec Nanexa pour viser des injections cardiométaboliques mensuelles ou trimestrielles",
+    "factual_summary": "Novo Nordisk a signé un accord de licence mondial avec Nanexa pouvant atteindre environ 1,17 milliard d'euros, couvrant jusqu'à cinq programmes utilisant PharmaShell pour développer des formulations injectables mensuelles ou trimestrielles dans l'obésité, le diabète de type 2 et d'autres maladies cardiométaboliques.",
+    "type": "FACT",
+    "theme": "Médecine et investissement",
+    "subtheme": "Traitements cardiométaboliques longue durée",
+    "companies": [
+      "Novo Nordisk",
+      "Nanexa"
+    ],
+    "tickers": [
+      "NVO"
+    ],
+    "sector": "Pharmaceuticals",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/nanexa-shares-soar-117-billion-novo-nordisk-deal-injection-technology-2026-09-25/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 86,
+    "novelty": 88,
+    "confidence": 96,
+    "execution_risk": 64,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260925-LLYONSWIK",
+      "relation": "ACCELERATE"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La fréquence d'administration devient un axe concurrentiel majeur en diabète et obésité, avec une progression du quotidien vers l'hebdomadaire puis potentiellement le mensuel ou trimestriel."
+    },
+    "frozen": true
+  }
+]
