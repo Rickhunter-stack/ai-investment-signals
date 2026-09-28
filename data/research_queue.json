@@ -1,0 +1,259 @@
+{
+  "schema_version": "research-queue-v1",
+  "snapshot_date": "2026-09-22",
+  "items": [
+    {
+      "ticker": "AMGN",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "ANET",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "AZN",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "CGNX",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "COHR",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "CRL",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "DHR",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "IQV",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "LITE",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "LLY",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "META",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "MRVL",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "MSFT",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "NVO",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "REGN",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "ROK",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "SYM",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "TER",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "TMO",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "TSLA",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "VRT",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "VRTX",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    },
+    {
+      "ticker": "WST",
+      "missing_research": [
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "recent_brief_events": 0,
+      "priority": 30,
+      "reason": "Missing qualitative research components in latest frozen snapshot"
+    }
+  ]
+}
