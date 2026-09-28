@@ -74,3 +74,8 @@ Fresh sources
 ## Success criterion
 
 Detect when the future starts becoming observable before it becomes obvious in reported financials, while preserving enough timestamped evidence to test later whether those early signals actually had predictive value.
+
+
+## Challenger watchlist annex
+
+When a daily event reveals a credible challenger or under-followed value-chain beneficiary, consult `docs/CHALLENGER_WATCHLIST_V1.md`. A candidate may be added prospectively as DISCOVERED without changing Signal Score. Promotion to WATCH or DEEP_DIVE requires subsequent evidence. Never infer attractiveness from a price decline alone.
