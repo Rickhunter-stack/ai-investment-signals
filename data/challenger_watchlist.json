@@ -1,0 +1,49 @@
+{
+  "schema_version": "challenger-watchlist-v1",
+  "purpose": "Prospective research candidates discovered by daily briefs. Inclusion is not an investment recommendation.",
+  "statuses": [
+    "DISCOVERED",
+    "WATCH",
+    "DEEP_DIVE"
+  ],
+  "entries": [
+    {
+      "id": "AKAM",
+      "company": "Akamai Technologies",
+      "ticker": "AKAM",
+      "listing_status": "PUBLIC",
+      "theme": "ai_semi",
+      "segment": "cloud_ai_infrastructure",
+      "status": "DISCOVERED",
+      "discovered_at": "2026-09-28",
+      "why_watch": "Potential non-hyperscaler beneficiary of AI compute demand; confirm material AI revenue, contract economics and return on capex.",
+      "next_observables": [
+        "AI-related revenue disclosure",
+        "capex deployment",
+        "contracted capacity utilization",
+        "margin and free-cash-flow impact",
+        "customer concentration"
+      ],
+      "pricing_status": "UNCERTAIN"
+    },
+    {
+      "id": "SOLIDIGM",
+      "company": "Solidigm",
+      "ticker": null,
+      "listing_status": "PRIVATE_IPO_WATCH",
+      "theme": "ai_semi",
+      "segment": "datacenter_storage_nand",
+      "status": "DISCOVERED",
+      "discovered_at": "2026-09-28",
+      "why_watch": "Potential pure-play exposure to high-capacity enterprise SSD demand and AI data growth if a public listing materializes.",
+      "next_observables": [
+        "official IPO filing",
+        "AI/datacenter revenue mix",
+        "growth and margins",
+        "NAND/SSD capacity",
+        "IPO valuation"
+      ],
+      "pricing_status": "NOT_LISTED"
+    }
+  ]
+}
