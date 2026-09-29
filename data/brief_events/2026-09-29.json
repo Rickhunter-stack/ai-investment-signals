@@ -1,0 +1,167 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260929-ANTHIPO",
+    "captured_at": "2026-09-29T08:54:53+02:00",
+    "published_at": "2026-09-28T23:17:00+00:00",
+    "title": "Anthropic IPO prospectus reveals surging growth and infrastructure costs",
+    "factual_summary": "Reuters reports Anthropic had nearly $4.6 billion of 2025 revenue, more than $8 billion of operating losses, $7.33 billion of compute and infrastructure expense, and $518 billion of future cloud, compute and infrastructure obligations.",
+    "type": "FACT",
+    "theme": "AI and investment",
+    "subtheme": "Frontier AI IPO economics",
+    "companies": [
+      "Anthropic"
+    ],
+    "tickers": [],
+    "sector": "AI software and infrastructure",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/finance/anthropics-ipo-prospectus-shows-sweeping-ai-vision-surging-costs-2026-09-28/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 97,
+    "novelty": 96,
+    "confidence": 96,
+    "execution_risk": 82,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "A public Anthropic could become a direct public-market valuation benchmark for frontier AI while exposing the capital intensity of model growth."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260929-AMDWLAB",
+    "captured_at": "2026-09-29T08:54:53+02:00",
+    "published_at": "2026-09-28T20:11:00+00:00",
+    "title": "AMD to acquire World Labs for $8.2 billion in physical AI push",
+    "factual_summary": "AMD announced an $8.2 billion all-stock acquisition of World Labs, whose spatial-intelligence models target robotics, simulation and design; Fei-Fei Li is expected to join AMD as chief scientist.",
+    "type": "FACT",
+    "theme": "AI robotics and semiconductors",
+    "subtheme": "Physical AI and spatial intelligence",
+    "companies": [
+      "Advanced Micro Devices",
+      "World Labs"
+    ],
+    "tickers": [
+      "AMD"
+    ],
+    "sector": "Semiconductors and AI",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/amd-acquire-fei-fei-lis-world-labs-82-billion-deal-2026-09-28/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 95,
+    "novelty": 94,
+    "confidence": 98,
+    "execution_risk": 68,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "AMD is expanding beyond GPU supply toward models, software and workload insight for physical AI."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260929-KRCHIPX",
+    "captured_at": "2026-09-29T08:54:53+02:00",
+    "published_at": "2026-09-29T01:08:00+00:00",
+    "title": "Korean exports signal continued strength in AI semiconductor demand",
+    "factual_summary": "A Reuters poll forecasts South Korean exports up 62.0% year on year in September; semiconductor exports rose 259.4% in the first twenty days of the month amid strong AI investment demand.",
+    "type": "FACT",
+    "theme": "AI and semiconductors",
+    "subtheme": "Industrial demand for AI semiconductors",
+    "companies": [
+      "Samsung Electronics",
+      "SK Hynix"
+    ],
+    "tickers": [
+      "005930",
+      "000660"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/south-korean-exports-seen-rising-16th-month-solid-ai-chip-demand-2026-09-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "short",
+    "importance": 91,
+    "novelty": 80,
+    "confidence": 92,
+    "execution_risk": 35,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Korean trade data provide independent industrial confirmation that AI investment continues to transmit into semiconductor volumes."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260929-ROCHAUTO",
+    "captured_at": "2026-09-29T08:54:53+02:00",
+    "published_at": "2026-09-28T11:05:00+00:00",
+    "title": "Roche starts building autonomous AI-driven laboratories",
+    "factual_summary": "Roche said it has begun building autonomous AI-driven labs; 40% of tracked pipeline decisions from Q4 2025 through Q2 2026 had an AI or computational contribution, and Target Nexus is intended to contribute to 80% of research portfolio decisions by end-2026.",
+    "type": "FACT",
+    "theme": "AI medicine and biotechnology",
+    "subtheme": "Autonomous laboratories and pharmaceutical R&D",
+    "companies": [
+      "Roche"
+    ],
+    "tickers": [
+      "ROG"
+    ],
+    "sector": "Pharmaceuticals",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/roche-outlines-plans-move-towards-autonomous-ai-labs-2026-09-28/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 90,
+    "novelty": 91,
+    "confidence": 96,
+    "execution_risk": 55,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Pharma AI is moving from analytical assistance toward automated experimental loops integrating proprietary data, models and robotics."
+    },
+    "frozen": true
+  }
+]
