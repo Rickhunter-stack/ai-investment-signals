@@ -1,0 +1,124 @@
+name: Capacity Monitor (experimental, non-scoring)
+
+# capacity_monitor_v0.1: freezes one Capacity snapshot per weekly Signal period,
+# after the weekly freeze (Monday). Separate from the confirmatory radar run and
+# never writes outside data/capacity. See docs/CAPACITY_MONITOR.md.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * 0'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: capacity-monitor-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    name: capacity-monitor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: Compile Python sources
+        run: python -m py_compile scripts/*.py src/*.py
+      - name: Run research integrity tests
+        run: python -m unittest discover -s scripts -p 'test_*.py'
+      - name: Validate Capacity Monitor
+        run: python scripts/validate_capacity.py
+      - name: Preflight automation credentials
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMATION_TOKEN }}
+        run: |
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::AUTOMATION_TOKEN is required before a Capacity snapshot write"
+            exit 1
+          fi
+          push_ok="$(gh api "repos/${GITHUB_REPOSITORY}" --jq '.permissions.push // false')"
+          if [ "$push_ok" != "true" ]; then
+            echo "::error::AUTOMATION_TOKEN cannot write repository contents"
+            exit 1
+          fi
+      - name: Freeze Capacity snapshot (writes only on schedule)
+        env:
+          CAPACITY_WRITE: ${{ github.event_name == 'schedule' && '1' || '0' }}
+        run: python scripts/compute_capacity_snapshot.py
+      - name: Validate Capacity Monitor before persistence
+        if: github.event_name == 'schedule'
+        run: python scripts/validate_capacity.py
+      - name: Verify append-only history before persistence
+        if: github.event_name == 'schedule'
+        run: python scripts/check_append_only_git.py HEAD
+      - name: Persist Capacity snapshot through protected PR
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMATION_TOKEN }}
+        run: |
+          git config user.name "Rickhunter-stack"
+          git config user.email "184195632+Rickhunter-stack@users.noreply.github.com"
+
+          if [ -n "$(git status --porcelain --untracked-files=no -- . ':!data/capacity')" ]; then
+            echo "::error::Capacity Monitor modified files outside data/capacity"
+            git status --porcelain
+            exit 1
+          fi
+
+          branch="automation/capacity-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git switch -c "$branch"
+          git add -- data/capacity
+
+          if git diff --cached --quiet; then
+            echo "No new Capacity snapshot to persist."
+            exit 0
+          fi
+
+          git commit -m "chore: persist capacity monitor snapshot ${GITHUB_RUN_NUMBER}"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$branch"
+
+          pr_url="$(gh pr create \
+            --base main \
+            --head "$branch" \
+            --title "chore: persist capacity monitor snapshot ${GITHUB_RUN_NUMBER}" \
+            --body "Automated Capacity Monitor snapshot (experimental, non-scoring) for scheduled run \`${GITHUB_RUN_ID}\` from source commit \`${GITHUB_SHA}\`. Subject to the repository append-only checks and protected-main rules.")"
+
+          echo "Created $pr_url"
+          pr_number="${pr_url##*/}"
+          head_sha="$(git rev-parse HEAD)"
+
+          for attempt in $(seq 1 80); do
+            state="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${pr_number}" --jq '.mergeable_state')"
+            echo "Protected PR mergeable_state=$state (attempt $attempt/80)"
+            if [ "$state" = "clean" ]; then
+              break
+            fi
+            if [ "$state" = "dirty" ]; then
+              echo "::error::Automation PR has merge conflicts"
+              exit 1
+            fi
+            if [ "$attempt" -eq 80 ]; then
+              echo "::error::Timed out waiting for protected PR checks"
+              exit 1
+            fi
+            sleep 15
+          done
+
+          merged="$(gh api --method PUT "repos/${GITHUB_REPOSITORY}/pulls/${pr_number}/merge" \
+            -f merge_method=merge \
+            -f sha="$head_sha" \
+            --jq '.merged')"
+          if [ "$merged" != "true" ]; then
+            echo "::error::Protected automation PR was not merged"
+            exit 1
+          fi
+
+          gh api --method DELETE "repos/${GITHUB_REPOSITORY}/git/refs/heads/${branch}" || true

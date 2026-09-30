@@ -1,0 +1,53 @@
+{
+  "method_version": "capacity_monitor_v0.1",
+  "status": "EXPERIMENTAL - NON SCORING",
+  "scoring_use": "none",
+  "aggregate_score": null,
+  "canonical_unit": "GW_IT",
+  "unit_conversions_to_canonical": {"GW_IT": 1.0, "MW_IT": 0.001},
+  "years": [2026, 2027, 2028, 2029, 2030],
+  "ladder": {
+    "C0": "Announcement or intention only. No verifiable material commitment.",
+    "C1": "Site identified, land option, grid-connection request or preliminary step.",
+    "C2": "Advanced project: secured site and/or significant permits and/or identifiable grid-connection or procurement agreement.",
+    "C3": "Economic commitment: FID, firm financing, binding contract or irreversible material spending.",
+    "C4": "Physical construction or installation effectively started.",
+    "C5": "Energized/commissioned and operational capacity.",
+    "X": "Cancelled, abandoned or commitment materially withdrawn. Never erases the project history.",
+    "UNKNOWN": "Project known to exist but evidence insufficient to assign C0-C5."
+  },
+  "ladder_rules": [
+    "A project moves up a level only with evidence matching that level's criterion, never on a general sponsor statement.",
+    "Every level change is a new observation; earlier states stay in the PIT history."
+  ],
+  "announced_levels": ["C0", "C1", "C2", "C3", "C4", "C5"],
+  "committed_levels": ["C3", "C4", "C5"],
+  "operational_levels": ["C5"],
+  "effective": {
+    "definition": "Capacity physically usable for AI compute, limited by the binding link whose availability is documented.",
+    "rule_v0_1": "C5 operational capacity, plus C3/C4 capacity whose critical dependencies are documented for the vintage considered. Only the canonical unit is summed; GPU, HBM, network or power quantities are never converted into it. If nothing can be summed, effective is null, never estimated.",
+    "eligible_future_levels": ["C3", "C4"],
+    "requires_documented_dependencies": true
+  },
+  "components": {
+    "E": {"name": "Supply Elasticity", "type": "qualitative", "scale": ["LOW", "MEDIUM", "HIGH"], "requires": ["justification", "sources"]},
+    "C": {"name": "Supply Commitment", "type": "derived", "from": "commitment ladder (raw GW per level, committed = C3+C4+C5, operational = C5)"},
+    "T": {"name": "Time-to-Supply", "type": "derived", "from": "project commitment and commissioning dates; expected GW per vintage"},
+    "D": {"name": "Demand Reality Gap", "type": "derived", "from": "absorption stress"},
+    "F": {"name": "Financing Independence", "type": "qualitative", "scale": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"], "requires": ["justification", "sources", "relations"]}
+  },
+  "absorption_stress": {
+    "formula": "AS[y][s] = effective_capacity[y] / independent_demand_capacity[y][s]",
+    "scenarios": ["bear", "base", "bull"],
+    "null_when": ["numerator or denominator missing", "units not comparable", "demand <= 0", "several demand series for the same scenario/year without a declared reference"],
+    "reference_demand_series": null,
+    "automatic_thresholds": null,
+    "reading": "AS < 1: estimated demand can absorb the capacity in this scenario. AS > 1: capacity exceeds estimated demand in this scenario. A stress ratio, not a crash indicator."
+  },
+  "commitment_weights": null,
+  "depreciation": {
+    "method": "full retirement at the end of expected useful life",
+    "default_useful_life_years": null,
+    "unknown_life": "capacity is kept and reported separately as depreciation_unknown_gw"
+  }
+}

@@ -83,3 +83,7 @@ When a daily event reveals a credible challenger or under-followed value-chain b
 ## Weekly brief archive
 
 A weekly brief is added to `data/brief_memory.json` only after the user explicitly validates it, by the session that wrote it, through `scripts/append_brief_memory.py`. See `docs/BRIEF_MEMORY.md`.
+
+## Session separation from the Capacity Monitor
+
+The research that feeds `signal_research.json` never uses the Capacity Monitor (`data/capacity/**`, AI CAPACITY, AS, E-C-T-D-F) as a source or context. Capacity research is done in a separate session after the weekly freeze. See `docs/CAPACITY_MONITOR.md`.
