@@ -55,6 +55,6 @@ Each observation records `weekly_snapshot_date`: the latest frozen weekly snapsh
 | `scripts/compute_capacity_snapshot.py` | Freezes the snapshot of the current weekly period (writes only with `CAPACITY_WRITE=1`) |
 | `scripts/validate_capacity.py` | Journal, PIT, wall and reproducibility checks |
 | `.github/workflows/capacity-monitor.yml` | Sunday 12:00 UTC, persists through a protected PR, touches only `data/capacity` |
-| `capacity.js` | AI CAPACITY overlay; reads only `/data/capacity/snapshots.json` |
+| `capacity.js` | "AI Capacity" tab next to "Radar" and "Portefeuille virtuel"; reads only `/data/capacity/snapshots.json` |
 
 Capacity checks gate pull requests and pushes but never the confirmatory scheduled radar run. Isolation tests (`scripts/test_capacity_isolation.py`) prove that the pipeline writes only under `data/capacity/` and that the Signal protocol code never references the module.
