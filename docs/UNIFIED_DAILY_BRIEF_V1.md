@@ -79,3 +79,7 @@ Detect when the future starts becoming observable before it becomes obvious in r
 ## Challenger watchlist annex
 
 When a daily event reveals a credible challenger or under-followed value-chain beneficiary, consult `docs/CHALLENGER_WATCHLIST_V1.md`. A candidate may be added prospectively as DISCOVERED without changing Signal Score. Promotion to WATCH or DEEP_DIVE requires subsequent evidence. Never infer attractiveness from a price decline alone.
+
+## Weekly brief archive
+
+A weekly brief is added to `data/brief_memory.json` only after the user explicitly validates it, by the session that wrote it, through `scripts/append_brief_memory.py`. See `docs/BRIEF_MEMORY.md`.

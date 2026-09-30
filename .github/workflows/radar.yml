@@ -70,6 +70,8 @@ jobs:
         run: python scripts/check_append_only_git.py "${{ github.event.before }}"
       - name: Validate market journal schema
         run: python scripts/validate_market_journal.py
+      - name: Validate brief memory
+        run: python scripts/validate_brief_memory.py
       - name: Preflight automation credentials
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         env:
