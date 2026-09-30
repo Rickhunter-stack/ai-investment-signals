@@ -30,6 +30,7 @@ def validate():
     v=float(r.get(f,0));
     if not math.isfinite(v) or v<0: raise ValueError(f"bad {f} {key}")
    if not r["collector_version"] or not isinstance(r["request"],dict) or not r["run_id"] or not r["commit_sha"]: raise ValueError(f"missing provenance {key}")
+   if "admission" in r and r["admission"] not in ("frontier","catchup"): raise ValueError(f"invalid admission {key}")
    if not isinstance(r["gap_sessions"],list) or not isinstance(r["gap_unbounded"],bool) or not isinstance(r["quality_flags"],list): raise ValueError(f"invalid quality metadata {key}")
  return count
 if __name__=="__main__":

@@ -3,7 +3,7 @@ from unittest.mock import patch
 from datetime import datetime, timezone
 from pathlib import Path
 import pandas as pd
-from src.market import _eligible_rows, _latest_per_ticker, _boundary_alignment, _expected_xnys_frontier, _validate_calendar_frontier, _validate_confirmatory_rows, confirmatory_writes_enabled, CONFIRMATORY_SECURITIES, BENCHMARK_TICKERS
+from src.market import _eligible_rows, _admit_rows, _boundary_alignment, _expected_xnys_frontier, _validate_calendar_frontier, _validate_confirmatory_rows, confirmatory_writes_enabled, CONFIRMATORY_SECURITIES, BENCHMARK_TICKERS
 
 class MarketIntegrityV2Tests(unittest.TestCase):
  def test_manual_or_push_run_is_dry_for_confirmatory_ledger(self):
@@ -21,14 +21,35 @@ class MarketIntegrityV2Tests(unittest.TestCase):
    rows.append({"ticker":t,"session_date":"2026-09-17","raw_close":100.0,"observed_at":"2026-09-18T22:00:00+00:00","source":"yahoo","collector":"yfinance","collector_version":"1.7.0","request":{},"series_type":"security" if t in CONFIRMATORY_SECURITIES else "benchmark","dividend":0.0,"split_ratio":0.0,"frozen":True})
   rows[0]["dividend"]=float("nan")
   with self.assertRaises(ValueError): _validate_confirmatory_rows(rows)
- def test_long_interruption_does_not_backfill(self):
-  rows=[
-   {"ticker":"NVDA","session_date":"2026-08-20"},
-   {"ticker":"NVDA","session_date":"2026-09-17"},
-   {"ticker":"QQQ","session_date":"2026-08-20"},
-   {"ticker":"QQQ","session_date":"2026-09-17"}]
-  got=_latest_per_ticker(rows)
-  self.assertEqual({(r["ticker"],r["session_date"]) for r in got},{("NVDA","2026-09-17"),("QQQ","2026-09-17")})
+ def test_catchup_admits_every_session_after_journal_frontier(self):
+  existing={("NVDA","2026-09-25"):{}}
+  rows=[{"ticker":"NVDA","session_date":d} for d in ("2026-09-24","2026-09-25","2026-09-28","2026-09-29","2026-09-30")]
+  got=_admit_rows(rows,existing)
+  self.assertEqual([r["session_date"] for r in got],["2026-09-28","2026-09-29","2026-09-30"])
+  self.assertEqual([r["admission"] for r in got],["catchup","catchup","frontier"])
+  self.assertTrue(all(r["gap_sessions"]==[] and r["gap_unbounded"] is False for r in got))
+ def test_catchup_never_inserts_on_or_before_journal_frontier(self):
+  existing={("NVDA","2026-09-25"):{}}
+  rows=[{"ticker":"NVDA","session_date":d} for d in ("2026-09-22","2026-09-23","2026-09-25")]
+  self.assertEqual(_admit_rows(rows,existing),[])
+ def test_first_ever_ticker_row_has_no_prehistory(self):
+  rows=[{"ticker":"NVDA","session_date":d} for d in ("2026-09-17","2026-09-18")]
+  got=_admit_rows(rows,{})
+  self.assertEqual([(r["session_date"],r["admission"],r["gap_sessions"]) for r in got],[("2026-09-18","frontier",[])])
+ def test_vendor_missing_session_is_recorded_as_xnys_gap(self):
+  existing={("NVDA","2026-09-25"):{}}
+  rows=[{"ticker":"NVDA","session_date":d} for d in ("2026-09-25","2026-09-28","2026-09-30")]
+  got=_admit_rows(rows,existing)
+  self.assertEqual(got[1]["gap_sessions"],["2026-09-29"])
+  self.assertFalse(got[1]["gap_unbounded"])
+ def test_long_interruption_beyond_window_is_unbounded_not_backfilled(self):
+  existing={("NVDA","2026-08-14"):{}}
+  rows=[{"ticker":"NVDA","session_date":d} for d in ("2026-09-16","2026-09-17")]
+  got=_admit_rows(rows,existing)
+  self.assertEqual([r["session_date"] for r in got],["2026-09-16","2026-09-17"])
+  self.assertTrue(got[0]["gap_unbounded"])
+  self.assertIn("2026-08-17",got[0]["gap_sessions"])
+  self.assertEqual(got[1]["gap_sessions"],[])
  def test_boundary_alignment_rejects_more_than_one_session(self):
   idx=pd.to_datetime(["2026-09-15","2026-09-16","2026-09-17","2026-09-18"])
   a=pd.DataFrame({"Close":[100,101,102,103]},index=idx)
