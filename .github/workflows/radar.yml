@@ -72,6 +72,14 @@ jobs:
         run: python scripts/validate_market_journal.py
       - name: Validate brief memory
         run: python scripts/validate_brief_memory.py
+      # Capacity Monitor is experimental and non-scoring: its checks gate pull
+      # requests and pushes but never the confirmatory scheduled run.
+      - name: Validate Capacity Monitor (experimental, non-scoring)
+        if: github.event_name != 'schedule'
+        run: python scripts/validate_capacity.py
+      - name: Verify signal research does not use Capacity Monitor outputs
+        if: github.event_name != 'schedule'
+        run: python scripts/validate_signal_research_isolation.py
       - name: Preflight automation credentials
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         env:
@@ -117,7 +125,7 @@ jobs:
         run: python scripts/inject_brief_memory.py
       - name: Enable chart markers, fundamentals and live deployment refresh
         if: github.event_name != 'pull_request'
-        run: sed -i "s#</body>#<script src=\"/markers.js?v=${GITHUB_SHA}\"></script><script src=\"/fundamentals.js?v=${GITHUB_SHA}\"></script><script src=\"/auto-refresh.js?v=${GITHUB_SHA}\"></script></body>#" index.html
+        run: sed -i "s#</body>#<script src=\"/markers.js?v=${GITHUB_SHA}\"></script><script src=\"/fundamentals.js?v=${GITHUB_SHA}\"></script><script src=\"/auto-refresh.js?v=${GITHUB_SHA}\"></script><script src=\"/capacity.js?v=${GITHUB_SHA}\"></script></body>#" index.html
       - name: Validate confirmatory market journal before scheduled persistence
         if: github.event_name == 'schedule'
         run: python scripts/validate_market_journal.py

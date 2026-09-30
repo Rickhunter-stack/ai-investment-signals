@@ -62,3 +62,7 @@ une correction : documenter la correction dans les entrées futures.
 La sérialisation des workflows évite deux refresh concurrents ; un push en
 conflit échoue sans force-push. Le workflow reconstruit `index.html` et garde
 les indicateurs de thèse, les briefs et les fondamentaux actuels.
+
+## Isolation from the Capacity Monitor
+
+The Capacity Monitor is a non-scoring shadow model. It never feeds the Signal Score, and `signal_research.json` may not cite its outputs (checked by `scripts/validate_signal_research_isolation.py`). See `docs/CAPACITY_MONITOR.md`.

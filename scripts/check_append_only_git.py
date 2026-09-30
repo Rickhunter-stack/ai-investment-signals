@@ -35,15 +35,24 @@ def journal_paths(base_ref,directory):
     return paths
 
 def tracked_paths(base_ref):
-    paths={'data/weekly_signals.json','data/outcomes_v1.json','data/brief_memory.json'}
+    paths={'data/weekly_signals.json','data/outcomes_v1.json','data/brief_memory.json','data/capacity/snapshots.json'}
     paths.update(journal_paths(base_ref,'data/brief_events'))
     paths.update(journal_paths(base_ref,'data/fundamentals_pit'))
     paths.update(journal_paths(base_ref,'data/market_pit'))
+    paths.update(journal_paths(base_ref,'data/capacity/observations'))
     return sorted(paths)
+
+def check_immutable(base_ref,directory):
+    # Versioned method definitions: once merged, a file may never change or disappear.
+    proc=subprocess.run(['git','ls-tree','-r','--name-only',base_ref,directory],cwd=ROOT,capture_output=True,text=True,check=False)
+    for path in (proc.stdout.splitlines() if proc.returncode==0 else []):
+        current=ROOT/path
+        if not current.exists() or current.read_bytes()!=git_bytes(base_ref,path): raise ValueError(f'{path}: versioned definitions are immutable')
 
 def main():
     if len(sys.argv)!=2: raise SystemExit('usage: check_append_only_git.py BASE_REF')
     for path in tracked_paths(sys.argv[1]): check_file(sys.argv[1],path)
+    check_immutable(sys.argv[1],'config/capacity')
     print(f'Append-only history verified against {sys.argv[1]}')
 if __name__=='__main__':
     try: main()
