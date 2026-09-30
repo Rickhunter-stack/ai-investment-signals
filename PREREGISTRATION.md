@@ -528,3 +528,69 @@ The confirmatory schedule may be restored only after all of the following are tr
 9. An independent code review finds no P0/P1 issue affecting prospective integrity.
 
 Restoring the cron is a separate, explicit change after this acceptance gate. Merging this amendment does not itself activate confirmatory collection.
+
+
+---
+
+# Amendment v1.3 - Contiguous Market Collection
+
+**Amended:** 2026-09-30
+**Effective:** from the first confirmatory market collection after this amendment is merged
+**Reason:** under v1.2, the weekly-only schedule combined with B4 (only the newest eligible session appended per run, intermediate sessions recorded as `gap_sessions`) and B7 (any return window crossing `gap_sessions` is unavailable) guarantees that every M+1/M+3/M+6/M+12 outcome is frozen as `unavailable`. Each weekly row necessarily carries four gap sessions inside every return window. The experiment could anchor T0 but never measure an outcome.
+
+This amendment is adopted before any horizon has matured: on adoption, `data/outcomes_v1.json` contains only T0 anchors (earliest M+1 target: 2026-10-25), and no realized return has been computed. The change is therefore not informed by experimental outcomes. It concerns market-data collection mechanics only.
+
+**Unchanged:** universe, `weekly-v1.0` scoring, Signal Score construction, weekly snapshot cadence and generation, T0 convention (B1), horizons, primary endpoint, benchmark mapping, total-return convention (A7), maturity bounds and the gap → unavailable rule of B7, analyses and success/failure criteria.
+
+This amendment supersedes the second, third and fourth paragraphs of B4 (newest-session-only admission and the vendor-derived definition of `gap_sessions`). All other v1.0-v1.2 provisions remain in force.
+
+## C1. Daily collection
+
+In addition to the unchanged weekly scheduled run (Monday), a market-only scheduled collection runs Tuesday to Friday at 23:30 UTC. It uses the same collector, request parameters, completeness rule (B2), frontier validation (B1), provenance (B5) and append-only checks (B6). It never creates weekly snapshots, fundamentals or outcomes. Manual runs remain non-confirmatory.
+
+## C2. Contiguous catch-up admission
+
+On every confirmatory run, every eligible completed session (A4) returned in that response that is strictly later than the ticker's latest session already in the journal is appended, in chronological order.
+
+A session on or before the ticker's latest journal session is never inserted. Existing rows and array prefixes therefore remain immutable, and no outcome already computed from the journal can be affected by a later collection.
+
+A ticker without any journal row receives only its newest eligible session; no pre-ledger history is ever loaded.
+
+Catch-up is bounded by the unchanged one-month request window. It applies only to objective market fields of the same vendor response (raw close, vendor close and adjusted close, dividend, split ratio, repair flag). It never applies to fundamentals, research inputs or scores.
+
+## C3. Point-in-time guarantees
+
+Every admitted row keeps the actual UTC `observed_at` of the run that admitted it. It is never backdated to its session date.
+
+Each new row records `admission`: `frontier` for the newest session of the response, `catchup` for earlier sessions admitted under C2.
+
+T0 remains the first prospectively admitted common session strictly after the frozen snapshot boundary and observed no earlier than the snapshot capture (B1, B7). Any future market-derived input that requires the information available at a time t (including the momentum baseline of A9) must use only rows whose `observed_at` is at or before t.
+
+## C4. Gap definition
+
+For each admitted row, `gap_sessions` lists the XNYS sessions strictly between the previous admitted session of that ticker and the row that are absent from the journal (not returned by the vendor, or outside the request window).
+
+`gap_unbounded=true` when those gaps reach before the first bar of the response or the interval exceeds 31 calendar days.
+
+The B7 rule is unchanged: a return window crossing `gap_sessions` or `gap_unbounded` is frozen as unavailable. Missing sessions are never reconstructed from a later download.
+
+## C5. Existing records
+
+Rows frozen before this amendment are not modified, including the `gap_sessions` of the 2026-09-25 rows. Those gaps precede the T0 of the 2026-09-22 cohort (2026-09-25) and therefore lie outside its return windows.
+
+Cohorts anchored before this amendment remain eligible if and only if C2 admits a contiguous series after their T0. If the first run under this amendment happens after the one-month window has passed, the resulting gaps make their outcomes unavailable. No special rule applies.
+
+## C6. Protocol hash
+
+Anchors created before this amendment keep their stored `protocol_sha256`. Anchors created after it carry the hash of this document including v1.3.
+
+## C7. Mandatory end-to-end test
+
+The repository test suite must include a multi-week simulation of scheduled collection through the actual collector admission path and outcome engine. It must assert that:
+- a matured outcome becomes `measured` under both weekly and daily cadence;
+- the journal remains append-only across runs;
+- catch-up rows are never backdated;
+- a vendor-missing session inside the window makes the outcome unavailable;
+- an interruption longer than the request window is not reconstructed.
+
+A failure of this test blocks merge.

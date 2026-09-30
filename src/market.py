@@ -83,30 +83,45 @@ def _eligible_rows(raw,tickers,observed_at,series_type,request=None):
     "request":request,"series_type":series_type,"run_id":os.getenv("EXPERIMENT_RUN_ID"),"commit_sha":os.getenv("EXPERIMENT_COMMIT_SHA"),"quality_flags":[a for a in anomaly_by_date.values() if a["affected_from"] <= d.isoformat() <= a["affected_through"]],"frozen":True})
  return rows
 
-def _latest_per_ticker(rows):
- newest={}
- for r in rows:
-  old=newest.get(r["ticker"])
-  if old is None or r["session_date"]>old["session_date"]: newest[r["ticker"]]=r
- return [newest[t] for t in sorted(newest)]
+def _xnys_sessions_between(start,end):
+ """XNYS sessions strictly between two ISO dates."""
+ lo=date.fromisoformat(start); hi=date.fromisoformat(end)
+ if (hi-lo).days<2: return []
+ cal=xcals.get_calendar("XNYS")
+ sessions=cal.sessions_in_range(pd.Timestamp(lo),pd.Timestamp(hi))
+ return [s.date().isoformat() for s in sessions if lo<s.date()<hi]
 
-def _annotate_gap_metadata(newest,all_rows):
- existing=_load_journal()
- latest_existing={}
- for (ticker,session),_ in existing.items():
-  if ticker not in latest_existing or session>latest_existing[ticker]: latest_existing[ticker]=session
+def _admit_rows(rows,existing):
+ """Amendment v1.3 C2/C4: contiguous catch-up admission.
+
+ Every eligible session returned by this response that is strictly after the
+ ticker's latest journal session is admitted in chronological order. Nothing
+ is ever inserted on or before that latest session, so frozen rows and any
+ outcome already computed from them cannot change. A ticker without any
+ journal row receives only its newest eligible session (no pre-ledger
+ history). XNYS sessions that remain unadmitted between two admitted rows are
+ recorded as gap_sessions; gap_unbounded marks gaps reaching before the first
+ bar of this response or spanning more than 31 days.
+ """
+ latest={}
+ for (ticker,session) in existing:
+  if ticker not in latest or session>latest[ticker]: latest[ticker]=session
  by_ticker={}
- for r in all_rows: by_ticker.setdefault(r["ticker"],[]).append(r)
- for r in newest:
-  previous=latest_existing.get(r["ticker"])
-  r["gap_sessions"]=[]
-  r["gap_unbounded"]=False
-  if not previous: continue
-  r["gap_sessions"]=sorted(x["session_date"] for x in by_ticker.get(r["ticker"],[])
-                           if previous < x["session_date"] < r["session_date"])
-  if (date.fromisoformat(r["session_date"])-date.fromisoformat(previous)).days>31:
-   r["gap_unbounded"]=True
- return newest
+ for r in rows: by_ticker.setdefault(r["ticker"],[]).append(r)
+ admitted=[]
+ for ticker in sorted(by_ticker):
+  ordered=sorted(by_ticker[ticker],key=lambda r:r["session_date"])
+  response_start=ordered[0]["session_date"]
+  previous=latest.get(ticker)
+  candidates=ordered[-1:] if previous is None else [r for r in ordered if r["session_date"]>previous]
+  for i,r in enumerate(candidates):
+   r["admission"]="frontier" if i==len(candidates)-1 else "catchup"
+   r["gap_sessions"]=[] if previous is None else _xnys_sessions_between(previous,r["session_date"])
+   r["gap_unbounded"]=previous is not None and (
+    (date.fromisoformat(r["session_date"])-date.fromisoformat(previous)).days>31
+    or any(g<response_start for g in r["gap_sessions"]))
+   admitted.append(r); previous=r["session_date"]
+ return admitted
 
 def _collection_boundary(raw,tickers):
  frames=_frames(raw,tickers); out={}
@@ -211,9 +226,8 @@ def update_market(period="1mo"):
  raw=yf.download(tickers=securities,group_by="ticker",progress=False,threads=True,**kwargs)
  bench=yf.download(tickers=list(BENCHMARK_TICKERS),group_by="ticker",progress=False,threads=True,**kwargs)
  rows=_eligible_rows(raw,securities,observed_at,"security",kwargs)+_eligible_rows(bench,list(BENCHMARK_TICKERS),observed_at,"benchmark",kwargs)
- confirmatory_rows=_latest_per_ticker(rows)
  if confirmatory_writes_enabled():
-  confirmatory_rows=_annotate_gap_metadata(confirmatory_rows,rows)
+  confirmatory_rows=_admit_rows(rows,_load_journal())
   try: _validate_confirmatory_rows(rows)
   except (ValueError,RuntimeError):
    conn.close(); raise
