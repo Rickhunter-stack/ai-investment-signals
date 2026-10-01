@@ -47,11 +47,21 @@ Each observation records `weekly_snapshot_date`: the latest frozen weekly snapsh
 
 **E (Supply Elasticity)**: qualitative LOW / MEDIUM / HIGH per supply-chain node, with justification and source. **T (Time-to-Supply)**: derived from project dates (realized commitment -> commissioning delay, expected committed GW per vintage). **D (Demand Reality Gap)**: expressed by AS. **F (Financing Independence)**: qualitative HIGH / MEDIUM / LOW / UNKNOWN, with justification, source and mandatory documented relations. The five dimensions are never aggregated into a score.
 
+## Ingestion procedure (Session B)
+
+1. Wait until the weekly radar run's automation PR (freeze N) is merged into `main`.
+2. Prepare `drafts.json` (JSON array of observation drafts, without ids, `observed_at` or wall fields).
+3. Run `--check` and review the report project by project: proposed ladder level, normalized capacity (GW_IT / MW_IT), vintage, source, warnings. Fix the drafts and re-run until there is no blocking error. Classification doubts are resolved here, before the data becomes PIT.
+4. Run the real append with the printed `--checked DIGEST`, then open a pull request.
+
+Blocking errors: invalid schema, level outside C0-C5/X/UNKNOWN, missing or non-HTTP source, `published_at` in the future, C5 without `commissioned_at`, documented dependencies without evidence URLs, F without relations, PIT fields set by the draft, `supersedes` of an unknown or later observation. Warnings (non-blocking, the value stays `UNKNOWN`/`null`): non-canonical unit, UNKNOWN or X level, undated capacity, C3/C4 without documented dependencies, unknown useful life, C5 without `commitment_date`, missing `published_at`, several demand series for one scenario/year, duplicate `asset_id` in a batch.
+
 ## Files and commands
 
 | Path | Role |
 |---|---|
-| `scripts/append_capacity_observations.py drafts.json [--historical-seed]` | Session B ingestion (sets ids, `observed_at`, wall reference) |
+| `scripts/append_capacity_observations.py drafts.json [--historical-seed] --check` | Mandatory first step: validates, prints a project-by-project report and the simulated snapshot, writes nothing; exit 1 on blocking errors, 0 with warnings only; prints a digest |
+| `scripts/append_capacity_observations.py drafts.json [--historical-seed] --checked DIGEST` | Session B ingestion (sets ids, `observed_at`, wall reference); refused unless DIGEST matches the exact drafts, seed flag and journal state of a clean `--check` |
 | `scripts/compute_capacity_snapshot.py` | Freezes the snapshot of the current weekly period (writes only with `CAPACITY_WRITE=1`) |
 | `scripts/validate_capacity.py` | Journal, PIT, wall and reproducibility checks |
 | `.github/workflows/capacity-monitor.yml` | Sunday 12:00 UTC, persists through a protected PR, touches only `data/capacity` |

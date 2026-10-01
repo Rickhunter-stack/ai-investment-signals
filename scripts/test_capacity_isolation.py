@@ -48,7 +48,8 @@ class CapacityIsolationTests(unittest.TestCase):
             before=digest()
             last=max(datetime.fromisoformat(s["captured_at"]) for s in json.loads((root/"data/weekly_signals.json").read_text()) if s.get("captured_at"))
             at=last+timedelta(hours=1)
-            app.append([{"kind":"assessment","component":"E","node":"power","value":"LOW","justification":"x","source":{"url":"https://example.com"}}],root,now=at)
+            drafts=[{"kind":"assessment","component":"E","node":"power","value":"LOW","justification":"x","source":{"url":"https://example.com"}}]
+            app.append(drafts,root,now=at,checked=app.prepare(drafts,root,now=at)["digest"])
             comp.write(comp.build(root,now=at+timedelta(hours=1)),root)
             after=digest()
             changed={k for k in set(before)|set(after) if before.get(k)!=after.get(k)}
