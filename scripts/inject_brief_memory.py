@@ -35,14 +35,32 @@ def load_events():
     )
 
 
+def event_type(event):
+    # brief-event-v1 stores the class in "type"; "classification" is a legacy name.
+    return event.get("type") or event.get("classification") or ""
+
+
+def event_relation(event):
+    return (event.get("story") or {}).get("relation") or event.get("story_relation") or ""
+
+
+def archive_payload(items):
+    """Every signal event, for the dashboard archive window (the card shows 30)."""
+    keys = ("event_id", "captured_at", "published_at", "title", "factual_summary", "theme",
+            "companies", "tickers", "direction", "importance", "novelty", "confidence", "sources")
+    rows = [{**{k: e.get(k) for k in keys}, "type": event_type(e), "relation": event_relation(e)} for e in items]
+    raw = json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")
+    return f'<script id="aisSignalEvents" type="application/json">{raw}</script>'
+
+
 def render_items(items):
     if not items:
         return '<div class="muted">Aucun événement prospectif enregistré pour le moment.</div>'
     chunks = []
     for event in items[:30]:
         captured = str(event.get("captured_at", ""))[:10]
-        classification = esc(event.get("classification", ""))
-        relation = esc(event.get("story_relation", ""))
+        classification = esc(event_type(event))
+        relation = esc(event_relation(event))
         badges = " · ".join(x for x in (classification, relation) if x)
         companies = ", ".join(event.get("companies") or [])
         tickers = ", ".join(event.get("tickers") or [])
@@ -98,7 +116,11 @@ def main():
  q.addEventListener('input',filterBriefs); c.addEventListener('change',filterBriefs);
 })();
 </script>"""
-    page = page.replace('</body>', filter_script + '</body>', 1)
+    # Idempotent: the full event list is replaced, the filter script added once.
+    page = re.sub(r'<script id="aisSignalEvents" type="application/json">.*?</script>', '', page, flags=re.S)
+    page = page.replace('</body>', archive_payload(items) + '</body>', 1)
+    if 'function filterBriefs' not in page:
+        page = page.replace('</body>', filter_script + '</body>', 1)
     INDEX.write_text(page, encoding="utf-8")
     print(f"{INDEX} ({len(items)} unique brief events)")
 
