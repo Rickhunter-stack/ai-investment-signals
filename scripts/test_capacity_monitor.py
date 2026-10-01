@@ -36,7 +36,9 @@ class Root:
         self.weekly=[weekly("2026-09-29",datetime(2026,9,29,2,38,tzinfo=timezone.utc),"sha-n-1"),weekly("2026-10-05",MON,"sha-n")]
         self.save_weekly()
     def save_weekly(self): (self.root/"data/weekly_signals.json").write_text(json.dumps(self.weekly))
-    def add(self,drafts,at,**kw): return app.append(drafts,self.root,now=at,**kw)
+    def add(self,drafts,at,**kw):
+        digest=app.prepare(drafts,self.root,now=at,**kw)["digest"]   # the --check digest
+        return app.append(drafts,self.root,now=at,checked=digest,**kw)
     def snap(self,at):
         s=comp.build(self.root,now=at)
         if s: comp.write(s,self.root)
