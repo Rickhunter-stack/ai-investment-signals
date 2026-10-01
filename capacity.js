@@ -43,12 +43,25 @@
       return '<tr><td>'+esc(x.weekly_snapshot_date)+'</td><td>'+q('E')+'</td><td class="num">'+num(x.system_risk.C.committed_gw)+'</td><td class="num">'+num(x.system_risk.T.realized_months.median,1)+'</td><td class="num">'+d+'</td><td>'+q('F')+'</td></tr>'});
     return section('System Risk E-C-T-D-F','Cinq dimensions affichées séparément, jamais agrégées en score.',body+'<h4 class="cap-sub">Historique PIT (une ligne par période hebdomadaire)</h4>'+table(['Période','E','C committed GW_IT','T médiane (mois)','D = AS_base par millésime','F'],hist.reverse(),[1,5]));
   }
+  function nextSnapshot(){
+    var d=new Date(),n=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate(),12,0,0));
+    n.setUTCDate(n.getUTCDate()+((7-n.getUTCDay())%7));if(n<=d)n.setUTCDate(n.getUTCDate()+7);
+    return n.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'})+' à 12:00 UTC';
+  }
+  function emptyState(){
+    return '<div class="cap-info"><b>Aucun snapshot Capacity figé pour le moment.</b>'+
+      '<ol class="cap-steps">'+
+      '<li><b>Premier snapshot</b> : '+esc(nextSnapshot())+' (workflow hebdomadaire). Il sera rattaché au dernier freeze du Signal Score.</li>'+
+      '<li><b>Journal vide au départ</b> : tant qu’aucune observation n’est chargée, les tableaux afficheront « — » (inconnu, jamais estimé).</li>'+
+      '<li><b>Chargement des données</b> : par une session Capacity distincte, après le freeze hebdomadaire des signaux, avec leur date réelle d’ingestion (jamais antidatée).</li>'+
+      '</ol><div class="cap-note">Chaque snapshot hebdomadaire est figé et conservé : l’historique montrera ce que le modèle savait à chaque date.</div></div>';
+  }
   function render(){
     var body=document.getElementById('capBody');if(!body)return;
-    if(!SNAPSHOTS.length){body.innerHTML='<div class="cap-null" style="padding:22px">Aucun snapshot Capacity figé pour le moment.</div>';return}
+    if(!SNAPSHOTS.length){body.innerHTML=emptyState();return}
     var s=SNAPSHOTS[SNAPSHOTS.length-1];
     document.getElementById('capMeta').textContent='Snapshot '+s.capacity_snapshot_captured_at.slice(0,16).replace('T',' ')+' UTC · après freeze Signal du '+s.weekly_snapshot_date+' · '+s.method_version+' · '+s.counts.observations+' observation(s)'+(s.counts.historical_seed?' dont '+s.counts.historical_seed+' historical seed':'');
-    body.innerHTML=buildout(s)+stress(s)+ladder(s)+risk(s);
+    body.innerHTML=(s.counts.observations?'':'<div class="cap-info"><b>Journal encore vide.</b> Ce snapshot fige honnêtement l’état « rien d’observé » à cette date. Les données seront chargées par une session Capacity distincte (session B), après le freeze hebdomadaire des signaux, avec leur vraie date d’ingestion.</div>')+buildout(s)+stress(s)+ladder(s)+risk(s);
   }
   // Third mode tab next to "Radar" and "Portefeuille virtuel" (created by
   // portfolio.js). Only DOM classes are shared; no Signal Score state is read.
@@ -84,6 +97,7 @@
       '.cap-banner{background:rgba(219,176,90,.14);border:1px solid var(--amber);border-radius:10px;padding:10px 16px;color:var(--amber);font-weight:900;letter-spacing:.06em}.cap-banner span{display:block;font-weight:600;letter-spacing:0;color:var(--ink);font-size:.8rem}'+
       '.cap-head{padding:12px 0 6px;border-bottom:1px solid var(--rule)}.cap-head h2{margin:2px 0 4px;font-size:clamp(1.7rem,2.8vw,2.5rem)}'+
       '#capBody{padding-bottom:18px}.cap-section{padding:14px 0;border-bottom:1px solid var(--rule)}.cap-section h3{margin:0 0 4px}.cap-sub{margin:12px 0 4px}'+
+      '.cap-info{margin:14px 0 4px;padding:12px 16px;border:1px solid var(--rule);border-left:3px solid var(--amber);border-radius:8px;background:var(--panel)}.cap-steps{margin:8px 0 6px 18px;padding:0}.cap-steps li{margin:4px 0}'+
       '.cap-note,.cap-null{color:var(--muted);font-size:.76rem}.cap-table{min-width:0;margin-top:6px}.cap-table td,.cap-table th{padding:5px 8px}.cap-table th.num{text-align:right}.capacity-view a{color:var(--accent)}.cap-demand td{color:var(--blue)}'+
       '.cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin-top:6px}.cap-card{background:var(--panel2);border:1px solid var(--rule);border-radius:8px;padding:9px}.cap-card h4{margin:0 0 6px;color:var(--amber);font-size:.78rem}.cap-assess{margin-bottom:6px}'+
       '</style>');
