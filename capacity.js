@@ -50,30 +50,54 @@
     document.getElementById('capMeta').textContent='Snapshot '+s.capacity_snapshot_captured_at.slice(0,16).replace('T',' ')+' UTC · après freeze Signal du '+s.weekly_snapshot_date+' · '+s.method_version+' · '+s.counts.observations+' observation(s)'+(s.counts.historical_seed?' dont '+s.counts.historical_seed+' historical seed':'');
     body.innerHTML=buildout(s)+stress(s)+ladder(s)+risk(s);
   }
-  function open(){var o=document.getElementById('capOverlay');if(!o)return;o.classList.add('open');o.setAttribute('aria-hidden','false');render()}
-  function close(){var o=document.getElementById('capOverlay');if(!o)return;o.classList.remove('open');o.setAttribute('aria-hidden','true')}
+  // Third mode tab next to "Radar" and "Portefeuille virtuel" (created by
+  // portfolio.js). Only DOM classes are shared; no Signal Score state is read.
+  function main(){return document.querySelector('.main')}
+  function view(){
+    var m=main();if(!m)return null;
+    var v=m.querySelector('.capacity-view');
+    if(!v){v=document.createElement('div');v.className='capacity-view';
+      v.innerHTML='<div class="cap-banner">SHADOW MODEL — EXPERIMENTAL — NON SCORING<span>Generated after the weekly signal freeze. Not used in the Signal Score. Indicateur de recherche indépendant.</span></div>'+
+        '<header class="cap-head"><div><div class="eyebrow">Capacity Monitor v0.1</div><h2 id="capTitle">AI Capacity</h2><div class="cap-note" id="capMeta"></div></div></header><div id="capBody"></div>';
+      m.appendChild(v)}
+    return v;
+  }
+  function enter(){
+    var m=main();if(!m||!view())return;
+    document.querySelectorAll('.mode-tab').forEach(function(b){b.classList.toggle('active',b.dataset.mode==='capacity')});
+    document.body.classList.remove('portfolio-mode');m.classList.remove('portfolio-active');
+    document.body.classList.add('capacity-mode');m.classList.add('capacity-active');render();
+  }
+  function leave(){var m=main();document.body.classList.remove('capacity-mode');if(m)m.classList.remove('capacity-active')}
+  function installTab(tabs){
+    if(!tabs||tabs.querySelector('[data-mode="capacity"]'))return;
+    var b=document.createElement('button');b.className='mode-tab cap-tab';b.dataset.mode='capacity';b.type='button';b.textContent='AI Capacity';b.title='Shadow model expérimental, non utilisé dans le Signal Score';
+    b.addEventListener('click',enter);tabs.appendChild(b);
+    tabs.addEventListener('click',function(e){var t=e.target.closest('.mode-tab');if(t&&t.dataset.mode!=='capacity')leave()},true);
+  }
   function setup(){
-    if(document.getElementById('capOverlay'))return;
-    document.head.insertAdjacentHTML('beforeend','<style>'+
-      '.cap-open{border-color:var(--amber);color:var(--amber);font-weight:800;margin-top:6px}'+
-      '.cap-overlay{display:none;position:fixed;inset:0;z-index:150;background:rgba(3,8,10,.85);padding:3vh 3vw}.cap-overlay.open{display:flex;justify-content:center}'+
-      '.cap-modal{width:min(1240px,96vw);max-height:94vh;display:flex;flex-direction:column;background:#101719;border:1px solid var(--amber);border-radius:14px;overflow:hidden}'+
-      '.cap-banner{background:rgba(219,176,90,.14);border-bottom:1px solid var(--amber);padding:10px 20px;color:var(--amber);font-weight:900;letter-spacing:.06em}.cap-banner span{display:block;font-weight:600;letter-spacing:0;color:var(--ink);font-size:.8rem}'+
-      '.cap-head{display:flex;justify-content:space-between;gap:16px;padding:12px 20px;border-bottom:1px solid var(--rule)}.cap-head h2{margin:0;font-size:1.3rem}'+
-      '#capBody{overflow:auto;padding:4px 20px 20px}.cap-section{padding:14px 0;border-bottom:1px solid var(--rule)}.cap-section h3{margin:0 0 4px}.cap-sub{margin:12px 0 4px}'+
-      '.cap-note,.cap-null{color:var(--muted);font-size:.76rem}.cap-table{min-width:0;margin-top:6px}.cap-table td,.cap-table th{padding:5px 8px}.cap-table th.num{text-align:right}.cap-overlay a{color:var(--accent)}.cap-demand td{color:var(--blue)}'+
+    if(document.getElementById('capStyle'))return;
+    document.head.insertAdjacentHTML('beforeend','<style id="capStyle">'+
+      '.cap-tab{border-color:rgba(219,176,90,.55)}.cap-tab.active{border-color:var(--amber);color:var(--amber)}'+
+      '.capacity-view{display:none}.main.capacity-active{display:block;overflow:auto}.main.capacity-active>:not(.capacity-view){display:none!important}.main.capacity-active>.capacity-view{display:block}'+
+      'body.capacity-mode .sidebar>.search,body.capacity-mode .sidebar>.sidefilters,body.capacity-mode #tickerNav{display:none!important}'+
+      '.cap-banner{background:rgba(219,176,90,.14);border:1px solid var(--amber);border-radius:10px;padding:10px 16px;color:var(--amber);font-weight:900;letter-spacing:.06em}.cap-banner span{display:block;font-weight:600;letter-spacing:0;color:var(--ink);font-size:.8rem}'+
+      '.cap-head{padding:12px 0 6px;border-bottom:1px solid var(--rule)}.cap-head h2{margin:2px 0 4px;font-size:clamp(1.7rem,2.8vw,2.5rem)}'+
+      '#capBody{padding-bottom:18px}.cap-section{padding:14px 0;border-bottom:1px solid var(--rule)}.cap-section h3{margin:0 0 4px}.cap-sub{margin:12px 0 4px}'+
+      '.cap-note,.cap-null{color:var(--muted);font-size:.76rem}.cap-table{min-width:0;margin-top:6px}.cap-table td,.cap-table th{padding:5px 8px}.cap-table th.num{text-align:right}.capacity-view a{color:var(--accent)}.cap-demand td{color:var(--blue)}'+
       '.cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin-top:6px}.cap-card{background:var(--panel2);border:1px solid var(--rule);border-radius:8px;padding:9px}.cap-card h4{margin:0 0 6px;color:var(--amber);font-size:.78rem}.cap-assess{margin-bottom:6px}'+
       '</style>');
-    var top=document.querySelector('.topbar > div:last-child')||document.body;
-    top.insertAdjacentHTML('beforeend','<div><button class="cap-open" id="capOpen" type="button">AI CAPACITY · shadow</button></div>');
-    document.body.insertAdjacentHTML('beforeend','<div class="cap-overlay" id="capOverlay" aria-hidden="true"><section class="cap-modal" role="dialog" aria-modal="true" aria-labelledby="capTitle">'+
-      '<div class="cap-banner">SHADOW MODEL — EXPERIMENTAL — NON SCORING<span>Generated after the weekly signal freeze. Not used in the Signal Score. Indicateur de recherche indépendant.</span></div>'+
-      '<header class="cap-head"><div><h2 id="capTitle">AI Capacity</h2><div class="cap-note" id="capMeta"></div></div><button class="brief-archive-close" id="capClose" type="button" aria-label="Fermer">×</button></header>'+
-      '<div id="capBody"></div></section></div>');
-    document.getElementById('capOpen').addEventListener('click',open);
-    document.getElementById('capClose').addEventListener('click',close);
-    document.getElementById('capOverlay').addEventListener('click',function(e){if(e.target===e.currentTarget)close()});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+    var tabs=document.getElementById('modeTabs');
+    if(tabs){installTab(tabs);return}
+    // portfolio.js is loaded asynchronously by markers.js: wait for its tabs.
+    var obs=new MutationObserver(function(){var t=document.getElementById('modeTabs');if(t){obs.disconnect();installTab(t)}});
+    obs.observe(document.body,{childList:true,subtree:true});
+    setTimeout(function(){
+      if(document.getElementById('modeTabs'))return;
+      obs.disconnect();var brand=document.querySelector('.brand');if(!brand)return;
+      var t=document.createElement('div');t.id='modeTabs';t.className='mode-tabs';t.style.cssText='display:flex;gap:5px;margin-top:9px';
+      t.innerHTML='<button class="mode-tab active" data-mode="radar" type="button">Radar</button>';brand.appendChild(t);installTab(t);
+    },5000);
   }
   setup();
   fetch('/data/capacity/snapshots.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(d){SNAPSHOTS=Array.isArray(d)?d:[];render()}).catch(function(){SNAPSHOTS=[];render()});
