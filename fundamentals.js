@@ -137,11 +137,15 @@ function addFundUI(){
    .readcard>div>div[style*="border-left"]>div:nth-child(2){font-size:.9rem!important;line-height:1.55!important;margin-top:6px!important}
    .readcard>div>div[style*="border-left"]>div:nth-child(3){font-size:.8rem!important;line-height:1.48!important;margin-top:6px!important}
 
-   .readcard{cursor:pointer;position:relative}
+   .readcard{position:relative}
    .readcard:hover{border-color:rgba(95,196,203,.58)}
    .readcard h3{display:flex;align-items:center;justify-content:space-between;gap:10px}
    .brief-open-hint{display:inline-flex;align-items:center;gap:5px;color:var(--accent);font-size:.7rem;font-weight:800;white-space:nowrap}
    .brief-open-hint::before{content:'↗';font-size:.82rem}
+   .brief-open-links{display:inline-flex;gap:10px;margin-left:auto}.brief-open-hint{background:none;border:0;padding:0;cursor:pointer}.brief-open-weekly{color:var(--amber)}.brief-open-weekly::before{content:'≡'}
+   .brief-archive-modes{display:flex;gap:6px;margin-top:10px}.brief-archive-mode{font-size:.74rem;padding:5px 10px}.brief-archive-mode.active{border-color:var(--accent);color:var(--accent)}
+   .brief-archive-field select{width:100%;background:var(--panel2);border:1px solid var(--rule);border-radius:8px;color:var(--ink);padding:9px 10px;font:inherit}
+   .brief-archive-watch a{color:var(--accent)}
 
    body.brief-archive-open{overflow:hidden}
    .brief-archive-overlay{display:none;position:fixed;inset:0;z-index:140;background:rgba(3,8,10,.82);backdrop-filter:blur(5px);padding:4vh 3vw}
@@ -152,7 +156,7 @@ function addFundUI(){
    .brief-archive-subtitle{margin-top:4px;color:var(--muted);font-size:.88rem}
    .brief-archive-close{width:34px;height:34px;padding:0;border-radius:50%;font-size:1.15rem;line-height:1;background:var(--panel2);border:1px solid var(--rule)}
    .brief-archive-close:hover{border-color:var(--accent);color:var(--accent)}
-   .brief-archive-tools{display:grid;grid-template-columns:minmax(260px,1.5fr) minmax(150px,.55fr) minmax(150px,.55fr) auto;gap:10px;align-items:end;padding:14px 22px;border-bottom:1px solid var(--rule);background:rgba(18,28,30,.75)}
+   .brief-archive-tools{display:grid;grid-template-columns:minmax(240px,1.5fr) minmax(130px,.45fr) minmax(140px,.5fr) minmax(140px,.5fr) auto;gap:10px;align-items:end;padding:14px 22px;border-bottom:1px solid var(--rule);background:rgba(18,28,30,.75)}
    .brief-archive-field{display:flex;flex-direction:column;gap:5px}
    .brief-archive-field label{font-size:.72rem;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.06em}
    .brief-archive-field input{width:100%;background:var(--panel2);border:1px solid var(--rule);border-radius:8px;color:var(--ink);padding:9px 10px;font:inherit}
@@ -194,38 +198,84 @@ function renderFundamentals(){
 }
 
 let AIS_BRIEF_ARCHIVE=[];
+// Two distinct archives, never mixed:
+//  - signals: every daily brief event (data/brief_events, embedded in the page);
+//  - briefs:  weekly syntheses validated by the user (data/brief_memory.json).
+let AIS_SIGNAL_ARCHIVE=[];
+let AIS_ARCHIVE_MODE='signals';
+// Read lazily: the embedded list may be placed after this script in the page.
+function loadSignalArchive(){
+  if(AIS_SIGNAL_ARCHIVE.length)return AIS_SIGNAL_ARCHIVE;
+  try{const el=document.getElementById('aisSignalEvents');AIS_SIGNAL_ARCHIVE=el?JSON.parse(el.textContent):[]}catch(e){AIS_SIGNAL_ARCHIVE=[]}
+  return AIS_SIGNAL_ARCHIVE;
+}
+const ARCHIVE_MODES={
+  signals:{title:'Mémoire des signaux',subtitle:'Tous les signaux extraits des briefs quotidiens (journal immuable data/brief_events), recherche plein texte, type et dates',placeholder:'Ex. HBM, Crux, NVDA, financement...',unit:['signal affiché','signaux affichés'],
+    items:loadSignalArchive,date:function(i){return String(i.captured_at||'').slice(0,10)}},
+  briefs:{title:'Synthèses hebdomadaires',subtitle:'Synthèses hebdomadaires archivées après validation explicite (data/brief_memory.json). Les signaux quotidiens sont dans « Mémoire des signaux ».',placeholder:'Ex. HBM, robotique, valorisation, QCOM...',unit:['synthèse affichée','synthèses affichées'],
+    items:function(){return AIS_BRIEF_ARCHIVE},date:function(i){return String(i.date||'')}}
+};
 
 function briefEscapeHtml(value){
   return String(value==null?'':value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]});
 }
 function briefSearchText(item){
-  return [item.date,item.stance,item.summary,item.watch_next].concat(item.tickers||[]).filter(Boolean).join(' ').toLowerCase();
+  return [item.date,item.stance,item.summary,item.watch_next,item.title,item.factual_summary,item.theme,item.type,item.relation].concat(item.tickers||[],item.companies||[]).filter(Boolean).join(' ').toLowerCase();
+}
+function renderSignalItem(item){
+  const badges=[item.type,item.relation].filter(Boolean).map(briefEscapeHtml).join(' · ');
+  const who=[(item.companies||[]).join(', '),(item.tickers||[]).join(', ')].filter(Boolean).map(briefEscapeHtml).join(' · ');
+  const src=(item.sources||[]).filter(function(x){return x&&/^https?:\/\//.test(x.url||'')}).map(function(x){return '<a href="'+briefEscapeHtml(x.url)+'" target="_blank" rel="noopener">'+briefEscapeHtml(x.source_name||'source')+'</a>'}).join(' · ');
+  return '<article class="brief-archive-item"><div class="brief-archive-date">'+briefEscapeHtml(ARCHIVE_MODES.signals.date(item))+(badges?' · <span class="brief-archive-stance">'+badges+'</span>':'')+'</div>'+
+    '<div class="brief-archive-summary"><b>'+briefEscapeHtml(item.title||'')+'</b><br>'+briefEscapeHtml(item.factual_summary||'')+'</div>'+
+    (who?'<div class="brief-archive-watch">'+who+'</div>':'')+(src?'<div class="brief-archive-watch">'+src+'</div>':'')+
+    ((item.tickers||[]).length?'<div class="brief-archive-tickers">'+item.tickers.map(function(t){return '<span class="brief-archive-ticker">'+briefEscapeHtml(t)+'</span>'}).join('')+'</div>':'')+'</article>';
+}
+function renderWeeklyItem(item){
+  const stance=item.stance?' · <span class="brief-archive-stance">'+briefEscapeHtml(item.stance)+'</span>':'';
+  const watch=item.watch_next?'<div class="brief-archive-watch"><b>À surveiller :</b> '+briefEscapeHtml(item.watch_next)+'</div>':'';
+  const tickers=(item.tickers||[]).length?'<div class="brief-archive-tickers">'+item.tickers.map(function(t){return '<span class="brief-archive-ticker">'+briefEscapeHtml(t)+'</span>'}).join('')+'</div>':'';
+  return '<article class="brief-archive-item"><div class="brief-archive-date">'+briefEscapeHtml(item.date||'')+stance+'</div><div class="brief-archive-summary">'+briefEscapeHtml(item.summary||'')+'</div>'+watch+tickers+'</article>';
+}
+function updateArchiveLabels(){
+  const weekly=document.getElementById('briefWeeklyLink');
+  if(weekly)weekly.textContent='Synthèses hebdo ('+AIS_BRIEF_ARCHIVE.length+')';
+  document.querySelectorAll('.brief-archive-mode').forEach(function(b){
+    const m=b.dataset.mode;b.classList.toggle('active',m===AIS_ARCHIVE_MODE);
+    b.textContent=(m==='signals'?'Signaux':'Synthèses hebdo')+' ('+ARCHIVE_MODES[m].items().length+')';
+  });
 }
 function renderBriefArchive(){
+  updateArchiveLabels();
   const list=document.getElementById('briefArchiveList');
   const meta=document.getElementById('briefArchiveCount');
   if(!list||!meta)return;
+  const mode=ARCHIVE_MODES[AIS_ARCHIVE_MODE];
+  document.getElementById('briefArchiveTitle').textContent=mode.title;
+  document.getElementById('briefArchiveSubtitle').textContent=mode.subtitle;
+  document.getElementById('briefArchiveSearch').placeholder=mode.placeholder;
+  const typeField=document.getElementById('briefArchiveTypeField');
+  if(typeField)typeField.style.display=AIS_ARCHIVE_MODE==='signals'?'':'none';
   const q=(document.getElementById('briefArchiveSearch')?.value||'').trim().toLowerCase();
   const from=document.getElementById('briefArchiveFrom')?.value||'';
   const to=document.getElementById('briefArchiveTo')?.value||'';
-  const filtered=[...AIS_BRIEF_ARCHIVE]
-    .filter(function(item){return (!q||briefSearchText(item).includes(q))&&(!from||String(item.date||'')>=from)&&(!to||String(item.date||'')<=to)})
-    .sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''))});
-  meta.textContent=String(filtered.length)+' brief'+(filtered.length>1?'s':'')+' affiché'+(filtered.length>1?'s':'')+' sur '+String(AIS_BRIEF_ARCHIVE.length);
+  const type=AIS_ARCHIVE_MODE==='signals'?(document.getElementById('briefArchiveType')?.value||''):'';
+  const all=mode.items();
+  const filtered=[...all]
+    .filter(function(item){const d=mode.date(item);return (!q||briefSearchText(item).includes(q))&&(!from||d>=from)&&(!to||d<=to)&&(!type||item.type===type)})
+    .sort(function(a,b){return mode.date(b).localeCompare(mode.date(a))});
+  const unit=mode.unit[filtered.length>1?1:0];
+  meta.textContent=String(filtered.length)+' '+unit+' sur '+String(all.length);
   if(!filtered.length){
-    list.innerHTML='<div class="brief-archive-empty">Aucun brief ne correspond à ces filtres.</div>';
+    list.innerHTML='<div class="brief-archive-empty">'+(all.length?'Aucun élément ne correspond à ces filtres.':(AIS_ARCHIVE_MODE==='signals'?'Aucun signal archivé pour le moment.':'Aucune synthèse hebdomadaire validée pour le moment.'))+'</div>';
     return;
   }
-  list.innerHTML=filtered.map(function(item){
-    const stance=item.stance?' · <span class="brief-archive-stance">'+briefEscapeHtml(item.stance)+'</span>':'';
-    const watch=item.watch_next?'<div class="brief-archive-watch"><b>À surveiller :</b> '+briefEscapeHtml(item.watch_next)+'</div>':'';
-    const tickers=(item.tickers||[]).length?'<div class="brief-archive-tickers">'+item.tickers.map(function(t){return '<span class="brief-archive-ticker">'+briefEscapeHtml(t)+'</span>'}).join('')+'</div>':'';
-    return '<article class="brief-archive-item"><div class="brief-archive-date">'+briefEscapeHtml(item.date||'')+stance+'</div><div class="brief-archive-summary">'+briefEscapeHtml(item.summary||'')+'</div>'+watch+tickers+'</article>';
-  }).join('');
+  list.innerHTML=filtered.map(AIS_ARCHIVE_MODE==='signals'?renderSignalItem:renderWeeklyItem).join('');
 }
-function openBriefArchive(){
+function openBriefArchive(mode){
   const overlay=document.getElementById('briefArchiveOverlay');
   if(!overlay)return;
+  if(mode)AIS_ARCHIVE_MODE=mode;
   overlay.classList.add('open');
   overlay.setAttribute('aria-hidden','false');
   document.body.classList.add('brief-archive-open');
@@ -242,23 +292,26 @@ function closeBriefArchive(){
 function setupBriefArchive(){
   const card=document.querySelector('.readcard');
   if(!card||document.getElementById('briefArchiveOverlay'))return;
-  card.setAttribute('role','button');
-  card.setAttribute('tabindex','0');
-  card.setAttribute('aria-label','Ouvrir les archives des briefs');
+  // Only the two links open an archive: the card itself keeps its search box
+  // and filter usable without opening anything.
   const title=card.querySelector('h3');
-  if(title&&!title.querySelector('.brief-open-hint')) title.insertAdjacentHTML('beforeend','<span class="brief-open-hint">Ouvrir l’archive</span>');
-  card.addEventListener('click',openBriefArchive);
-  card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openBriefArchive()}});
+  if(title&&!title.querySelector('.brief-open-links')) title.insertAdjacentHTML('beforeend',
+    '<span class="brief-open-links"><button type="button" class="brief-open-hint" id="briefSignalsLink">Ouvrir l’archive</button>'+
+    '<button type="button" class="brief-open-hint brief-open-weekly" id="briefWeeklyLink">Synthèses hebdo</button></span>');
+  document.getElementById('briefSignalsLink')?.addEventListener('click',function(e){e.stopPropagation();openBriefArchive('signals')});
+  document.getElementById('briefWeeklyLink')?.addEventListener('click',function(e){e.stopPropagation();openBriefArchive('briefs')});
 
   const modalHtml=
     '<div class="brief-archive-overlay" id="briefArchiveOverlay" aria-hidden="true">'+
       '<section class="brief-archive-modal" role="dialog" aria-modal="true" aria-labelledby="briefArchiveTitle">'+
         '<header class="brief-archive-head">'+
-          '<div><h2 id="briefArchiveTitle">Mémoire des briefs</h2><div class="brief-archive-subtitle">Archive chronologique, recherche plein texte et filtrage par dates</div></div>'+
+          '<div><h2 id="briefArchiveTitle">Mémoire des signaux</h2><div class="brief-archive-subtitle" id="briefArchiveSubtitle"></div>'+
+          '<div class="brief-archive-modes"><button type="button" class="brief-archive-mode" data-mode="signals"></button><button type="button" class="brief-archive-mode" data-mode="briefs"></button></div></div>'+
           '<button class="brief-archive-close" id="briefArchiveClose" type="button" aria-label="Fermer">×</button>'+
         '</header>'+
         '<div class="brief-archive-tools">'+
-          '<div class="brief-archive-field brief-archive-search"><label for="briefArchiveSearch">Recherche</label><input id="briefArchiveSearch" type="search" placeholder="Ex. HBM, robotique, valorisation, QCOM..."></div>'+
+          '<div class="brief-archive-field brief-archive-search"><label for="briefArchiveSearch">Recherche</label><input id="briefArchiveSearch" type="search"></div>'+
+          '<div class="brief-archive-field" id="briefArchiveTypeField"><label for="briefArchiveType">Type</label><select id="briefArchiveType"><option value="">Tous types</option><option>FACT</option><option>WEAK_SIGNAL</option><option>HYPOTHESIS</option></select></div>'+
           '<div class="brief-archive-field"><label for="briefArchiveFrom">Du</label><input id="briefArchiveFrom" type="date"></div>'+
           '<div class="brief-archive-field"><label for="briefArchiveTo">Au</label><input id="briefArchiveTo" type="date"></div>'+
           '<button class="brief-archive-reset" id="briefArchiveReset" type="button">Réinitialiser</button>'+
@@ -269,14 +322,16 @@ function setupBriefArchive(){
     '</div>';
   document.body.insertAdjacentHTML('beforeend',modalHtml);
 
-  ['briefArchiveSearch','briefArchiveFrom','briefArchiveTo'].forEach(function(id){document.getElementById(id)?.addEventListener('input',renderBriefArchive)});
+  document.querySelectorAll('.brief-archive-mode').forEach(function(b){b.addEventListener('click',function(){AIS_ARCHIVE_MODE=b.dataset.mode;renderBriefArchive()})});
+  ['briefArchiveSearch','briefArchiveFrom','briefArchiveTo','briefArchiveType'].forEach(function(id){document.getElementById(id)?.addEventListener('input',renderBriefArchive)});
   document.getElementById('briefArchiveReset')?.addEventListener('click',function(){
-    ['briefArchiveSearch','briefArchiveFrom','briefArchiveTo'].forEach(function(id){const el=document.getElementById(id);if(el)el.value=''});
+    ['briefArchiveSearch','briefArchiveFrom','briefArchiveTo','briefArchiveType'].forEach(function(id){const el=document.getElementById(id);if(el)el.value=''});
     renderBriefArchive();
   });
   document.getElementById('briefArchiveClose')?.addEventListener('click',function(e){e.stopPropagation();closeBriefArchive()});
   document.getElementById('briefArchiveOverlay')?.addEventListener('click',function(e){if(e.target===e.currentTarget)closeBriefArchive()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBriefArchive()});
+  updateArchiveLabels();
 }
 
 fetch('/data/brief_memory.json').then(function(r){return r.ok?r.json():[]}).then(function(d){
