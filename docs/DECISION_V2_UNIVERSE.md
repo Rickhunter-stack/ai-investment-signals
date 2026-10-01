@@ -27,7 +27,7 @@ Cette décision n'est pas prise en aveugle total. Ce qui suit a été observé a
 
 **Déclaration de l'assistant de rédaction (Claude Code).** En préparant les brouillons v2, il a affiché les composantes fundamental_strength et valuation des 33 titres du snapshot du 2026-09-29, ainsi que la couverture de `data/market_pit`. Il n'a consulté aucun cours ni aucune performance des 23 titres hors v1. Ces composantes n'ont servi qu'à constater les titres structurellement incomplets (NVO, SYM), pas à choisir l'univers, qui était déjà fixé par le seed.
 
-**Déclaration de l'auteur du projet — À CONFIRMER avant merge, sans sur-déclarer ni sous-déclarer :** aucune performance boursière des 23 titres hors v1 n'a été examinée de façon ciblée entre le 2026-09-14 et la présente décision. Des cours ou actualités ont pu être vus de façon incidente ; cela n'a donné lieu à aucune sélection. _[Confirmer ou corriger cette phrase, puis retirer cette mention entre crochets.]_
+**Déclaration de l'auteur du projet (confirmée le 2026-10-01) :** l'auteur n'avait pas examiné de façon ciblée les performances boursières des 23 titres hors v1 avant de décider de les inclure dans v2.
 
 **Engagement :** ni les performances observées, ni les scores ou composantes affichés, n'ont servi à choisir les titres de v2. La liste est reprise intégralement et telle quelle d'un fichier antérieur (§3). Aucun titre n'est ajouté, retiré ou remplacé pour équilibrer les buckets de score.
 
