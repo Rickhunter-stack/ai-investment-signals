@@ -2,8 +2,9 @@
 
 **Status:** DRAFT under audit. Not in force. Becomes frozen only when merged to `main`; it governs observations only after the activation record of section 15.
 **Drafted:** 2026-10-01
-**Decision record:** `docs/DECISION_V2_UNIVERSE.md`
-**Research protocol (integral part of this preregistration):** `docs/RESEARCH_PROTOCOL_V2.md`
+**Decision record:** `docs/DECISION_V2_UNIVERSE.md` (merged separately; freezes the universe and the principle decisions of 2026-10-01)
+**Integral parts of this preregistration:** `docs/RESEARCH_PROTOCOL_V2.md` and `config/research_prompt_v2.md` (research prompt with scoring anchors). This document is not frozen before both are final.
+**Linked v1 amendment:** v1.4 in `PREREGISTRATION.md` (research procedure change date for the 10 v1 tickers).
 **Relationship to v1:** independent parallel experiment. `PREREGISTRATION.md` (v1.0 and amendments v1.1-v1.3) is not modified by this document, and v1 results are never pooled with v2 results.
 
 Sections marked **DECISION REQUIRED** must be resolved, and the marker removed, before merge.
@@ -39,7 +40,7 @@ The observation unit is a ticker within an official frozen weekly snapshot of `d
 
 The score is the unchanged `weekly-v1.0` Signal Score (equal-weight mean of fundamental_strength, novelty, pricing_headroom, valuation and 100 - execution_risk; `docs/WEEKLY_SIGNALS.md`). v2 tests the same model on a broader universe; it introduces no new scoring formula. Any change to the formula requires a new model version evaluated prospectively (v1 §8).
 
-The qualitative components (novelty, pricing_headroom, execution_risk) must be produced under `docs/RESEARCH_PROTOCOL_V2.md`. An entry not produced under that protocol makes the component non-eligible for v2.
+The qualitative components (novelty, pricing_headroom, execution_risk) of all 33 tickers, including the 10 v1 tickers, must be produced under `docs/RESEARCH_PROTOCOL_V2.md` with `config/research_prompt_v2.md`. An entry not produced under that protocol makes the component non-eligible for v2. For the 10 v1 tickers, this procedure change is recorded in v1 by amendment v1.4; no frozen v1 score is modified.
 
 ## 5. Eligibility and missing data
 
@@ -70,23 +71,22 @@ Horizons: M+1, M+3, M+6, M+12, defined as in v1 §6.
 
 **Primary endpoint: M+6 benchmark-relative total return.** M+1, M+3 and M+12 are secondary and may not replace M+6.
 
-## 8. Benchmark rule — DECISION REQUIRED
+## 8. Benchmark rule
 
 The benchmark is assigned mechanically, once, before activation, and never changed.
 
-**Option A (recommended): GICS sector.** Health Care → SPY; every other sector → QQQ. This reproduces the v1 mapping exactly for the 10 common tickers (MDT, ISRG, GH → SPY; the seven others → QQQ). Sectors must be recorded below with source and retrieval date before merge. The values below are a draft from general knowledge and **must be verified against a primary source**:
+**Rule: GICS sector.** Health Care → SPY; every other GICS sector → QQQ. This reproduces the v1 mapping exactly for the 10 common tickers (MDT, ISRG, GH → SPY; NVDA, AVGO, QCOM, MU, GOOGL, AMZN, ADI → QQQ). The seed theme describes the universe but is not used for benchmark assignment: it classifies MDT and ISRG as `robotics`, which would contradict v1.
 
-| Sector (to verify) | Tickers | Benchmark |
-|---|---|---|
-| Information Technology | NVDA, MSFT, AVGO, MU, QCOM, ADI, MRVL, ANET, COHR, LITE, TER, CGNX | QQQ |
-| Communication Services | GOOGL, META | QQQ |
-| Consumer Discretionary | AMZN, TSLA | QQQ |
-| Industrials | VRT, ROK, SYM | QQQ |
-| Health Care | ISRG, MDT, LLY, NVO, REGN, VRTX, AMGN, AZN, TMO, DHR, CRL, IQV, WST, GH | SPY |
+**Frozen classification — required before activation.** The sector of each ticker is recorded in `config/v2_benchmarks.json` with the name of the source, the retrieval date and the resulting benchmark. Requirements:
 
-**Option B: seed theme.** `biotech_medtech` → SPY; `ai_semi` and `robotics` → QQQ. Uses only a pre-existing repository field, but assigns MDT and ISRG to QQQ, which contradicts v1 and makes the common-ticker comparison mix two benchmarks.
+- one primary source for all 33 tickers (an official GICS publication, or the index provider's constituent data that publishes GICS sectors); a ticker absent from that source is documented with a second source named in the file;
+- retrieval no later than the activation record;
+- later reclassifications by the provider do not change the frozen assignment;
+- if the verified classification gives a v1 ticker a sector inconsistent with its v1 benchmark, v1 is not changed: the discrepancy is documented and that ticker keeps its v1 benchmark in v2, to preserve the common-ticker comparison.
 
-In both options, SPY and QQQ remain stored for every ticker; a secondary sensitivity analysis reports all tickers against SPY and against QQQ. SMH, IHI and XBI remain sensitivity comparators only.
+Expected result, **to be verified, not to be used as the frozen table**: Health Care for ISRG, MDT, LLY, NVO, REGN, VRTX, AMGN, AZN, TMO, DHR, CRL, IQV, WST, GH (→ SPY); all other tickers → QQQ.
+
+SPY and QQQ remain stored for every ticker; a secondary sensitivity analysis reports all tickers against SPY and against QQQ. SMH, IHI and XBI remain sensitivity comparators only.
 
 ## 9. Score buckets and diagnostic definitions
 
@@ -99,9 +99,16 @@ N always means the number of v2-eligible observations with a written outcome at 
 Primary analysis at M+6:
 
 1. **Per-cohort cross-section.** For each weekly cohort with at least 10 eligible observations, compute the Spearman rank correlation between Signal Score and M+6 excess return.
-2. **Summary.** Report the mean and median of the per-cohort coefficients and their full distribution over time.
-3. **Dependence-aware uncertainty.** Consecutive cohorts overlap by up to 25 of 26 weeks. Uncertainty is computed by a moving-block bootstrap over cohorts with block length 26 weeks. A non-overlapping subsample (the first eligible cohort, then every 26th cohort) is also reported.
-4. **Descriptive tables** as in v1 §11: N, median and mean excess return by bucket, hit rate by bucket, per ticker and per sector.
+2. **Point estimate.** The mean of the per-cohort coefficients, with their median and full distribution over time.
+3. **Two sources of dependence.** (a) Temporal: M+6 return windows of consecutive cohorts overlap by up to 25 of 26 weeks. (b) Cross-sectional and repeated: the same companies reappear in every cohort, so a company with a persistent score and persistent excess return influences every coefficient.
+4. **Primary uncertainty: two-way bootstrap.** Each replicate jointly resamples, with replacement, (i) tickers, and (ii) blocks of 26 consecutive cohorts; per-cohort coefficients are recomputed on the resampled tickers and averaged over the resampled blocks. 2,000 replicates, fixed seed recorded with the results. The 95 % percentile interval is reported.
+5. **Required sensitivity analyses**, always reported alongside the primary interval:
+   - ticker-only cluster bootstrap (cohorts fixed);
+   - cohort-block-only moving-block bootstrap (tickers fixed);
+   - the non-overlapping subsample (first eligible cohort, then every 26th cohort);
+   - leave-one-sector-out and leave-one-ticker-out point estimates.
+6. **Interpretation limit.** With 33 clusters and few non-overlapping cohorts, no resampling method guarantees nominal coverage. Intervals are reported as approximate, and the widest of the primary and sensitivity intervals governs the wording of conclusions.
+7. **Descriptive tables** as in v1 §11: N, median and mean excess return by bucket, hit rate by bucket, per ticker and per sector.
 
 ## 11. Baselines and ablation
 
@@ -125,23 +132,30 @@ v1 and v2 observations are never concatenated to increase N, in any table, figur
 
 Inherited from v1 §20, evaluated at M+6 on v2 data, with the additional requirement that a supportive pattern must not be driven by a single sector or a single theme of the seed. A negative conclusion is preserved and reported, never repaired by retrospective reweighting or universe changes.
 
-## 14. Open decisions to resolve before merge
+## 14. Items to complete before merge
 
-1. Benchmark rule (section 8): option A or B; if A, verified sector table with source and date.
-2. Scope of the research protocol for the 10 common tickers (`docs/RESEARCH_PROTOCOL_V2.md`, section 1).
-3. Confirmation of the author declaration in the decision record §2.
-4. Whether market collection for the 23 v2-only tickers starts before merge of this document, through a separate isolated change (decision record §4).
+Resolved on 2026-10-01 (decision record §4): GICS benchmark rule; one research procedure for all 33 tickers; early, isolated market collection for the 23 v2-only tickers (separate change).
+
+Still blocking the freeze of this document:
+
+1. `config/research_prompt_v2.md` final, including the scoring anchors (draft in this pull request).
+2. `docs/RESEARCH_PROTOCOL_V2.md` final.
+3. Amendment v1.4 of `PREREGISTRATION.md` final.
+4. Review of the inference plan of section 10.
+
+Required before activation, not before merge: the verified `config/v2_benchmarks.json` (section 8).
 
 ## 15. Activation
 
 Merging this document does not activate v2. Activation requires a separate dated activation record confirming:
 
-1. this document and `docs/RESEARCH_PROTOCOL_V2.md` are merged;
+1. this document, `docs/RESEARCH_PROTOCOL_V2.md`, `config/research_prompt_v2.md` and amendment v1.4 are merged, and `config/v2_benchmarks.json` is committed with source and retrieval date;
 2. market collection covers all 33 tickers, with v1 isolation tested;
 3. `data/outcomes_v2.json` is implemented with the same append-only guarantees as v1, and protected by `scripts/check_append_only_git.py`;
 4. research entries carry the provenance fields of the research protocol, and a validator rejects non-compliant entries;
-5. a dry run demonstrates zero confirmatory writes;
-6. the v1 integrity test suite still passes unchanged.
+5. the baseline review of all 33 tickers required by the research protocol (section 6) is complete;
+6. a dry run demonstrates zero confirmatory writes;
+7. the v1 integrity test suite still passes unchanged.
 
 The first v2-eligible snapshot is the first official scheduled weekly snapshot captured after that record. No earlier snapshot produces a v2 observation.
 
