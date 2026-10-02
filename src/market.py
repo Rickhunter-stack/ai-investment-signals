@@ -223,8 +223,10 @@ def confirmatory_writes_enabled(): return os.getenv("CONFIRMATORY_WRITE")=="1"
 def update_market(period="1mo"):
  conn=connect(); seed_companies(conn); securities=list(CONFIRMATORY_SECURITIES)
  observed_at=datetime.now(timezone.utc).isoformat(); kwargs=dict(REQUEST); kwargs["period"]=period
- raw=yf.download(tickers=securities,group_by="ticker",progress=False,threads=True,**kwargs)
- bench=yf.download(tickers=list(BENCHMARK_TICKERS),group_by="ticker",progress=False,threads=True,**kwargs)
+ # threads=False: yfinance's SQLite caches (tz/cookie) raise "database is locked"
+ # under concurrent writes, which drops a ticker and fails the completeness gate.
+ raw=yf.download(tickers=securities,group_by="ticker",progress=False,threads=False,**kwargs)
+ bench=yf.download(tickers=list(BENCHMARK_TICKERS),group_by="ticker",progress=False,threads=False,**kwargs)
  rows=_eligible_rows(raw,securities,observed_at,"security",kwargs)+_eligible_rows(bench,list(BENCHMARK_TICKERS),observed_at,"benchmark",kwargs)
  if confirmatory_writes_enabled():
   confirmatory_rows=_admit_rows(rows,_load_journal())
