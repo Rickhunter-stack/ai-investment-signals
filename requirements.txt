@@ -1,6 +1,9 @@
 pandas>=2.2
 pyyaml>=6.0
 scipy>=1.13,<2
-yfinance==1.7.0
+# repair=True (src/market.py REQUEST) reconstructs anomalous bars with
+# sklearn DBSCAN; the extra must be installed or that path crashes per ticker.
+yfinance[repair]==1.7.0
+scikit-learn>=1.5,<2
 streamlit>=1.40
 exchange_calendars>=4.13,<5
