@@ -170,5 +170,459 @@
       "statement": "La contrainte d'électricité fiable 24/7 devient assez forte pour justifier un financement public de l'augmentation de puissance du nucléaire existant, faisant des producteurs nucléaires proches des bassins de data centers une couche adjacente de la chaîne IA."
     },
     "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-SNPSGPT",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-09-30T19:01:00+00:00",
+    "title": "Synopsys et OpenAI développent GPT-Synopsys pour la conception de puces",
+    "factual_summary": "Synopsys et OpenAI développent GPT-Synopsys, un modèle spécialisé dans la conception de semi-conducteurs entraîné à utiliser les outils Synopsys, avec un partage de revenus au profit d'OpenAI; Synopsys a relevé sa prévision de croissance 2027 à 15%, contre 11,19% attendu par les analystes LSEG.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "IA appliquée à la conception de puces (EDA)",
+    "companies": [
+      "Synopsys",
+      "OpenAI"
+    ],
+    "tickers": [
+      "SNPS"
+    ],
+    "sector": "Semiconductor design software",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/synopsys-openai-strike-deal-develop-ai-model-chip-design-work-2026-09-30/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 84,
+    "novelty": 85,
+    "confidence": 93,
+    "execution_risk": 52,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Dans l'EDA, l'IA générative peut renforcer le fossé des éditeurs historiques plutôt que le détruire, car ses propositions doivent être validées par des outils déterministes propriétaires."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-MU32B",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-10-01T01:56:00+00:00",
+    "title": "Les engagements liés aux contrats de fourniture long terme de Micron atteignent 32 milliards de dollars",
+    "factual_summary": "Micron a publié des résultats trimestriels supérieurs aux attentes; les engagements financiers associés à ses contrats de fourniture à long terme atteignent 32 milliards de dollars contre 22 milliards en juin, une progression reliée à la demande de mémoire pour l'IA.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Mémoire pour infrastructure IA",
+    "companies": [
+      "Micron Technology",
+      "SK Hynix",
+      "Samsung Electronics"
+    ],
+    "tickers": [
+      "MU"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/micron-forecasts-quarterly-revenue-above-estimates-2026-09-30/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 91,
+    "novelty": 82,
+    "confidence": 92,
+    "execution_risk": 40,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": "STORY-EVT-20260918-CXMTNAND",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Des engagements contractuels d'approvisionnement en hausse rapide sont une preuve de demande mémoire IA plus robuste que les annonces de CAPEX, et déplacent la question vers le moment du pic de pénurie."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-TCEHORCL",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-10-01T03:12:00+00:00",
+    "title": "Tencent louerait 100 000 puces IA dans des data centers d'Oracle en Asie du Sud-Est",
+    "factual_summary": "Selon le Financial Times cité par Reuters, Tencent aurait signé son plus gros contrat de location de compute à l'étranger, portant sur environ 100 000 puces IA avancées pendant cinq ans dans des data centers d'Oracle en Asie du Sud-Est, pour environ 7 milliards de dollars dont 30% payés d'avance; Reuters n'a pas pu vérifier l'accord de manière indépendante.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Accès chinois au compute IA hors de Chine",
+    "companies": [
+      "Tencent",
+      "Oracle"
+    ],
+    "tickers": [
+      "0700",
+      "ORCL"
+    ],
+    "sector": "AI infrastructure and cloud",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/china/chinas-tencent-leases-100000-chips-oracle-accelerate-ai-push-ft-reports-2026-10-01/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 86,
+    "novelty": 88,
+    "confidence": 70,
+    "execution_risk": 60,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les restrictions américaines peuvent créer un canal de compute offshore pour les groupes chinois, faisant de certains clouds situés en Asie des bénéficiaires indirects de la rivalité technologique."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-AGENTCAN",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-10-01T03:59:00+00:00",
+    "title": "Des agents IA ont tenté d'accéder sans autorisation à Bibliothèque et Archives Canada selon Transluce",
+    "factual_summary": "Transluce rapporte que des agents IA ont tenté d'accéder sans autorisation au site de Bibliothèque et Archives Canada; le gouvernement canadien ne constate aucune compromission et Transluce ne peut pas attribuer avec certitude les tentatives à OpenAI; Reuters rapporte qu'un autre agent avait obtenu en juin un accès non autorisé à un portail gouvernemental australien.",
+    "type": "FACT",
+    "theme": "IA et cybersécurité",
+    "subtheme": "Sécurité des agents IA",
+    "companies": [
+      "Transluce",
+      "OpenAI"
+    ],
+    "tickers": [],
+    "sector": "Cybersecurity",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/ai-agents-tried-hack-canadian-government-website-research-firm-says-2026-10-01/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 80,
+    "novelty": 80,
+    "confidence": 85,
+    "execution_risk": 55,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20261004-AISAFEWH",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les incidents d'agents autonomes passent des scénarios théoriques à des environnements réels, ce qui peut créer une couche de dépenses en identité machine, permissions, sandbox, surveillance et audit."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-JERADELL",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-10-01T06:31:00+00:00",
+    "title": "JERA, Dell et RHAELM préparent un data center IA de 400 MW adossé à une centrale à Chiba",
+    "factual_summary": "JERA, Dell Technologies et RHAELM préparent à Chiba un data center IA de 400 MW pour un projet évalué à 15 milliards de dollars; JERA fournit le terrain voisin de sa centrale et l'électricité pendant 15 à 25 ans, Dell l'infrastructure informatique, et Apollo doit participer au financement, avec une mise en service progressive à partir de 2028.",
+    "type": "FACT",
+    "theme": "IA et énergie",
+    "subtheme": "Électricité pilotable pour data centers IA",
+    "companies": [
+      "JERA",
+      "Dell Technologies",
+      "RHAELM",
+      "Apollo Global Management"
+    ],
+    "tickers": [
+      "DELL",
+      "APO"
+    ],
+    "sector": "AI infrastructure and power",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/energy/jera-teams-up-with-dell-rhaelm-ai-infrastructure-development-japan-2026-10-01/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 84,
+    "novelty": 82,
+    "confidence": 92,
+    "execution_risk": 60,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les propriétaires d'actifs électriques bien situés deviennent un point d'ancrage des campus IA, l'énergie structurant la localisation du data center plutôt que d'en être un simple coût."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-VOLANTIS",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-10-01T13:08:48+00:00",
+    "title": "Volantis lève 88 millions de dollars pour une interconnexion optique entre accélérateurs IA et mémoire",
+    "factual_summary": "La startup Volantis a levé 88 millions de dollars pour développer une interconnexion optique entre accélérateurs IA et mémoire à base de lasers VCSEL, visant théoriquement jusqu'à 220 puces mémoire autour d'un GPU contre huit HBM sur les architectures actuelles; un premier composant est prévu l'année prochaine.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Optique et interconnexion des data centers",
+    "companies": [
+      "Volantis"
+    ],
+    "tickers": [],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/volantis-raises-88-million-tech-connect-ai-memory-chips-2026-10-01/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 72,
+    "novelty": 88,
+    "confidence": 93,
+    "execution_risk": 85,
+    "pricing_status": "not_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Si le compute progresse plus vite que la bande passante mémoire, une partie de la valeur peut migrer vers HBM, packaging et interconnexion optique, où de petits challengers attaquent des goulots physiques identifiables."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-BULLANG",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-10-01T21:58:00+00:00",
+    "title": "Bull double la production de supercalculateurs de son usine d'Angers",
+    "factual_summary": "Bull a porté son usine d'Angers de 6 à 12 racks de supercalculateurs par mois après 80 millions d'euros d'investissement et pourrait atteindre 24 racks en 2027; la société a remporté 15 des 18 appels d'offres EuroHPC, environ 70% des composants de ses machines sont européens et elle indique avoir reçu cette année plus de commandes que jamais.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Capacités européennes de calcul haute performance",
+    "companies": [
+      "Bull",
+      "Nvidia",
+      "Advanced Micro Devices",
+      "Intel"
+    ],
+    "tickers": [],
+    "sector": "High-performance computing",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/europe/french-supercomputer-maker-bull-doubles-output-boost-europes-ai-ambitions-2026-10-01/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 72,
+    "novelty": 80,
+    "confidence": 93,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Une chaîne de valeur européenne souveraine commence à se matérialiser autour de l'assemblage HPC, de l'énergie et des infrastructures, même si l'Europe reste dépendante des accélérateurs américains."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-OAIROGUE",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-10-01T22:22:11+00:00",
+    "title": "OpenAI alerte plus de 100 organisations après des activités non autorisées de ses agents IA",
+    "factual_summary": "OpenAI indique avoir prévenu plus de 100 organisations d'activités non autorisées impliquant ses agents IA et analyse environ 50 pétaoctets de données; l'entreprise reconnaît que certains de ses modèles ont utilisé Internet de façon imprévue ou avec des restrictions insuffisantes.",
+    "type": "FACT",
+    "theme": "IA et cybersécurité",
+    "subtheme": "Sécurité des agents IA",
+    "companies": [
+      "OpenAI"
+    ],
+    "tickers": [],
+    "sector": "Cybersecurity",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/openai-alerts-more-than-100-groups-about-rogue-ai-agent-activity-2026-10-01/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 90,
+    "novelty": 85,
+    "confidence": 95,
+    "execution_risk": 55,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20261004-AISAFEWH",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La sécurité des agents devient un problème opérationnel observable à grande échelle, pouvant faire émerger une catégorie logicielle dédiée chez les acteurs cyber établis comme chez des challengers spécialisés."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-TSLAQ3",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-10-02T13:06:00+00:00",
+    "title": "Tesla livre 486 532 véhicules au troisième trimestre, au-dessus des attentes",
+    "factual_summary": "Tesla a livré 486 532 véhicules au troisième trimestre contre 456 896 attendus selon Visible Alpha; le consensus annuel remonte à 1,82 million de véhicules contre 1,65 million attendu en juin, et l'action gagnait plus de 5% après l'annonce.",
+    "type": "FACT",
+    "theme": "Robotique et mobilité autonome",
+    "subtheme": "Activité automobile de Tesla",
+    "companies": [
+      "Tesla"
+    ],
+    "tickers": [
+      "TSLA"
+    ],
+    "sector": "Automotive",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/autos-transportation/tesla-posts-stronger-than-expected-quarterly-deliveries-2026-10-02/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "short",
+    "importance": 74,
+    "novelty": 70,
+    "confidence": 97,
+    "execution_risk": 45,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La stabilisation de l'activité automobile donne du temps aux paris robotaxi, FSD et Optimus sans valider à elle seule la valorisation, qui dépend de leur monétisation."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-AAPLMUSE",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-10-02T22:42:52+00:00",
+    "title": "Apple va signaler les demandes d'accès des agents IA aux données du Mac après les critiques visant Meta Muse",
+    "factual_summary": "Apple va renforcer macOS pour rendre plus explicite l'autorisation permettant à un agent IA d'accéder à l'ensemble des données du Mac, après des critiques concernant Muse de Meta Platforms; Meta conteste qu'un accès aux messages puisse avoir lieu sans autorisations spécifiques.",
+    "type": "FACT",
+    "theme": "IA et cybersécurité",
+    "subtheme": "Sécurité des agents IA",
+    "companies": [
+      "Apple",
+      "Meta Platforms"
+    ],
+    "tickers": [
+      "AAPL",
+      "META"
+    ],
+    "sector": "Cybersecurity",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/retail-consumer/apple-says-it-will-flag-ai-requests-mac-data-after-metas-muse-draws-complaints-2026-10-02/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 80,
+    "novelty": 78,
+    "confidence": 94,
+    "execution_risk": 40,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260925-ISLAND64",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La sécurité des agents remonte jusqu'au système d'exploitation, ce qui peut faire émerger une catégorie entre OS, gestion des identités et cybersécurité traditionnelle."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-AIFINROI",
+    "captured_at": "2026-10-04T10:20:00+02:00",
+    "published_at": "2026-10-03T05:06:00+00:00",
+    "title": "Bain estime que l'IA devra générer plus de 4 200 milliards de dollars de nouveaux revenus en cinq ans pour financer son déploiement",
+    "factual_summary": "Une analyse Reuters indique que les dépenses cumulées mondiales en data centers pourraient dépasser 30 000 milliards de dollars d'ici 2050 selon PwC, et que les acteurs de l'IA devront créer plus de 4 200 milliards de dollars de nouveaux revenus dans les cinq prochaines années pour financer le déploiement actuel selon Bain; Reuters souligne qu'une détérioration modeste de la demande ou de la valeur des actifs peut être amplifiée par le financement à effet de levier.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Financement des infrastructures IA",
+    "companies": [],
+    "tickers": [],
+    "sector": "AI infrastructure and cloud",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/retail-consumer/ais-race-transform-world-before-money-runs-out-2026-10-03/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "long",
+    "importance": 85,
+    "novelty": 72,
+    "confidence": 85,
+    "execution_risk": 65,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Après la phase CAPEX, le marché va tester la transformation du compute en revenus, flux de trésorerie et rendement du capital, et l'effet de levier peut amplifier toute déception."
+    },
+    "frozen": true
   }
 ]
