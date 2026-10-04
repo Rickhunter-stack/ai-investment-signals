@@ -68,3 +68,8 @@ A direct GitHub-connector write is considered fully auditable only if all of the
 6. required CI checks pass before merge.
 
 If the current environment cannot execute these repository checks itself, it may still create the branch/file/PR, but the ingestion must be reported as **pending validation**, not successful, until the pull-request checks have passed. If no repository validation can be obtained, fail closed and do not merge.
+
+
+## Freshness alert
+
+`.github/workflows/brief-freshness.yml` runs daily at 12:00 UTC and fails when the most recent `captured_at` in `main` is more than 24 h old (`scripts/check_brief_freshness.py`). On failure it opens, or comments on, a GitHub issue titled "Brief journal missing". A day with no investment-relevant event legitimately triggers it; close the issue with that explanation.

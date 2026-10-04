@@ -1,0 +1,45 @@
+name: Brief journal freshness
+
+# Alerts when no brief event captured in the last 24 h has reached main
+# (blocked connector write, journal left on an unmerged branch...).
+# 12:00 UTC leaves a few hours after the morning brief for its PR to merge.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * *'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  freshness:
+    name: brief-freshness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check latest brief event age
+        id: check
+        run: python scripts/check_brief_freshness.py 24 2> freshness.err
+      - name: Open or update alert issue
+        if: failure() && steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Brief journal missing: no event captured in main for 24 h"
+          body="$(cat freshness.err)
+
+          Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+
+          Check for an unmerged \`brief/*\` branch or an ingestion that failed, and report the raw error per docs/DAILY_BRIEF_INGESTION.md."
+          number="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title \"$title\"" --json number --jq '.[0].number // empty')"
+          if [ -n "$number" ]; then
+            gh issue comment "$number" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+          fi
