@@ -54,3 +54,17 @@ Prefer the repository's own ingestion and validation scripts whenever the execut
 If the environment cannot execute the repository scripts, do not emulate a successful validated ingestion silently. Either use the GitHub connector only for a fully auditable write path or fail closed.
 
 When any write, validation, commit, push, or PR creation step fails, report the raw error message exactly when available, together with the step that failed. Do not replace an unknown cause with an inferred explanation such as permissions, branch protection, or a safety control unless the returned error explicitly says so.
+
+
+## Definition of a fully auditable connector write path
+
+A direct GitHub-connector write is considered fully auditable only if all of the following are true before merge:
+
+1. the candidate journal is created on a non-`main` branch;
+2. `scripts/validate_brief_events.py` runs successfully against that branch state;
+3. the brief-event test suite runs successfully;
+4. `scripts/check_append_only_git.py` confirms append-only integrity against `main`;
+5. the pull request contains the classifier audit required by `STORY_DEDUP_V1.md`;
+6. required CI checks pass before merge.
+
+If the current environment cannot execute these repository checks itself, it may still create the branch/file/PR, but the ingestion must be reported as **pending validation**, not successful, until the pull-request checks have passed. If no repository validation can be obtained, fail closed and do not merge.
