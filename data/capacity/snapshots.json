@@ -1,1 +1,244 @@
-[]
+[
+  {
+    "schema_version": "capacity-snapshot-v0.1",
+    "snapshot_id": "CAPSNAP-2026-09-29-capacity_monitor_v0.1",
+    "method_version": "capacity_monitor_v0.1",
+    "status": "EXPERIMENTAL - NON SCORING",
+    "scoring_use": "none",
+    "definitions_sha256": "6aca3f667fd0530e58c2bba6fe849b006d61aa6eb52ddc95b1f25c7f8ce4bb07",
+    "capacity_snapshot_captured_at": "2026-10-04T16:17:03.307504+00:00",
+    "weekly_snapshot_date": "2026-09-29",
+    "weekly_snapshot_captured_at": "2026-09-29T02:38:11.483908+00:00",
+    "weekly_research_sha256": "360f90b39cded4b34d70c0d6b677d1490a5a3e70382661cf3d1fa0baad870d57",
+    "input_observation_ids": [],
+    "new_observation_ids": [],
+    "counts": {
+      "observations": 0,
+      "projects": 0,
+      "historical_seed": 0
+    },
+    "buildout": {
+      "unit": "GW_IT",
+      "years": {
+        "2026": {
+          "announced_gw": null,
+          "committed_gw": null,
+          "operational_gw": null,
+          "effective_gw": null
+        },
+        "2027": {
+          "announced_gw": null,
+          "committed_gw": null,
+          "operational_gw": null,
+          "effective_gw": null
+        },
+        "2028": {
+          "announced_gw": null,
+          "committed_gw": null,
+          "operational_gw": null,
+          "effective_gw": null
+        },
+        "2029": {
+          "announced_gw": null,
+          "committed_gw": null,
+          "operational_gw": null,
+          "effective_gw": null
+        },
+        "2030": {
+          "announced_gw": null,
+          "committed_gw": null,
+          "operational_gw": null,
+          "effective_gw": null
+        }
+      },
+      "undated": {
+        "announced_gw": 0,
+        "committed_gw": 0,
+        "operational_gw": 0,
+        "effective_gw": 0
+      },
+      "depreciation_unknown_gw": null
+    },
+    "demand": {
+      "unit": "GW_IT",
+      "years": {
+        "2026": {
+          "bear": null,
+          "base": null,
+          "bull": null
+        },
+        "2027": {
+          "bear": null,
+          "base": null,
+          "bull": null
+        },
+        "2028": {
+          "bear": null,
+          "base": null,
+          "bull": null
+        },
+        "2029": {
+          "bear": null,
+          "base": null,
+          "bull": null
+        },
+        "2030": {
+          "bear": null,
+          "base": null,
+          "bull": null
+        }
+      }
+    },
+    "absorption_stress": {
+      "2026": {
+        "bear": {
+          "value": null,
+          "reason": "no demand estimate"
+        },
+        "base": {
+          "value": null,
+          "reason": "no demand estimate"
+        },
+        "bull": {
+          "value": null,
+          "reason": "no demand estimate"
+        }
+      },
+      "2027": {
+        "bear": {
+          "value": null,
+          "reason": "no demand estimate"
+        },
+        "base": {
+          "value": null,
+          "reason": "no demand estimate"
+        },
+        "bull": {
+          "value": null,
+          "reason": "no demand estimate"
+        }
+      },
+      "2028": {
+        "bear": {
+          "value": null,
+          "reason": "no demand estimate"
+        },
+        "base": {
+          "value": null,
+          "reason": "no demand estimate"
+        },
+        "bull": {
+          "value": null,
+          "reason": "no demand estimate"
+        }
+      },
+      "2029": {
+        "bear": {
+          "value": null,
+          "reason": "no demand estimate"
+        },
+        "base": {
+          "value": null,
+          "reason": "no demand estimate"
+        },
+        "bull": {
+          "value": null,
+          "reason": "no demand estimate"
+        }
+      },
+      "2030": {
+        "bear": {
+          "value": null,
+          "reason": "no demand estimate"
+        },
+        "base": {
+          "value": null,
+          "reason": "no demand estimate"
+        },
+        "bull": {
+          "value": null,
+          "reason": "no demand estimate"
+        }
+      }
+    },
+    "ladder": {
+      "C0": {
+        "projects": 0,
+        "gw": 0,
+        "non_canonical_projects": 0
+      },
+      "C1": {
+        "projects": 0,
+        "gw": 0,
+        "non_canonical_projects": 0
+      },
+      "C2": {
+        "projects": 0,
+        "gw": 0,
+        "non_canonical_projects": 0
+      },
+      "C3": {
+        "projects": 0,
+        "gw": 0,
+        "non_canonical_projects": 0
+      },
+      "C4": {
+        "projects": 0,
+        "gw": 0,
+        "non_canonical_projects": 0
+      },
+      "C5": {
+        "projects": 0,
+        "gw": 0,
+        "non_canonical_projects": 0
+      },
+      "X": {
+        "projects": 0,
+        "gw": 0,
+        "non_canonical_projects": 0
+      },
+      "UNKNOWN": {
+        "projects": 0,
+        "gw": 0,
+        "non_canonical_projects": 0
+      }
+    },
+    "system_risk": {
+      "E": [],
+      "C": {
+        "committed_gw": null,
+        "operational_gw": null,
+        "by_level": {
+          "C0": 0,
+          "C1": 0,
+          "C2": 0,
+          "C3": 0,
+          "C4": 0,
+          "C5": 0,
+          "X": 0,
+          "UNKNOWN": 0
+        }
+      },
+      "T": {
+        "realized_months": {
+          "n": 0,
+          "median": null,
+          "p25": null,
+          "p75": null
+        },
+        "expected_committed_gw_by_year": {
+          "2026": null,
+          "2027": null,
+          "2028": null,
+          "2029": null,
+          "2030": null
+        }
+      },
+      "D": {
+        "from": "absorption_stress"
+      },
+      "F": []
+    },
+    "frozen": true
+  }
+]
