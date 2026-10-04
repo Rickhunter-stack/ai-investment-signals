@@ -27,3 +27,22 @@ A factual error discovered later must be represented by a new `CONTRADICT`/corre
 ## Journal layout
 
 Story matching uses the combined frozen history from every JSON journal under `data/brief_events/`. Legacy monthly journals and new daily journals are equivalent historical inputs; file boundaries never define story boundaries.
+
+
+## Human override of classifier proposals
+
+`scripts/classify_story_relation.py` is an auditable proposal engine, not an infallible oracle. A human/research-agent override is allowed when the proposed match or relation is factually incoherent.
+
+Every override is mandatory-audit and must be recorded in the ingestion pull-request description with:
+
+- new `event_id`;
+- classifier proposed `story_id` and relation;
+- classifier similarity score or other relevant proposal metadata;
+- final chosen `story_id` and relation;
+- concise factual justification for the deviation.
+
+Overrides must be exceptional and evidence-based. They must not be used merely to obtain a preferred investment interpretation or stronger/weaker signal.
+
+If there is no override, the PR description should state that classifier proposals were accepted as-is for all ingested events.
+
+The event schema remains unchanged: override audit metadata belongs in the pull-request record, not in frozen event objects. This preserves schema stability while keeping deviations reviewable.
