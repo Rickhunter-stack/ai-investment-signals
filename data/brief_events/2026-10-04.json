@@ -1,0 +1,174 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-AVGOANTH42",
+    "captured_at": "2026-10-04T09:10:00+02:00",
+    "published_at": "2026-10-01T10:06:00+00:00",
+    "title": "Broadcom peut prêter jusqu'à 42 milliards de dollars à Anthropic pour la location de ses puces",
+    "factual_summary": "Le prospectus d'Anthropic indique que Broadcom peut lui prêter jusqu'à 42 milliards de dollars pour financer son infrastructure, soit environ un tiers de ses 125,2 milliards de dollars d'engagements de location de TPU sur cinq ans; Broadcom fournit la technologie TPU avec Google et Anthropic devrait devenir son plus gros client de conception de puces l'an prochain.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Financement des infrastructures IA",
+    "companies": [
+      "Broadcom",
+      "Anthropic",
+      "Alphabet"
+    ],
+    "tickers": [
+      "AVGO",
+      "GOOGL"
+    ],
+    "sector": "AI infrastructure and cloud",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/broadcom-lend-anthropic-up-42-billion-lease-its-chips-filing-says-2026-10-01/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 93,
+    "novelty": 88,
+    "confidence": 94,
+    "execution_risk": 70,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260917-CRUX22B",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les fournisseurs de puces commencent à financer leurs propres clients pour absorber les volumes de compute, ce qui soutient la demande mais crée une circularité fournisseur-financement-client dépendante de la conversion des engagements en revenus."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-ARMADIN25",
+    "captured_at": "2026-10-04T09:10:00+02:00",
+    "published_at": "2026-10-01T10:43:00+00:00",
+    "title": "Armadin lève 255,5 millions de dollars à une valorisation supérieure à 2,5 milliards sur la cybersécurité par agents IA",
+    "factual_summary": "Armadin, fondée par le fondateur de Mandiant, a levé 255,5 millions de dollars en série B à une valorisation supérieure à 2,5 milliards de dollars; sa technologie utilise des essaims d'agents IA simulant des attaquants pour rechercher automatiquement des vulnérabilités, et son financement total atteint 445 millions de dollars.",
+    "type": "FACT",
+    "theme": "IA et cybersécurité",
+    "subtheme": "Sécurité des agents IA",
+    "companies": [
+      "Armadin"
+    ],
+    "tickers": [],
+    "sector": "Cybersecurity",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/transactional/ai-cybersecurity-startup-armadin-valued-over-25-billion-after-new-funding-round-2026-10-01/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 80,
+    "novelty": 78,
+    "confidence": 95,
+    "execution_risk": 62,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260925-ISLAND64",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les capitaux affluent vers une nouvelle génération de cybersécurité conçue avec et contre des agents IA, où des challengers peuvent émerger avant l'intégration complète de cette couche par les acteurs établis."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-AISAFEWH",
+    "captured_at": "2026-10-04T09:10:00+02:00",
+    "published_at": "2026-10-03T10:05:00+00:00",
+    "title": "Nvidia, SpaceX, OpenAI, Anthropic, Meta et Google signent un accord volontaire de sécurité IA avec la Maison-Blanche",
+    "factual_summary": "Nvidia, SpaceX, OpenAI, Anthropic, Meta et Google ont signé avec la Maison-Blanche un accord volontaire prévoyant des contrôles internes robustes contre les accès non autorisés et des audits externes indépendants, sans mécanisme d'exécution explicite; Reuters rapporte qu'environ 75% des Américains interrogés estiment que les entreprises IA n'en font pas assez pour prévenir des dommages graves.",
+    "type": "FACT",
+    "theme": "IA et cybersécurité",
+    "subtheme": "Gouvernance et sécurité des systèmes IA",
+    "companies": [
+      "Nvidia",
+      "SpaceX",
+      "OpenAI",
+      "Anthropic",
+      "Meta Platforms",
+      "Alphabet"
+    ],
+    "tickers": [
+      "NVDA",
+      "META",
+      "GOOGL"
+    ],
+    "sector": "AI software and cloud",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/public-fears-ai-grow-trump-digs-voluntary-safeguards-2026-10-03/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 76,
+    "novelty": 74,
+    "confidence": 92,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Audit, journalisation, contrôle d'accès, sandboxing et identité machine pourraient devenir des conditions nécessaires au déploiement des agents IA en entreprise plutôt que des fonctionnalités optionnelles."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261004-VSTNUC42",
+    "captured_at": "2026-10-04T09:10:00+02:00",
+    "published_at": "2026-10-03T13:34:00+00:00",
+    "title": "Les États-Unis préparent un prêt de 4,2 milliards de dollars à Vistra pour accroître sa production nucléaire",
+    "factual_summary": "Selon une source citée par Reuters, les États-Unis préparent un prêt d'environ 4,2 milliards de dollars à Vistra pour augmenter la puissance d'au moins trois de ses centrales nucléaires existantes; Vistra exploite six réacteurs totalisant plus de 6,5 GW, et Reuters relie le retour de la croissance de la demande électrique américaine aux data centers IA, à l'électrification et au crypto-mining.",
+    "type": "FACT",
+    "theme": "IA et énergie",
+    "subtheme": "Électricité pilotable pour data centers IA",
+    "companies": [
+      "Vistra"
+    ],
+    "tickers": [
+      "VST"
+    ],
+    "sector": "Utilities and power generation",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/us-lend-42-billion-vistra-boost-nuclear-power-output-source-says-2026-10-03/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 87,
+    "novelty": 84,
+    "confidence": 85,
+    "execution_risk": 55,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La contrainte d'électricité fiable 24/7 devient assez forte pour justifier un financement public de l'augmentation de puissance du nucléaire existant, faisant des producteurs nucléaires proches des bassins de data centers une couche adjacente de la chaîne IA."
+    },
+    "frozen": true
+  }
+]
