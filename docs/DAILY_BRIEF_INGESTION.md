@@ -39,3 +39,18 @@ Daily journals are source-of-truth files, not temporary shards. Aggregated views
 ## Unified research entry point
 
 The preferred daily research workflow is defined in `docs/UNIFIED_DAILY_BRIEF_V1.md`. It replaces separate overlapping daily AI-sector and recurring-company briefs with one evidence pass. This ingestion document remains authoritative for the write path and frozen-event integrity rules.
+
+
+## Ingestion execution and error reporting
+
+Prefer the repository's own ingestion and validation scripts whenever the execution environment can run them. The canonical path is:
+
+1. construct candidate `brief-event-v1` objects;
+2. run story classification;
+3. ingest with `scripts/ingest_brief_events.py`;
+4. run `scripts/validate_brief_events.py`, the brief-event tests, and `scripts/check_append_only_git.py`;
+5. only then commit/push and open a pull request.
+
+If the environment cannot execute the repository scripts, do not emulate a successful validated ingestion silently. Either use the GitHub connector only for a fully auditable write path or fail closed.
+
+When any write, validation, commit, push, or PR creation step fails, report the raw error message exactly when available, together with the step that failed. Do not replace an unknown cause with an inferred explanation such as permissions, branch protection, or a safety control unless the returned error explicitly says so.
