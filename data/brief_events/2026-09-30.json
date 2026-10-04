@@ -1,0 +1,218 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260930-HUADS128",
+    "captured_at": "2026-09-30T08:20:01+02:00",
+    "published_at": "2026-09-30T03:03:00Z",
+    "title": "DeepSeek et Huawei renforcent la pile logicielle autour des puces Ascend",
+    "factual_summary": "DeepSeek a annoncé un partenariat avec Huawei pour développer et ouvrir des outils de programmation optimisés pour Ascend, avec une solution supernode fondée sur 128 puces Ascend 950 et l'utilisation du langage open source TileLang.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Accélérateurs IA chinois et interconnexion",
+    "companies": [
+      "DeepSeek",
+      "Huawei Technologies",
+      "Nvidia"
+    ],
+    "tickers": [
+      "NVDA"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/deepseek-partners-with-huawei-develop-chip-programming-tools-reducing-reliance-2026-09-30/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 91,
+    "novelty": 87,
+    "confidence": 97,
+    "execution_risk": 61,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260917-HUA960",
+      "relation": "ACCELERATE"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La concurrence chinoise à Nvidia se déplace du seul matériel vers une pile matériel-logiciel plus complète, condition nécessaire pour réduire progressivement le verrou de CUDA."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260930-OAIDOTS",
+    "captured_at": "2026-09-30T08:20:01+02:00",
+    "published_at": "2026-09-29T17:17:00Z",
+    "title": "OpenAI lance ses agents persistants dots pour l'entreprise",
+    "factual_summary": "OpenAI a présenté dots, des agents persistants capables de poursuivre des objectifs entre applications et d'utiliser notamment Slack, Teams, Codex et ChatGPT Work; l'entreprise indique plus de 35 millions d'utilisateurs hebdomadaires pour Codex et ChatGPT Work.",
+    "type": "FACT",
+    "theme": "IA et logiciels",
+    "subtheme": "Agents IA autonomes en entreprise",
+    "companies": [
+      "OpenAI",
+      "Meta Platforms"
+    ],
+    "tickers": [
+      "META"
+    ],
+    "sector": "Enterprise AI software",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/openai-takes-meta-with-always-on-dots-agent-enterprise-ai-push-2026-09-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 92,
+    "novelty": 91,
+    "confidence": 97,
+    "execution_risk": 72,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La compétition IA se déplace des chatbots vers des agents persistants capables d'agir dans les outils de travail, augmentant à la fois la valeur potentielle et les exigences de sécurité et gouvernance."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260930-TSLA30B",
+    "captured_at": "2026-09-30T08:20:01+02:00",
+    "published_at": "2026-09-29T20:46:00Z",
+    "title": "Tesla sécurise 30 milliards de dollars de lignes de crédit pour soutenir son expansion",
+    "factual_summary": "Tesla a conclu des accords de crédit totalisant 30 milliards de dollars, alors que ses dépenses d'investissement 2026 sont prévues au-dessus de 25 milliards et doivent notamment financer compute IA, solaire et un projet de fabrication de semi-conducteurs avec SpaceX.",
+    "type": "FACT",
+    "theme": "IA, robotique et investissement",
+    "subtheme": "Financement des infrastructures IA",
+    "companies": [
+      "Tesla",
+      "SpaceX"
+    ],
+    "tickers": [
+      "TSLA"
+    ],
+    "sector": "Automotive and AI infrastructure",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/autos-transportation/tesla-lines-up-30-billion-credit-lines-capex-robotaxi-push-accelerate-2026-09-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 89,
+    "novelty": 84,
+    "confidence": 97,
+    "execution_risk": 75,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": "STORY-EVT-20260917-CRUX22B",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'expansion IA et robotique mobilise des volumes croissants de financement externe, rendant le retour sur capital et le free cash flow plus importants pour distinguer les gagnants."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260930-LLY21WT",
+    "captured_at": "2026-09-30T08:20:01+02:00",
+    "published_at": "2026-09-29T22:08:00Z",
+    "title": "Le candidat de Lilly atteint près de 21% de perte de poids chez des patients diabétiques de type 2",
+    "factual_summary": "Eli Lilly a annoncé qu'un traitement expérimental avait entraîné une perte de poids moyenne de près de 21% chez des adultes atteints de diabète de type 2 et d'obésité dans un essai clinique de phase avancée.",
+    "type": "FACT",
+    "theme": "Médecine et investissement",
+    "subtheme": "Traitements cardiométaboliques et obésité",
+    "companies": [
+      "Eli Lilly"
+    ],
+    "tickers": [
+      "LLY"
+    ],
+    "sector": "Pharmaceuticals",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/lillys-experimental-drug-cuts-weight-by-21-diabetes-trial-2026-09-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 90,
+    "novelty": 88,
+    "confidence": 96,
+    "execution_risk": 45,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Une efficacité proche de 21% chez les patients diabétiques pourrait prolonger l'avantage clinique de Lilly dans le cardiométabolique, sous réserve du profil complet de sécurité, de tolérance et de commercialisation."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20260930-MUITC",
+    "captured_at": "2026-09-30T08:20:01+02:00",
+    "published_at": "2026-09-29T14:38:00Z",
+    "title": "Netlist demande une interdiction d'importation de puces Micron utilisées dans l'IA",
+    "factual_summary": "Netlist a saisi l'ITC américaine pour demander l'interdiction d'importation de mémoires Micron et de produits Google, Nvidia et Broadcom les intégrant, au titre de deux brevets liés à la mémoire à haute bande passante; Micron a refusé de commenter.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Mémoire HBM et risque de propriété intellectuelle",
+    "companies": [
+      "Netlist",
+      "Micron Technology",
+      "Alphabet",
+      "Nvidia",
+      "Broadcom"
+    ],
+    "tickers": [
+      "MU",
+      "GOOGL",
+      "NVDA",
+      "AVGO"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/netlist-seeks-us-import-ban-micron-chips-used-google-nvidia-ai-computing-2026-09-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "short",
+    "importance": 82,
+    "novelty": 85,
+    "confidence": 95,
+    "execution_risk": 70,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La criticité croissante de la mémoire IA augmente aussi la matérialité des litiges de propriété intellectuelle pouvant perturber l'offre ou renchérir les coûts."
+    },
+    "frozen": true
+  }
+]
