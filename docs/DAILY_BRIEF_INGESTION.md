@@ -73,3 +73,8 @@ If the current environment cannot execute these repository checks itself, it may
 ## Freshness alert
 
 `.github/workflows/brief-freshness.yml` runs daily at 12:00 UTC and fails when the most recent `captured_at` in `main` is more than 24 h old (`scripts/check_brief_freshness.py`). On failure it opens, or comments on, a GitHub issue titled "Brief journal missing". A day with no investment-relevant event legitimately triggers it; close the issue with that explanation.
+
+
+## Scheduled execution
+
+The daily write path is executed by a scheduled Claude Code routine, with ChatGPT handing over the brief through a `Brief YYYY-MM-DD` GitHub issue. See `docs/SCHEDULED_INGESTION_V1.md` for the handoff contract, T0 rules and merge conditions.
