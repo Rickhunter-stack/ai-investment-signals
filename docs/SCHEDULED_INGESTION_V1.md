@@ -40,6 +40,14 @@ Daily at 09:30 Europe/Paris. If no open `Brief YYYY-MM-DD` issue exists for the 
 7. **Merge only if** every local validation above passed **and** every CI check on the PR head is successful. Otherwise do not merge, and report.
 8. After merging, close the brief issue with the PR link.
 
+## Operational notes for the routine session
+
+- The routine must be created from the claude.ai Routines page **with this repository attached** (push access). A routine created without an attached repository cannot clone it or call GitHub; it must stop at step 1 and report the raw error.
+- GitHub GraphQL is refused in these sessions: use the `mcp__github__` tools or `gh api repos/...` (REST), never `gh issue list` / `gh pr ...`.
+- Work on a fresh branch from `origin/main`; delete `scripts/__pycache__/` before committing; commit only `data/brief_events/YYYY-MM-DD.json`.
+- Merge with method `merge` and `expectedHeadSha` set to the full head SHA. Never push an empty commit, disable a test or force-push.
+- If there is no ingestible event: open no PR, comment the reasons on the brief issue and leave it open.
+
 ## Error reporting
 
 On any failure, report the failed step and the raw tool response verbatim, without inferring a cause the message does not state. Nothing is presented as validated before CI is green.
