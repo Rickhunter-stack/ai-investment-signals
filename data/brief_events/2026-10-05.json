@@ -1,0 +1,202 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261005-SUPTC226",
+    "captured_at": "2026-10-05T09:15:00+02:00",
+    "published_at": "2026-10-05T07:18:00+02:00",
+    "title": "Schneider Electric va acquérir PTC pour 22,6 milliards de dollars en numéraire",
+    "factual_summary": "Schneider Electric a annoncé l'acquisition de l'éditeur américain de logiciels industriels PTC dans une opération entièrement en numéraire valorisant ses fonds propres à environ 22,6 milliards de dollars, soit 205 dollars par action; la clôture est attendue au troisième trimestre 2027.",
+    "type": "FACT",
+    "theme": "IA et logiciels",
+    "subtheme": "Logiciels industriels et automatisation",
+    "companies": [
+      "Schneider Electric",
+      "PTC"
+    ],
+    "tickers": [
+      "PTC",
+      "SU.PA"
+    ],
+    "sector": "Industrial automation and software",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/transactional/schneider-electric-buy-ptc-226-billion-all-cash-deal-2026-10-05/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 86,
+    "novelty": 80,
+    "confidence": 95,
+    "execution_risk": 60,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les fournisseurs d'infrastructure électrique et d'automatisation cherchent à contrôler aussi la couche logicielle de conception et de pilotage des actifs industriels, élargissant le périmètre des bénéficiaires de l'IA au-delà du compute."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261005-DTEAIROI",
+    "captured_at": "2026-10-05T09:15:00+02:00",
+    "published_at": "2026-10-05T08:10:00+02:00",
+    "title": "Deutsche Telekom chiffre à 2,5 milliards d'euros les économies attendues de l'IA et de l'automatisation d'ici 2030",
+    "factual_summary": "Deutsche Telekom prévoit environ 2,5 milliards d'euros d'économies de coûts indirects d'ici 2030 par rapport à 2023 grâce à l'IA et à l'automatisation, dont environ 1,1 milliard d'euros d'économies brutes hors États-Unis dès 2027, et vise environ 800 millions d'euros de revenus liés à l'IA hors États-Unis en 2030.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Retour sur investissement de l'IA en entreprise",
+    "companies": [
+      "Deutsche Telekom"
+    ],
+    "tickers": [
+      "DTE.DE"
+    ],
+    "sector": "Telecommunications",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/media-telecom/deutsche-telekom-sees-25-billion-savings-ai-automation-by-2030-2026-10-05/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 74,
+    "novelty": 72,
+    "confidence": 93,
+    "execution_risk": 55,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les entreprises qui publient des objectifs chiffrés et vérifiables de gains liés à l'IA pourraient être évaluées différemment de celles qui restent au stade des pilotes."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261005-BOJAIRISK",
+    "captured_at": "2026-10-05T09:15:00+02:00",
+    "published_at": "2026-10-05T05:33:00+02:00",
+    "title": "La Banque du Japon avertit d'un risque de correction si les profits du boom de l'IA ne suivent pas",
+    "factual_summary": "Le vice-gouverneur de la Banque du Japon Shinichi Uchida a qualifié le boom de l'IA de choc de demande positif ayant assoupli les conditions financières et soutenu les prix d'actifs, tout en avertissant d'un risque de correction si les profits attendus ne se matérialisent pas et en soulignant que les fortes émissions obligataires des entreprises liées à l'IA poussent les taux longs à la hausse.",
+    "type": "FACT",
+    "theme": "Bourse et macroéconomie",
+    "subtheme": "Financement de l'IA et taux longs",
+    "companies": [],
+    "tickers": [],
+    "sector": "Global equities and fixed income",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/boj-says-ai-boom-may-have-eased-financial-conditions-warns-market-risks-2026-10-05/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 78,
+    "novelty": 70,
+    "confidence": 94,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Si le coût du financement de la chaîne IA augmente plus vite que les profits générés, une croissance soutenue du compute pourrait coexister avec une pression sur les valorisations."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261005-FROATEUR",
+    "captured_at": "2026-10-05T09:15:00+02:00",
+    "published_at": "2026-10-05T03:53:00+02:00",
+    "title": "L'euro tombe à son plus bas depuis mai 2025 sous l'effet des tensions budgétaires françaises",
+    "factual_summary": "L'euro est descendu jusqu'à 1,1161 dollar, son plus bas depuis mai 2025, tandis que l'écart de rendement entre les emprunts d'État français et allemands à 10 ans a terminé la semaine précédente à 140 points de base après une hausse hebdomadaire de 34 points de base, la plus forte depuis 17 ans.",
+    "type": "FACT",
+    "theme": "Bourse et macroéconomie",
+    "subtheme": "Risque souverain français",
+    "companies": [],
+    "tickers": [],
+    "sector": "European fixed income and currencies",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/dollar-holds-firm-french-fiscal-woes-keep-euro-back-foot-2026-10-05/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "short",
+    "importance": 72,
+    "novelty": 68,
+    "confidence": 93,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Un écartement persistant du spread OAT-Bund deviendrait un facteur de prime de risque direct pour les actions françaises et européennes, en particulier les banques."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261005-QCOMHUAW",
+    "captured_at": "2026-10-05T09:15:00+02:00",
+    "published_at": "2026-10-05T08:01:00+02:00",
+    "title": "Huawei et Qualcomm signent un accord pluriannuel de licences croisées de brevets couvrant la 5G et l'IA",
+    "factual_summary": "Huawei et Qualcomm ont signé un accord pluriannuel de licences croisées de leurs portefeuilles de brevets couvrant notamment la 5G, le calcul, l'IA et les réseaux, assorti du rachat par Qualcomm de certains brevets américains de Huawei; aucune condition financière n'a été communiquée et l'opération reste soumise aux autorisations réglementaires.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Propriété intellectuelle et licences de brevets",
+    "companies": [
+      "Qualcomm",
+      "Huawei"
+    ],
+    "tickers": [
+      "QCOM"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/huawei-agrees-multi-year-patent-licensing-deal-with-qualcomm-2026-10-05/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 66,
+    "novelty": 70,
+    "confidence": 92,
+    "execution_risk": 45,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La fragmentation technologique sino-américaine ne supprime pas nécessairement la valeur des portefeuilles de brevets: la substitution matérielle n'implique pas automatiquement la disparition des redevances."
+    },
+    "frozen": true
+  }
+]
