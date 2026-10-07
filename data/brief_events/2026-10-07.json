@@ -1,0 +1,212 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261007-MRVLASIC",
+    "captured_at": "2026-10-07T20:54:00+02:00",
+    "published_at": "2026-10-06T14:11:00Z",
+    "title": "Marvell relève sa prévision de chiffre d'affaires 2028 à environ 20 milliards de dollars, portée par les puces IA sur mesure",
+    "factual_summary": "Marvell Technology a relevé sa prévision de chiffre d'affaires pour l'exercice 2028 à environ 20 milliards de dollars, contre 18,2 milliards attendus par les analystes, et vise désormais 12 milliards de dollars de revenus de puces sur mesure en 2029 contre 10 milliards auparavant; Reuters rappelle que son accord avec Google pourrait représenter jusqu'à 120 milliards de dollars de ventes cumulées jusqu'en 2033 si les objectifs sont atteints.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Accélérateurs IA sur mesure (ASIC)",
+    "companies": [
+      "Marvell Technology",
+      "Alphabet"
+    ],
+    "tickers": [
+      "MRVL",
+      "GOOGL"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/marvell-raises-2028-revenue-forecast-strong-ai-data-center-demand-2026-10-06/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 86,
+    "novelty": 78,
+    "confidence": 92,
+    "execution_risk": 60,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260918-GFMRVLOPT",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les accélérateurs sur mesure des hyperscalers forment un second marché du compute IA, à côté des GPU, dont les concepteurs d'ASIC peuvent bénéficier sans que Nvidia ait à perdre."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261007-AIRTRJP1",
+    "captured_at": "2026-10-07T20:54:00+02:00",
+    "published_at": "2026-10-07T05:04:00Z",
+    "title": "AirTrunk, soutenu par Blackstone, investit 1 milliard de dollars supplémentaire dans un campus japonais de plus de 300 MW",
+    "factual_summary": "AirTrunk, soutenu par Blackstone, investit 1 milliard de dollars supplémentaire dans son campus hyperscale d'Inzai au Japon, dont la capacité dépassera 300 MW et qui doit notamment accueillir des charges de travail IA.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Financement des infrastructures IA",
+    "companies": [
+      "AirTrunk",
+      "Blackstone"
+    ],
+    "tickers": [
+      "BX"
+    ],
+    "sector": "AI infrastructure and data centers",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/blackstone-backed-airtrunk-invest-1-billion-japan-data-centre-campus-2026-10-07/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 72,
+    "novelty": 62,
+    "confidence": 93,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260917-CRUX22B",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La diffusion géographique des campus IA hyperscale, notamment en Asie, élargit la demande en électricité, refroidissement et réseau au-delà du seul cycle américain."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261007-TYPE1ENR",
+    "captured_at": "2026-10-07T20:54:00+02:00",
+    "published_at": "2026-10-06T11:03:00Z",
+    "title": "Type One Energy lève 200 millions de dollars avec Siemens Energy parmi ses investisseurs",
+    "factual_summary": "Type One Energy a levé 200 millions de dollars en série B, portant son financement cumulé à plus de 400 millions de dollars; Siemens Energy figure parmi les investisseurs et les deux entreprises envisagent une coopération industrielle; Type One développe un réacteur de fusion de type stellarator et veut d'abord démontrer son architecture avec le prototype Infinity One au Tennessee.",
+    "type": "FACT",
+    "theme": "IA et énergie",
+    "subtheme": "Fusion nucléaire et électricité pilotable",
+    "companies": [
+      "Type One Energy",
+      "Siemens Energy"
+    ],
+    "tickers": [
+      "ENR.DE"
+    ],
+    "sector": "Energy technology",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/energy/fusion-firm-type-one-200-million-siemens-energy-backed-raise-2026-10-06/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 58,
+    "novelty": 70,
+    "confidence": 92,
+    "execution_risk": 90,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'entrée d'industriels capables de fabriquer les équipements dans la fusion constitue une option de très long terme sur l'électricité pilotable, dont la valeur augmente avec la contrainte énergétique de l'IA."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261007-BDYNCEO",
+    "captured_at": "2026-10-07T20:54:00+02:00",
+    "published_at": "2026-10-07T04:27:00Z",
+    "title": "Boston Dynamics nomme Rohit Prasad, ancien responsable de l'IA d'Amazon, au poste de CEO",
+    "factual_summary": "Boston Dynamics a nommé Rohit Prasad directeur général; il dirigeait auparavant Alexa et les activités d'intelligence artificielle générale chez Amazon; Hyundai Motor Group, propriétaire de Boston Dynamics, vise une capacité de production de 30 000 robots par an dès 2028.",
+    "type": "FACT",
+    "theme": "Robotique et investissement",
+    "subtheme": "Robotique humanoïde et IA physique",
+    "companies": [
+      "Boston Dynamics",
+      "Hyundai Motor Group"
+    ],
+    "tickers": [
+      "005380.KS"
+    ],
+    "sector": "Robotics",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/autos-transportation/boston-dynamics-appoints-ex-amazon-executive-rohit-prasad-ceo-2026-10-07/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 66,
+    "novelty": 68,
+    "confidence": 94,
+    "execution_risk": 70,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La mise à l'échelle de la robotique humanoïde pourrait dépendre davantage de la capacité à industrialiser l'autonomie fondée sur l'IA que des performances mécaniques."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261007-HSBCAIJOB",
+    "captured_at": "2026-10-07T20:54:00+02:00",
+    "published_at": "2026-10-07T04:17:00Z",
+    "title": "HSBC envisagerait de fortes suppressions de postes dans sa gestion de fortune britannique dans le cadre d'une transformation par l'IA, selon le FT",
+    "factual_summary": "Selon le Financial Times relayé par Reuters, HSBC envisage de supprimer environ la moitié des postes de management et de spécialistes de sa gestion de fortune britannique et jusqu'à 70% des postes de conseillers financiers, dans le cadre d'une transformation intégrant davantage l'IA; Reuters n'a pas obtenu immédiatement de commentaire de HSBC.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Retour sur investissement de l'IA en entreprise",
+    "companies": [
+      "HSBC"
+    ],
+    "tickers": [
+      "HSBC"
+    ],
+    "sector": "Banking",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/finance/hsbc-plans-job-cuts-across-uk-wealth-business-ai-push-ft-reports-2026-10-07/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 70,
+    "novelty": 72,
+    "confidence": 70,
+    "execution_risk": 55,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Si l'automatisation de tâches qualifiées par l'IA se traduit en réductions de coûts de personnel, le retour sur investissement de l'IA pourrait apparaître dans les marges des entreprises utilisatrices."
+    },
+    "frozen": true
+  }
+]
