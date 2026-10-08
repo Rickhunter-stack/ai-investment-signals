@@ -1,0 +1,210 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261008-TSMCQ3REV",
+    "captured_at": "2026-10-08T10:06:00+02:00",
+    "published_at": "2026-10-08T05:39:00Z",
+    "title": "Le chiffre d'affaires trimestriel de TSMC bondit de 50% sur un an, au-dessus des attentes",
+    "factual_summary": "TSMC a annoncé un chiffre d'affaires trimestriel record de 46,7 milliards de dollars, en hausse de 50% sur un an et supérieur aux attentes des analystes.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Demande de fabrication avancée pour l'IA",
+    "companies": [
+      "TSMC"
+    ],
+    "tickers": [
+      "TSM"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/tsmcs-third-quarter-revenue-surges-50-yy-beating-market-forecast-2026-10-08/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 88,
+    "novelty": 60,
+    "confidence": 95,
+    "execution_risk": 35,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La demande réelle de capacités de fabrication avancée reste forte malgré les inquiétudes de valorisation, ce qui soutient la chaîne fonderie, équipements et packaging avancé, avec un risque de surinvestissement à moyen terme."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261008-SSNGQ3OP",
+    "captured_at": "2026-10-08T10:06:00+02:00",
+    "published_at": "2026-10-07T22:48:00Z",
+    "title": "Samsung prévoit environ 80 milliards de dollars de bénéfice opérationnel trimestriel, porté par la flambée des prix de la mémoire IA",
+    "factual_summary": "Samsung Electronics prévoit un bénéfice opérationnel de 80,17 milliards de dollars au troisième trimestre, près de neuf fois celui de l'année précédente, principalement grâce à la hausse des prix des mémoires utilisées dans l'IA; ces hausses de prix pèsent sur les fabricants de smartphones et d'ordinateurs.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Mémoire pour infrastructure IA",
+    "companies": [
+      "Samsung Electronics"
+    ],
+    "tickers": [
+      "005930"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/samsung-q3-profit-jumps-783-ai-memory-boom-lifts-chip-earnings-2026-10-07/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 88,
+    "novelty": 62,
+    "confidence": 93,
+    "execution_risk": 40,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260918-CXMTNAND",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les fabricants de mémoire captent une part croissante de la valeur des investissements IA, mais des marges à ce niveau sont difficiles à maintenir durablement et renchérissent les appareils grand public."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261008-BIOHUB18",
+    "captured_at": "2026-10-08T10:06:00+02:00",
+    "published_at": "2026-10-07T13:02:00Z",
+    "title": "Le gouvernement américain et Google rejoignent l'initiative de 1,8 milliard de dollars de Biohub pour l'IA biologique",
+    "factual_summary": "Biohub annonce une initiative mobilisant 1,8 milliard de dollars de financements et de ressources, avec la participation de Google, de Meta et du gouvernement américain, pour produire de vastes jeux de données biologiques destinés à entraîner des modèles capables de prédire les réactions cellulaires; le montant inclut des financements fédéraux déjà engagés.",
+    "type": "FACT",
+    "theme": "IA et santé",
+    "subtheme": "Données biologiques et modèles de cellules",
+    "companies": [
+      "Biohub",
+      "Alphabet",
+      "Meta Platforms"
+    ],
+    "tickers": [
+      "GOOGL",
+      "META"
+    ],
+    "sector": "Biotechnology and AI",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/us-government-google-join-zuckerberg-backed-biohub-18-billion-push-ai-biology-2026-10-07/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 68,
+    "novelty": 80,
+    "confidence": 90,
+    "execution_risk": 70,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Dans l'IA biomédicale, l'actif stratégique se déplace vers les données expérimentales à grande échelle, ce qui pourrait valoriser les fournisseurs de technologies de mesure cellulaire et de transcriptomique spatiale."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261008-SESTFI10",
+    "captured_at": "2026-10-08T10:06:00+02:00",
+    "published_at": "2026-10-08T05:44:00Z",
+    "title": "Le français Sesterce prévoit plus de 10 milliards d'euros d'investissement dans un data center IA en Finlande",
+    "factual_summary": "Sesterce annonce un projet de data center en Finlande représentant plus de 10 milliards d'euros d'investissement projeté, avec une première phase de 200 MW puis une extension à 600 MW; l'entreprise indique disposer d'un premier client important.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Financement des infrastructures IA",
+    "companies": [
+      "Sesterce"
+    ],
+    "tickers": [],
+    "sector": "AI infrastructure and data centers",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/frances-sesterce-plans-11-billion-ai-investment-finland-2026-10-08/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 66,
+    "novelty": 68,
+    "confidence": 88,
+    "execution_risk": 75,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'Europe du Nord attire des infrastructures IA grâce à ses conditions énergétiques et climatiques, ce qui pourrait soutenir les équipements électriques, les réseaux et le refroidissement en Europe."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261008-MSFTLOCAI",
+    "captured_at": "2026-10-08T10:06:00+02:00",
+    "published_at": "2026-10-07T10:05:00Z",
+    "title": "Microsoft présente un modèle de programmation IA exécuté localement et des conteneurs sécurisés pour agents, avec un nouveau Surface à composants Nvidia",
+    "factual_summary": "Microsoft a présenté un modèle d'IA de programmation fonctionnant directement sur l'ordinateur ainsi que des conteneurs sécurisés destinés à limiter les actions non autorisées des agents IA, accompagnés d'un nouvel ordinateur Surface utilisant des composants Nvidia.",
+    "type": "FACT",
+    "theme": "IA et logiciels",
+    "subtheme": "IA locale et sécurité des agents",
+    "companies": [
+      "Microsoft",
+      "Nvidia"
+    ],
+    "tickers": [
+      "MSFT",
+      "NVDA"
+    ],
+    "sector": "AI software and devices",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/microsoft-nvidia-ceos-unveil-new-ai-laptop-san-francisco-event-2026-10-07/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 64,
+    "novelty": 66,
+    "confidence": 88,
+    "execution_risk": 55,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260927-MSAUTOPILOT",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Une architecture hybride IA locale, cloud et agents sécurisés pourrait créer une demande nouvelle pour les processeurs PC, la mémoire et la sécurité des agents, freinée par le prix du matériel."
+    },
+    "frozen": true
+  }
+]
