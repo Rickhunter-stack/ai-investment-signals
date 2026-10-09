@@ -1,0 +1,173 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261009-OAIREV50",
+    "captured_at": "2026-10-09T09:07:00+02:00",
+    "published_at": "2026-10-08T21:12:00Z",
+    "title": "Le rythme de revenus annualisés d'OpenAI serait inférieur de 20 milliards de dollars aux signaux précédents, selon le FT",
+    "factual_summary": "Selon le Financial Times relayé par Reuters, OpenAI aurait indiqué à ses investisseurs un rythme de revenus annualisés proche de 50 milliards de dollars en septembre, contre près de 70 milliards précédemment évoqués; l'écart proviendrait principalement de méthodes différentes de comptabilisation des revenus réalisés via les partenaires cloud.",
+    "type": "FACT",
+    "theme": "IA et logiciels",
+    "subtheme": "Économie des modèles de fondation",
+    "companies": [
+      "OpenAI"
+    ],
+    "tickers": [],
+    "sector": "AI software and cloud",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/openais-annualized-revenue-20-billion-less-than-previously-signaled-ft-reports-2026-10-08/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 84,
+    "novelty": 78,
+    "confidence": 72,
+    "execution_risk": 55,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'examen plus strict des revenus réellement monétisés par les laboratoires d'IA pourrait conduire à réévaluer les valorisations de la chaîne IA si la monétisation progresse moins vite que les investissements."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261009-SPXSPEC8",
+    "captured_at": "2026-10-09T09:07:00+02:00",
+    "published_at": "2026-10-08T20:19:00Z",
+    "title": "SpaceX acquiert des fréquences mobiles américaines dans la bande 800 MHz pour Starlink Mobile",
+    "factual_summary": "SpaceX a conclu un accord pour acquérir des fréquences mobiles américaines dans la bande 800 MHz, destinées à améliorer la couverture des smartphones directement depuis ses satellites; le Wall Street Journal évoque un prix d'environ 8 milliards de dollars, non confirmé officiellement; les actions des grands opérateurs américains ont reculé d'environ 6% après Bourse et l'opération reste soumise à l'approbation réglementaire.",
+    "type": "FACT",
+    "theme": "Télécommunications et satellites",
+    "subtheme": "Connectivité satellitaire directe vers mobile",
+    "companies": [
+      "SpaceX",
+      "Verizon",
+      "AT&T",
+      "T-Mobile US"
+    ],
+    "tickers": [
+      "VZ",
+      "T",
+      "TMUS"
+    ],
+    "sector": "Telecommunications",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/media-telecom/spacex-acquire-spectrum-that-enables-starlink-mobile-services-2026-10-08/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "long",
+    "importance": 72,
+    "novelty": 80,
+    "confidence": 90,
+    "execution_risk": 65,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La téléphonie satellitaire pourrait passer d'un service complémentaire à une concurrence directe des réseaux terrestres, au risque d'une pression sur les prix et marges des opérateurs, sous réserve de qualité de service démontrée."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261009-SFTB100G",
+    "captured_at": "2026-10-09T09:07:00+02:00",
+    "published_at": "2026-10-09T04:48:00Z",
+    "title": "SoftBank chercherait jusqu'à 100 milliards de dollars auprès d'investisseurs du Golfe pour un fonds d'acquisitions par l'IA, selon le FT",
+    "factual_summary": "Selon le Financial Times relayé par Reuters, SoftBank Group discuterait avec des investisseurs du Golfe d'une levée pouvant atteindre 100 milliards de dollars pour un fonds destiné à acquérir des entreprises et à améliorer leurs opérations grâce à l'IA; Reuters n'a pas pu vérifier ces informations de manière indépendante.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Financement des infrastructures IA",
+    "companies": [
+      "SoftBank Group"
+    ],
+    "tickers": [
+      "9984.T"
+    ],
+    "sector": "Investment holding",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/softbank-seeks-100-billion-gulf-investors-ft-reports-2026-10-09/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 70,
+    "novelty": 70,
+    "confidence": 60,
+    "execution_risk": 80,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Malgré les doutes sur la rentabilité de l'IA, de grands investisseurs cherchent encore à mobiliser des capitaux considérables, ce qui pourrait accélérer les acquisitions dans les logiciels, la robotique et les infrastructures."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261009-IAMBICIPO",
+    "captured_at": "2026-10-09T09:07:00+02:00",
+    "published_at": "2026-10-08T12:08:00Z",
+    "title": "Iambic Therapeutics, soutenue par Nvidia, vise une valorisation allant jusqu'à 806 millions de dollars pour son IPO américaine",
+    "factual_summary": "Iambic Therapeutics, soutenue par Nvidia, prépare une introduction en Bourse américaine visant à lever jusqu'à 159,4 millions de dollars pour une valorisation pouvant atteindre 805,8 millions; l'entreprise utilise l'IA pour développer des candidats médicaments, notamment en oncologie, et collabore avec AbbVie et Takeda.",
+    "type": "FACT",
+    "theme": "IA et santé",
+    "subtheme": "Découverte de médicaments assistée par IA",
+    "companies": [
+      "Iambic Therapeutics",
+      "Nvidia",
+      "AbbVie",
+      "Takeda"
+    ],
+    "tickers": [
+      "NVDA",
+      "ABBV"
+    ],
+    "sector": "Biotechnology and AI",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/nvidia-backed-iambic-therapeutics-targets-up-806-million-valuation-us-ipo-2026-10-08/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 58,
+    "novelty": 66,
+    "confidence": 92,
+    "execution_risk": 80,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La découverte de médicaments assistée par IA continue d'attirer les capitaux, mais la valeur de ces sociétés dépendra de la conversion de leurs modèles en médicaments efficaces."
+    },
+    "frozen": true
+  }
+]
