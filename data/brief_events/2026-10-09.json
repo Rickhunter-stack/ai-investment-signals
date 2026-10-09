@@ -169,5 +169,176 @@
       "statement": "La découverte de médicaments assistée par IA continue d'attirer les capitaux, mais la valeur de ces sociétés dépendra de la conversion de leurs modèles en médicaments efficaces."
     },
     "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261009-GEMAGENT",
+    "captured_at": "2026-10-09T09:27:00+02:00",
+    "published_at": "2026-10-08T15:08:00Z",
+    "title": "Google Cloud lance Gemini Agent, un agent IA capable d'exécuter des tâches dans les outils de bureautique",
+    "factual_summary": "Google Cloud a annoncé le 8 octobre un agent IA capable d'exécuter des tâches, de produire des documents et d'écrire du code en travaillant dans Gmail, Sheets, Microsoft 365 ou Slack; il s'appuie notamment sur les modèles Gemini et Claude, et des versions pour la santé sont annoncées pour plus tard.",
+    "type": "FACT",
+    "theme": "IA et logiciels",
+    "subtheme": "Agents IA d'entreprise",
+    "companies": [
+      "Alphabet",
+      "Anthropic"
+    ],
+    "tickers": [
+      "GOOGL"
+    ],
+    "sector": "Enterprise AI software",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/google-cloud-introduces-gemini-agent-work-ai-race-heats-up-2026-10-08/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 74,
+    "novelty": 62,
+    "confidence": 93,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260924-OPUS55",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La valeur de l'IA d'entreprise pourrait se déplacer des modèles vers les plateformes qui contrôlent les données, les autorisations et les flux de travail."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261009-DCFLEXGRID",
+    "captured_at": "2026-10-09T09:27:00+02:00",
+    "published_at": "2026-10-08T10:45:00Z",
+    "title": "La flexibilité électrique des data centers pourrait éviter 40 à 150 milliards de dollars d'investissements réseau, selon une étude de Duke",
+    "factual_summary": "Selon une étude de l'université Duke rapportée par Reuters, la flexibilité de consommation électrique des data centers pourrait éviter entre 40 et 150 milliards de dollars de dépenses d'infrastructure sur dix ans, certains sites pouvant réduire leur demande de pointe de 10 à 30%; ces chiffres sont des estimations; Google, Nvidia et Emerald AI travaillent à rendre les data centers plus flexibles et OpenAI a accepté un mécanisme de réduction de consommation pour un projet en Géorgie.",
+    "type": "FACT",
+    "theme": "IA et énergie",
+    "subtheme": "Flexibilité électrique des data centers",
+    "companies": [
+      "Alphabet",
+      "Nvidia",
+      "Emerald AI",
+      "OpenAI"
+    ],
+    "tickers": [
+      "GOOGL",
+      "NVDA"
+    ],
+    "sector": "AI infrastructure and power",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/energy/data-centers-flexible-power-usage-could-save-grid-billions-can-they-scale-2026-10-08/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 66,
+    "novelty": 72,
+    "confidence": 75,
+    "execution_risk": 65,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'orchestration énergétique et le stockage pourraient devenir aussi stratégiques que les nouvelles capacités de production pour répondre à la demande électrique de l'IA."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261009-INDIADCOPP",
+    "captured_at": "2026-10-09T09:27:00+02:00",
+    "published_at": "2026-10-09T02:05:00Z",
+    "title": "En Inde, des riverains s'opposent à un projet de data center d'Amazon près de Mumbai",
+    "factual_summary": "Une enquête Reuters décrit l'opposition de riverains à un projet de data center d'Amazon près de Mumbai, dans le contexte d'un programme d'investissement IA de 21 milliards de dollars en Inde d'ici 2030; les inquiétudes portent sur l'eau, l'électricité et les nuisances, tandis qu'Amazon affirme prévoir une alimentation électrique dédiée et un refroidissement sans eau.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Contraintes locales et acceptabilité des data centers",
+    "companies": [
+      "Amazon"
+    ],
+    "tickers": [
+      "AMZN"
+    ],
+    "sector": "AI infrastructure and data centers",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/india/modi-wants-india-power-ai-age-residents-are-pushing-back-2026-10-09/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 60,
+    "novelty": 70,
+    "confidence": 90,
+    "execution_risk": 60,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'acceptabilité locale et l'accès à l'eau et à l'électricité deviennent des contraintes concrètes de déploiement des data centers, ce qui pourrait valoriser les sites déjà raccordés et autorisés."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261009-VIRTRIALS",
+    "captured_at": "2026-10-09T09:27:00+02:00",
+    "published_at": "2026-10-07T10:02:00Z",
+    "title": "Des sociétés d'IA mènent des essais cliniques virtuels pour anticiper l'échec de médicaments",
+    "factual_summary": "Reuters rapporte que BioinvestGPT avait correctement anticipé 5 résultats sur 6 parmi des essais suivis, dont l'échec du del-desiran de Novartis; il s'agit d'une petite série de prédictions partagées avec Reuters et non d'une validation clinique indépendante à grande échelle.",
+    "type": "FACT",
+    "theme": "IA et santé",
+    "subtheme": "Essais cliniques virtuels",
+    "companies": [
+      "BioinvestGPT",
+      "QuantHealth",
+      "Novartis"
+    ],
+    "tickers": [
+      "NVS"
+    ],
+    "sector": "Biotechnology and AI",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/ai-companies-run-virtual-drug-trials-aim-improve-success-human-studies-2026-10-07/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "long",
+    "importance": 52,
+    "novelty": 74,
+    "confidence": 65,
+    "execution_risk": 80,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'IA pourrait réduire les échecs coûteux en phase II et III en aidant à sélectionner les candidats médicaments, mais sa fiabilité reste à démontrer de façon prospective."
+    },
+    "frozen": true
   }
 ]
