@@ -1,0 +1,366 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261011-NUVACORE25",
+    "captured_at": "2026-10-11T11:27:00+02:00",
+    "published_at": "2026-10-09T22:38:00Z",
+    "title": "Nuvacore, startup de processeurs soutenue par Sequoia, chercherait à lever des fonds sur une valorisation d'environ 2,5 milliards de dollars",
+    "factual_summary": "Selon deux sources citées par Reuters, Nuvacore, soutenue par Sequoia Capital, cherche à lever plusieurs centaines de millions de dollars sur une valorisation d'environ 2,5 milliards de dollars; la levée n'est pas finalisée et l'entreprise n'a pas encore de produit commercial.",
+    "type": "FACT",
+    "theme": "Semi-conducteurs IA",
+    "subtheme": "CPU pour l'IA",
+    "companies": [
+      "Nuvacore",
+      "Sequoia Capital"
+    ],
+    "tickers": [],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/transactional/sequoia-backed-chip-startup-nuvacore-raising-funds-about-25-billion-valuation-2026-10-09/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "long",
+    "importance": 50,
+    "novelty": 70,
+    "confidence": 60,
+    "execution_risk": 85,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'exécution massive d'agents IA pourrait ouvrir un nouveau cycle d'innovation dans les processeurs généralistes, y compris chez des challengers d'Intel et d'AMD."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261011-AAPLIP18CUT",
+    "captured_at": "2026-10-11T11:27:00+02:00",
+    "published_at": "2026-10-09T06:05:00Z",
+    "title": "Apple réduirait d'au moins 15 % certaines commandes de composants pour l'iPhone 18 Pro, selon Nikkei Asia",
+    "factual_summary": "Selon Nikkei Asia, rapporté par Reuters, Apple aurait réduit d'au moins 15 % certaines commandes de composants pour l'iPhone 18 Pro, la hausse des prix des mémoires pesant sur la demande; Reuters n'a pas pu vérifier l'information de façon indépendante et Apple n'avait pas répondu.",
+    "type": "FACT",
+    "theme": "Infrastructure IA",
+    "subtheme": "Pénurie de mémoire",
+    "companies": [
+      "Apple"
+    ],
+    "tickers": [
+      "AAPL"
+    ],
+    "sector": "Consumer Electronics",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/retail-consumer/apple-cuts-iphone-18-pro-orders-due-soft-demand-nikkei-asia-reports-2026-10-09/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "short",
+    "importance": 62,
+    "novelty": 65,
+    "confidence": 50,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La demande de mémoire des data centers pourrait transférer de la valeur des fabricants d'électronique grand public vers les producteurs de mémoire."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261011-SPXQ3AIEPS",
+    "captured_at": "2026-10-11T11:27:00+02:00",
+    "published_at": "2026-10-09T10:03:00Z",
+    "title": "L'IA expliquerait environ deux tiers de la croissance attendue des bénéfices du S&P 500 au troisième trimestre",
+    "factual_summary": "Selon les estimations LSEG rapportées par Reuters, les bénéfices des entreprises du S&P 500 devraient progresser d'environ 31 % au troisième trimestre 2026, dont environ deux tiers proviendraient de la technologie et de grands acteurs de l'IA; il s'agit de prévisions d'analystes et non de résultats publiés.",
+    "type": "FACT",
+    "theme": "Marchés et valorisation",
+    "subtheme": "Concentration des bénéfices",
+    "companies": [],
+    "tickers": [],
+    "sector": "Equity Markets",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/ai-related-companies-drive-most-third-quarter-us-earnings-gains-2026-10-09/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "short",
+    "importance": 60,
+    "novelty": 45,
+    "confidence": 70,
+    "execution_risk": 40,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La dépendance de la croissance bénéficiaire américaine à un petit nombre d'acteurs de l'IA augmente le risque de correction corrélée en cas de déception."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261011-CNAIGUIDE",
+    "captured_at": "2026-10-11T11:27:00+02:00",
+    "published_at": "2026-10-09T10:48:00Z",
+    "title": "La Chine publie des orientations pour accélérer l'IA industrielle tout en limitant les investissements excessifs",
+    "factual_summary": "Les autorités chinoises ont publié des orientations encourageant l'investissement dans les technologies fondamentales, les infrastructures IA, les applications industrielles et les robots humanoïdes, tout en demandant de limiter les investissements excessifs et de renforcer le contrôle des risques.",
+    "type": "FACT",
+    "theme": "Politique industrielle",
+    "subtheme": "Chine IA et robotique",
+    "companies": [],
+    "tickers": [],
+    "sector": "Government Policy",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/china-issues-guidelines-new-productive-forces-including-ai-2026-10-09/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "long",
+    "importance": 55,
+    "novelty": 50,
+    "confidence": 80,
+    "execution_risk": 60,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les entreprises chinoises capables de commercialiser des solutions robotiques et industrielles pourraient être favorisées par cette orientation."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261011-DHRAUTOLAB",
+    "captured_at": "2026-10-11T11:27:00+02:00",
+    "published_at": "2026-10-07T11:34:00Z",
+    "title": "Danaher prévoit de lancer début 2027 un laboratoire de recherche autonome associant IA, robotique et instruments",
+    "factual_summary": "Danaher annonce la mise en service prévue début 2027 d'un laboratoire associant IA, robotique et instruments scientifiques, avec pour objectifs une vitesse de découverte de molécules multipliée par huit et une production annuelle de molécules se liant à une cible multipliée par dix; ce sont des objectifs, non des résultats démontrés.",
+    "type": "FACT",
+    "theme": "IA et santé",
+    "subtheme": "Laboratoires autonomes",
+    "companies": [
+      "Danaher"
+    ],
+    "tickers": [
+      "DHR"
+    ],
+    "sector": "Life Sciences Tools",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/life-sciences-firm-danaher-launch-ai-powered-autonomous-research-lab-2027-2026-10-07/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 50,
+    "novelty": 75,
+    "confidence": 75,
+    "execution_risk": 75,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les fabricants d'instruments scientifiques pourraient devenir des fournisseurs d'infrastructure essentiels à l'IA biomédicale."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261011-NVDAREFLAI",
+    "captured_at": "2026-10-11T11:27:00+02:00",
+    "published_at": "2026-10-10T19:32:00Z",
+    "title": "Nvidia discuterait d'un investissement supplémentaire dans Reflection AI ou de son rachat, selon le Financial Times",
+    "factual_summary": "Selon le Financial Times, rapporté par Reuters, Nvidia négocierait un investissement supplémentaire dans Reflection AI, spécialisée dans l'automatisation du développement logiciel, ou son acquisition; les discussions seraient préliminaires, Nvidia n'a pas confirmé, Reflection AI n'a pas commenté et aucun accord n'est annoncé.",
+    "type": "FACT",
+    "theme": "Écosystème IA",
+    "subtheme": "Intégration verticale logicielle",
+    "companies": [
+      "Nvidia",
+      "Reflection AI"
+    ],
+    "tickers": [
+      "NVDA"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/nvidia-talks-invest-further-reflection-ai-or-buy-it-ft-reports-2026-10-10/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 55,
+    "novelty": 70,
+    "confidence": 50,
+    "execution_risk": 70,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Nvidia pourrait chercher à contrôler davantage les logiciels et agents qui consomment sa puissance de calcul, au risque de tensions avec ses clients et les autorités de concurrence."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261011-GOOGCEG36",
+    "captured_at": "2026-10-11T11:27:00+02:00",
+    "published_at": "2026-10-06T10:36:00Z",
+    "title": "Alphabet et Constellation Energy signent un accord électrique de 3,6 GW incluant du nucléaire existant",
+    "factual_summary": "Alphabet et Constellation Energy ont annoncé un accord portant sur 3 590 MW d'électricité, dont 890 MW issus de l'augmentation de puissance de centrales nucléaires existantes; Constellation prévoit plus de 4,3 milliards de dollars d'investissements, avec les premiers MW nucléaires supplémentaires attendus en 2028.",
+    "type": "FACT",
+    "theme": "Énergie et data centers",
+    "subtheme": "Contrats d'électricité nucléaire",
+    "companies": [
+      "Alphabet",
+      "Constellation Energy"
+    ],
+    "tickers": [
+      "GOOGL",
+      "CEG"
+    ],
+    "sector": "Utilities",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/energy/google-enters-massive-36-gw-power-deal-with-constellation-energy-2026-10-06/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 72,
+    "novelty": 60,
+    "confidence": 85,
+    "execution_risk": 45,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les exploitants de centrales nucléaires existantes pourraient disposer d'un avantage économique face aux nouveaux projets à longues procédures d'autorisation."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261011-UPSCALETF",
+    "captured_at": "2026-10-11T11:27:00+02:00",
+    "published_at": "2026-10-08T12:01:00Z",
+    "title": "Upscale AI, soutenue par Nvidia, lance Token Fabric pour connecter des accélérateurs IA de fournisseurs différents",
+    "factual_summary": "Upscale AI, startup soutenue par Nvidia et valorisée 2 milliards de dollars en juin, a présenté Token Fabric, une plateforme matériel réseau et logiciel destinée à connecter des accélérateurs IA de fournisseurs différents; la direction prévoit plusieurs dizaines de millions de dollars de revenus dès 2027.",
+    "type": "FACT",
+    "theme": "Infrastructure IA",
+    "subtheme": "Interconnexion des accélérateurs",
+    "companies": [
+      "Upscale AI",
+      "Nvidia"
+    ],
+    "tickers": [
+      "NVDA"
+    ],
+    "sector": "Networking",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/nvidia-backed-upscale-ai-launches-platform-connect-chips-rival-suppliers-2026-10-08/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 48,
+    "novelty": 65,
+    "confidence": 70,
+    "execution_risk": 75,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'interconnexion, les commutateurs réseau et l'optique pourraient devenir des fournisseurs majeurs de l'infrastructure IA."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261011-TSLATADEU",
+    "captured_at": "2026-10-11T11:27:00+02:00",
+    "published_at": "2026-10-09T14:56:00Z",
+    "title": "Tesla renomme Full Self-Driving en Tesla Assisted Driving en Europe en attendant une homologation",
+    "factual_summary": "Tesla remplace progressivement l'appellation Full Self-Driving par Tesla Assisted Driving sur ses sites européens, plusieurs régulateurs jugeant l'ancienne dénomination trompeuse; un vote européen sur l'approbation du logiciel a été repoussé au moins jusqu'en décembre.",
+    "type": "FACT",
+    "theme": "IA physique",
+    "subtheme": "Conduite assistée et réglementation",
+    "companies": [
+      "Tesla"
+    ],
+    "tickers": [
+      "TSLA"
+    ],
+    "sector": "Automotive",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/autos-transportation/tesla-renames-full-self-driving-assisted-driving-europe-it-chases-clearance-2026-10-09/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 50,
+    "novelty": 55,
+    "confidence": 85,
+    "execution_risk": 65,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Une homologation européenne pourrait ouvrir des revenus logiciels à Tesla, tandis que des exigences supplémentaires pourraient retarder cette monétisation."
+    },
+    "frozen": true
+  }
+]
