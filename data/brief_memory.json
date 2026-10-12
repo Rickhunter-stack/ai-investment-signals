@@ -18,5 +18,18 @@
     "watch_next": "Conversion des contrats custom silicon en revenus, cadence HBM4/HBM4E, contraintes de puissance des datacenters, integration Alif, adoption Cornerstone/Hugo et cadence de tests Guardant360 CDx.",
     "invalidation": "Retards de capacite ou de puissance, ralentissement du capex hyperscaler, retards de ramp HBM/custom silicon, integration edge AI decevante ou adoption clinique/remboursement inferieurs aux attentes.",
     "frozen": true
+  },
+  {
+    "date": "2026-10-11",
+    "summary": "Trois dossiers justifient une réévaluation qualitative, les sept autres restent inchangés faute de signal matériel. GOOGL sécurise 3 590 MW auprès de Constellation (dont 890 MW nucléaires) et l'alimentation du datacenter de Cheyenne via Black Hills (1,8 Md$): capacités électriques contractualisées, pas encore de MW informatiques opérationnels. GH obtient le marquage CE IVDR de Guardant360 CDx comme diagnostic compagnon du camizestrant, après les États-Unis et le Japon. NVDA: demande potentielle très élevée (SpaceX négocierait ~40 Md$ de financement pour des puces Nvidia, non contractualisé), mais le financement de l'écosystème devient un risque plus tangible avec le retrait de l'IPO de Firmus.",
+    "stance": "constructif mais vigilant sur le financement de la demande IA",
+    "themes": ["ai_infrastructure", "ai_power", "ai_financing", "molecular_diagnostics"],
+    "tickers": ["GOOGL", "GH", "NVDA"],
+    "watch_next": "Conversion des contrats électriques de Google en capacité de calcul effective, volumes et remboursement de Guardant360 CDx en Europe, bouclage du financement SpaceX et conditions de financement des opérateurs de datacenters soutenus par Nvidia; en transversal, intensité concurrentielle des ASIC (Marvell) et confirmation sectorielle semi-conducteurs (TSMC +50% au T3).",
+    "invalidation": "Retards de permis ou de mise en service des capacités électriques de Google, adoption ou remboursement européens décevants pour Guardant360 CDx, abandon de la commande SpaceX ou nouveaux échecs de financement chez les acheteurs de compute.",
+    "frozen": true,
+    "validation": "explicit_user_approval",
+    "validated_at": "2026-10-12T07:19:00+00:00",
+    "archived_at": "2026-10-12T07:19:43.828944+00:00"
   }
 ]
