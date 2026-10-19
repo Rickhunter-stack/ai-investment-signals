@@ -1,5 +1,7 @@
 # Scheduled ingestion v1 (Claude Code)
 
+> **Superseded on 2026-10-19 by `SCHEDULED_BRIEF_V2.md`** (one Claude Code routine produces and ingests the brief; no ChatGPT handoff). Kept unchanged below as the record of the v1 contract; its T0 rules remain in force through v2.
+
 Division of labour:
 
 - **ChatGPT** keeps the editorial role: daily watch and selection of the five signals (`UNIFIED_DAILY_BRIEF_V1.md`).
