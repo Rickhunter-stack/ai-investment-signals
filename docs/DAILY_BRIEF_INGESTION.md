@@ -1,5 +1,7 @@
 # Daily brief ingestion v1
 
+> Since 2026-10-19 the brief is produced by the scheduled Claude Code routine (`SCHEDULED_BRIEF_V2.md`); briefs captured up to 2026-10-19 were produced by ChatGPT. The integrity rules below are unchanged.
+
 After the human-readable ChatGPT brief, each investment-relevant selected item may be encoded as one `brief-event-v1` object and written prospectively to one immutable daily journal `data/brief_events/YYYY-MM-DD.json`.
 
 Rules:
