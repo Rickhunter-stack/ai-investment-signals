@@ -1,0 +1,424 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261019-MAIA300",
+    "captured_at": "2026-10-19T09:13:00+02:00",
+    "published_at": "2026-10-12T13:01:00Z",
+    "title": "Microsoft prévoit de déployer plus d'un million de puces IA maison Maia 300 en 2027",
+    "factual_summary": "Microsoft a présenté Maia 300, sa troisième génération d'accélérateurs IA, fabriquée notamment en 2 nm et 3 nm chez TSMC, et envisage d'en déployer plus d'un million en 2027; Microsoft revendique environ 40 % de calcul utile supplémentaire par mégawatt face à des systèmes GPU concurrents, chiffre non démontré de manière indépendante.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Puces IA propriétaires des hyperscalers",
+    "companies": [
+      "Microsoft",
+      "TSMC",
+      "Nvidia"
+    ],
+    "tickers": [
+      "MSFT",
+      "TSM"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/microsoft-plans-huge-deployment-its-own-ai-chips-with-an-eye-saving-costs-2026-10-12/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "long",
+    "importance": 70,
+    "novelty": 70,
+    "confidence": 75,
+    "execution_risk": 50,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La multiplication des puces propriétaires des hyperscalers pourrait réduire progressivement le pouvoir de fixation des prix de Nvidia au profit des fondeurs et des spécialistes des ASIC."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261019-OMRONLOGIC",
+    "captured_at": "2026-10-19T09:13:00+02:00",
+    "published_at": "2026-10-13T01:04:00Z",
+    "title": "Omron rachète Onlogic et sa maison mère Interlogic pour 675 millions de dollars",
+    "factual_summary": "Le japonais Omron annonce l'acquisition d'Onlogic, fabricant d'ordinateurs industriels pour environnements exigeants, et de sa maison mère Interlogic pour 675 millions de dollars, afin de combiner ces systèmes avec ses technologies de contrôle et d'automatisation pour des plateformes d'IA physique.",
+    "type": "FACT",
+    "theme": "Robotique et investissement",
+    "subtheme": "IA physique et automatisation industrielle",
+    "companies": [
+      "Omron",
+      "Onlogic",
+      "Interlogic"
+    ],
+    "tickers": [
+      "6645.T"
+    ],
+    "sector": "Industrial automation",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/transactional/japans-omron-buy-us-industrial-pc-firm-onlogic-675-million-physical-ai-push-2026-10-13/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 55,
+    "novelty": 60,
+    "confidence": 85,
+    "execution_risk": 40,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les acteurs maîtrisant à la fois capteurs, contrôle industriel et informatique embarquée pourraient disposer d'un avantage dans l'IA physique."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261019-CXMTMEMORY",
+    "captured_at": "2026-10-19T09:13:00+02:00",
+    "published_at": "2026-10-13T01:41:00Z",
+    "title": "Les valeurs mémoire asiatiques chutent sur fond de progrès du chinois CXMT",
+    "factual_summary": "Reuters rapporte des baisses d'environ 8 % pour Samsung, 10 % pour SK Hynix et 1,8 % pour TSMC au moment de son point de marché du 13 octobre, attribuées aux progrès technologiques de ChangXin Memory Technologies (CXMT), susceptibles de réduire l'avance des fabricants de mémoire établis.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Mémoire pour infrastructure IA",
+    "companies": [
+      "Samsung Electronics",
+      "SK Hynix",
+      "TSMC",
+      "ChangXin Memory Technologies"
+    ],
+    "tickers": [
+      "005930",
+      "000660",
+      "TSM"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/global-markets-wrapup-1-2026-10-13/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 70,
+    "novelty": 65,
+    "confidence": 70,
+    "execution_risk": 50,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": "STORY-EVT-20260918-CXMTNAND",
+      "relation": "CONTRADICT"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Une concurrence chinoise plus forte pourrait accélérer la normalisation des prix de la mémoire malgré la croissance de la demande des data centers."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261019-IMFAIDEBT",
+    "captured_at": "2026-10-19T09:13:00+02:00",
+    "published_at": "2026-10-13T03:19:00Z",
+    "title": "Le FMI avertit qu'une correction des valorisations IA pourrait se propager à l'économie mondiale",
+    "factual_summary": "Le FMI estime qu'une correction des valorisations liées à l'IA pourrait se propager à l'économie mondiale; les hyperscalers représentent désormais 10 % des émissions mondiales d'obligations d'entreprises de qualité investissement, contre moins de 1 % en 2024; le FMI cite aussi la hausse des rendements obligataires et les cyberattaques.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Financement des infrastructures IA",
+    "companies": [
+      "Fonds monétaire international"
+    ],
+    "tickers": [],
+    "sector": "Macro and credit markets",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/finance/imf-cites-ai-slowdown-spiking-yields-looming-global-market-risks-2026-10-13/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 70,
+    "novelty": 55,
+    "confidence": 85,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Une hausse durable du coût du capital pourrait pénaliser les opérateurs de data centers fortement endettés et les projets aux revenus encore incertains."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261019-BANKAGENTS",
+    "captured_at": "2026-10-19T09:13:00+02:00",
+    "published_at": "2026-10-13T05:02:00Z",
+    "title": "Les régulateurs bancaires américains et européens renforcent leur surveillance des agents IA autonomes",
+    "factual_summary": "Selon une enquête Reuters fondée sur six sources, les régulateurs bancaires américains et européens renforcent leur surveillance des agents IA autonomes, notamment la traçabilité des décisions, les autorisations accordées et la capacité d'interrompre leurs actions; plusieurs régulateurs américains ont refusé de commenter et aucune nouvelle obligation n'a été officiellement annoncée.",
+    "type": "WEAK_SIGNAL",
+    "theme": "IA et cybersécurité",
+    "subtheme": "Sécurité des agents IA",
+    "companies": [],
+    "tickers": [],
+    "sector": "Financial regulation",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/banking-watchdogs-ramp-up-ai-scrutiny-stability-fears-mount-sources-say-2026-10-13/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 55,
+    "novelty": 50,
+    "confidence": 60,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les logiciels de gestion des identités, des autorisations et de la traçabilité des agents IA pourraient bénéficier d'un encadrement plus strict."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261019-ASMLCAP2028",
+    "captured_at": "2026-10-19T09:13:00+02:00",
+    "published_at": "2026-10-14T05:07:00Z",
+    "title": "ASML ne pourra pas satisfaire entièrement la demande de ses clients en 2027 et 2028",
+    "factual_summary": "ASML indique ne pas pouvoir satisfaire entièrement la demande en 2027 et 2028, prévoit un chiffre d'affaires de 14,2 à 15,2 milliards d'euros au quatrième trimestre, au-dessus des attentes des analystes, et une marge brute d'environ 57 %; des clients envisagent déjà des commandes pour 2029 et 2030.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Capacités de lithographie EUV",
+    "companies": [
+      "ASML"
+    ],
+    "tickers": [
+      "ASML"
+    ],
+    "sector": "Semiconductor equipment",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/asml-forecasts-q4-sales-above-expectations-ai-chip-demand-2026-10-14/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 80,
+    "novelty": 65,
+    "confidence": 90,
+    "execution_risk": 35,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "ASML pourrait conserver un pouvoir de négociation élevé tant que l'augmentation de ses capacités reste lente et coûteuse."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261019-SCALEWAYAMD",
+    "captured_at": "2026-10-19T09:13:00+02:00",
+    "published_at": "2026-10-13T10:50:00Z",
+    "title": "Scaleway construit en Suède un supercalculateur commercial à base d'accélérateurs AMD Instinct MI355X",
+    "factual_summary": "Le fournisseur cloud français Scaleway annonce la construction en Suède d'un supercalculateur commercial accessible aux entreprises européennes, utilisant des accélérateurs AMD Instinct MI355X et l'écosystème logiciel ROCm; Bull assurera construction et maintenance, avec HPE pour le réseau et VAST Data pour le stockage.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Capacités européennes de calcul haute performance",
+    "companies": [
+      "Scaleway",
+      "AMD",
+      "Bull",
+      "HPE",
+      "VAST Data"
+    ],
+    "tickers": [
+      "AMD",
+      "HPE"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/media-telecom/scaleway-build-amd-powered-ai-supercomputer-sweden-2026-10-13/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 60,
+    "novelty": 55,
+    "confidence": 85,
+    "execution_risk": 45,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20261004-BULLANG",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Si ROCm réduit suffisamment les coûts de migration, AMD pourrait gagner des parts dans les infrastructures IA européennes."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261019-NVDOCTOLIB",
+    "captured_at": "2026-10-19T09:13:00+02:00",
+    "published_at": "2026-10-13T16:08:00Z",
+    "title": "Nvidia prend une participation minoritaire dans Doctolib et investit dans Genesis AI",
+    "factual_summary": "Nvidia prend une participation minoritaire dans Doctolib et investit également dans Genesis AI; les deux entreprises ont confirmé les opérations, sans montant communiqué; des investissements dans Entalpic et Pigment rapportés par Les Échos ne sont pas confirmés par les entreprises.",
+    "type": "FACT",
+    "theme": "IA et santé",
+    "subtheme": "Logiciels de santé et IA",
+    "companies": [
+      "Nvidia",
+      "Doctolib",
+      "Genesis AI"
+    ],
+    "tickers": [
+      "NVDA"
+    ],
+    "sector": "Healthcare software",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/nvidia-buy-minority-stake-frances-doctolib-2026-10-13/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 45,
+    "novelty": 55,
+    "confidence": 80,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Nvidia étend son écosystème vers les applications métier, dont les logiciels de santé, sans gain de productivité encore démontré."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261019-NVCHINA34",
+    "captured_at": "2026-10-19T09:13:00+02:00",
+    "published_at": "2026-10-13T02:33:00Z",
+    "title": "La part de Nvidia dans les accélérateurs IA livrés en Chine tombe à 34 %, Huawei à 28 %",
+    "factual_summary": "Selon un rapport IDC consulté par Reuters, la part de Nvidia dans les livraisons d'accélérateurs IA pour data centers en Chine est tombée à 34 % au premier semestre 2026, contre 28 % pour Huawei; les livraisons de Nvidia ont reculé de 44 % sur un an et les accélérateurs non-GPU dépassent désormais les GPU en volume en Chine; ces parts portent sur les unités livrées, pas sur le chiffre d'affaires.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Accélérateurs IA chinois et interconnexion",
+    "companies": [
+      "Nvidia",
+      "Huawei",
+      "IDC"
+    ],
+    "tickers": [
+      "NVDA"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/retail-consumer/nvidias-china-ai-chip-share-falls-huawei-closes-gap-report-finds-2026-10-13/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "long",
+    "importance": 70,
+    "novelty": 55,
+    "confidence": 80,
+    "execution_risk": 40,
+    "pricing_status": "partially_priced",
+    "story": {
+      "story_id": "STORY-EVT-20260917-HUA960",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La fragmentation technologique entre Chine et Occident pourrait durablement modifier les parts de marché et les économies d'échelle des fabricants d'accélérateurs."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261019-ZEALGENRT",
+    "captured_at": "2026-10-19T09:13:00+02:00",
+    "published_at": "2026-10-13T20:42:00Z",
+    "title": "Zealand Pharma et Generate Biomedicines concluent un partenariat obésité pouvant atteindre 1,2 milliard de dollars",
+    "factual_summary": "Zealand Pharma et Generate Biomedicines annoncent un partenariat pouvant atteindre 1,2 milliard de dollars pour développer par IA des protéines thérapeutiques ciblant plusieurs mécanismes de l'obésité; Generate reçoit 30 millions de dollars immédiatement, le reste étant conditionné à des étapes de développement.",
+    "type": "FACT",
+    "theme": "IA et santé",
+    "subtheme": "Découverte de médicaments assistée par IA",
+    "companies": [
+      "Zealand Pharma",
+      "Generate Biomedicines"
+    ],
+    "tickers": [],
+    "sector": "Biotechnology",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/zealand-pharma-generate-strike-obesity-drug-deal-worth-up-12-billion-bloomberg-2026-10-13/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 50,
+    "novelty": 55,
+    "confidence": 80,
+    "execution_risk": 70,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les plateformes d'IA capables de produire des candidats médicaments efficaces pourraient capter une part croissante de la valeur en biotechnologie."
+    },
+    "frozen": true
+  }
+]
