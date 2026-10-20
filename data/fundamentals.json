@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T03:41:54Z",
+  "generated_at": "2026-10-20T01:57:38Z",
   "methodology": {
     "fcf": "OCF - capex",
     "fcf_yield": "latest annual FCF / current market cap only when financial and market currencies match",
@@ -23,7 +23,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 1.77,
+        "fcf_yield_pct": 1.84,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -101,7 +101,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 1.67,
+        "fcf_yield_pct": 1.69,
         "fcf_cagr_available_pct": 4.04,
         "fcf_per_share_cagr_available_pct": 4.13
       },
@@ -168,7 +168,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 1.7,
+        "fcf_yield_pct": 1.74,
         "fcf_cagr_available_pct": 6.88,
         "fcf_per_share_cagr_available_pct": 9.52
       },
@@ -302,7 +302,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 2.44,
+        "fcf_yield_pct": 2.57,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -380,7 +380,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 1.59,
+        "fcf_yield_pct": 1.69,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -458,7 +458,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 0.15,
+        "fcf_yield_pct": 0.16,
         "fcf_cagr_available_pct": -18.79,
         "fcf_per_share_cagr_available_pct": -18.86
       },
@@ -525,7 +525,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 6.88,
+        "fcf_yield_pct": 6.92,
         "fcf_cagr_available_pct": 23.33,
         "fcf_per_share_cagr_available_pct": 24.51
       },
@@ -592,7 +592,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 2.17,
+        "fcf_yield_pct": 2.24,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -670,7 +670,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 0.58,
+        "fcf_yield_pct": 0.65,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -748,7 +748,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 1.6,
+        "fcf_yield_pct": 1.84,
         "fcf_cagr_available_pct": 111.7,
         "fcf_per_share_cagr_available_pct": 111.17
       },
@@ -815,7 +815,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 2.05,
+        "fcf_yield_pct": 2.38,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -893,7 +893,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": -1.82,
+        "fcf_yield_pct": -2.26,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -960,7 +960,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 0.33,
+        "fcf_yield_pct": 0.4,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1038,7 +1038,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 0.42,
+        "fcf_yield_pct": 0.43,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1116,7 +1116,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 1.65,
+        "fcf_yield_pct": 1.63,
         "fcf_cagr_available_pct": 37.49,
         "fcf_per_share_cagr_available_pct": 37.4
       },
@@ -1183,7 +1183,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 0.75,
+        "fcf_yield_pct": 0.86,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1261,7 +1261,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 2.81,
+        "fcf_yield_pct": 2.88,
         "fcf_cagr_available_pct": 25.81,
         "fcf_per_share_cagr_available_pct": 27.13
       },
@@ -1328,7 +1328,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 2.28,
+        "fcf_yield_pct": 2.55,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1406,7 +1406,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 3.19,
+        "fcf_yield_pct": 3.34,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1473,7 +1473,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 4.61,
+        "fcf_yield_pct": 4.57,
         "fcf_cagr_available_pct": 5.81,
         "fcf_per_share_cagr_available_pct": 7.02
       },
@@ -1540,7 +1540,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 0.57,
+        "fcf_yield_pct": 0.54,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1685,7 +1685,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 4.79,
+        "fcf_yield_pct": 4.68,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1763,7 +1763,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 2.49,
+        "fcf_yield_pct": 2.51,
         "fcf_cagr_available_pct": -6.64,
         "fcf_per_share_cagr_available_pct": -6.51
       },
@@ -1830,7 +1830,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 3.59,
+        "fcf_yield_pct": 3.53,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1908,7 +1908,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 3.53,
+        "fcf_yield_pct": 3.41,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -1986,7 +1986,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 2.57,
+        "fcf_yield_pct": 2.51,
         "fcf_cagr_available_pct": -3.07,
         "fcf_per_share_cagr_available_pct": -1.73
       },
@@ -2053,7 +2053,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 3.38,
+        "fcf_yield_pct": 3.33,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -2131,7 +2131,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 3.57,
+        "fcf_yield_pct": 3.59,
         "fcf_cagr_available_pct": 20.69,
         "fcf_per_share_cagr_available_pct": 22.09
       },
@@ -2198,7 +2198,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 4.75,
+        "fcf_yield_pct": 4.69,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -2276,7 +2276,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": 1.81,
+        "fcf_yield_pct": 1.74,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
@@ -2354,7 +2354,7 @@
         "financial_currency": "USD",
         "market_currency": "USD",
         "fcf_yield_currency_compatible": true,
-        "fcf_yield_pct": -1.07,
+        "fcf_yield_pct": -1.1,
         "fcf_cagr_available_pct": null,
         "fcf_per_share_cagr_available_pct": null
       },
