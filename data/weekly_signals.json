@@ -6806,4 +6806,1868 @@
     "research": "fb997bbe219c6ed41e9b5e6e77c0ca6fdc5973cf283b23ee6b2ec3c5e9db39c4"
   }
 }
+,
+{
+  "date": "2026-10-20",
+  "frozen": true,
+  "method_version": "weekly-v1.0",
+  "captured_at": "2026-10-20T01:58:03.889073+00:00",
+  "scores": {
+    "NVDA": {
+      "fundamental_strength": 100.0,
+      "novelty": 78,
+      "pricing_headroom": 30,
+      "valuation": 36.8,
+      "execution_risk": 40,
+      "signal_score": 60.96,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 215938000000.0,
+          "ocf": 102718000000.0,
+          "capex": 6042000000.0,
+          "fcf": 96676000000.0,
+          "capex_ocf_pct": 5.88,
+          "fcf_margin_pct": 44.77,
+          "fcf_per_share": 3.9437,
+          "roic_pct": 104.63,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 1.84,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 78,
+            "rationale": "SpaceX négocierait environ 40 Md$ de financement (prêts bancaires et dette investment grade, menés par Apollo) pour acheter des puces Nvidia: signal de demande potentielle très élevée hors hyperscalers, mais rapporté par des sources anonymes et non contractualisé.",
+            "sources": [
+              "https://www.bnnbloomberg.ca/business/company-news/2026/10/07/spacex-seeks-us40-billion-financing-to-buy-nvidia-chips-sources-say/"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-04",
+            "score": 30,
+            "rationale": "La demande reste forte, mais la monétisation est davantage reflétée dans le marché et le financement adossé aux GPU fait émerger un risque de valeur résiduelle et de levier chez les acheteurs de compute.",
+            "sources": [
+              "https://www.reuters.com/legal/transactional/nvidias-bet-that-its-chips-can-finance-ai-boom-gets-wall-street-reality-check-2026-10-01/",
+              "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Partners-With-Apollo-BlackRock-Blackstone-Brookfield-Goldman-Sachs-and-KKR-to-Establish-AI-Compute-Infrastructure-Financing-Platforms-to-Mobilize-Over-500-Billion-of-Third-Party-Capital/default.aspx"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 40,
+            "rationale": "Le financement de la demande devient un risque plus tangible: Firmus, opérateur de datacenters soutenu par Nvidia, a retiré son IPO d'environ 5 Md$ faute de demande, sur fond d'inquiétudes sur valorisation, dette et capacité d'exécution; la commande SpaceX dépend elle aussi d'un financement par dette encore non bouclé.",
+            "sources": [
+              "https://www.thestar.com.my/tech/tech-news/2026/10/09/nvidia-backed-firmus-scraps-5-billion-australian-ipo-on-poor-demand",
+              "https://www.bnnbloomberg.ca/business/company-news/2026/10/07/spacex-seeks-us40-billion-financing-to-buy-nvidia-chips-sources-say/"
+            ]
+          }
+        }
+      }
+    },
+    "MSFT": {
+      "fundamental_strength": 83.65,
+      "novelty": 62,
+      "pricing_headroom": 50,
+      "valuation": 33.8,
+      "execution_risk": 45,
+      "signal_score": 56.89,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 331839000000.0,
+          "ocf": 182935000000.0,
+          "capex": 115948000000.0,
+          "fcf": 66987000000.0,
+          "capex_ocf_pct": 63.38,
+          "fcf_margin_pct": 20.19,
+          "fcf_per_share": 8.9879,
+          "roic_pct": 29.61,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 1.69,
+          "fcf_cagr_available_pct": 4.04,
+          "fcf_per_share_cagr_available_pct": 4.13
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 62,
+            "rationale": "Le 25 septembre, Microsoft a refondu Copilot autour de Home, Code et Autopilot, un agent autonome doté de sa propre identité d'entreprise, avec une facturation à l'usage en crédits Copilot en plus de l'abonnement par utilisateur; le 7 octobre, Microsoft a présenté un modèle de programmation exécuté localement et des conteneurs sécurisés pour agents. C'est un changement matériel du modèle de monétisation, mais le déploiement reste en préversion.",
+            "sources": [
+              "https://www.reuters.com/technology/microsoft-revamps-copilot-with-code-generation-agentic-ai-tools-2026-09-25/",
+              "https://redmondmag.com/articles/2026/09/25/microsoft-copilot-learns-to-build-apps-and-work-on-its-own.aspx",
+              "https://www.reuters.com/business/microsoft-nvidia-ceos-unveil-new-ai-laptop-san-francisco-event-2026-10-07/"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 50,
+            "rationale": "Azure a accéléré à 43 % au quatrième trimestre fiscal 2026 avec une demande supérieure à la capacité disponible et une prévision d'environ 45 % pour le trimestre suivant, alors que le marché reste sceptique sur le retour des investissements IA et sur l'adoption de Copilot. Une preuve de monétisation de la facturation à l'usage des agents n'est pas encore intégrée, mais elle reste à démontrer.",
+            "sources": [
+              "https://www.cnbc.com/2026/07/29/microsoft-msft-q4-earnings-report-2026.html",
+              "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 45,
+            "rationale": "Risque modéré: investissements très élevés (41 Md$ au quatrième trimestre fiscal, surtout en processeurs et GPU à courte durée de vie) et appelés à augmenter, contraintes de capacité, relation avec OpenAI devenue non exclusive depuis avril 2026, et enquête de la FTC sur les pratiques de licences cloud et le regroupement de l'IA dans les produits Microsoft. L'exécution technique d'Azure reste solide.",
+            "sources": [
+              "https://www.cnbc.com/2026/07/29/microsoft-msft-q4-earnings-report-2026.html",
+              "https://openai.com/index/next-phase-of-microsoft-partnership/",
+              "https://www.bloomberg.com/news/articles/2026-02-13/ftc-ratchets-up-microsoft-probe-queries-rivals-on-cloud-ai"
+            ]
+          }
+        }
+      }
+    },
+    "GOOGL": {
+      "fundamental_strength": 80.31,
+      "novelty": 85,
+      "pricing_headroom": 52,
+      "valuation": 34.8,
+      "execution_risk": 33,
+      "signal_score": 63.82,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 402836000000.0,
+          "ocf": 164713000000.0,
+          "capex": 91447000000.0,
+          "fcf": 73266000000.0,
+          "capex_ocf_pct": 55.52,
+          "fcf_margin_pct": 18.19,
+          "fcf_per_share": 5.9907,
+          "roic_pct": 30.88,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 1.74,
+          "fcf_cagr_available_pct": 6.88,
+          "fcf_per_share_cagr_available_pct": 9.52
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 85,
+            "rationale": "Google contractualise 3 590 MW auprès de Constellation (PPA de 20 ans pour 890 MW nucléaires issus d'uprates sur 11 réacteurs, plus 2 700 MW sur 15 ans dans PJM) et Black Hills prévoit 1,8 Md$ d'investissements pour alimenter le datacenter proposé à Cheyenne. Capacités électriques contractualisées, pas de MW informatiques opérationnels.",
+            "sources": [
+              "https://www.constellationenergy.com/news/2026/10/google-and-constellation-announce-landmark-agreement-to-bring-890-mw-of-new-nuclear-capacity-to-pjm-grid.html",
+              "https://www.sec.gov/Archives/edgar/data/0001130464/000119312526415597/bkh-ex99_1.htm"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 52,
+            "rationale": "La sécurisation de plusieurs GW d'électricité crédibilise le développement futur de l'infrastructure IA de Google, sans démontrer encore la rentabilité des investissements; effet modéré sur la marge de réévaluation.",
+            "sources": [
+              "https://www.constellationenergy.com/news/2026/10/google-and-constellation-announce-landmark-agreement-to-bring-890-mw-of-new-nuclear-capacity-to-pjm-grid.html",
+              "https://www.sec.gov/Archives/edgar/data/0001130464/000119312526415597/bkh-ex99_1.htm"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 33,
+            "rationale": "Les contrats Constellation et Black Hills réduisent une partie du risque d'approvisionnement énergétique (Google couvre le coût d'alimentation de Cheyenne, avances remboursables de 399 M$ pour équipements); le risque réglementaire européen et les permis restant à obtenir demeurent.",
+            "sources": [
+              "https://www.constellationenergy.com/news/2026/10/google-and-constellation-announce-landmark-agreement-to-bring-890-mw-of-new-nuclear-capacity-to-pjm-grid.html",
+              "https://www.sec.gov/Archives/edgar/data/0001130464/000119312526415597/bkh-ex99_1.htm"
+            ]
+          }
+        }
+      }
+    },
+    "AMZN": {
+      "fundamental_strength": 37.61,
+      "novelty": 65,
+      "pricing_headroom": 40,
+      "valuation": 5.4,
+      "execution_risk": 35,
+      "signal_score": 42.6,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 716924000000.0,
+          "ocf": 139514000000.0,
+          "capex": 131819000000.0,
+          "fcf": 7695000000.0,
+          "capex_ocf_pct": 94.48,
+          "fcf_margin_pct": 1.07,
+          "fcf_per_share": 0.7107,
+          "roic_pct": 14.33,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 0.27,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-09-16",
+            "score": 65,
+            "rationale": "Amazon et Qualcomm annoncent une collaboration multi-generation sur silicium custom d'inference et connectivite optique pour l'infrastructure AI AWS.",
+            "sources": [
+              "https://investor.qualcomm.com/news-events/press-releases/news-details/2026/Qualcomm-Announces-Multi-Generational-Product-Collaboration-with-Amazon-to-Build-Next-Generation-AI-Data-Center-Infrastructure/default.aspx"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-04",
+            "score": 40,
+            "rationale": "La croissance de l'infrastructure AWS reste forte, mais le projet rapporté de transférer environ 8 Md$ de GPU Nvidia à un véhicule d'investisseurs souligne l'intensité capitalistique déjà intégrée au dossier.",
+            "sources": [
+              "https://www.reuters.com/business/retail-consumer/amazon-seeks-offload-8-billion-nvidia-chips-investors-ft-reports-2026-10-02/"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-04",
+            "score": 35,
+            "rationale": "Le financement envisagé d'environ 8 Md$ de GPU via un véhicule externe et l'investissement communautaire de 1 Md$ face aux tensions locales ajoutent des risques de financement et d'acceptabilité au buildout AWS.",
+            "sources": [
+              "https://www.reuters.com/business/retail-consumer/amazon-seeks-offload-8-billion-nvidia-chips-investors-ft-reports-2026-10-02/",
+              "https://www.reuters.com/business/retail-consumer/amazon-invest-1-billion-over-five-years-us-data-center-communities-2026-10-02/"
+            ]
+          }
+        }
+      }
+    },
+    "META": {
+      "fundamental_strength": 88.23,
+      "novelty": 65,
+      "pricing_headroom": 35,
+      "valuation": 51.4,
+      "execution_risk": 60,
+      "signal_score": 55.93,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 200966000000.0,
+          "ocf": 115800000000.0,
+          "capex": 69691000000.0,
+          "fcf": 46109000000.0,
+          "capex_ocf_pct": 60.18,
+          "fcf_margin_pct": 22.94,
+          "fcf_per_share": 17.9134,
+          "roic_pct": 26.69,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 2.57,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 65,
+            "rationale": "Le lancement de Muse le 8 septembre aux États-Unis (agent personnel capable d'agir dans d'autres applications, accessible aussi via WhatsApp, avec offres payantes à 20 et 100 $ par mois et des commissions marchandes prévues) constitue la première monétisation directe par Meta d'un agent IA grand public; l'élan initial est réel (première place de l'App Store américain) mais des données tierces signalent un ralentissement des téléchargements début octobre.",
+            "sources": [
+              "https://www.techrepublic.com/article/news-meta-muse-ai-agent-us-launch/",
+              "https://www.newsquawk.com/headlines/hunterbrook-says-metas-meta-muse-growth-slows-as-downloads-fall"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 35,
+            "rationale": "Le marché a déjà réévalué le titre sur le lancement de Muse; aucune donnée d'abonnés payants ni de revenus de Muse n'est publiée, et la thèse de monétisation repose sur des scénarios d'analystes. Le potentiel non intégré se limite donc surtout à une confirmation d'adoption lors des résultats du troisième trimestre.",
+            "sources": [
+              "https://finance.yahoo.com/technology/ai/articles/meta-soars-6-6-muse-172801413.html",
+              "https://www.cnbc.com/2026/07/29/meta-q2-earnings-report-2026.html"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 60,
+            "rationale": "Risque élevé et multiple: capex 2026 guidé à 130-145 Md$ avec un flux de trésorerie disponible tombé à 0,8 Md$ au deuxième trimestre; règlement d'environ 18 Md$ avec les États sur la protection des mineurs, sous réserve d'approbation judiciaire; verdict défavorable au Nouveau-Mexique sur la vie privée avec une pénalité encore à fixer par le juge; vulnérabilité de sécurité de Muse confirmant le risque des agents autonomes.",
+            "sources": [
+              "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+              "https://www.cnn.com/2026/08/26/tech/meta-states-settle-trial-children",
+              "https://news.bgov.com/product-liability-and-toxics-law/meta-loses-new-mexico-jury-trial-over-cambridge-analytica-data",
+              "https://www.reuters.com/technology/meta-bolsters-muse-safety-warning-after-security-vulnerability-found-information-2026-09-25/"
+            ]
+          }
+        }
+      }
+    },
+    "AVGO": {
+      "fundamental_strength": 100.0,
+      "novelty": 95,
+      "pricing_headroom": 45,
+      "valuation": 33.8,
+      "execution_risk": 20,
+      "signal_score": 70.76,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 63887000000.0,
+          "ocf": 27537000000.0,
+          "capex": 623000000.0,
+          "fcf": 26914000000.0,
+          "capex_ocf_pct": 2.26,
+          "fcf_margin_pct": 42.13,
+          "fcf_per_share": 5.5458,
+          "roic_pct": 20.02,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 1.69,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-09-16",
+            "score": 95,
+            "rationale": "Demande exceptionnelle pour XPUs custom et reseau AI, avec une plateforme de financement visant plus de 20 GW de capacite compute d'ici 2028.",
+            "sources": [
+              "https://investors.broadcom.com/static-files/96641754-401f-4090-a4ab-210728c83a28",
+              "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-09-16",
+            "score": 45,
+            "rationale": "L'acceleration AI est reconnue dans le cours, mais l'ampleur des XPUs custom et du networking peut encore modifier les estimations si les deploiements se concretisent.",
+            "sources": [
+              "https://investors.broadcom.com/static-files/96641754-401f-4090-a4ab-210728c83a28"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-09-16",
+            "score": 20,
+            "rationale": "Execution historiquement solide, avec risque concentre sur quelques grands clients et sur le financement de tres gros deploiements AI.",
+            "sources": [
+              "https://investors.broadcom.com/static-files/96641754-401f-4090-a4ab-210728c83a28"
+            ]
+          }
+        }
+      }
+    },
+    "MU": {
+      "fundamental_strength": 44.09,
+      "novelty": 90,
+      "pricing_headroom": 55,
+      "valuation": 3.2,
+      "execution_risk": 25,
+      "signal_score": 53.46,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 37378000000.0,
+          "ocf": 17525000000.0,
+          "capex": 15857000000.0,
+          "fcf": 1668000000.0,
+          "capex_ocf_pct": 90.48,
+          "fcf_margin_pct": 4.46,
+          "fcf_per_share": 1.4827,
+          "roic_pct": 14.66,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 0.16,
+          "fcf_cagr_available_pct": -18.79,
+          "fcf_per_share_cagr_available_pct": -18.86
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-04",
+            "score": 90,
+            "rationale": "Nouveau signal matériel de demande: Micron prévoit un chiffre d'affaires trimestriel supérieur aux attentes et indique que les engagements clients de long terme ont atteint 32 Md$, portés par la mémoire pour l'IA.",
+            "sources": [
+              "https://www.reuters.com/business/micron-forecasts-quarterly-revenue-above-estimates-2026-09-30/"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-04",
+            "score": 55,
+            "rationale": "Le gonflement des engagements clients renforce la visibilité sur la demande mémoire IA, mais une grande partie de l'optimisme est déjà reflétée après une forte hausse du titre.",
+            "sources": [
+              "https://www.reuters.com/business/micron-forecasts-quarterly-revenue-above-estimates-2026-09-30/"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-04",
+            "score": 25,
+            "rationale": "Les engagements de long terme à 32 Md$ réduisent le risque de demande à court terme, sans éliminer les risques de cycle mémoire, de rendement industriel et de montée en capacité.",
+            "sources": [
+              "https://www.reuters.com/business/micron-forecasts-quarterly-revenue-above-estimates-2026-09-30/"
+            ]
+          }
+        }
+      }
+    },
+    "QCOM": {
+      "fundamental_strength": 98.25,
+      "novelty": 88,
+      "pricing_headroom": 70,
+      "valuation": 100,
+      "execution_risk": 45,
+      "signal_score": 82.25,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 44284000000.0,
+          "ocf": 14012000000.0,
+          "capex": 1192000000.0,
+          "fcf": 12820000000.0,
+          "capex_ocf_pct": 8.51,
+          "fcf_margin_pct": 28.95,
+          "fcf_per_share": 11.6018,
+          "roic_pct": 31.15,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 6.92,
+          "fcf_cagr_available_pct": 23.33,
+          "fcf_per_share_cagr_available_pct": 24.51
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-09-16",
+            "score": 88,
+            "rationale": "Collaboration multi-generation avec Amazon sur du silicium custom pour inference AI et interconnexions optiques jusqu'a 1.6T: extension materielle de Qualcomm vers le datacenter.",
+            "sources": [
+              "https://investor.qualcomm.com/news-events/press-releases/news-details/2026/Qualcomm-Announces-Multi-Generational-Product-Collaboration-with-Amazon-to-Build-Next-Generation-AI-Data-Center-Infrastructure/default.aspx"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-09-16",
+            "score": 70,
+            "rationale": "Le datacenter AI reste une activite emergente pour Qualcomm; le contrat Amazon peut modifier la perception d'un groupe encore largement valorise sur ses franchises historiques.",
+            "sources": [
+              "https://investor.qualcomm.com/news-events/press-releases/news-details/2026/Qualcomm-Announces-Multi-Generational-Product-Collaboration-with-Amazon-to-Build-Next-Generation-AI-Data-Center-Infrastructure/default.aspx",
+              "https://investor.qualcomm.com/news-events/press-releases/news-details/2026/Qualcomm-Accelerates-Diversification-with-Comprehensive-Strategy-for-Data-Center-and-Sees-Multiple-Inflection-Points-Over-the-Next-3-to-5-Years/default.aspx"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-09-16",
+            "score": 45,
+            "rationale": "Potentiel important mais execution encore a prouver face aux acteurs etablis des accelerateurs, ASIC et reseaux datacenter.",
+            "sources": [
+              "https://investor.qualcomm.com/news-events/press-releases/news-details/2026/Qualcomm-Accelerates-Diversification-with-Comprehensive-Strategy-for-Data-Center-and-Sees-Multiple-Inflection-Points-Over-the-Next-3-to-5-Years/default.aspx"
+            ]
+          }
+        }
+      }
+    },
+    "ADI": {
+      "fundamental_strength": 66.15,
+      "novelty": 95,
+      "pricing_headroom": 65,
+      "valuation": 44.8,
+      "execution_risk": 33,
+      "signal_score": 67.59,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 11019707000.0,
+          "ocf": 4812202000.0,
+          "capex": 533552000.0,
+          "fcf": 4278650000.0,
+          "capex_ocf_pct": 11.09,
+          "fcf_margin_pct": 38.83,
+          "fcf_per_share": 8.614,
+          "roic_pct": 6.46,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 2.24,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-09-16",
+            "score": 95,
+            "rationale": "Acquisition d'Alif Semiconductor pour 1,35 Md$ afin d'ajouter des processeurs AI-native et renforcer l'edge/physical AI.",
+            "sources": [
+              "https://www.analog.com/en/newsroom/press-releases/2026/9-9-2026-adi-to-acquire-alif-semiconductor.html",
+              "https://www.reuters.com/technology/analog-devices-buy-alif-semiconductor-135-billion-2026-09-09/"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-09-16",
+            "score": 65,
+            "rationale": "Le mouvement ouvre un nouveau vecteur de croissance edge AI encore peu materialise dans les revenus d'ADI.",
+            "sources": [
+              "https://www.analog.com/en/newsroom/press-releases/2026/9-9-2026-adi-to-acquire-alif-semiconductor.html"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-09-16",
+            "score": 33,
+            "rationale": "Risque d'integration et de monetisation d'une acquisition significative, meme si Alif dispose deja de produits en production et de design wins.",
+            "sources": [
+              "https://www.analog.com/en/newsroom/press-releases/2026/9-9-2026-adi-to-acquire-alif-semiconductor.html"
+            ]
+          }
+        }
+      }
+    },
+    "MRVL": {
+      "fundamental_strength": 46.14,
+      "novelty": 78,
+      "pricing_headroom": 40,
+      "valuation": 13.0,
+      "execution_risk": 50,
+      "signal_score": 45.43,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 8194600000.0,
+          "ocf": 1750500000.0,
+          "capex": 358600000.0,
+          "fcf": 1391900000.0,
+          "capex_ocf_pct": 20.49,
+          "fcf_margin_pct": 16.99,
+          "fcf_per_share": 1.6004,
+          "roic_pct": 7.13,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 0.65,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 78,
+            "rationale": "Lors de sa journée investisseurs du 6 octobre, Marvell a relevé sa prévision de chiffre d'affaires de l'exercice 2028 à environ 20 Md$, au-dessus du consensus d'environ 18,2 Md$, et vise 12 Md$ de revenus de puces sur mesure en 2029. Cela suit l'accord commercial pluriannuel avec Google sur l'écosystème TPU, signé le 29 juillet et pouvant atteindre 120 Md$ d'achats cumulés jusqu'à l'exercice 2033, ainsi que l'extension de capacité optique avec GlobalFoundries.",
+            "sources": [
+              "https://www.reuters.com/business/marvell-raises-2028-revenue-forecast-strong-ai-data-center-demand-2026-10-06/",
+              "https://www.morningstar.com/stocks/marvell-with-google-chip-deal-firm-landing-white-whale",
+              "https://www.reuters.com/business/globalfoundries-marvell-expand-chip-capacity-deal-ai-data-center-connectivity-2026-09-17/"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 40,
+            "rationale": "Le titre a fortement progressé depuis l'accord Google et les objectifs d'analystes ont été relevés après la journée investisseurs; le rendement du flux de trésorerie disponible reste inférieur à 1 %. Les nouvelles prévisions dépassent encore le consensus, mais l'essentiel du gain lié à Google est attendu vers 2029, ce qui limite ce que le prix n'intègre pas déjà.",
+            "sources": [
+              "https://www.reuters.com/business/marvell-raises-2028-revenue-forecast-strong-ai-data-center-demand-2026-10-06/",
+              "https://investor.marvell.com/news-events/press-releases/detail/1031/marvell-technology-inc-reports-second-quarter-of-fiscal-year-2027-financial-results"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 50,
+            "rationale": "Risque modéré: forte dépendance aux programmes de puces sur mesure de quelques hyperscalers, dont Google; bon de souscription accordé à Google sur environ 59 millions d'actions (près de 7 % du capital) à 206,58 $, acquis au fil de ses achats, donc dilution potentielle; montée en charge des puces sur mesure concentrée sur le second semestre de l'exercice 2027 et au-delà; concurrence directe de Broadcom.",
+            "sources": [
+              "https://www.morningstar.com/stocks/marvell-with-google-chip-deal-firm-landing-white-whale",
+              "https://thenextweb.com/news/marvell-google-12-2bn-warrant-custom-chip-deal",
+              "https://investor.marvell.com/news-events/press-releases/detail/1031/marvell-technology-inc-reports-second-quarter-of-fiscal-year-2027-financial-results"
+            ]
+          }
+        }
+      }
+    },
+    "ANET": {
+      "fundamental_strength": 100.0,
+      "novelty": 68,
+      "pricing_headroom": 35,
+      "valuation": 36.8,
+      "execution_risk": 35,
+      "signal_score": 60.96,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 9005700000.0,
+          "ocf": 4371900000.0,
+          "capex": 119500000.0,
+          "fcf": 4252400000.0,
+          "capex_ocf_pct": 2.73,
+          "fcf_margin_pct": 47.22,
+          "fcf_per_share": 3.3334,
+          "roic_pct": 195.77,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 1.84,
+          "fcf_cagr_available_pct": 111.7,
+          "fcf_per_share_cagr_available_pct": 111.17
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 68,
+            "rationale": "Le 7 octobre, Arista a présenté une gamme Ethernet à l'échelle du rack pour l'IA, conçue avec AMD, Arm, Broadcom, d-Matrix, Meta, Microsoft et Qualcomm dans le cadre de l'initiative ESUN, ce qui étend sa cible du réseau entre serveurs au réseau interne des racks d'accélérateurs. Cela suit un premier trimestre à plus de 3 Md$ et une prévision 2026 relevée à environ 12,6 Md$.",
+            "sources": [
+              "https://siliconangle.com/2026/10/07/arista-takes-ethernet-rack-network-becomes-backplane/",
+              "https://www.sec.gov/Archives/edgar/data/0001596532/000159653226000174/ex991q226-earningsrelease.htm"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 35,
+            "rationale": "Le titre évolue près de ses plus hauts annuels après le relèvement de la prévision 2026 à environ 12,6 Md$ (croissance proche de 40 %), avec un rendement du flux de trésorerie disponible d'environ 1,6 %. L'extension au réseau interne des racks pourrait ajouter un potentiel non intégré, mais elle reste à traduire en commandes.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0001596532/000159653226000174/ex991q226-earningsrelease.htm",
+              "https://www.arista.com/en/company/news/press-release/24817-pr-20261006"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 35,
+            "rationale": "Exécution et marges très solides, mais risque de concentration: Microsoft et Meta pèsent une part importante du chiffre d'affaires. La croissance est aussi limitée par la disponibilité des composants (circuits de commutation, mémoire), et la concurrence de Nvidia Spectrum-X et de Cisco s'intensifie dans le réseau IA.",
+            "sources": [
+              "https://www.sdxcentral.com/news/arista-ceo-jayshree-ullal-blunt-on-memory-chip-constraints/",
+              "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-resets-arista-stock-221700338.html"
+            ]
+          }
+        }
+      }
+    },
+    "VRT": {
+      "fundamental_strength": 80.75,
+      "novelty": 66,
+      "pricing_headroom": 35,
+      "valuation": 47.6,
+      "execution_risk": 40,
+      "signal_score": 57.87,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 10229900000.0,
+          "ocf": 2113800000.0,
+          "capex": 226400000.0,
+          "fcf": 1887400000.0,
+          "capex_ocf_pct": 10.71,
+          "fcf_margin_pct": 18.45,
+          "fcf_per_share": 4.8314,
+          "roic_pct": 27.16,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 2.38,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 66,
+            "rationale": "Le 2 septembre, Vertiv a annoncé l'acquisition d'UtilityInnovation Group (microréseaux et alimentation électrique sur site) pour environ 1,45 Md$ en numéraire plus jusqu'à 1,15 Md$ de compléments liés aux résultats, ce qui étend son offre en amont jusqu'au raccordement électrique des data centers IA. Cela suit un relèvement de la prévision 2026 à environ 14 Md$ de ventes et 31 % de croissance organique.",
+            "sources": [
+              "https://www.vertiv.com/en-us/about/news-and-events/corporate-news/2026/vertiv-announces-agreement-to-acquire-utilityinnovation-group-to-accelerate-time-to-power-for-ai-data-centers/",
+              "https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Second-Quarter-2026-with-Diluted-EPS-Growth-of-53-Adjusted-Diluted-EPS-Growth-of-60-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/default.aspx"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 35,
+            "rationale": "La forte croissance liée au refroidissement et à l'alimentation des data centers IA est largement intégrée: rendement du flux de trésorerie disponible d'environ 2 %, débat ouvert sur la valorisation entre analystes début octobre. Le potentiel non intégré tient surtout à l'apport de l'alimentation sur site, qui reste à démontrer.",
+            "sources": [
+              "https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Second-Quarter-2026-with-Diluted-EPS-Growth-of-53-Adjusted-Diluted-EPS-Growth-of-60-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/default.aspx",
+              "https://www.marketbeat.com/stocks/NYSE/VRT/news/"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 40,
+            "rationale": "Risque modéré: au deuxième trimestre 2026, une partie du chiffre d'affaires a été décalée par une congestion temporaire de la chaîne d'approvisionnement et l'exécution par phases des projets; accélération attendue au second semestre; intégration de plusieurs acquisitions (ThermoKey, UtilityInnovation Group) et changement de responsable de la production; dépendance au cycle d'investissement des data centers IA.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0001674101/000162828026050323/q22026exhibit991vrt07292026.htm",
+              "https://datacenterdynamics.com/en/news/vertiv-acquires-microgrid-company-utilityinnovation"
+            ]
+          }
+        }
+      }
+    },
+    "COHR": {
+      "fundamental_strength": 16.8,
+      "novelty": 65,
+      "pricing_headroom": 45,
+      "valuation": 0,
+      "execution_risk": 60,
+      "signal_score": 33.36,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 7118181000.0,
+          "ocf": 79514000.0,
+          "capex": 1110083000.0,
+          "fcf": -1030569000.0,
+          "capex_ocf_pct": 1396.08,
+          "fcf_margin_pct": -14.48,
+          "fcf_per_share": -5.2745,
+          "roic_pct": 6.72,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": -2.26,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-19",
+            "score": 65,
+            "rationale": "Au quatrième trimestre de l'exercice 2026 (publié le 12 août), le chiffre d'affaires a atteint 2,05 Md$ (+34 % sur un an), au haut de la fourchette de prévision, et la prévision du premier trimestre de l'exercice 2027 (2,2 à 2,4 Md$) prolonge l'accélération portée par les liaisons optiques des centres de données IA. Coherent double sa capacité de production de phosphure d'indium avec des lignes de plaquettes de six pouces et a présenté à l'ECOC 2026 sa plateforme d'optique intégrée PhotonLink.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0000820318/000119312526346860/d128030dex991.htm",
+              "https://ir.coherent.com/news-releases/news-release-details/coherent-corp-reports-fourth-quarter-and-full-year-fiscal-2026",
+              "https://simplywall.st/stocks/us/tech/nyse-cohr/coherent/news/coherent-stock-has-the-bull-case-changed-after-new-ai-optics"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-19",
+            "score": 45,
+            "rationale": "Le marché reste sceptique : le titre a reculé avec l'ensemble du secteur optique en octobre (inquiétudes sur le financement des dépenses d'IA et hausse des taux) et certains analystes sont neutres (B. Riley), alors que la croissance du chiffre d'affaires et des marges se poursuit. Une revalorisation reste possible si les investissements massifs se traduisent en flux de trésorerie, mais le flux de trésorerie disponible est aujourd'hui négatif.",
+            "sources": [
+              "https://finance.yahoo.com/markets/stocks/articles/coherent-stock-falls-nearly-8-165354917.html",
+              "https://technosight.substack.com/p/ai-and-the-laser-shortage-part-2"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-19",
+            "score": 60,
+            "rationale": "Risque élevé : les dépenses d'investissement trimestrielles ont bondi à environ 556 M$ (contre 131 M$ un an plus tôt), rendant le flux de trésorerie disponible annuel négatif; une grande partie du chiffre d'affaires dépend des investissements IA des hyperscalers, et ces capacités nouvelles pourraient ne pas se traduire en volumes rentables si la demande ou les prix se retournent.",
+            "sources": [
+              "https://simplywall.st/stocks/us/tech/nyse-cohr/coherent/news/is-ai-spending-worries-altering-the-investment-case-for-cohe",
+              "https://seekingalpha.com/article/4868141-coherent-six-inch-indium-phosphide-moat-secures-ai-alpha"
+            ]
+          }
+        }
+      }
+    },
+    "LITE": {
+      "fundamental_strength": 46.2,
+      "novelty": 75,
+      "pricing_headroom": 30,
+      "valuation": 8.0,
+      "execution_risk": 50,
+      "signal_score": 41.84,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 3014000000.0,
+          "ocf": 751400000.0,
+          "capex": 451300000.0,
+          "fcf": 300100000.0,
+          "capex_ocf_pct": 60.06,
+          "fcf_margin_pct": 9.96,
+          "fcf_per_share": 4.0228,
+          "roic_pct": 11.84,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 0.4,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-19",
+            "score": 75,
+            "rationale": "Au quatrième trimestre de l'exercice 2026 (clos le 27 juin, publié le 11 août), le chiffre d'affaires a doublé, à 1,01 Md$ contre 480,7 M$ un an plus tôt, et la prévision du premier trimestre de l'exercice 2027 (1,225 à 1,275 Md$, marge opérationnelle non-GAAP d'environ 40 %) marque une nouvelle forte accélération portée par l'IA. Lumentum a reçu une commande supplémentaire de plusieurs centaines de millions de dollars en optique co-intégrée (CPO), livrable au premier semestre 2027, et des analystes jugent la montée en puissance de la CPO chez Nvidia plus rapide que prévu.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0001633978/000162828026055726/lite_ex991xq4fy26.htm",
+              "https://www.sec.gov/Archives/edgar/data/1633978/000162828026005005/lite_ex991xq2fy26.htm",
+              "https://seekingalpha.com/news/4647991-lumentums-outlook-brightens-on-nvidias-co-packaged-optics-scale-out-gf"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-19",
+            "score": 30,
+            "rationale": "La croissance attendue semble déjà en grande partie intégrée : rendement du flux de trésorerie disponible très faible (environ 0,3 %) et cours très volatil (repli d'environ 10 % le 12 octobre lors d'une baisse sectorielle de l'optique, sans nouvelle propre à la société). Les relèvements d'objectifs d'analystes (Stifel le 5 octobre) et les résultats du 5 novembre laissent une marge limitée de revalorisation supplémentaire.",
+            "sources": [
+              "https://www.tikr.com/blog/lumentum-stock-falls-nearly-10-as-optics-stocks-slide-in-a-sector-wide-selloff-heres-where-the-stock-could-go-by-2032",
+              "https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Reporting-Date-for-Fiscal-First-Quarter-2027-Financial-Results/default.aspx"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-19",
+            "score": 50,
+            "rationale": "Risque moyen : capacités de production insuffisantes (la direction dit manquer de lasers EML et CPO), investissements lourds (environ 60 % du flux de trésorerie d'exploitation absorbés par les dépenses d'investissement), forte dépendance aux grands clients de l'IA, et perte comptable de 7,8 Md$ liée au rachat d'obligations convertibles au quatrième trimestre, signe d'une structure de capital encore en transformation.",
+            "sources": [
+              "https://www.marketbeat.com/instant-alerts/lumentum-q4-earnings-call-highlights-2026-08-11/",
+              "https://www.sec.gov/Archives/edgar/data/0001633978/000162828026055726/lite_ex991xq4fy26.htm"
+            ]
+          }
+        }
+      }
+    },
+    "TSLA": {
+      "fundamental_strength": 27.71,
+      "novelty": 60,
+      "pricing_headroom": 15,
+      "valuation": 8.6,
+      "execution_risk": 70,
+      "signal_score": 28.26,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 94827000000.0,
+          "ocf": 14747000000.0,
+          "capex": 8527000000.0,
+          "fcf": 6220000000.0,
+          "capex_ocf_pct": 57.82,
+          "fcf_margin_pct": 6.56,
+          "fcf_per_share": 1.7639,
+          "roic_pct": 6.71,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 0.43,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 60,
+            "rationale": "Tesla a lancé début septembre à Austin un service payant de Cybercab sans conducteur, puis a publié des livraisons du troisième trimestre au-dessus des attentes (486 532 véhicules); en Europe, l'approbation de sa conduite assistée est repoussée au moins à décembre. Le passage à un service robotaxi commercial est matériel, mais son ampleur reste peu documentée par l'entreprise.",
+            "sources": [
+              "https://www.reuters.com/business/autos-transportation/tesla-posts-stronger-than-expected-quarterly-deliveries-2026-10-02/",
+              "https://www.wardsauto.com/news/tesla-faces-federal-probe-over-cybercab-rollout/829735/",
+              "https://www.reuters.com/business/autos-transportation/tesla-renames-full-self-driving-assisted-driving-europe-it-chases-clearance-2026-10-09/"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 15,
+            "rationale": "La valorisation intègre déjà largement les robotaxis, Optimus et l'IA physique, alors que le rendement du flux de trésorerie disponible reste inférieur à 1 % et que la marge opérationnelle est tombée à 1,4 % au deuxième trimestre 2026. Le potentiel non intégré est faible: il faudrait une montée en charge des robotaxis nettement plus rapide que celle déjà anticipée.",
+            "sources": [
+              "https://electrek.co/2026/07/22/tesla-tsla-q2-2026-financial-results/",
+              "https://www.sec.gov/Archives/edgar/data/0001318605/000162828026049270/tsla-20260630.htm"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 70,
+            "rationale": "Risque élevé: investissements 2026 prévus au-dessus de 25 Md$ contre 8,5 Md$ en 2025, flux de trésorerie disponible négatif au deuxième trimestre, 30 Md$ de lignes de crédit pour financer robotaxis, calcul IA et semi-conducteurs; audit de la NHTSA sur la certification de sécurité du Cybercab ouvert le 3 septembre; approbation européenne de la conduite assistée retardée. Plusieurs paris technologiques simultanés dépendent d'autorisations réglementaires.",
+            "sources": [
+              "https://www.reuters.com/business/autos-transportation/tesla-lines-up-30-billion-credit-lines-capex-robotaxi-push-accelerate-2026-09-29/",
+              "https://nhtsa.gov/press-releases/investigation-tesla-cybercab-self-certification",
+              "https://www.sec.gov/Archives/edgar/data/0001318605/000162828026049270/tsla-20260630.htm"
+            ]
+          }
+        }
+      }
+    },
+    "ISRG": {
+      "fundamental_strength": 91.25,
+      "novelty": 70,
+      "pricing_headroom": 35,
+      "valuation": 32.6,
+      "execution_risk": 10,
+      "signal_score": 63.77,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 10064700000.0,
+          "ocf": 3030500000.0,
+          "capex": 539800000.0,
+          "fcf": 2490700000.0,
+          "capex_ocf_pct": 17.81,
+          "fcf_margin_pct": 24.75,
+          "fcf_per_share": 6.8671,
+          "roic_pct": 21.52,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 1.63,
+          "fcf_cagr_available_pct": 37.49,
+          "fcf_per_share_cagr_available_pct": 37.4
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-09-16",
+            "score": 70,
+            "rationale": "Marquage CE des instruments Force Feedback de da Vinci 5 et plus de 100 ameliorations logicielles et d'experience en Europe.",
+            "sources": [
+              "https://www.intuitive.com/en-gb/about-us/newsroom/Intuitive-advances-da-vinci-5-innovations-in-europe"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-09-16",
+            "score": 35,
+            "rationale": "La qualite de la plateforme et sa domination sont deja largement reconnues; le signal renforce surtout le moat existant.",
+            "sources": [
+              "https://www.intuitive.com/en-gb/about-us/newsroom/Intuitive-advances-da-vinci-5-innovations-in-europe"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-09-16",
+            "score": 10,
+            "rationale": "Faible risque d'execution relatif sur cette extension europeenne d'une plateforme deja deployee.",
+            "sources": [
+              "https://www.intuitive.com/en-gb/about-us/newsroom/Intuitive-advances-da-vinci-5-innovations-in-europe"
+            ]
+          }
+        }
+      }
+    },
+    "TER": {
+      "fundamental_strength": 73.53,
+      "novelty": 70,
+      "pricing_headroom": 25,
+      "valuation": 17.2,
+      "execution_risk": 45,
+      "signal_score": 48.15,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 3190024000.0,
+          "ocf": 674415000.0,
+          "capex": 224009000.0,
+          "fcf": 450406000.0,
+          "capex_ocf_pct": 33.22,
+          "fcf_margin_pct": 14.12,
+          "fcf_per_share": 2.82,
+          "roic_pct": 21.94,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 0.86,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-13",
+            "score": 70,
+            "rationale": "Au deuxième trimestre 2026 (publié le 28 juillet), le chiffre d'affaires a atteint un record de 1 329 M$ (+104 % sur un an), au-dessus du haut de la fourchette de prévision pour le deuxième trimestre consécutif, porté par la demande liée à l'IA et par un record dans le test mémoire (DRAM, retour du test final NAND). Depuis, la série de lancements s'est poursuivie : testeur UltraFLEXplus S24 pour les puces d'IA embarquée (12 octobre) et investissement stratégique dans Bright Machines (5 octobre) pour les micro-usines d'infrastructure IA.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0000097210/000119312526188706/ter-ex99_1.htm",
+              "https://ca.investing.com/news/stock-market-news/teradyne-launches-ultraflexplus-s24-test-system-for-edge-ai-chips-93CH-4876275",
+              "https://www.globenewswire.com/news-release/2026/10/05/3374581/0/en/teradyne-makes-strategic-investment-in-bright-machines-to-advance-ai-infrastructure-manufacturing.html"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-13",
+            "score": 25,
+            "rationale": "Après la très forte hausse du titre, le multiple de bénéfices est élevé (autour de 50 fois les bénéfices passés) et l'objectif de cours moyen des analystes ne laisse qu'une faible marge par rapport au cours; le cycle de l'IA et la reprise du test mémoire semblent largement intégrés. La prévision du troisième trimestre (1,2 à 1,3 Md$) est en léger retrait par rapport au record du deuxième trimestre.",
+            "sources": [
+              "https://finance.yahoo.com/markets/stocks/articles/know-ahead-teradyne-earnings-release-123448568.html",
+              "https://www.sec.gov/Archives/edgar/data/0000097210/000119312526188706/ter-ex99_1.htm"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-13",
+            "score": 45,
+            "rationale": "Risque modéré : activité de test de semi-conducteurs cyclique et fortement dépendante de la demande liée à l'IA (plus de 60 % du chiffre d'affaires selon une source secondaire) et d'un nombre restreint de grands clients hyperscalers; la robotique reste un petit segment (100 M$ au deuxième trimestre). Résultats du troisième trimestre attendus le 21 octobre.",
+            "sources": [
+              "https://www.tikr.com/blog/teradyne-stock-analysts-see-more-upside-in-2026-after-soaring-242-last-year",
+              "https://investors.teradyne.com/news-events/press-releases/detail/445/teradyne-reports-second-quarter-2026-results"
+            ]
+          }
+        }
+      }
+    },
+    "ROK": {
+      "fundamental_strength": 69.66,
+      "novelty": 52,
+      "pricing_headroom": 40,
+      "valuation": 57.6,
+      "execution_risk": 35,
+      "signal_score": 56.85,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 8342000000.0,
+          "ocf": 1544000000.0,
+          "capex": 186000000.0,
+          "fcf": 1358000000.0,
+          "capex_ocf_pct": 12.05,
+          "fcf_margin_pct": 16.28,
+          "fcf_per_share": 12.0071,
+          "roic_pct": 17.01,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 2.88,
+          "fcf_cagr_available_pct": 25.81,
+          "fcf_per_share_cagr_available_pct": 27.13
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-12",
+            "score": 52,
+            "rationale": "Au troisième trimestre fiscal 2026 (publié le 4 août), les ventes organiques ont progressé de 10 % et le pôle Software & Control de 18 %, tirés par les semi-conducteurs, les data centers et l'automatisation logistique, avec une prévision annuelle relevée. Les annonces d'octobre (services de cybersécurité industrielle SecureOT, consortium Digital CMC, changements de direction au 1er octobre) restent incrémentales.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0001024478/000102447826000028/q3fy26ex99.htm",
+              "https://www.rockwellautomation.com/en-us/company/news/press-releases/Rockwell-Automation-Expands-SecureOT-Managed-Services-to-Support-Fortinet-Firewalls-and-Existing-Customer-Infrastructure.html"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-12",
+            "score": 40,
+            "rationale": "Avec un rendement du flux de trésorerie disponible d'environ 2,7 % et un consensus d'analystes neutre, la reprise de la demande industrielle et l'exposition aux data centers semblent déjà en grande partie intégrées; les résultats annuels et la réunion investisseurs de novembre pourraient préciser les perspectives 2027.",
+            "sources": [
+              "https://www.rockwellautomation.com/en-us/company/news/press-releases/Rockwell-Automation-Reports-Third-Quarter-2026-Results.html",
+              "https://finance.yahoo.com/markets/stocks/articles/rockwell-automation-q3-earnings-call-040349937.html"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-12",
+            "score": 35,
+            "rationale": "Risque modéré-faible: exécution solide et marges en hausse, mais demande industrielle cyclique encore faible dans l'agroalimentaire et certaines industries de process, sensibilité aux droits de douane, et réorganisation de l'équipe de direction effective au 1er octobre 2026.",
+            "sources": [
+              "https://finance.yahoo.com/markets/stocks/articles/rockwell-automation-q3-earnings-call-040349937.html",
+              "https://www.rockwellautomation.com/en-us/company/news/press-releases/Rockwell-Automation-Announces-Executive-Leadership-Team-Role-Transitions.html"
+            ]
+          }
+        }
+      }
+    },
+    "CGNX": {
+      "fundamental_strength": 61.14,
+      "novelty": 62,
+      "pricing_headroom": 35,
+      "valuation": 51.0,
+      "execution_risk": 45,
+      "signal_score": 52.83,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 994359000.0,
+          "ocf": 245514000.0,
+          "capex": 8743000.0,
+          "fcf": 236771000.0,
+          "capex_ocf_pct": 3.56,
+          "fcf_margin_pct": 23.81,
+          "fcf_per_share": 1.398,
+          "roic_pct": 8.58,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 2.55,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-12",
+            "score": 62,
+            "rationale": "Au deuxième trimestre 2026 (clos le 5 juillet), le chiffre d'affaires a atteint un record de 291 M$ (+17 % sur un an), le BPA ajusté a progressé de 80 % et la marge d'EBITDA ajustée a gagné environ 11 points; la logistique a signé un dixième trimestre consécutif de croissance à deux chiffres. Le 22 septembre, Cognex a annoncé l'acquisition de RealSense (caméras de profondeur, environ 500 M$ en numéraire, clôture prévue au T4) pour entrer dans la perception robotique; le 2 octobre, lancement de l'In-Sight 1750 pour l'identification des wafers.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0000851205/000085120526000061/a07052026-xex991xq22026ear.htm",
+              "https://investor.cognex.com/news/news-details/2026/Cognex-to-Acquire-RealSense-Expanding-Machine-Vision-Leadership-into-High-Growth-Robotic-Perception-Market/default.aspx",
+              "https://metrology.news/cognex-launches-ai-powered-wafer-identification-system/"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-12",
+            "score": 35,
+            "rationale": "Après une forte hausse depuis le début de l'année, la reprise des marges et la croissance d'environ 15 % visée pour 2026 (1,13 à 1,15 Md$) semblent largement intégrées : rendement du flux de trésorerie disponible bas et consensus d'analystes majoritairement neutre (D.A. Davidson neutre, Truist conservé à Conserver avec objectif abaissé). Les résultats du troisième trimestre, attendus fin octobre, et l'intégration de RealSense restent des catalyseurs à confirmer.",
+            "sources": [
+              "https://www.investing.com/news/analyst-ratings/da-davidson-reiterates-cognex-stock-neutral-on-realsense-deal-93CH-4913049",
+              "https://finance.yahoo.com/markets/stocks/articles/cognex-cgnx-stock-could-expensive-071138403.html",
+              "https://www.sec.gov/Archives/edgar/data/0000851205/000085120526000061/a07052026-xex991xq22026ear.htm"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-12",
+            "score": 45,
+            "rationale": "Risque modéré : intégration d'une acquisition d'environ 500 M$ financée sur la trésorerie, avec des programmes de rétention et d'actions gratuites pour les salariés de RealSense; recul de l'automobile au deuxième trimestre; sensibilité aux cycles d'investissement industriel; coût et disponibilité des puces mémoire signalés par la direction; concurrence en Chine.",
+            "sources": [
+              "https://www.stocktitan.net/sec-filings/CGNX/8-k-cognex-corp-reports-material-event-d2e9c367f48d.html",
+              "https://www.marketbeat.com/instant-alerts/cognex-q2-earnings-call-highlights-2026-08-06/",
+              "https://seekingalpha.com/article/4951761-cognex-wait-for-a-better-time-to-buy"
+            ]
+          }
+        }
+      }
+    },
+    "SYM": {
+      "fundamental_strength": null,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": 66.8,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "fundamental_strength",
+        "novelty",
+        "pricing_headroom",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 2246922000.0,
+          "ocf": 866939000.0,
+          "capex": 79030000.0,
+          "fcf": 787909000.0,
+          "capex_ocf_pct": 9.12,
+          "fcf_margin_pct": 35.07,
+          "fcf_per_share": 7.2505,
+          "roic_pct": null,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 3.34,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {}
+      }
+    },
+    "MDT": {
+      "fundamental_strength": 44.59,
+      "novelty": 80,
+      "pricing_headroom": 70,
+      "valuation": 91.4,
+      "execution_risk": 42,
+      "signal_score": 68.8,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2026,
+          "revenue": 36364000000.0,
+          "ocf": 7330000000.0,
+          "capex": 1904000000.0,
+          "fcf": 5426000000.0,
+          "capex_ocf_pct": 25.98,
+          "fcf_margin_pct": 14.92,
+          "fcf_per_share": 4.2124,
+          "roic_pct": 7.89,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 4.57,
+          "fcf_cagr_available_pct": 5.81,
+          "fcf_per_share_cagr_available_pct": 7.02
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-09-16",
+            "score": 80,
+            "rationale": "Investissement d'environ 700 M$ dans Cornerstone Robotics avec droits de distribution de Sentire hors Etats-Unis, en complement de Hugo.",
+            "sources": [
+              "https://news.medtronic.com/2026-09-01-Medtronic-Announces-Strategic-Partnership-with-Cornerstone-Robotics-to-Further-Expand-Global-Access-to-Robotic-Assisted-Surgery"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-09-16",
+            "score": 70,
+            "rationale": "La robotique chirurgicale represente encore une option de croissance relativement secondaire dans la valorisation globale de Medtronic.",
+            "sources": [
+              "https://news.medtronic.com/2026-09-01-Medtronic-Announces-Strategic-Partnership-with-Cornerstone-Robotics-to-Further-Expand-Global-Access-to-Robotic-Assisted-Surgery"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-09-16",
+            "score": 42,
+            "rationale": "Le portefeuille multi-plateforme cree une opportunite mais augmente le risque commercial et d'integration face a un leader tres installe.",
+            "sources": [
+              "https://news.medtronic.com/2026-09-01-Medtronic-Announces-Strategic-Partnership-with-Cornerstone-Robotics-to-Further-Expand-Global-Access-to-Robotic-Assisted-Surgery"
+            ]
+          }
+        }
+      }
+    },
+    "LLY": {
+      "fundamental_strength": 65.25,
+      "novelty": 65,
+      "pricing_headroom": 25,
+      "valuation": 10.8,
+      "execution_risk": 35,
+      "signal_score": 46.21,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 65179000000.0,
+          "ocf": 16813000000.0,
+          "capex": 10849000000.0,
+          "fcf": 5964000000.0,
+          "capex_ocf_pct": 64.53,
+          "fcf_margin_pct": 9.15,
+          "fcf_per_share": 6.6318,
+          "roic_pct": 38.56,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 0.54,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 65,
+            "rationale": "Flux régulier d'avancées matérielles mais incrémentales autour d'une franchise déjà connue: approbation FDA de l'insuline hebdomadaire Onswik le 24 septembre, perte de poids moyenne proche de 21 % chez des diabétiques de type 2 obèses dans un essai de phase avancée le 29 septembre, et analyses post-hoc du 1er octobre associant Foundayo (orforglipron oral) à une réduction prédite du risque de diabète de type 2 et de maladie cardiovasculaire.",
+            "sources": [
+              "https://www.reuters.com/legal/litigation/us-fda-approves-lillys-once-weekly-insulin-injection-type-2-diabetes-2026-09-24/",
+              "https://www.reuters.com/business/healthcare-pharmaceuticals/lillys-experimental-drug-cuts-weight-by-21-diabetes-trial-2026-09-29/",
+              "https://investor.lilly.com/news-releases/news-release-details/lillys-oral-glp-1-foundayo-orforglipron-was-associated"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 25,
+            "rationale": "Avec une capitalisation d'environ 1 000 Md$ et un rendement du flux de trésorerie disponible inférieur à 1 %, le marché intègre déjà une croissance très forte des incrétines; la prévision 2026 relevée à 85-87 Md$ de chiffre d'affaires au deuxième trimestre est connue. Le potentiel non intégré dépend surtout de nouvelles indications et de l'adoption des formes orales.",
+            "sources": [
+              "https://investor.lilly.com/news-releases/news-release-details/lilly-reports-second-quarter-2026-financial-results-raises-full",
+              "https://www.sec.gov/Archives/edgar/data/0000059478/000005947826000077/q226lillysalesandearningsp.htm"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 35,
+            "rationale": "Risque modéré-faible sur l'exécution industrielle et clinique, mais pression nette sur les prix: prix réalisés en baisse de 13 % au deuxième trimestre 2026, dont -36 % hors États-Unis avec le remboursement de Mounjaro en Chine, et engagements de prix réduits avec l'administration américaine pour l'obésité. La croissance repose sur les volumes et sur d'importants investissements de capacité; la concurrence des GLP-1 oraux et injectables s'intensifie.",
+            "sources": [
+              "https://investor.lilly.com/news-releases/news-release-details/lilly-reports-second-quarter-2026-financial-results-raises-full",
+              "https://www.thepharmaletter.com/pharma-news/lilly-beats-forecasts-as-mounjaro-zepbound-drive-48-revenue-surge",
+              "https://www.managedhealthcareexecutive.com/view/deal-with-white-house-provides-discounts-on-some-glp-1-drugs-for-obesity"
+            ]
+          }
+        }
+      }
+    },
+    "NVO": {
+      "fundamental_strength": 65.64,
+      "novelty": null,
+      "pricing_headroom": null,
+      "valuation": null,
+      "execution_risk": null,
+      "signal_score": null,
+      "missing_components": [
+        "novelty",
+        "pricing_headroom",
+        "valuation",
+        "execution_risk"
+      ],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 309064000000.0,
+          "ocf": 119102000000.0,
+          "capex": 90113000000.0,
+          "fcf": 28989000000.0,
+          "capex_ocf_pct": 75.66,
+          "fcf_margin_pct": 9.38,
+          "fcf_per_share": 6.5175,
+          "roic_pct": 33.61,
+          "financial_currency": "DKK",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": false,
+          "fcf_yield_pct": null,
+          "fcf_cagr_available_pct": -23.26,
+          "fcf_per_share_cagr_available_pct": -22.7
+        },
+        "research": {}
+      }
+    },
+    "REGN": {
+      "fundamental_strength": 75.17,
+      "novelty": 68,
+      "pricing_headroom": 55,
+      "valuation": 93.6,
+      "execution_risk": 40,
+      "signal_score": 70.35,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 14342900000.0,
+          "ocf": 4978900000.0,
+          "capex": 1213700000.0,
+          "fcf": 3765200000.0,
+          "capex_ocf_pct": 24.38,
+          "fcf_margin_pct": 26.25,
+          "fcf_per_share": 34.6703,
+          "roic_pct": 12.57,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 4.68,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 68,
+            "rationale": "Le 1er octobre, Sanofi et Regeneron ont élargi leur alliance à quatre anticorps d'immunologie à action prolongée, avec 1 Md$ de paiement initial pour Regeneron et jusqu'à 7 Md$ d'étapes potentielles; un essai de phase 2 a aussi montré que le trevogrumab préserve la masse musculaire pendant une perte de poids sous GLP-1. Au deuxième trimestre, Regeneron a fini de rembourser le solde de développement dû à Sanofi et perçoit désormais sa pleine part des profits de Dupixent.",
+            "sources": [
+              "https://www.sanofi.com/en/media-room/press-releases/2026/2026-10-01-05-00-00-3372517",
+              "https://investor.regeneron.com/news-releases/news-release-details/regeneron-reports-second-quarter-2026-financial-and-operating"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 55,
+            "rationale": "Le marché reste focalisé sur le déclin d'Eylea classique, alors que Dupixent progresse de 38 % et qu'Eylea HD représente déjà 60 % de la franchise Eylea; le rendement du flux de trésorerie disponible élevé laisse penser que la hausse de la part des profits de Dupixent et les nouveaux paiements de Sanofi ne sont que partiellement intégrés.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0000872589/000087258926000023/exhibit991q22026.htm",
+              "https://finance.yahoo.com/healthcare/articles/regeneron-q2-earnings-beat-sales-155800381.html"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 40,
+            "rationale": "Risque modéré: ventes américaines d'Eylea classique en baisse de 45 % au deuxième trimestre face aux biosimilaires et à la conversion vers Eylea HD; forte dépendance à Dupixent, partagé avec Sanofi, dont la croissance doit ralentir sur des bases de comparaison plus exigeantes; plusieurs programmes (obésité, oncologie) encore aux stades précoces ou intermédiaires.",
+            "sources": [
+              "https://investor.regeneron.com/news-releases/news-release-details/regeneron-reports-second-quarter-2026-financial-and-operating",
+              "https://www.sec.gov/Archives/edgar/data/0000872589/000087258926000023/exhibit991q22026.htm"
+            ]
+          }
+        }
+      }
+    },
+    "VRTX": {
+      "fundamental_strength": 94.35,
+      "novelty": 62,
+      "pricing_headroom": 45,
+      "valuation": 50.2,
+      "execution_risk": 40,
+      "signal_score": 62.31,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 12001300000.0,
+          "ocf": 3631400000.0,
+          "capex": 437600000.0,
+          "fcf": 3193800000.0,
+          "capex_ocf_pct": 12.05,
+          "fcf_margin_pct": 26.61,
+          "fcf_per_share": 12.3791,
+          "roic_pct": 27.52,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 2.51,
+          "fcf_cagr_available_pct": -6.64,
+          "fcf_per_share_cagr_available_pct": -6.51
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 62,
+            "rationale": "Vertex a annoncé en juillet le rachat de Crinetics pour environ 10 Md$ (85 $ par action), sa plus grosse opération, qui ajoute Palsonify (acromégalie) et un candidat de phase 3; au deuxième trimestre, Casgevy et Journavx ont fortement accéléré et la prévision 2026 a été relevée à 13,1-13,2 Md$. La décision de la FDA sur le povetacicept (néphropathie à IgA) est attendue le 30 novembre. Je n'ai pas trouvé d'événement matériel daté de septembre-octobre.",
+            "sources": [
+              "https://investors.vrtx.com/news-releases/news-release-details/vertex-reports-second-quarter-2026-financial-results",
+              "https://www.bioworld.com/articles/732289-vertex-buying-crinetics-for-10b"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 45,
+            "rationale": "Avec un rendement du flux de trésorerie disponible d'environ 2,5 %, le marché intègre la solidité de la franchise mucoviscidose; la diversification (Casgevy, Journavx, povetacicept, Crinetics) ne pèse encore que quelques centaines de millions de dollars par trimestre et n'est que partiellement intégrée, sous réserve de l'approbation du povetacicept.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0000875320/000087532026000256/ex-991_q22026.htm",
+              "https://investors.vrtx.com/news-releases/news-release-details/vertex-reports-second-quarter-2026-financial-results"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 40,
+            "rationale": "Risque modéré: décision réglementaire binaire sur le povetacicept fin novembre; le dosage de zimislecel (diabète de type 1) a été suspendu pour une revue de fabrication avant de reprendre; intégration de Crinetics financée en partie par 4,5 Md$ de dette relais; forte dépendance persistante à la mucoviscidose, les nouveaux lancements restant modestes.",
+            "sources": [
+              "https://www.bioprocessintl.com/therapeutic-class/vertex-provides-update-on-t1d-therapy-manufacturing-as-commercialization-draws-near",
+              "https://www.bioworld.com/articles/732289-vertex-buying-crinetics-for-10b",
+              "https://www.sec.gov/Archives/edgar/data/0000875320/000087532026000256/ex-991_q22026.htm"
+            ]
+          }
+        }
+      }
+    },
+    "AMGN": {
+      "fundamental_strength": 72.76,
+      "novelty": 50,
+      "pricing_headroom": 50,
+      "valuation": 70.6,
+      "execution_risk": 45,
+      "signal_score": 59.67,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 36751000000.0,
+          "ocf": 9958000000.0,
+          "capex": 1858000000.0,
+          "fcf": 8100000000.0,
+          "capex_ocf_pct": 18.66,
+          "fcf_margin_pct": 22.04,
+          "fcf_per_share": 14.9446,
+          "roic_pct": 14.41,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 3.53,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 50,
+            "rationale": "Pas de catalyseur majeur identifié en septembre-octobre: les faits matériels récents sont le relèvement de la prévision 2026 à 38,2-39,4 Md$ au deuxième trimestre, la forte croissance de Repatha (+37 %) et d'Evenity (+38 %), et l'élargissement du programme de phase 3 de MariTide (apnée du sommeil, diabète de type 2), sans nouveau résultat clinique publié.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0000318154/000031815426000124/amgn-20260630earningsrelea.htm",
+              "https://finance.yahoo.com/healthcare/articles/amgen-q2-2026-earnings-beat-132232577.html"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 50,
+            "rationale": "Avec un rendement du flux de trésorerie disponible proche de 3,7 %, le marché valorise surtout l'érosion des produits matures; une réussite de MariTide dans l'obésité représenterait un potentiel non intégré, mais le sentiment des investisseurs reste partagé et aucun résultat de phase 3 n'est attendu à court terme.",
+            "sources": [
+              "https://finance.yahoo.com/news/amgen-gears-up-for-phase-3-trial-of-monthly-weight-loss-drug-maritide-amid-mixed-investor-sentiment-183015561.html",
+              "https://www.sec.gov/Archives/edgar/data/0000318154/000031815426000124/amgn-20260630earningsrelea.htm"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 45,
+            "rationale": "Risque modéré: ventes de Prolia et Xgeva en baisse de 33 % au deuxième trimestre face aux biosimilaires, pression des prix négociés par Medicare (loi IRA), arrêt d'un candidat précoce en obésité (AMG 513) et ajustement du dosage de MariTide en phase 3 pour limiter les nausées, sur un marché de l'obésité très concurrentiel.",
+            "sources": [
+              "https://www.insurancebusinessmag.com/us/news/benefits/amgen-results-show-biosimilars-and-ira-pricing-reshaping-drug-spend-584990.aspx",
+              "https://www.fiercebiotech.com/biotech/amgen-adjusts-phase-3-dosing-plan-lead-obesity-candidate-maritide-after-high"
+            ]
+          }
+        }
+      }
+    },
+    "AZN": {
+      "fundamental_strength": 62.73,
+      "novelty": 58,
+      "pricing_headroom": 50,
+      "valuation": 68.2,
+      "execution_risk": 45,
+      "signal_score": 58.79,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 58739000000.0,
+          "ocf": 14575000000.0,
+          "capex": 5905000000.0,
+          "fcf": 8670000000.0,
+          "capex_ocf_pct": 40.51,
+          "fcf_margin_pct": 14.76,
+          "fcf_per_share": 5.5506,
+          "roic_pct": 15.25,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 3.41,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 58,
+            "rationale": "Le 28 septembre, AstraZeneca a annoncé un investissement en capital de 2 Md$ dans Summit Therapeutics (finalisé le 5 octobre) pour développer l'anticorps bispécifique ivonescimab en association avec ses anticorps conjugués, ce qui renforce sa stratégie en oncologie. Au premier semestre, l'oncologie a progressé de 15 % et pèse 46 % des ventes; l'essai CARDIO-TTRansform a en revanche déçu.",
+            "sources": [
+              "https://biopharminternational.com/view/astrazeneca-invests-2-billion-summit-ivonescimab-adc-combo",
+              "https://www.astrazeneca.com/media-centre/press-releases/2026/h1-and-q2-2026-results.html"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 50,
+            "rationale": "Avec un rendement du flux de trésorerie disponible d'environ 3,6 %, le marché intègre une croissance à un chiffre élevé confirmée pour 2026; l'objectif de 80 Md$ de chiffre d'affaires en 2030 et les associations en oncologie offrent un potentiel partiellement intégré, alors que les analystes sont déjà majoritairement positifs.",
+            "sources": [
+              "https://www.astrazeneca.com/media-centre/press-releases/2026/h1-and-q2-2026-results.html",
+              "https://www.investing.com/news/company-news/astrazeneca-h1-2026-slides-pipeline-momentum-drives-80bn-ambition-93CH-4814245"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 45,
+            "rationale": "Risque modéré: pertes d'exclusivité de Farxiga et Brilinta (cardio-rénal-métabolique en baisse de 12 % au premier semestre), échec de CARDIO-TTRansform, forte exposition à la Chine où le groupe prévoit 15 Md$ d'investissements d'ici 2030, et multiplication des opérations de croissance externe à intégrer.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0000901832/000110465926086846/azn-20260630x6k.htm",
+              "https://www.astrazeneca.com/media-centre/press-releases/2026/astrazeneca-invests-15bn-in-china-through-2030.html"
+            ]
+          }
+        }
+      }
+    },
+    "TMO": {
+      "fundamental_strength": 46.21,
+      "novelty": 45,
+      "pricing_headroom": 45,
+      "valuation": 50.2,
+      "execution_risk": 35,
+      "signal_score": 50.28,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 44557000000.0,
+          "ocf": 7818000000.0,
+          "capex": 1525000000.0,
+          "fcf": 6293000000.0,
+          "capex_ocf_pct": 19.51,
+          "fcf_margin_pct": 14.12,
+          "fcf_per_share": 16.6481,
+          "roic_pct": 9.07,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 2.51,
+          "fcf_cagr_available_pct": -3.07,
+          "fcf_per_share_cagr_available_pct": -1.73
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 45,
+            "rationale": "Pas d'événement matériel identifié en septembre-octobre au-delà de lancements de produits (microscope FT-IR) et de nouvelles offres de développement pharmaceutique présentées au CPHI Milan; le fait le plus significatif reste le relèvement de la prévision 2026 au deuxième trimestre (chiffre d'affaires 47,4-48,1 Md$, croissance organique d'environ 4 %).",
+            "sources": [
+              "https://ir.thermofisher.com/investors/news-events/news/news-details/2026/Thermo-Fisher-Scientific-Reports-Second-Quarter-2026-Results/",
+              "https://www.rutlandherald.com/news/business/thermo-fisher-scientific-showcases-new-solutions-and-expanded-capabilities-to-accelerate-drug-development-at-cphi/article_5a4fb1e2-bf61-528e-95ab-60cbbc796152.html"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 45,
+            "rationale": "Le titre a déjà repris une partie de sa baisse d'environ 31 % après le relèvement de la prévision; avec un rendement du flux de trésorerie disponible d'environ 2,5 % et une croissance organique modeste, une accélération au second semestre (environ 4 % contre 3 % au premier) n'est que partiellement intégrée.",
+            "sources": [
+              "https://www.tikr.com/blog/thermo-fisher-stock-clawed-back-from-a-31-slide-a-guidance-raise-may-explain-why",
+              "https://www.sec.gov/Archives/edgar/data/0000097745/000009774526000138/q22026earnings8kex99_1.htm"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 35,
+            "rationale": "Risque d'exécution modéré-faible pour un groupe très diversifié: la croissance dépend de la demande pharma-biotech, d'une stabilisation encore fragile des marchés académiques et gouvernementaux et de la conjoncture industrielle; la croissance organique reste limitée autour de 4 %.",
+            "sources": [
+              "https://www.investing.com/news/transcripts/earnings-call-transcript-thermo-fisher-tops-q2-2026-estimates-and-lifts-outlook-93CH-4809188",
+              "https://www.sec.gov/Archives/edgar/data/0000097745/000009774526000138/q22026earnings8kex99_1.htm"
+            ]
+          }
+        }
+      }
+    },
+    "DHR": {
+      "fundamental_strength": 50.44,
+      "novelty": 55,
+      "pricing_headroom": 55,
+      "valuation": 66.6,
+      "execution_risk": 45,
+      "signal_score": 56.41,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 24568000000.0,
+          "ocf": 6416000000.0,
+          "capex": 1156000000.0,
+          "fcf": 5260000000.0,
+          "capex_ocf_pct": 18.02,
+          "fcf_margin_pct": 21.41,
+          "fcf_per_share": 7.3453,
+          "roic_pct": 5.9,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 3.33,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 55,
+            "rationale": "Danaher a annoncé le 7 octobre un laboratoire de recherche autonome associant IA, robotique et instruments pour début 2027, avec des objectifs (découverte de molécules huit fois plus rapide) qui ne sont pas encore des résultats; une nouvelle directrice générale a pris ses fonctions le 1er octobre et l'acquisition de Masimo a été finalisée en juin. Signal réel mais encore prospectif.",
+            "sources": [
+              "https://www.reuters.com/business/healthcare-pharmaceuticals/life-sciences-firm-danaher-launch-ai-powered-autonomous-research-lab-2027-2026-10-07/",
+              "https://www.danaher.com/newsroom"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 55,
+            "rationale": "Le titre a chuté d'environ 15 % après les résultats du deuxième trimestre 2026 sur le report en 2027 d'environ 100 M$ de revenus de résines de chromatographie, alors que les commandes de bioproduction progressaient de l'ordre de 15 %. Avec un rendement du flux de trésorerie disponible supérieur à 3 %, une reprise de la bioproduction en 2027 ne semble que partiellement intégrée.",
+            "sources": [
+              "https://investors.danaher.com/2026-07-21-Danaher-Reports-Second-Quarter-2026-Results",
+              "https://www.morningstar.com/company-reports/1488851-danaher-earnings-market-underwhelmed-by-2026-guidance-including-bioprocessing-delays?listing=0P000001MV"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 45,
+            "rationale": "Risque modéré: calendrier incertain des livraisons de bioproduction lié à la préparation des sites clients, croissance organique 2026 limitée à 3-4 %, recul des tests respiratoires, pression sur les prix en Chine, intégration de Masimo et transition de direction au 1er octobre. Le bilan et la génération de trésorerie restent solides.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0000313616/000031361626000163/dhr-20260721xex991.htm",
+              "https://investors.danaher.com/2026-07-21-Danaher-Reports-Second-Quarter-2026-Results"
+            ]
+          }
+        }
+      }
+    },
+    "CRL": {
+      "fundamental_strength": 35.87,
+      "novelty": 55,
+      "pricing_headroom": 55,
+      "valuation": 71.8,
+      "execution_risk": 55,
+      "signal_score": 52.53,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 4015382000.0,
+          "ocf": 737646000.0,
+          "capex": 219152000.0,
+          "fcf": 518494000.0,
+          "capex_ocf_pct": 29.71,
+          "fcf_margin_pct": 12.91,
+          "fcf_per_share": 10.4611,
+          "roic_pct": 5.74,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 3.59,
+          "fcf_cagr_available_pct": 20.69,
+          "fcf_per_share_cagr_available_pct": 22.09
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 55,
+            "rationale": "Au deuxième trimestre 2026, Charles River a renoué avec une croissance organique positive (+0,1 %) pour la première fois depuis 2023, avec un ratio commandes/facturation de 1,19 dans les études précliniques (DSA) et une prévision annuelle relevée; signal de point bas du cycle, sans événement matériel identifié en septembre-octobre.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0001100682/000110068226000115/crl2q26earningsrelease.htm",
+              "https://www.investing.com/news/company-news/charles-river-q2-2026-slides-organic-growth-returns-after-3year-decline-93CH-4838390"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 55,
+            "rationale": "Le titre reste pénalisé depuis l'annonce par la FDA en 2025 d'une réduction progressive des tests sur animaux; avec un rendement du flux de trésorerie disponible proche de 3,5 % et un carnet de commandes précliniques de 1,97 Md$, une reprise de la demande au second semestre ne semble que partiellement intégrée.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0001100682/000110068226000115/crl2q26earningsrelease.htm",
+              "https://www.morningstar.com/company-reports/1274073-charles-river-putting-fve-under-review-after-fda-announces-plans-to-phase-out-animal-testing"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 55,
+            "rationale": "Risque assez élevé: menace structurelle de la réduction des tests sur animaux par la FDA au profit de nouvelles méthodes (NAMs), activité de modèles de recherche encore en baisse avec une demande académique faible, cessions d'activités non stratégiques en cours, et dépendance à l'approvisionnement en primates non humains.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/1100682/000110068226000022/crl-20251227.htm",
+              "https://www.fiercebiotech.com/cro/charles-river-announces-cost-cutting-and-strategic-shift-revenue-slide-continues"
+            ]
+          }
+        }
+      }
+    },
+    "IQV": {
+      "fundamental_strength": 44.66,
+      "novelty": 52,
+      "pricing_headroom": 55,
+      "valuation": 93.8,
+      "execution_risk": 40,
+      "signal_score": 61.09,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 16310000000.0,
+          "ocf": 2654000000.0,
+          "capex": 603000000.0,
+          "fcf": 2051000000.0,
+          "capex_ocf_pct": 22.72,
+          "fcf_margin_pct": 12.58,
+          "fcf_per_share": 11.8213,
+          "roic_pct": 9.48,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 4.69,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 52,
+            "rationale": "Au deuxième trimestre 2026, les nouvelles commandes de recherche clinique ont progressé de 19 % (ratio commandes/facturation de 1,22), le carnet de commandes atteint 34,2 Md$ et la prévision annuelle a été relevée; la plateforme d'agents IA IQVIA.ai date de mars. Aucun événement matériel identifié en septembre-octobre.",
+            "sources": [
+              "https://www.iqvia.com/newsroom/2026/07/iqvia-reports-second-quarter-2026-results",
+              "https://www.iqvia.com/newsroom/2026/03/iqvia-unveils-iqvia-ai-a-unified-agentic-ai-platform"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 55,
+            "rationale": "Avec un rendement du flux de trésorerie disponible proche de 4,7 %, la valorisation reste modérée pour un acteur dont les commandes accélèrent et dont environ 9,2 Md$ du carnet doivent se convertir en revenus sur douze mois; cette visibilité ne semble que partiellement intégrée.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0001478242/000162828026049923/iqv-q2x2026earningspressre.htm",
+              "https://finance.yahoo.com/healthcare/articles/backlog-tells-real-story-inside-135910451.html"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 40,
+            "rationale": "Risque modéré: dépendance au financement des biotechs et aux budgets de R&D des laboratoires (risque d'annulations d'essais), concurrence dans la recherche sous contrat, et transition de son modèle de données et services vers des outils d'IA dont la monétisation reste à démontrer.",
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/0001478242/000162828026049923/iqv-q2x2026earningspressre.htm",
+              "https://www.iqvia.com/newsroom/2026/03/iqvia-unveils-iqvia-ai-a-unified-agentic-ai-platform"
+            ]
+          }
+        }
+      }
+    },
+    "WST": {
+      "fundamental_strength": 72.29,
+      "novelty": 55,
+      "pricing_headroom": 35,
+      "valuation": 34.8,
+      "execution_risk": 40,
+      "signal_score": 51.42,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 3074100000.0,
+          "ocf": 754800000.0,
+          "capex": 285900000.0,
+          "fcf": 468900000.0,
+          "capex_ocf_pct": 37.88,
+          "fcf_margin_pct": 15.25,
+          "fcf_per_share": 6.4498,
+          "roic_pct": 18.75,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": 1.74,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 55,
+            "rationale": "Au deuxième trimestre 2026, West a publié une croissance organique de 13 % et relevé sa prévision annuelle à 10-11 % de croissance organique, portée par les composants à haute valeur pour les biologiques et les GLP-1 (environ 18 % des revenus); une extension de l'usine de Dublin dédiée aux injectables à fort volume a été annoncée. Aucun événement matériel daté précisément de septembre-octobre.",
+            "sources": [
+              "https://www.morningstar.com/news/pr-newswire/20260723ne10613/west-reports-second-quarter-2026-results",
+              "https://www.investing.com/news/company-news/west-pharma-q2-2026-slides-strong-beat-raised-guidance-on-biologics-93CH-4809083"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 35,
+            "rationale": "Le titre a progressé d'environ un tiers depuis le début de l'année et le rendement du flux de trésorerie disponible n'est que d'environ 1,8 %: la reprise de la croissance et l'exposition aux GLP-1 sont déjà largement intégrées.",
+            "sources": [
+              "https://simplywall.st/stocks/us/pharmaceuticals-biotech/nyse-wst/west-pharmaceutical-services/news/west-pharmaceutical-services-wst-is-back-in-the-spotlight-wh",
+              "https://www.tradingview.com/news/zacks:15ab3ccf5094b:0-wst-stock-jumps-on-q2-earnings-sales-beat-eps-view-up-on-hvp-growth/"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 40,
+            "rationale": "Risque modéré: dépendance croissante aux programmes GLP-1 de quelques grands laboratoires, pression inflationniste sur les marges (matières premières), séquelles d'un incident informatique, transfert de l'activité SmartDose à AbbVie et changement de directeur général en juin 2026.",
+            "sources": [
+              "https://www.gurufocus.com/news/8975431/west-pharmaceutical-services-inc-wst-q2-2026-earnings-call-highlights-strong-organic-growth-and-raised-guidance",
+              "https://investor.westpharma.com/press-releases"
+            ]
+          }
+        }
+      }
+    },
+    "GH": {
+      "fundamental_strength": 0.0,
+      "novelty": 95,
+      "pricing_headroom": 68,
+      "valuation": 0,
+      "execution_risk": 36,
+      "signal_score": 45.4,
+      "missing_components": [],
+      "inputs": {
+        "fundamentals": {
+          "year": 2025,
+          "revenue": 982021000.0,
+          "ocf": -184760000.0,
+          "capex": 48306000.0,
+          "fcf": -233066000.0,
+          "capex_ocf_pct": null,
+          "fcf_margin_pct": -23.73,
+          "fcf_per_share": -1.859,
+          "roic_pct": -84.41,
+          "financial_currency": "USD",
+          "market_currency": "USD",
+          "fcf_yield_currency_compatible": true,
+          "fcf_yield_pct": -1.1,
+          "fcf_cagr_available_pct": null,
+          "fcf_per_share_cagr_available_pct": null
+        },
+        "research": {
+          "novelty": {
+            "date": "2026-10-11",
+            "score": 95,
+            "rationale": "Marquage CE sous IVDR de Guardant360 CDx comme diagnostic compagnon du camizestrant (ETCAMAH) dans le cancer du sein avancé RE+/HER2-, après les autorisations américaine et japonaise; 31e approbation CDx de Guardant.",
+            "sources": [
+              "https://www.biospace.com/press-releases/guardant-health-announces-approval-in-europe-of-guardant360-cdx-as-companion-diagnostic-for-astrazenecas-etcamah-camizestrant-in-advanced-er-positive-breast-cancer",
+              "https://www.onclive.com/view/guardant360-cdx-receives-european-approval-as-companion-diagnostic-for-camizestrant-in-esr1-mutated-advanced-breast-cancer"
+            ]
+          },
+          "pricing_headroom": {
+            "date": "2026-10-11",
+            "score": 68,
+            "rationale": "L'accès au marché européen étend le potentiel commercial des tests ctDNA répétés liés au camizestrant; volumes réels et conditions de remboursement restent à démontrer.",
+            "sources": [
+              "https://www.biospace.com/press-releases/guardant-health-announces-approval-in-europe-of-guardant360-cdx-as-companion-diagnostic-for-astrazenecas-etcamah-camizestrant-in-advanced-er-positive-breast-cancer"
+            ]
+          },
+          "execution_risk": {
+            "date": "2026-10-11",
+            "score": 36,
+            "rationale": "Troisième autorisation réglementaire majeure pour le couple Guardant360 CDx/camizestrant, ce qui réduit le risque réglementaire; risques d'adoption, de remboursement et de confirmation clinique de l'approbation accélérée maintenus.",
+            "sources": [
+              "https://www.biospace.com/press-releases/guardant-health-announces-approval-in-europe-of-guardant360-cdx-as-companion-diagnostic-for-astrazenecas-etcamah-camizestrant-in-advanced-er-positive-breast-cancer",
+              "https://www.onclive.com/view/guardant360-cdx-receives-european-approval-as-companion-diagnostic-for-camizestrant-in-esr1-mutated-advanced-breast-cancer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "top3": [
+    "QCOM",
+    "AVGO",
+    "REGN"
+  ],
+  "fundamentals_generated_at": "2026-10-20T01:57:38Z",
+  "t0_after_session": {
+    "NVDA": "2026-10-19",
+    "AVGO": "2026-10-19",
+    "QCOM": "2026-10-19",
+    "MU": "2026-10-19",
+    "GOOGL": "2026-10-19",
+    "AMZN": "2026-10-19",
+    "ADI": "2026-10-19",
+    "MDT": "2026-10-19",
+    "ISRG": "2026-10-19",
+    "GH": "2026-10-19"
+  },
+  "input_sha256": {
+    "fundamentals": "dcad042721deb279b8593f3421e2d8142c9fcd332c24eb34f052239c4138bca5",
+    "research": "fa9c9fe383a30f0b6c50c89bbd09cffe8aaba50c41a770c9829a6c2a0d63ccf0"
+  }
+}
 ]
