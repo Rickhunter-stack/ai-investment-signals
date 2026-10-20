@@ -42,7 +42,19 @@ These two files are the only files committed. If no item is investment-relevant 
 
 ## T0 rules
 
-Unchanged from `SCHEDULED_INGESTION_V1.md`: never infer a T0; read the original article's first-publication timestamp (or a primary source with explicit time and time zone); Google News RSS is discovery only; an item without a verified T0 is not ingested and is listed in the pull request with the raw error. A denied host is reported as such and never becomes a guessed T0.
+Unchanged principles from `SCHEDULED_INGESTION_V1.md`: never infer a T0; Google News RSS is discovery only; an item without a verified T0 is not ingested and is listed in the pull request with the raw error or reason.
+
+Network findings of 2026-10-20 (routine environment): Reuters, CNBC, AP, GlobeNewswire and BusinessWire refuse automated access (anti-bot 401/403); `www.prnewswire.com`, `www.sec.gov` (with a declared User-Agent) and `news.google.com` are readable. Comparing Google News RSS times with ten relayed Reuters T0s gave only 2 matches within 2 minutes, so RSS stays discovery-only.
+
+Accepted T0 sources since prompt v2.1, all instances of the existing "original page or primary source with explicit time and time zone" rule:
+
+1. SEC EDGAR acceptance date-time of the company's filing on the same fact (New York time, converted to UTC);
+2. the release time printed on the official press release at PR Newswire (`ET`, converted from America/New_York to UTC);
+3. any other page actually read that shows an explicit first-publication time and time zone.
+
+## Routine loader
+
+The claude.ai routine carries only a short loader prompt that reads `config/routine_daily_brief_v2.md` from `main` and executes its block. A merged change to that file applies from the next run; the PR of each run reports the SHA-256 of the file it executed.
 
 ## Pipeline
 
