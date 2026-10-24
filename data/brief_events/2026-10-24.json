@@ -1,0 +1,207 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261024-AWS2028",
+    "captured_at": "2026-10-24T08:07:23+02:00",
+    "published_at": "2026-10-23T23:06:00Z",
+    "title": "Amazon indique que la capacité cloud AWS est largement réservée jusqu'en 2027",
+    "factual_summary": "Andy Jassy indique que les grandes tranches de capacité AWS sont largement réservées pour 2027 et qu'une part significative de 2028 est déjà engagée. Amazon avait indiqué viser environ 220 milliards de dollars de dépenses d'investissement en 2026. Résultats trimestriels attendus le 29 octobre.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Demande et capacité cloud IA",
+    "companies": [
+      "Amazon"
+    ],
+    "tickers": [
+      "AMZN"
+    ],
+    "sector": "Cloud et data centers",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/retail-consumer/amazon-cloud-capacity-sold-out-through-2027-ceo-jassy-says-2026-10-23/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 90,
+    "novelty": 79,
+    "confidence": 90,
+    "execution_risk": 75,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Capacité cloud contractée, à confronter aux marges et au coût de financement."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261024-PATHOS237",
+    "captured_at": "2026-10-24T08:07:23+02:00",
+    "published_at": "2026-10-23T13:00:00Z",
+    "title": "Pathos AI lève 237 millions de dollars et s'allie à Bristol Myers Squibb et Tempus AI",
+    "factual_summary": "Pathos AI annonce un tour de série E de 237 millions de dollars mené par Bristol Myers Squibb, valorisant Pathos environ 3 milliards de dollars. Tempus AI fournira des données sur des centaines de milliers de patients en neurologie dans le cadre d'une licence de cinq ans de 55 millions de dollars. Les partenaires développeront des outils IA pour la R&D neurologique.",
+    "type": "FACT",
+    "theme": "IA et santé",
+    "subtheme": "Données cliniques et découverte de médicaments assistée par IA",
+    "companies": [
+      "Pathos AI",
+      "Bristol Myers Squibb",
+      "Tempus AI"
+    ],
+    "tickers": [
+      "BMY",
+      "TEM"
+    ],
+    "sector": "Biotechnologies et logiciels de santé",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/litigation/pathos-ai-teams-up-with-bristol-myers-tempus-ai-advance-drug-development-2026-10-23/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 79,
+    "novelty": 81,
+    "confidence": 87,
+    "execution_risk": 76,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La valeur des jeux de données cliniques propriétaires augmente dans la R&D pharmaceutique."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261024-UKBIOSEC",
+    "captured_at": "2026-10-24T08:07:23+02:00",
+    "published_at": "2026-10-23T23:03:00Z",
+    "title": "Le Royaume-Uni annonce 600 millions de livres pour la sécurité IA et la biosécurité",
+    "factual_summary": "Le gouvernement britannique annonce environ 600 millions de livres pour la sécurité de l'IA, dont 100 millions pour un laboratoire de biosécurité IA, 65 millions pour les contre-mesures contre les agents pathogènes, 130 millions pour la cyberdéfense, et 60 millions pour des entreprises de robotique et fabrication utilisant l'IA. OpenAI et Anthropic promettent jusqu'à 200 millions de livres de crédits modèles.",
+    "type": "FACT",
+    "theme": "IA et santé",
+    "subtheme": "Investissement public en biosécurité IA",
+    "companies": [
+      "OpenAI",
+      "Anthropic",
+      "Alphabet",
+      "Basecamp Research"
+    ],
+    "tickers": [
+      "GOOGL"
+    ],
+    "sector": "Biosécurité et technologies IA",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/uk/uk-government-sets-out-800-million-ai-security-funding-2026-10-23/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 77,
+    "novelty": 76,
+    "confidence": 89,
+    "execution_risk": 65,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Le financement public crée des marchés pour les outils de biosécurité et de cybersécurité."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261024-COINSBIOT",
+    "captured_at": "2026-10-24T08:07:23+02:00",
+    "published_at": "2026-10-22T21:04:00Z",
+    "title": "Les États-Unis proposent de restreindre les investissements sortants en biotechnologies et IA",
+    "factual_summary": "Le Trésor américain propose de nouvelles règles encadrant les investissements américains dans plusieurs pays et secteurs sensibles, en ajoutant la biotechnologie à la liste et en prévoyant des interdictions pour certaines technologies d'IA. Les actions cotées et les accords de licence pharmaceutiques avec la Chine sont exclus selon Reuters. Consultation jusqu'au 7 décembre 2026.",
+    "type": "FACT",
+    "theme": "Politique industrielle",
+    "subtheme": "Contrôles des investissements IA et biotechnologie",
+    "companies": [],
+    "tickers": [],
+    "sector": "Biotechnologie, IA et semi-conducteurs",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/us-treasury-drops-venezuela-countries-facing-outbound-us-investment-restrictions-2026-10-22/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 83,
+    "novelty": 71,
+    "confidence": 90,
+    "execution_risk": 69,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Le filtrage géopolitique des capitaux pourrait changer le financement des biotechs chinoises."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261024-KIMIK31",
+    "captured_at": "2026-10-24T08:07:23+02:00",
+    "published_at": "2026-10-24T04:25:00Z",
+    "title": "Moonshot AI réduit les capacités cyberoffensives de Kimi K3.1 Pro avant publication des poids",
+    "factual_summary": "Moonshot AI présente Kimi K3.1 Pro et annonce avoir retiré des données liées aux cyberattaques de son entraînement. Le modèle atteint 81,0 % sur un benchmark cyber interne contre 90,5 % pour une version sans restrictions, selon l'entreprise, sans validation indépendante. La publication des poids est prévue pour le 4 novembre.",
+    "type": "FACT",
+    "theme": "IA et cybersécurité",
+    "subtheme": "Gouvernance et sécurité des modèles ouverts",
+    "companies": [
+      "Moonshot AI"
+    ],
+    "tickers": [],
+    "sector": "Modèles IA et cybersécurité",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "short",
+    "importance": 72,
+    "novelty": 79,
+    "confidence": 77,
+    "execution_risk": 79,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La diffusion des poids ouverts impose des arbitrages entre performance et risque cyber."
+    },
+    "frozen": true
+  }
+]
