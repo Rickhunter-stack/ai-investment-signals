@@ -1,0 +1,211 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261026-SPX40B",
+    "captured_at": "2026-10-26T07:56:09.023Z",
+    "published_at": "2026-10-25T20:05:00Z",
+    "title": "SpaceX affirme avoir bouclé 40 milliards de dollars de dette pour des GPU",
+    "factual_summary": "Elon Musk affirme que SpaceX a clos un financement par dette de 40 milliards de dollars destiné à des GPU Nvidia attendus au premier semestre 2027. Reuters précise que la clôture effective et le prix de la dette ne sont pas clairement établis. Musk anticipe une consolidation des fournisseurs de cloud IA spécialisés.",
+    "type": "FACT",
+    "theme": "IA",
+    "subtheme": "financement infrastructures IA",
+    "companies": [
+      "SpaceX",
+      "Nvidia",
+      "CoreWeave",
+      "Nebius"
+    ],
+    "tickers": [
+      "SPCX",
+      "NVDA",
+      "CRWV",
+      "NBIS"
+    ],
+    "sector": "cloud IA",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/media-telecom/musk-says-spacex-raised-40-billion-debt-gpus-2026-10-25/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 85,
+    "novelty": 78,
+    "confidence": 66,
+    "execution_risk": 85,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La solvabilité et les revenus hors IA pourraient déterminer quels opérateurs peuvent financer durablement leurs capacités de calcul."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261026-SKRETURN",
+    "captured_at": "2026-10-26T07:56:09.023Z",
+    "published_at": "2026-10-26T02:42:00Z",
+    "title": "SK Hynix annoncera mercredi ses mesures de retour aux actionnaires",
+    "factual_summary": "SK Hynix prévoit de détailler mercredi ses mesures de retour aux actionnaires en même temps que ses résultats trimestriels. Le quotidien Dong-A Ilbo évoque un dividende spécial de 16 000 milliards de wons, montant non confirmé par SK Hynix.",
+    "type": "FACT",
+    "theme": "semi-conducteurs",
+    "subtheme": "mémoire HBM et allocation du capital",
+    "companies": [
+      "SK Hynix",
+      "Kioxia"
+    ],
+    "tickers": [
+      "000660.KS",
+      "285A.T"
+    ],
+    "sector": "semi-conducteurs",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/sk-hynix-announce-steps-boost-shareholder-returns-wednesday-2026-10-26/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "short",
+    "importance": 72,
+    "novelty": 61,
+    "confidence": 86,
+    "execution_risk": 42,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La redistribution de trésorerie pourrait soutenir les valorisations des fabricants de mémoire malgré la volatilité du cycle IA."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261026-INFYGUIDE",
+    "captured_at": "2026-10-26T07:56:09.023Z",
+    "published_at": "2026-10-26T03:50:00Z",
+    "title": "Infosys abaisse sa prévision de croissance dans un marché des services informatiques sous pression",
+    "factual_summary": "Infosys a réduit sa prévision de croissance des revenus pour l'exercice 2027 à 1 %-2 %, contre 1,5 %-3 %. Les analystes cités par Reuters relèvent une pression sur les prix liée aux attentes de productivité de l'IA, une concurrence accrue et une demande faible.",
+    "type": "FACT",
+    "theme": "logiciels IA",
+    "subtheme": "services informatiques et automatisation",
+    "companies": [
+      "Infosys"
+    ],
+    "tickers": [
+      "INFY.NS"
+    ],
+    "sector": "services informatiques",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/india/indias-infosys-falls-after-cutting-revenue-growth-guidance-fiscal-2027-2026-10-26/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 73,
+    "novelty": 66,
+    "confidence": 89,
+    "execution_risk": 63,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'automatisation par IA pourrait comprimer les prix des services informatiques traditionnels avant de créer de nouveaux revenus."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261026-ROCHKRAS",
+    "captured_at": "2026-10-26T07:56:09.023Z",
+    "published_at": "2026-10-25T18:35:00Z",
+    "title": "Roche publie un gain de survie en phase III avec divarasib dans le cancer pulmonaire KRAS G12C",
+    "factual_summary": "Roche annonce que divarasib réduit de 44 % le risque de décès face à sotorasib ou adagrasib dans l'essai de phase III Krascendo 1 (338 patients atteints de cancer bronchique non à petites cellules KRAS G12C prétraité). La survie globale médiane est proche de 18 mois contre 12 mois.",
+    "type": "FACT",
+    "theme": "santé",
+    "subtheme": "oncologie KRAS G12C",
+    "companies": [
+      "Roche"
+    ],
+    "tickers": [
+      "ROPC.S"
+    ],
+    "sector": "pharmaceutique",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/roche-says-divarasib-cut-risk-death-44-lung-cancer-trial-2026-10-25/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 84,
+    "novelty": 78,
+    "confidence": 92,
+    "execution_risk": 52,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Un bénéfice de survie comparatif pourrait différencier divarasib sur le marché des inhibiteurs KRAS G12C, sous réserve des autorisations et de l'accès au marché."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261026-BRENTFED",
+    "captured_at": "2026-10-26T07:56:09.023Z",
+    "published_at": "2026-10-26T00:46:00Z",
+    "title": "Pétrole élevé et risque de taux compliquent les valorisations des investissements IA",
+    "factual_summary": "Reuters rapporte un Brent à 114,48 dollars le 26 octobre, après un recul de 1,9 %, faisant suite à une hausse de 6,2 % la semaine précédente. Les marchés anticipent une pause de la Fed cette semaine, mais le renchérissement de l'énergie entretient les risques inflationnistes et de taux.",
+    "type": "FACT",
+    "theme": "Bourse",
+    "subtheme": "taux et choc pétrolier",
+    "companies": [],
+    "tickers": [],
+    "sector": "marchés financiers",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/global-markets-pix-2026-10-26/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "short",
+    "importance": 79,
+    "novelty": 63,
+    "confidence": 90,
+    "execution_risk": 79,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Une hausse prolongée des prix de l'énergie et des taux pourrait peser sur les valorisations et le financement des infrastructures IA."
+    },
+    "frozen": true
+  }
+]
