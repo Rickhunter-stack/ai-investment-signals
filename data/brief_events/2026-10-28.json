@@ -1,0 +1,212 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261028-SKHYQ3HBM",
+    "captured_at": "2026-10-28T08:00:16.879Z",
+    "published_at": "2026-10-27T23:49:00Z",
+    "title": "SK Hynix annonce un bénéfice record et un plan de retour aux actionnaires de 100 000 milliards de wons",
+    "factual_summary": "SK Hynix publie 83,3 milliers de milliards de wons de bénéfice opérationnel au troisième trimestre 2026 et prévoit environ 100 000 milliards de wons de dividendes et rachats en 2026. Le fabricant déclare ses capacités HBM et DRAM vendues jusqu'en 2029; plus de la moitié de sa capacité 2027-2028 est couverte par des accords à long terme.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Mémoire pour infrastructure IA",
+    "companies": [
+      "SK Hynix"
+    ],
+    "tickers": [
+      "000660"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/sk-hynix-q3-profit-jumps-more-than-7-fold-beats-forecasts-2026-10-27/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 87,
+    "novelty": 83,
+    "confidence": 94,
+    "execution_risk": 35,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La demande de mémoire IA peut soutenir la génération de trésorerie des leaders HBM, mais l'ampleur des distributions ne garantit pas une valorisation attractive."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261028-CXMTHBM3E",
+    "captured_at": "2026-10-28T08:00:16.879Z",
+    "published_at": "2026-10-28T04:50:00Z",
+    "title": "CXMT prépare la production chinoise de mémoire HBM3E malgré des rendements de 20 à 30 %",
+    "factual_summary": "Selon deux sources citées par Reuters, ChangXin Memory Technologies prévoit de démarrer une production limitée de HBM3E dans les deux mois, avec 20 à 30 % de puces conformes contre environ 70 % chez SK Hynix. CXMT n'a pas confirmé ces informations et les puces testées resteraient moins performantes que les HBM3E coréennes.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Mémoire pour infrastructure IA",
+    "companies": [
+      "ChangXin Memory Technologies",
+      "SK Hynix"
+    ],
+    "tickers": [
+      "688825.SS",
+      "000660"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/china/chinas-cxmt-start-advanced-ai-memory-production-despite-poor-yields-sources-say-2026-10-28/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 78,
+    "novelty": 82,
+    "confidence": 72,
+    "execution_risk": 80,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260918-CXMTNAND",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'entrée de CXMT dans la HBM confirme l'élargissement de sa concurrence en mémoire, mais ses rendements industriels limitent pour l'instant sa capacité à concurrencer les leaders mondiaux."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261028-DASTGUID",
+    "captured_at": "2026-10-28T08:00:16.879Z",
+    "published_at": "2026-10-28T06:04:00Z",
+    "title": "Dassault Systèmes relève ses objectifs de croissance et de marge pour 2026",
+    "factual_summary": "Dassault Systèmes relève sa prévision de croissance annuelle à 4-5 % contre 3-5 % auparavant et sa cible de marge opérationnelle à 32,5-32,7 %, après un chiffre d'affaires trimestriel de 1,55 milliard d'euros et un résultat opérationnel de 490 millions d'euros. L'acquisition d'ArisGlobal doit contribuer à la croissance du quatrième trimestre.",
+    "type": "FACT",
+    "theme": "Logiciels et IA",
+    "subtheme": "Logiciels industriels",
+    "companies": [
+      "Dassault Systèmes"
+    ],
+    "tickers": [
+      "DAST.PA"
+    ],
+    "sector": "Software",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/dassault-systmes-raises-2026-growth-target-2026-10-28/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 72,
+    "novelty": 66,
+    "confidence": 94,
+    "execution_risk": 38,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Le redressement des logiciels industriels et la diversification vers les logiciels de santé peuvent offrir une croissance plus récurrente que les infrastructures IA, sous réserve de la valorisation."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261028-MRKSAC",
+    "captured_at": "2026-10-28T08:00:16.879Z",
+    "published_at": "2026-10-26T15:40:00Z",
+    "title": "Merck obtient une revue prioritaire de la FDA après des résultats de survie positifs pour sac-TMT",
+    "factual_summary": "Dans un essai de phase III portant sur 776 patientes atteintes d'un cancer de l'endomètre avancé, sacituzumab tirumotecan de Merck réduit de 32 % le risque de décès face à une chimiothérapie; la survie médiane est de 19 contre 12,1 mois. La FDA accorde une revue prioritaire, avec décision attendue d'ici juin 2027. Les effets indésirables sévères sont plus fréquents sous sac-TMT.",
+    "type": "FACT",
+    "theme": "Médecine et biotechnologies",
+    "subtheme": "Oncologie et essais cliniques",
+    "companies": [
+      "Merck & Co",
+      "Sichuan Kelun-Biotech"
+    ],
+    "tickers": [
+      "MRK",
+      "6990.HK"
+    ],
+    "sector": "Biopharma",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/mercks-therapy-extends-survival-hard-to-treat-uterine-cancer-patients-2026-10-26/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 80,
+    "novelty": 76,
+    "confidence": 92,
+    "execution_risk": 48,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les conjugués anticorps-médicament ciblant TROP2 pourraient renforcer les portefeuilles d'oncologie si les bénéfices cliniques se traduisent en autorisations et ventes."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261028-INTCLASSIQ",
+    "captured_at": "2026-10-28T08:00:16.879Z",
+    "published_at": "2026-10-27T13:46:00Z",
+    "title": "Intel annonce le rachat de Classiq pour se positionner dans les logiciels quantiques",
+    "factual_summary": "Intel a annoncé un accord de rachat de l'éditeur de logiciels quantiques Classiq sans divulguer les conditions financières. Bloomberg évoque une valorisation d'environ 2,3 milliards de dollars, non confirmée par Intel ni vérifiée indépendamment par Reuters. La clôture est envisagée au premier semestre 2027, sous réserve des autorisations.",
+    "type": "FACT",
+    "theme": "Quantique et technologies",
+    "subtheme": "Logiciels quantiques",
+    "companies": [
+      "Intel",
+      "Classiq"
+    ],
+    "tickers": [
+      "INTC"
+    ],
+    "sector": "Quantum Computing",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/intel-buy-quantum-firm-classiq-about-23-billion-bloomberg-news-reports-2026-10-27/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 65,
+    "novelty": 72,
+    "confidence": 72,
+    "execution_risk": 73,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'intégration du logiciel de programmation quantique à l'offre matérielle pourrait favoriser des plateformes full-stack, mais le marché commercial reste précoce."
+    },
+    "frozen": true
+  }
+]
