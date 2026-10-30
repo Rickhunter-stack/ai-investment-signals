@@ -1,0 +1,211 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261030-AMZNAWS26",
+    "captured_at": "2026-10-30T08:10:55+01:00",
+    "published_at": "2026-10-29T20:06:00Z",
+    "title": "Amazon : AWS croît de 39 %, mais le cash-flow libre glissant tombe à -42,4 milliards de dollars",
+    "factual_summary": "Amazon publie 46 milliards de dollars de revenus AWS au troisième trimestre 2026, en hausse de 39 %. Son flux de trésorerie disponible sur douze mois glissants est négatif de 42,4 milliards de dollars. Les dépenses d'investissement du trimestre atteignent 77,26 milliards de dollars et la direction prévoit davantage d'investissements en 2027 qu'en 2026.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Rentabilité et financement du cloud IA",
+    "companies": [
+      "Amazon"
+    ],
+    "tickers": [
+      "AMZN"
+    ],
+    "sector": "Cloud infrastructure",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/retail-consumer/amazon-projects-fourth-quarter-sales-below-estimates-2026-10-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 88,
+    "novelty": 80,
+    "confidence": 94,
+    "execution_risk": 83,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La croissance de la demande cloud peut coexister avec une forte consommation de trésorerie, ce qui accroît l'importance du retour sur capital investi."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261030-INTELQ326",
+    "captured_at": "2026-10-30T08:10:55+01:00",
+    "published_at": "2026-10-29T20:02:00Z",
+    "title": "Intel : prévisions inférieures aux attentes et pertes de production après une explosion en Israël",
+    "factual_summary": "Intel prévoit un chiffre d'affaires de 15 à 16 milliards de dollars au quatrième trimestre 2026, contre 17,07 milliards attendus. L'arrêt de deux semaines de son usine de Kiryat Gat après une explosion devrait coûter environ 600 millions de dollars de chiffre d'affaires sur deux trimestres. Intel ne prévoit pas de flux de trésorerie positif en 2026.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Contraintes industrielles et marché PC",
+    "companies": [
+      "Intel"
+    ],
+    "tickers": [
+      "INTC"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/intel-signals-slower-growth-pc-market-remains-under-pressure-2026-10-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "short",
+    "importance": 80,
+    "novelty": 82,
+    "confidence": 93,
+    "execution_risk": 78,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les contraintes de fabrication et la faiblesse du marché PC peuvent retarder le redressement d'Intel malgré la demande de puces de centres de données."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261030-WMTSYM6B",
+    "captured_at": "2026-10-30T08:10:55+01:00",
+    "published_at": "2026-10-29T20:13:00Z",
+    "title": "Walmart engage environ 6 milliards de dollars pour étendre l'automatisation logistique avec Symbotic",
+    "factual_summary": "Walmart étend son accord pluriannuel avec Symbotic pour un engagement d'environ 6 milliards de dollars. Symbotic doit apporter des capacités d'automatisation à 25 centres de distribution régionaux supplémentaires aux États-Unis et soutenir les opérations logistiques mondiales de Walmart.",
+    "type": "FACT",
+    "theme": "Robotique et investissement",
+    "subtheme": "Automatisation logistique",
+    "companies": [
+      "Walmart",
+      "Symbotic"
+    ],
+    "tickers": [
+      "WMT",
+      "SYM"
+    ],
+    "sector": "Industrial automation",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/walmart-commits-6-billion-expand-symbotic-deal-2026-10-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 78,
+    "novelty": 85,
+    "confidence": 95,
+    "execution_risk": 56,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'automatisation logistique à grande échelle pourrait créer un carnet de commandes durable pour les fournisseurs de robotique industrielle."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261030-COHERE7B",
+    "captured_at": "2026-10-30T08:10:55+01:00",
+    "published_at": "2026-10-29T15:49:00Z",
+    "title": "Cohere ouvre une levée visant 7 milliards de dollars canadiens avec l'État canadien",
+    "factual_summary": "Cohere ouvre un financement visant 7 milliards de dollars canadiens, pour une valorisation envisagée de 36 milliards. Le gouvernement canadien annonce une participation pouvant atteindre 1,6 milliard de dollars canadiens. Le tour a seulement réalisé une première clôture et son montant effectivement levé n'a pas été communiqué.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Financement des modèles IA souverains",
+    "companies": [
+      "Cohere",
+      "Schwarz Group",
+      "Nvidia"
+    ],
+    "tickers": [
+      "NVDA"
+    ],
+    "sector": "AI foundation models",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/ottawa-takes-stake-cohere-ai-company-opens-45-billion-funding-round-2026-10-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 74,
+    "novelty": 77,
+    "confidence": 90,
+    "execution_risk": 71,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Le financement public et industriel de modèles IA souverains pourrait favoriser des plateformes spécialisées pour les secteurs réglementés."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261030-LLYQ326",
+    "captured_at": "2026-10-30T08:10:55+01:00",
+    "published_at": "2026-10-29T10:46:00Z",
+    "title": "Eli Lilly relève ses prévisions 2026 grâce aux ventes de Mounjaro et Zepbound",
+    "factual_summary": "Eli Lilly relève sa prévision de chiffre d'affaires 2026 à 91-92 milliards de dollars. Son chiffre d'affaires du troisième trimestre atteint 24,4 milliards, dont 10,72 milliards pour Mounjaro et 5,35 milliards pour Zepbound. Les ventes du comprimé Foundayo sont de 184 millions, sous les 216,86 millions attendus.",
+    "type": "FACT",
+    "theme": "Médecine et investissement",
+    "subtheme": "Marché des traitements GLP-1",
+    "companies": [
+      "Eli Lilly"
+    ],
+    "tickers": [
+      "LLY"
+    ],
+    "sector": "Pharmaceuticals",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/eli-lilly-lifts-revenue-outlook-weight-loss-drug-sales-trims-profit-view-deal-2026-10-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 83,
+    "novelty": 69,
+    "confidence": 95,
+    "execution_risk": 45,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La croissance des volumes GLP-1 peut compenser la baisse des prix, mais l'adoption des formes orales reste un facteur de concurrence à surveiller."
+    },
+    "frozen": true
+  }
+]
