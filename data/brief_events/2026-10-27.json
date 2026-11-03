@@ -1,0 +1,207 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261027-METANV3B",
+    "captured_at": "2026-10-27T07:20:06.674Z",
+    "published_at": "2026-10-27T06:08:00Z",
+    "title": "Nvidia investit 3 milliards de dollars dans Meta et renforce son partenariat autour de Muse",
+    "factual_summary": "Nvidia et Meta ont annoncé le 27 octobre un approfondissement de leur coopération sur les modèles et agents Muse. Nvidia investira 3 milliards de dollars dans une offre d'actions de Meta.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Financement stratégique des modèles et infrastructures IA",
+    "companies": [
+      "Nvidia",
+      "Meta Platforms"
+    ],
+    "tickers": [
+      "NVDA",
+      "META"
+    ],
+    "sector": "Intelligence artificielle",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/nvidia-meta-partner-muse-agent-nvidia-invests-3-billion-2026-10-27/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 91,
+    "novelty": 85,
+    "confidence": 94,
+    "execution_risk": 63,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261027-ANTHIPO26",
+    "captured_at": "2026-10-27T07:20:06.674Z",
+    "published_at": "2026-10-26T13:05:00Z",
+    "title": "Anthropic publie son dossier d'introduction en Bourse et confirme sa croissance et ses pertes",
+    "factual_summary": "Anthropic a rendu public son dossier d'introduction en Bourse le 26 octobre. Reuters rapporte une hausse de 1 368 % de ses revenus trimestriels sur un an, une perte opérationnelle semestrielle de 693 millions de dollars et des charges non opérationnelles importantes liées aux obligations convertibles.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Frontier AI IPO economics",
+    "companies": [
+      "Anthropic"
+    ],
+    "tickers": [],
+    "sector": "Logiciels et modèles IA",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/transactional/anthropic-opens-books-ais-explosive-growth-staggering-costs-2026-10-26/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 95,
+    "novelty": 79,
+    "confidence": 93,
+    "execution_risk": 82,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260929-ANTHIPO",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261027-CHINASTAR",
+    "captured_at": "2026-10-27T07:20:06.674Z",
+    "published_at": "2026-10-26T12:02:00Z",
+    "title": "L'indice technologique chinois STAR50 chute de 40 % depuis son sommet",
+    "factual_summary": "Selon Reuters le 26 octobre, l'indice chinois STAR50 regroupant des valeurs IA et semi-conducteurs a chuté de 40 % en moins de quatre mois, effaçant environ 480 milliards de dollars de capitalisation; il se négocie encore autour de 100 fois les bénéfices passés.",
+    "type": "FACT",
+    "theme": "Bourse et macroéconomie",
+    "subtheme": "Correction des valorisations IA chinoises",
+    "companies": [],
+    "tickers": [],
+    "sector": "Actions technologiques chinoises",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/china/china-ai-bubble-has-already-burst-2026-10-26/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 92,
+    "novelty": 84,
+    "confidence": 93,
+    "execution_risk": 78,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261027-AMATBESI",
+    "captured_at": "2026-10-27T07:20:06.674Z",
+    "published_at": "2026-10-26T21:04:00Z",
+    "title": "Applied Materials prévoit de porter sa participation dans BESI de 9 % à environ 20 %",
+    "factual_summary": "Applied Materials a annoncé le 26 octobre un accord d'achat accéléré visant à porter sa participation dans BE Semiconductor Industries d'environ 9 % à 20 %, sous réserve d'un examen antitrust américain. Les deux sociétés collaborent sur le hybrid bonding depuis 2020.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Packaging avancé et hybrid bonding",
+    "companies": [
+      "Applied Materials",
+      "BE Semiconductor Industries"
+    ],
+    "tickers": [
+      "AMAT",
+      "BESI.AS"
+    ],
+    "sector": "Équipements pour semi-conducteurs",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/applied-materials-raise-besi-stake-about-20-2026-10-26/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 87,
+    "novelty": 85,
+    "confidence": 94,
+    "execution_risk": 48,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261027-CDNSMAEST",
+    "captured_at": "2026-10-27T07:20:06.674Z",
+    "published_at": "2026-10-26T13:03:00Z",
+    "title": "Cadence lance Maestro, des modèles IA de conception de puces déployables sur site",
+    "factual_summary": "Cadence Design Systems a annoncé le 26 octobre sa suite Maestro de modèles IA pour la conception de puces, fondée en partie sur Nemotron de Nvidia. Les modèles peuvent être exécutés dans les data centers des clients; un accès anticipé est prévu au quatrième trimestre.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "IA appliquée à la conception de puces (EDA)",
+    "companies": [
+      "Cadence Design Systems",
+      "Nvidia"
+    ],
+    "tickers": [
+      "CDNS",
+      "NVDA"
+    ],
+    "sector": "Logiciels de conception électronique",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/cadence-unveils-nvidia-backed-ai-models-that-chipmakers-can-run-in-house-2026-10-26/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 83,
+    "novelty": 81,
+    "confidence": 93,
+    "execution_risk": 58,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  }
+]
