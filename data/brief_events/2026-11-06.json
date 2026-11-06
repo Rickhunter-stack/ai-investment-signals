@@ -1,0 +1,212 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261106-PKG2026",
+    "captured_at": "2026-11-06T07:54:38Z",
+    "published_at": "2026-11-06T05:52:00Z",
+    "title": "Le packaging avancé devient un goulot critique pour les puces IA",
+    "factual_summary": "Reuters rapporte une demande de capacités de packaging avancé supérieure à l'offre, un investissement mondial proche de 28 milliards de dollars en 2026 selon Yole, et des investissements de Nvidia, AMD et Broadcom auprès de partenaires taiwanais.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Packaging avancé CoWoS et CoPoS",
+    "companies": [
+      "TSMC",
+      "Nvidia",
+      "AMD",
+      "Broadcom",
+      "ASE Technology"
+    ],
+    "tickers": [
+      "TSM",
+      "NVDA",
+      "AMD",
+      "AVGO"
+    ],
+    "sector": "Équipements et packaging semi-conducteurs",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/ai-boom-turns-chip-packaging-into-next-battleground-semiconductors-2026-11-06/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 89,
+    "novelty": 88,
+    "confidence": 88,
+    "execution_risk": 55,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20261008-TSMCQ3REV",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261106-SOFTCDS",
+    "captured_at": "2026-11-06T07:54:38Z",
+    "published_at": "2026-11-06T03:20:00Z",
+    "title": "Le risque de crédit SoftBank atteint un sommet de quatre ans",
+    "factual_summary": "Le CDS cinq ans de SoftBank atteint 466 points de base le 6 novembre 2026, son plus haut niveau depuis octobre 2022; l'action recule de 10,8 % dans un contexte de craintes sur le financement de l'IA et les retours de l'investissement OpenAI.",
+    "type": "FACT",
+    "theme": "IA et investissement",
+    "subtheme": "Financement des infrastructures IA",
+    "companies": [
+      "SoftBank Group",
+      "OpenAI"
+    ],
+    "tickers": [
+      "9984.T"
+    ],
+    "sector": "Financement IA et crédit",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/media-telecom/softbank-cds-softbank-cds-2026-11-06/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 91,
+    "novelty": 86,
+    "confidence": 93,
+    "execution_risk": 90,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20261009-SFTB100G",
+      "relation": "CONTRADICT"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261106-HEDGFUND",
+    "captured_at": "2026-11-06T07:54:38Z",
+    "published_at": "2026-11-06T06:55:00Z",
+    "title": "Les fonds spéculatifs technologiques réduisent le risque après la chute des actions IA",
+    "factual_summary": "Selon Goldman Sachs cité par Reuters, les fonds actions long-short spécialisés en technologie ont perdu plus de 4 % le 5 novembre; Walleye Capital annonce une réduction de son équipe actions et un retour partiel de capitaux.",
+    "type": "FACT",
+    "theme": "Bourse et macroéconomie",
+    "subtheme": "Désendettement des fonds technologiques",
+    "companies": [
+      "Walleye Capital",
+      "Goldman Sachs"
+    ],
+    "tickers": [],
+    "sector": "Gestion d'actifs et marchés",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/china/tech-selloff-wipes-out-hedge-fund-gains-prompting-risk-cuts-layoffs-2026-11-06/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 80,
+    "novelty": 82,
+    "confidence": 89,
+    "execution_risk": 78,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261106-NASDAQ55",
+    "captured_at": "2026-11-06T07:54:38Z",
+    "published_at": "2026-11-05T02:35:00Z",
+    "title": "Le Nasdaq chute de 5,5 % et la correction IA s'étend à l'Asie",
+    "factual_summary": "Le Nasdaq a perdu 5,5 % le 5 novembre 2026; le 6 novembre, les marchés coréen et taïwanais ont chuté de plus de 8 % en début de séance avant de réduire leurs pertes, selon Reuters.",
+    "type": "FACT",
+    "theme": "Bourse et macroéconomie",
+    "subtheme": "Correction boursière IA mondiale",
+    "companies": [],
+    "tickers": [],
+    "sector": "Marchés actions mondiaux",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/energy/global-markets-global-markets-2026-11-05/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 94,
+    "novelty": 85,
+    "confidence": 93,
+    "execution_risk": 85,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261106-NOVOWEG",
+    "captured_at": "2026-11-06T07:54:38Z",
+    "published_at": "2026-11-04T06:36:00Z",
+    "title": "Novo Nordisk relève ses perspectives grâce au comprimé Wegovy",
+    "factual_summary": "Novo Nordisk relève sa fourchette de croissance ajustée 2026 à -2 %/+2 % contre -6 %/0 % précédemment; les ventes trimestrielles du comprimé Wegovy atteignent 5,39 milliards de couronnes danoises, en hausse de 53 % sur le trimestre précédent.",
+    "type": "FACT",
+    "theme": "Médecine et investissement",
+    "subtheme": "Traitements oraux de l'obésité",
+    "companies": [
+      "Novo Nordisk",
+      "Eli Lilly"
+    ],
+    "tickers": [
+      "NVO",
+      "LLY"
+    ],
+    "sector": "Biopharmacie",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/novo-nordisk-q3-profit-beats-forecast-raises-2026-guidance-2026-11-04/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 80,
+    "novelty": 76,
+    "confidence": 95,
+    "execution_risk": 55,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": "STORY-EVT-20260925-LLYONSWIK",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  }
+]
