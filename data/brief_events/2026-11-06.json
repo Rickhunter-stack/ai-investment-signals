@@ -38,8 +38,8 @@
     "execution_risk": 55,
     "pricing_status": "uncertain",
     "story": {
-      "story_id": "STORY-EVT-20261008-TSMCQ3REV",
-      "relation": "CONFIRM"
+      "story_id": null,
+      "relation": "NEW"
     },
     "thesis": {
       "thesis_ids": [],
@@ -80,8 +80,8 @@
     "execution_risk": 90,
     "pricing_status": "uncertain",
     "story": {
-      "story_id": "STORY-EVT-20261009-SFTB100G",
-      "relation": "CONTRADICT"
+      "story_id": null,
+      "relation": "NEW"
     },
     "thesis": {
       "thesis_ids": [],
@@ -200,8 +200,8 @@
     "execution_risk": 55,
     "pricing_status": "uncertain",
     "story": {
-      "story_id": "STORY-EVT-20260925-LLYONSWIK",
-      "relation": "CONFIRM"
+      "story_id": null,
+      "relation": "NEW"
     },
     "thesis": {
       "thesis_ids": [],
