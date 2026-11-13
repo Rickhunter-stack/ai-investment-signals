@@ -1,0 +1,169 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261113-NVDAEXIT",
+    "captured_at": "2026-11-13T08:25:55+01:00",
+    "published_at": "2026-11-12T15:20:00Z",
+    "title": "Nvidia annonce une transition de direction avec Colette Kress comme CEO intérimaire",
+    "factual_summary": "Jensen Huang a quitté ses fonctions de CEO de Nvidia; la directrice financière Colette Kress assure l'intérim, alors que l'action subit une forte volatilité.",
+    "type": "FACT",
+    "theme": "IA",
+    "subtheme": "gouvernance",
+    "companies": [
+      "Nvidia"
+    ],
+    "tickers": [
+      "NVDA"
+    ],
+    "sector": "semi-conducteurs",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/markets/econ-world/drama-nvidia-2026-11-12/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 85,
+    "novelty": 90,
+    "confidence": 94,
+    "execution_risk": 85,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261113-SMICTIGHT",
+    "captured_at": "2026-11-13T08:25:55+01:00",
+    "published_at": "2026-11-13T02:01:00Z",
+    "title": "SMIC anticipe des tensions sur la chaîne d'approvisionnement des puces IA jusqu'en 2027",
+    "factual_summary": "Le co-CEO de SMIC indique que la demande en calcul IA demeure élevée et que les tensions d'approvisionnement devraient persister jusqu'en 2027; il anticipe un rééquilibrage de la mémoire vers 2028.",
+    "type": "FACT",
+    "theme": "semi-conducteurs",
+    "subtheme": "capacite_fabrication",
+    "companies": [
+      "SMIC"
+    ],
+    "tickers": [
+      "0981.HK"
+    ],
+    "sector": "semi-conducteurs",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/technology/smic-says-ai-chip-supply-chain-will-remain-tight-through-2027-2026-11-13/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 75,
+    "novelty": 65,
+    "confidence": 91,
+    "execution_risk": 60,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261113-CBRSMSFT",
+    "captured_at": "2026-11-13T08:25:55+01:00",
+    "published_at": "2026-11-12T21:06:00Z",
+    "title": "Cerebras relève sa prévision de revenus et signe Microsoft comme client",
+    "factual_summary": "Cerebras relève sa prévision de revenus ajustés 2026 à 940-960 millions de dollars, annonce un contrat cloud avec Microsoft et déclare 26,1 milliards de dollars d'obligations de performance restantes.",
+    "type": "FACT",
+    "theme": "IA",
+    "subtheme": "inference",
+    "companies": [
+      "Cerebras Systems",
+      "Microsoft"
+    ],
+    "tickers": [
+      "CBRS",
+      "MSFT"
+    ],
+    "sector": "semi-conducteurs",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/cerebras-raises-annual-sales-forecast-strong-ai-linked-demand-2026-11-12/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 81,
+    "novelty": 86,
+    "confidence": 93,
+    "execution_risk": 74,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261113-AMDPSIQ",
+    "captured_at": "2026-11-13T08:25:55+01:00",
+    "published_at": "2026-11-12T13:01:00Z",
+    "title": "AMD prévoit un investissement dans PsiQuantum et renforce leur partenariat quantique",
+    "factual_summary": "AMD prévoit une prise de participation d'un montant non communiqué dans PsiQuantum et un partenariat de co-conception d'infrastructures quantiques combinant processeurs, GPU et photonique silicium.",
+    "type": "FACT",
+    "theme": "quantique",
+    "subtheme": "infrastructure_quantique",
+    "companies": [
+      "AMD",
+      "PsiQuantum"
+    ],
+    "tickers": [
+      "AMD"
+    ],
+    "sector": "semi-conducteurs",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/amd-invest-psiquantum-advance-quantum-computing-infrastructure-2026-11-12/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 69,
+    "novelty": 79,
+    "confidence": 93,
+    "execution_risk": 83,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true
+  }
+]
