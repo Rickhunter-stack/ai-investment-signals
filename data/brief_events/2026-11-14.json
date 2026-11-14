@@ -1,0 +1,85 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-11-14T08:52:29+01:00",
+    "type": "FACT",
+    "horizon": "medium",
+    "pricing_status": "uncertain",
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true,
+    "event_id": "EVT-20261114-SAMMODINE",
+    "published_at": "2026-11-12T19:10:00-05:00",
+    "title": "Samsung discute une acquisition de Modine, fournisseur de refroidissement des data centers",
+    "factual_summary": "Selon Bloomberg relayé par Reuters, Samsung Electronics discute une éventuelle acquisition de Modine Manufacturing, fournisseur de systèmes de refroidissement pour data centers. Aucune décision définitive n'a été prise; Modine a progressé de 29 % en après-Bourse après la publication initiale.",
+    "theme": "AI infrastructure",
+    "subtheme": "data center cooling M&A",
+    "companies": [
+      "Samsung Electronics",
+      "Modine Manufacturing"
+    ],
+    "tickers": [
+      "MOD"
+    ],
+    "sector": "Data center cooling",
+    "sources": [
+      {
+        "url": "https://www.marketscreener.com/news/samsung-in-talks-to-buy-data-center-cooling-firm-modine-bloomberg-news-reports-ce785ed9d88cf026",
+        "source_name": "Reuters via MarketScreener",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "importance": 72,
+    "novelty": 78,
+    "confidence": 80,
+    "execution_risk": 75,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-11-14T08:52:29+01:00",
+    "type": "FACT",
+    "horizon": "medium",
+    "pricing_status": "uncertain",
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true,
+    "event_id": "EVT-20261114-NVCHINAPROJ",
+    "published_at": "2026-11-13T03:30:00-05:00",
+    "title": "Reuters identifie plus de 3,2 milliards de dollars de projets chinois reposant sur des GPU Nvidia restreints",
+    "factual_summary": "Une enquête Reuters sur plus de 150 documents chinois identifie plus de 23 milliards de yuans de projets de calcul et contrats d'équipements utilisant des processeurs Nvidia soumis à restrictions américaines. Le montant comprend infrastructures et installations, pas seulement les achats de puces; plusieurs projets restent incertains.",
+    "theme": "Semiconductors",
+    "subtheme": "China Nvidia export controls",
+    "companies": [
+      "Nvidia"
+    ],
+    "tickers": [
+      "NVDA"
+    ],
+    "sector": "AI semiconductors",
+    "sources": [
+      {
+        "url": "https://www.marketscreener.com/news/china-s-3-billion-plus-pipeline-of-nvidia-powered-ai-data-centres-ce785ed9dd8aff27",
+        "source_name": "Reuters via MarketScreener",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "importance": 76,
+    "novelty": 71,
+    "confidence": 90,
+    "execution_risk": 68,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    }
+  }
+]
