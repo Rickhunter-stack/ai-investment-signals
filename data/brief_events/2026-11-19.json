@@ -1,0 +1,82 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-11-19T08:01:43+01:00",
+    "type": "FACT",
+    "horizon": "medium",
+    "pricing_status": "uncertain",
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true,
+    "event_id": "EVT-20261119-ANTIPO",
+    "published_at": "2026-11-18T21:26:21Z",
+    "title": "Anthropic lève 81,3 milliards de dollars lors de son introduction en Bourse",
+    "factual_summary": "Anthropic a fixé le prix de son introduction en Bourse à 83 dollars par action pour 980 millions d'actions, levant 81,3 milliards de dollars, et annonce 26 milliards supplémentaires de placement privé. La valorisation entièrement diluée atteint environ 1 500 milliards de dollars. Reuters indique près de 900 milliards de dollars d'engagements futurs de capacité informatique.",
+    "theme": "IA et investissement",
+    "subtheme": "Frontier AI IPO economics",
+    "sector": "AI software and infrastructure",
+    "companies": [
+      "Anthropic"
+    ],
+    "tickers": [
+      "ANT"
+    ],
+    "direction": "neutral",
+    "importance": 97,
+    "novelty": 94,
+    "confidence": 96,
+    "execution_risk": 88,
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/transactional/anthropic-prices-blockbuster-ipo-83-share-source-says-2026-11-18/",
+        "source_name": "Reuters"
+      }
+    ],
+    "story": {
+      "story_id": "STORY-EVT-20260929-ANTHIPO",
+      "relation": "CONFIRM"
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-11-19T08:01:43+01:00",
+    "type": "FACT",
+    "horizon": "medium",
+    "pricing_status": "uncertain",
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true,
+    "event_id": "EVT-20261119-NVCHINA",
+    "published_at": "2026-11-18T09:16:26Z",
+    "title": "Nvidia suspend les livraisons de puces Hopper autorisées vers la Chine",
+    "factual_summary": "La directrice générale par intérim de Nvidia, Colette Kress, a déclaré que l'entreprise ne livrait plus de processeurs Hopper autorisés à la Chine et n'en prévoyait aucun dans ses perspectives actuelles, après 2,4 milliards de dollars de ventes de ces produits au trimestre clos le 25 octobre. Nvidia n'a pas précisé si cette suspension était permanente.",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Exportations de puces IA vers la Chine",
+    "sector": "Semiconductors",
+    "companies": [
+      "Nvidia"
+    ],
+    "tickers": [
+      "NVDA"
+    ],
+    "direction": "negative",
+    "importance": 91,
+    "novelty": 87,
+    "confidence": 97,
+    "execution_risk": 72,
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/china/nvidia-stops-shipping-us-approved-ai-chips-china-2026-11-18/",
+        "source_name": "Reuters"
+      }
+    ],
+    "story": {
+      "story_id": "STORY-EVT-20260917-HUA960",
+      "relation": "ACCELERATE"
+    }
+  }
+]
