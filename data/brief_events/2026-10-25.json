@@ -1,0 +1,172 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-25T07:11:58.858Z",
+    "type": "FACT",
+    "pricing_status": "uncertain",
+    "frozen": true,
+    "event_id": "EVT-20261025-JNJ6143",
+    "published_at": "2026-10-24T08:18:00Z",
+    "title": "J&J reports encouraging early-stage prostate cancer results for JNJ-6143",
+    "factual_summary": "Johnson & Johnson reported that 77% of 31 evaluable patients on a 50 mg dose had a PSA reduction of at least 50%, and that 69% of patients with measurable tumors had a confirmed complete or partial response. The early-stage trial concerns heavily pretreated advanced prostate cancer; larger studies are needed.",
+    "theme": "healthcare",
+    "subtheme": "oncology",
+    "companies": [
+      "Johnson & Johnson"
+    ],
+    "tickers": [
+      "JNJ"
+    ],
+    "sector": "biopharma",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/johnson-johnsons-prostate-cancer-drug-shrinks-tumors-early-stage-trial-2026-10-24/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 79,
+    "novelty": 80,
+    "confidence": 87,
+    "execution_risk": 84,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "A new oral mechanism could strengthen the advanced prostate cancer pipeline if larger clinical trials confirm the response and tolerability."
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-25T07:11:58.858Z",
+    "type": "FACT",
+    "pricing_status": "uncertain",
+    "frozen": true,
+    "event_id": "EVT-20261025-BARCLAYS",
+    "published_at": "2026-10-22T06:08:00Z",
+    "title": "Barclays plans 5,000 job cuts citing AI-enabled efficiency",
+    "factual_summary": "Barclays said it plans to cut around 5,000 jobs, about 5% of its workforce, in 2026 as it uses AI and other technology to reduce fixed costs. Around 60% of reductions concern support functions; 1,000 jobs had already been eliminated when the company reported.",
+    "theme": "ai",
+    "subtheme": "enterprise automation",
+    "companies": [
+      "Barclays"
+    ],
+    "tickers": [
+      "BARC.L"
+    ],
+    "sector": "banking",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/finance/barclays-q3-profit-rises-12-announces-670-million-buyback-2026-10-22/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 78,
+    "novelty": 68,
+    "confidence": 93,
+    "execution_risk": 60,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "AI-driven back-office automation is beginning to have measurable workforce consequences, but sustainable margin gains require evidence beyond headcount reductions."
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-25T07:11:58.858Z",
+    "type": "FACT",
+    "pricing_status": "uncertain",
+    "frozen": true,
+    "event_id": "EVT-20261025-BAIDULYFT",
+    "published_at": "2026-10-23T12:05:00Z",
+    "title": "Baidu and Lyft's Freenow test autonomous taxis in London",
+    "factual_summary": "Baidu Apollo Go and Lyft unit Freenow began testing autonomous RT6 vehicles on London streets with safety drivers and said they aim to launch a driverless commercial service in 2027, subject to regulatory and operational progress.",
+    "theme": "robotics",
+    "subtheme": "autonomous mobility",
+    "companies": [
+      "Baidu",
+      "Lyft"
+    ],
+    "tickers": [
+      "9888.HK",
+      "LYFT"
+    ],
+    "sector": "transport",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/finance/chinas-baidu-tests-robotaxi-london-streets-2026-10-23/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 72,
+    "novelty": 72,
+    "confidence": 90,
+    "execution_risk": 83,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "London may become a competitive European proving ground for robotaxi providers, though regulatory approvals and unit economics remain unproven."
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-25T07:11:58.858Z",
+    "type": "FACT",
+    "pricing_status": "uncertain",
+    "frozen": true,
+    "event_id": "EVT-20261025-FCBGA",
+    "published_at": "2026-10-22T07:24:00Z",
+    "title": "Reported Tesla and Nvidia backing for Samsung Electro-Mechanics chip substrates",
+    "factual_summary": "Reuters cited a South Korean newspaper report that Tesla and Nvidia would provide investments worth a combined 3.7 trillion won to Samsung Electro-Mechanics to build FC-BGA advanced chip-substrate production lines in Sejong. The investment and supply terms were reported by media sources, not confirmed by the companies in the article.",
+    "theme": "semiconductors",
+    "subtheme": "advanced packaging",
+    "companies": [
+      "Samsung Electro-Mechanics",
+      "Tesla",
+      "Nvidia"
+    ],
+    "tickers": [
+      "009150.KS",
+      "TSLA",
+      "NVDA"
+    ],
+    "sector": "semiconductor equipment",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/autos-transportation/samsung-electro-mechanics-gets-28-billion-chip-investment-tesla-nvidia-report-2026-10-22/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 76,
+    "novelty": 72,
+    "confidence": 64,
+    "execution_risk": 78,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Demand for advanced chip substrates could create additional value in the AI packaging supply chain if reported investments materialize."
+    }
+  }
+]
