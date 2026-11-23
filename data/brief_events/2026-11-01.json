@@ -1,0 +1,210 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261101-KOREAEXP",
+    "captured_at": "2026-11-01T08:56:32+01:00",
+    "published_at": "2026-11-01T00:39:00Z",
+    "title": "Les exportations sud-coréennes de semi-conducteurs bondissent de 259,4 % en octobre",
+    "factual_summary": "Les données officielles publiées le 1er novembre indiquent une hausse de 93,7 % des exportations sud-coréennes totales en octobre à 115,28 milliards de dollars, dont 56,44 milliards de dollars de semi-conducteurs (+259,4 % sur un an). La comparaison est amplifiée par un nombre de jours ouvrés supérieur lié à Chuseok.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Demande mondiale de semi-conducteurs IA",
+    "companies": [
+      "Samsung Electronics",
+      "SK Hynix"
+    ],
+    "tickers": [
+      "005930",
+      "000660"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/south-korea-exports-nearly-double-october-strongest-growth-since-1974-2026-11-01/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 85,
+    "novelty": 72,
+    "confidence": 90,
+    "execution_risk": 45,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La hausse des exportations de puces confirme une demande physique élevée pour les équipements IA, à distinguer des effets calendaires et de prix."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261101-STMOPTIC",
+    "captured_at": "2026-11-01T08:56:32+01:00",
+    "published_at": "2026-10-29T06:21:00Z",
+    "title": "STMicroelectronics relève à 1,3 milliard de dollars son objectif 2026 pour les data centers",
+    "factual_summary": "STMicroelectronics relève son objectif de chiffre d'affaires data centers 2026 à environ 1,3 milliard de dollars, contre plus de 1 milliard auparavant, et confirme une cible supérieure à 2 milliards pour 2027. La direction attribue l'essor notamment à la photonique sur silicium et souligne une exposition surtout aux cinq grands hyperscalers.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Photonique sur silicium pour data centers",
+    "companies": [
+      "STMicroelectronics"
+    ],
+    "tickers": [
+      "STMPA.PA"
+    ],
+    "sector": "Semiconductors",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/retail-consumer/stmicro-beats-q3-profit-estimates-sees-q4-sales-above-4-billion-2026-10-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 76,
+    "novelty": 76,
+    "confidence": 88,
+    "execution_risk": 40,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les composants photoniques de STMicro pourraient bénéficier de la montée des besoins en interconnexion des data centers IA; suivre la conversion de l'objectif en ventes et marges."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261101-AIRLIQGAS",
+    "captured_at": "2026-11-01T08:56:32+01:00",
+    "published_at": "2026-10-29T06:25:00Z",
+    "title": "Air Liquide accélère dans les gaz pour semi-conducteurs, électronique en hausse de 12 %",
+    "factual_summary": "Air Liquide publie 7,26 milliards d'euros de chiffre d'affaires trimestriel (+3 % comparable), avec +12 % dans l'électronique, un carnet de projets d'investissement record de 6,2 milliards d'euros et le lancement d'une tranche de 1 milliard d'euros de rachats d'actions. Le groupe investit dans l'approvisionnement en gaz pour usines de puces IA.",
+    "type": "FACT",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Gaz industriels pour fabrication de puces",
+    "companies": [
+      "Air Liquide"
+    ],
+    "tickers": [
+      "AIRP.PA"
+    ],
+    "sector": "Industrial gases",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/air-liquide-reports-quarterly-revenue-above-market-expectations-2026-10-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 70,
+    "novelty": 65,
+    "confidence": 88,
+    "execution_risk": 35,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les gaz ultra-purs constituent une exposition indirecte à la hausse des capacités de fabrication de puces, avec un profil industriel distinct des fabricants de GPU."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261101-METAFURIER",
+    "captured_at": "2026-11-01T08:56:32+01:00",
+    "published_at": "2026-10-31T16:13:00Z",
+    "title": "Meta aurait construit un prototype humanoïde avec la startup chinoise Fourier",
+    "factual_summary": "The Information rapporte le 31 octobre que Meta a construit un prototype de robot humanoïde avec la startup chinoise Fourier et prépare une deuxième version. Reuters indique ne pas avoir pu vérifier indépendamment cette information; aucun déploiement commercial ni contrat n'est établi.",
+    "type": "WEAK_SIGNAL",
+    "theme": "Robotique et IA",
+    "subtheme": "Robots humanoïdes et prototypes",
+    "companies": [
+      "Meta Platforms",
+      "Fourier"
+    ],
+    "tickers": [
+      "META"
+    ],
+    "sector": "Robotics",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/china/meta-builds-humanoid-robot-with-chinese-startup-fourier-information-says-2026-10-31/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "long",
+    "importance": 60,
+    "novelty": 73,
+    "confidence": 45,
+    "execution_risk": 80,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "L'entrée éventuelle de Meta dans la robotique humanoïde renforcerait l'intérêt pour les modèles d'IA physique, mais reste à confirmer par des preuves indépendantes de performance et d'adoption."
+    },
+    "frozen": true
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "event_id": "EVT-20261101-BMYQ3",
+    "captured_at": "2026-11-01T08:56:32+01:00",
+    "published_at": "2026-10-29T11:00:00Z",
+    "title": "Bristol Myers relève sa prévision de revenus mais abaisse son bénéfice ajusté",
+    "factual_summary": "Bristol Myers Squibb relève sa prévision de revenus 2026 à 49,75-50,25 milliards de dollars et abaisse sa fourchette de bénéfice ajusté par action à 6,35-6,55 dollars en raison d'une charge liée à une acquisition. Le chiffre d'affaires trimestriel progresse de 7 % à 13,1 milliards, porté par de nouveaux médicaments dont Breyanzi et Reblozyl.",
+    "type": "FACT",
+    "theme": "Médecine et biotechnologie",
+    "subtheme": "Portefeuille pharmaceutique et croissance des nouveaux traitements",
+    "companies": [
+      "Bristol Myers Squibb"
+    ],
+    "tickers": [
+      "BMY"
+    ],
+    "sector": "Pharmaceuticals",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/bristol-myers-raises-2026-revenue-forecast-lowers-eps-due-charge-2026-10-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 65,
+    "novelty": 61,
+    "confidence": 88,
+    "execution_risk": 50,
+    "pricing_status": "uncertain",
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La croissance des nouvelles franchises pourrait compenser l'érosion de certains produits historiques; suivre la rentabilité et les prochains résultats cliniques."
+    },
+    "frozen": true
+  }
+]
