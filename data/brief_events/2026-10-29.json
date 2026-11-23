@@ -1,0 +1,210 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-29T08:17:56+01:00",
+    "type": "FACT",
+    "pricing_status": "uncertain",
+    "frozen": true,
+    "event_id": "EVT-20261029-MSFTAZURE",
+    "published_at": "2026-10-28T20:07:00+00:00",
+    "title": "Microsoft génère 18,6 milliards de dollars de cash-flow libre et affiche 48 % de croissance Azure",
+    "factual_summary": "Microsoft a enregistré 18,6 milliards de dollars de flux de trésorerie disponible au premier trimestre de son exercice, contre 8,54 milliards attendus selon Visible Alpha. Azure a crû de 48 % et la société prévoit 49 à 50 % de croissance au trimestre suivant. Les dépenses d'investissement ont atteint 45,2 milliards de dollars, sous les 50 milliards prévus, notamment en raison de retards de livraison de capacités externes.",
+    "theme": "IA et investissement",
+    "subtheme": "Rentabilité et cash-flow des hyperscalers",
+    "companies": [
+      "Microsoft"
+    ],
+    "tickers": [
+      "MSFT"
+    ],
+    "sector": "Cloud et logiciels",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/retail-consumer/microsoft-beats-quarterly-cloud-revenue-estimates-2026-10-28/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 91,
+    "novelty": 84,
+    "confidence": 94,
+    "execution_risk": 38,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La croissance Azure et la génération de trésorerie peuvent distinguer Microsoft des hyperscalers dont les dépenses IA pèsent davantage sur le cash-flow."
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-29T08:17:56+01:00",
+    "type": "FACT",
+    "pricing_status": "uncertain",
+    "frozen": true,
+    "event_id": "EVT-20261029-GOOGLFCF",
+    "published_at": "2026-10-28T20:06:00+00:00",
+    "title": "Alphabet affiche 9,07 milliards de dollars de cash-flow libre négatif malgré le doublement de Google Cloud",
+    "factual_summary": "Alphabet a déclaré un flux de trésorerie disponible négatif de 9,07 milliards de dollars au troisième trimestre 2026. Le chiffre d'affaires du groupe a atteint 127,6 milliards de dollars, sous les 128,2 milliards attendus, tandis que Google Cloud a plus que doublé à 30,71 milliards de dollars. Les revenus publicitaires ont été inférieurs aux attentes et le groupe prévoit de poursuivre l'expansion de ses capacités IA.",
+    "theme": "IA et investissement",
+    "subtheme": "Rentabilité et cash-flow des hyperscalers",
+    "companies": [
+      "Alphabet"
+    ],
+    "tickers": [
+      "GOOGL"
+    ],
+    "sector": "Cloud et publicité numérique",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/alphabets-google-cloud-unit-beats-quarterly-revenue-estimates-steady-ai-demand-2026-10-28/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 92,
+    "novelty": 86,
+    "confidence": 94,
+    "execution_risk": 73,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "La croissance très rapide du cloud peut coexister avec une dégradation de la génération de trésorerie et une pression sur le modèle publicitaire de recherche."
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-29T08:17:56+01:00",
+    "type": "FACT",
+    "pricing_status": "uncertain",
+    "frozen": true,
+    "event_id": "EVT-20261029-SAMSUNGMEM",
+    "published_at": "2026-10-29T00:56:00+00:00",
+    "title": "Samsung annonce un bénéfice record mais reporte ses décisions de retour aux actionnaires",
+    "factual_summary": "Samsung Electronics a réalisé un bénéfice opérationnel de 107,4 billions de wons au troisième trimestre 2026, contre 12,2 billions un an plus tôt, dont 106,5 billions dans les semi-conducteurs. La société indique que son offre de HBM pour 2027 est vendue et que le marché mémoire pourrait rester tendu jusqu'en 2028. Elle reportera à janvier la définition de sa nouvelle politique de retour aux actionnaires.",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Mémoire pour infrastructure IA",
+    "companies": [
+      "Samsung Electronics"
+    ],
+    "tickers": [
+      "005930.KS"
+    ],
+    "sector": "Semi-conducteurs mémoire",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/china/samsung-posts-record-profit-q3-ai-chip-boom-2026-10-29/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 88,
+    "novelty": 79,
+    "confidence": 94,
+    "execution_risk": 50,
+    "story": {
+      "story_id": "STORY-EVT-20260918-CXMTNAND",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les bénéfices records confirment la forte demande mémoire IA, mais les écarts de perspectives et de distribution de capital entre Samsung et SK Hynix restent matériels."
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-29T08:17:56+01:00",
+    "type": "FACT",
+    "pricing_status": "uncertain",
+    "frozen": true,
+    "event_id": "EVT-20261029-GEVTRENCH",
+    "published_at": "2026-10-28T10:02:00+00:00",
+    "title": "GE Vernova annonce l'acquisition de Trench pour 9 milliards de dollars et des commandes record",
+    "factual_summary": "GE Vernova a annoncé un accord d'acquisition du fabricant d'équipements haute tension Trench Group pour 9 milliards de dollars, avec clôture attendue fin 2027. Ses commandes trimestrielles ont progressé de 96 % à 29,3 milliards de dollars et son carnet de commandes atteint 197 milliards. Le groupe a relevé sa prévision de chiffre d'affaires 2026 à 46,5-47,5 milliards de dollars.",
+    "theme": "Énergie et data centers",
+    "subtheme": "Équipements électriques et réseaux haute tension",
+    "companies": [
+      "GE Vernova",
+      "Trench Group"
+    ],
+    "tickers": [
+      "GEV"
+    ],
+    "sector": "Équipements électriques",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/legal/transactional/ge-vernova-buy-trench-group-triton-partners-9-billion-2026-10-28/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 90,
+    "novelty": 90,
+    "confidence": 94,
+    "execution_risk": 48,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Les goulots d'étranglement électriques liés aux data centers et à l'électrification favorisent les fournisseurs d'équipements de réseau, mais l'acquisition comporte des risques d'exécution."
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-29T08:17:56+01:00",
+    "type": "FACT",
+    "pricing_status": "uncertain",
+    "frozen": true,
+    "event_id": "EVT-20261029-MRVLLITE",
+    "published_at": "2026-10-28T23:10:00+00:00",
+    "title": "Marvell serait en discussions avancées pour racheter le fabricant de composants optiques Lumentum",
+    "factual_summary": "Selon une source citée par Reuters, Marvell Technology est en discussions avancées pour acquérir Lumentum Holdings, sans accord annoncé ni confirmation des sociétés. Lumentum fournit des composants optiques pour réseaux et data centers. Reuters indique une capitalisation d'environ 83 milliards de dollars pour Lumentum; des analystes signalent d'importants besoins de financement et des risques d'intégration.",
+    "theme": "IA et semi-conducteurs",
+    "subtheme": "Interconnexions optiques des data centers",
+    "companies": [
+      "Marvell Technology",
+      "Lumentum Holdings"
+    ],
+    "tickers": [
+      "MRVL",
+      "LITE"
+    ],
+    "sector": "Semi-conducteurs et photonique",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/marvell-advanced-talks-buy-lumentum-bloomberg-news-reports-2026-10-28/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "neutral",
+    "horizon": "medium",
+    "importance": 84,
+    "novelty": 91,
+    "confidence": 68,
+    "execution_risk": 85,
+    "story": {
+      "story_id": "STORY-EVT-20260918-GFMRVLOPT",
+      "relation": "CONFIRM"
+    },
+    "thesis": {
+      "thesis_ids": [],
+      "statement": "Une éventuelle acquisition de Lumentum renforcerait l'intégration de Marvell dans les interconnexions optiques IA, au prix d'un financement et d'une intégration complexes."
+    }
+  }
+]
