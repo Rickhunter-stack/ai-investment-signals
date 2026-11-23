@@ -1,0 +1,210 @@
+[
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-31T08:40:52+01:00",
+    "type": "FACT",
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true,
+    "pricing_status": "uncertain",
+    "event_id": "EVT-20261031-OPENAI20B",
+    "published_at": "2026-10-31T00:17:27+00:00",
+    "title": "OpenAI réduit son objectif de levée de fonds à environ 20 milliards de dollars selon le FT",
+    "factual_summary": "Selon le Financial Times cité par Reuters, OpenAI a réduit de 10 milliards de dollars son objectif de levée de fonds à environ 20 milliards de dollars dans un contexte de correction boursière des valeurs IA. La première clôture et les montants effectivement souscrits ne sont pas confirmés.",
+    "theme": "IA",
+    "subtheme": "financement modèles fondamentaux",
+    "companies": [
+      "OpenAI"
+    ],
+    "tickers": [],
+    "sector": "logiciels IA",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/openai-cuts-funding-target-by-10-billion-ft-reports-2026-10-31/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 87,
+    "novelty": 84,
+    "confidence": 75,
+    "execution_risk": 88,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-31T08:40:52+01:00",
+    "type": "FACT",
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true,
+    "pricing_status": "uncertain",
+    "event_id": "EVT-20261031-CAPGEMQ3",
+    "published_at": "2026-10-30T07:01:49+00:00",
+    "title": "Capgemini relève ses prévisions 2026 grâce aux projets de transformation IA",
+    "factual_summary": "Capgemini a annoncé 6,07 milliards d'euros de chiffre d'affaires au troisième trimestre, en hausse de 12%, et relevé sa prévision de croissance annuelle à taux de change constants de 8,5%-9,0% à 9,0%-9,5%. Le groupe fait état d'une demande de modernisation des systèmes de données pour les projets IA.",
+    "theme": "IA",
+    "subtheme": "services informatiques transformation IA",
+    "companies": [
+      "Capgemini"
+    ],
+    "tickers": [
+      "CAPP.PA"
+    ],
+    "sector": "services informatiques",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/capgemini-raises-2026-guidance-ai-push-brings-work-it-consultants-2026-10-30/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 75,
+    "novelty": 73,
+    "confidence": 92,
+    "execution_risk": 48,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-31T08:40:52+01:00",
+    "type": "FACT",
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true,
+    "pricing_status": "uncertain",
+    "event_id": "EVT-20261031-REDDTSEO",
+    "published_at": "2026-10-30T11:40:39+00:00",
+    "title": "Reddit alerte sur la baisse du trafic de recherche due aux réponses IA de Google",
+    "factual_summary": "Reddit a indiqué que les réponses générées par IA de Google réduisent les clics provenant de la recherche et pourraient entraîner une baisse à deux chiffres faible des visiteurs actifs quotidiens au quatrième trimestre si cette tendance persiste. Son action reculait d'environ 29% le 30 octobre au moment du reportage.",
+    "theme": "IA",
+    "subtheme": "recherche IA trafic éditeurs",
+    "companies": [
+      "Reddit",
+      "Alphabet"
+    ],
+    "tickers": [
+      "RDDT",
+      "GOOGL"
+    ],
+    "sector": "plateformes internet",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/business/reddit-pinterest-shares-tumble-weak-user-revenue-growth-2026-10-30/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "negative",
+    "horizon": "medium",
+    "importance": 83,
+    "novelty": 84,
+    "confidence": 88,
+    "execution_risk": 76,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-31T08:40:52+01:00",
+    "type": "FACT",
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true,
+    "pricing_status": "uncertain",
+    "event_id": "EVT-20261031-CXMTQ326",
+    "published_at": "2026-10-30T11:08:11+00:00",
+    "title": "CXMT publie 54,4 milliards de yuans de bénéfice trimestriel et 118,71 milliards de revenus",
+    "factual_summary": "ChangXin Memory Technologies (CXMT) a publié un bénéfice net trimestriel attribuable aux actionnaires de 54,4 milliards de yuans, des revenus de 118,71 milliards de yuans en hausse de 613,2% sur un an et une marge brute de 89,53%. La hausse des prix et volumes de mémoire a soutenu les résultats.",
+    "theme": "semi-conducteurs",
+    "subtheme": "résultats financiers DRAM Chine",
+    "companies": [
+      "ChangXin Memory Technologies"
+    ],
+    "tickers": [
+      "688825.SS"
+    ],
+    "sector": "semi-conducteurs mémoire",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/asia-pacific/cxmt-turns-third-quarter-net-profit-544-billion-yuan-2026-10-30/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "medium",
+    "importance": 79,
+    "novelty": 78,
+    "confidence": 92,
+    "execution_risk": 66,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    }
+  },
+  {
+    "schema_version": "brief-event-v1",
+    "captured_at": "2026-10-31T08:40:52+01:00",
+    "type": "FACT",
+    "thesis": {
+      "thesis_ids": [],
+      "statement": null
+    },
+    "frozen": true,
+    "pricing_status": "uncertain",
+    "event_id": "EVT-20261031-FOXROBOTS",
+    "published_at": "2026-10-30T08:38:00+00:00",
+    "title": "Foxconn déploie plus de dix robots humanoïdes dans ses sites industriels texans",
+    "factual_summary": "Foxconn a indiqué avoir déployé plus de dix robots humanoïdes dans ses installations au Texas pour un usage interne et prévoit d'étendre ces déploiements. Sa filiale Foxconn Industrial Internet développe des modèles robotiques basés sur Nvidia GR00T. Le groupe a aussi évoqué un futur accord avec OpenAI, dont les modalités ne sont pas finalisées.",
+    "theme": "robotique",
+    "subtheme": "déploiement humanoïdes industriels",
+    "companies": [
+      "Hon Hai Precision Industry",
+      "Nvidia",
+      "OpenAI"
+    ],
+    "tickers": [
+      "2317.TW",
+      "NVDA"
+    ],
+    "sector": "robotique industrielle",
+    "sources": [
+      {
+        "url": "https://www.reuters.com/world/china/foxconn-working-new-tie-up-with-openai-says-there-is-no-ai-bubble-2026-10-30/",
+        "source_name": "Reuters",
+        "source_type": "news"
+      }
+    ],
+    "direction": "positive",
+    "horizon": "long",
+    "importance": 72,
+    "novelty": 78,
+    "confidence": 87,
+    "execution_risk": 72,
+    "story": {
+      "story_id": null,
+      "relation": "NEW"
+    }
+  }
+]
